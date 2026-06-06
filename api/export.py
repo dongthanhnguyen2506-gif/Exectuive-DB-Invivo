@@ -9,8 +9,8 @@ from collections import defaultdict
 
 TENANT_ID     = os.environ["TENANT_ID"]
 DATASET_ID    = os.environ["DATASET_ID"]
-CLIENT_ID     = os.environ["CLIENT_ID"]
-CLIENT_SECRET = os.environ["CLIENT_SECRET"]
+PBI_EMAIL = os.environ["PBI_EMAIL"]
+PBI_PASS  = os.environ["PBI_PASS"]
 VERCEL_TOKEN  = os.environ.get("VERCEL_TOKEN", "")
 BLOB_RW_TOKEN = os.environ.get("BLOB_RW_TOKEN", "")
 
