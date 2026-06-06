@@ -1,36 +1,31 @@
-"""
-InVivo Lab — Power BI Export Script
-Dùng Service Principal (Client ID + Secret) — không cần MFA
-"""
-
 import os, json, requests, time
 from datetime import datetime
 from collections import defaultdict
+import msal
 
 TENANT_ID     = os.environ["TENANT_ID"]
 DATASET_ID    = os.environ["DATASET_ID"]
-PBI_EMAIL = os.environ["PBI_EMAIL"]
-PBI_PASS  = os.environ["PBI_PASS"]
+CLIENT_ID     = os.environ["CLIENT_ID"]
+CLIENT_SECRET = os.environ["CLIENT_SECRET"]
 VERCEL_TOKEN  = os.environ.get("VERCEL_TOKEN", "")
 BLOB_RW_TOKEN = os.environ.get("BLOB_RW_TOKEN", "")
 
 TABLES = ["2025_10","2025_11","2025_12","2026_01","2026_02","2026_03","2026_04"]
 
 def get_token():
-    print("→ Lấy Access Token...")
-    r = requests.post(
-        f"https://login.microsoftonline.com/{TENANT_ID}/oauth2/v2.0/token",
-        data={
-            "grant_type": "password",
-            "client_id" : "7f67af8a-fedc-4b08-8b4e-aa9179657f4d",
-            "scope"     : "https://analysis.windows.net/powerbi/api/.default",
-            "username"  : PBI_EMAIL,
-            "password"  : PBI_PASS,
-        }
+    print("-> Lay Access Token...")
+    app = msal.ConfidentialClientApplication(
+        CLIENT_ID,
+        authority=f"https://login.microsoftonline.com/{TENANT_ID}",
+        client_credential=CLIENT_SECRET
     )
-    r.raise_for_status()
-    print("  ✓ Token OK")
-    return r.json()["access_token"]
+    result = app.acquire_token_for_client(
+        scopes=["https://analysis.windows.net/powerbi/api/.default"]
+    )
+    if "access_token" in result:
+        print("  OK Token")
+        return result["access_token"]
+    raise Exception(result.get("error_description"))
 
 def run_dax(token, dax):
     r = requests.post(
@@ -45,7 +40,7 @@ def clean_row(row):
     return {k.split("[")[-1].rstrip("]"): v for k, v in row.items()}
 
 def export_tables(token):
-    print("→ Export data từ Power BI...")
+    print("-> Export data...")
     all_rows = []
     for tbl in TABLES:
         try:
@@ -53,21 +48,18 @@ def export_tables(token):
                 EVALUATE
                 ADDCOLUMNS(
                     '{tbl}',
-                    "source_month",    "{tbl}",
-                    "revenue_actual",  '{tbl}'[price] * (1 - '{tbl}'[discountPercent] / 100),
+                    "source_month", "{tbl}",
+                    "revenue_actual", '{tbl}'[price] * (1 - '{tbl}'[discountPercent] / 100),
                     "discount_amount", '{tbl}'[price] * ('{tbl}'[discountPercent] / 100)
                 )
             """)
-            cleaned = [clean_row(r) for r in rows]
-            all_rows.extend(cleaned)
-            print(f"  ✓ {tbl}: {len(rows):,} dòng")
+            all_rows.extend([clean_row(r) for r in rows])
+            print(f"  OK {tbl}: {len(rows)} dong")
         except Exception as e:
-            print(f"  ✗ {tbl}: {e}")
-    print(f"  → Tổng: {len(all_rows):,} dòng")
+            print(f"  LOI {tbl}: {e}")
     return all_rows
 
 def build_summary(rows):
-    print("→ Tính KPI summary...")
     by_month   = defaultdict(lambda: {"revenue":0,"listed":0,"discount":0,"orders":set(),"partners":set()})
     by_partner = defaultdict(lambda: {"revenue":0,"listed":0,"orders":set(),"name":""})
     by_group   = defaultdict(lambda: {"revenue":0,"listed":0,"count":0})
@@ -75,14 +67,14 @@ def build_summary(rows):
 
     for r in rows:
         try:
-            rev  = float(r.get("revenue_actual")  or 0)
-            lst  = float(r.get("price")            or 0)
-            disc = float(r.get("discount_amount")  or 0)
+            rev  = float(r.get("revenue_actual") or 0)
+            lst  = float(r.get("price") or 0)
+            disc = float(r.get("discount_amount") or 0)
             mo   = str(r.get("source_month",""))
             pid  = str(r.get("partnerId",""))
             pname= str(r.get("partnerCode",""))
             oid  = str(r.get("orderId",""))
-            grp  = str(r.get("orderTypeGroupName","Khác"))
+            grp  = str(r.get("orderTypeGroupName","Khac"))
             lab  = str(r.get("labName",""))
             by_month[mo]["revenue"]  += rev
             by_month[mo]["listed"]   += lst
@@ -106,11 +98,11 @@ def build_summary(rows):
     for mo in sorted_months:
         d = by_month[mo]
         monthly.append({
-            "month"          : mo,
-            "revenue_actual" : round(d["revenue"]),
-            "revenue_listed" : round(d["listed"]),
-            "discount"       : round(d["discount"]),
-            "order_count"    : len(d["orders"]),
+            "month": mo,
+            "revenue_actual": round(d["revenue"]),
+            "revenue_listed": round(d["listed"]),
+            "discount": round(d["discount"]),
+            "order_count": len(d["orders"]),
             "active_partners": len(d["partners"]),
         })
 
@@ -118,7 +110,7 @@ def build_summary(rows):
     if len(monthly) >= 2:
         curr = monthly[-1]["revenue_actual"]
         prev = monthly[-2]["revenue_actual"]
-        mom  = round((curr - prev) / prev * 100, 1) if prev else None
+        mom = round((curr - prev) / prev * 100, 1) if prev else None
 
     top_partners = sorted(
         [{"partnerId":k,"partnerCode":v["name"],"revenue":round(v["revenue"]),
@@ -140,67 +132,58 @@ def build_summary(rows):
     )
 
     cur = monthly[-1] if monthly else {}
-    summary = {
-        "updated_at"       : datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "updated_at_vn"    : datetime.utcnow().strftime("%H:%M %d/%m/%Y") + " (UTC+7 +7h)",
-        "current_month"    : sorted_months[-1] if sorted_months else "",
-        "total_revenue"    : cur.get("revenue_actual", 0),
-        "total_listed"     : cur.get("revenue_listed", 0),
-        "total_discount"   : cur.get("discount", 0),
-        "total_orders"     : cur.get("order_count", 0),
-        "active_partners"  : cur.get("active_partners", 0),
-        "mom_growth_pct"   : mom,
-        "discount_rate_pct": round(cur.get("discount",0)/cur.get("revenue_listed",1)*100,1) if cur.get("revenue_listed") else 0,
-        "monthly"          : monthly,
-        "top_partners"     : top_partners,
-        "service_mix"      : service_mix,
-        "lab_breakdown"    : lab_breakdown,
+    return {
+        "updated_at": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "updated_at_vn": datetime.utcnow().strftime("%H:%M %d/%m/%Y") + " UTC",
+        "current_month": sorted_months[-1] if sorted_months else "",
+        "total_revenue": cur.get("revenue_actual", 0),
+        "total_listed": cur.get("revenue_listed", 0),
+        "total_discount": cur.get("discount", 0),
+        "total_orders": cur.get("order_count", 0),
+        "active_partners": cur.get("active_partners", 0),
+        "mom_growth_pct": mom,
+        "monthly": monthly,
+        "top_partners": top_partners,
+        "service_mix": service_mix,
+        "lab_breakdown": lab_breakdown,
     }
-    print("  ✓ Summary OK")
-    return summary
 
 def save_files(summary):
     os.makedirs("public", exist_ok=True)
     with open("public/summary_latest.json","w",encoding="utf-8") as f:
         json.dump(summary, f, ensure_ascii=False, indent=2)
-    with open("public/updated_at.txt","w") as f:
-        f.write(summary["updated_at"])
-    print("  ✓ Saved public/summary_latest.json")
+    print("  OK Saved public/summary_latest.json")
 
 def push_vercel(summary):
     if not VERCEL_TOKEN:
-        print("  ⚠ Không có VERCEL_TOKEN")
         return
     r = requests.put(
         "https://blob.vercel-storage.com/invivo/summary_latest.json",
         headers={
-            "Authorization"         : f"Bearer {VERCEL_TOKEN}",
+            "Authorization": f"Bearer {VERCEL_TOKEN}",
             "x-vercel-blob-rw-token": BLOB_RW_TOKEN,
-            "Content-Type"          : "application/json",
+            "Content-Type": "application/json",
         },
         data=json.dumps(summary, ensure_ascii=False)
     )
     if r.status_code in (200, 201):
-        print(f"  ✓ Vercel Blob OK: {r.json().get('url','')}")
+        print(f"  OK Vercel Blob")
     else:
-        print(f"  ✗ Vercel lỗi {r.status_code}: {r.text[:300]}")
+        print(f"  LOI Vercel {r.status_code}: {r.text[:200]}")
 
 def main():
     t0 = time.time()
-    print("=" * 50)
-    print(f"InVivo Export — {datetime.utcnow().strftime('%Y-%m-%d %H:%M UTC')}")
-    print("=" * 50)
+    print("="*50)
+    print(f"InVivo Export - {datetime.utcnow().strftime('%Y-%m-%d %H:%M UTC')}")
+    print("="*50)
     token   = get_token()
     rows    = export_tables(token)
     summary = build_summary(rows)
     save_files(summary)
     push_vercel(summary)
-    print("=" * 50)
-    print(f"✓ Done trong {round(time.time()-t0,1)}s")
-    print(f"  DT tháng {summary['current_month']}: {summary['total_revenue']:,.0f} VND")
-    print(f"  MoM: {summary['mom_growth_pct']}%")
-    print(f"  Active partners: {summary['active_partners']}")
-    print("=" * 50)
+    print(f"DONE trong {round(time.time()-t0,1)}s")
+    print(f"DT thang {summary['current_month']}: {summary['total_revenue']:,.0f} VND")
+    print(f"MoM: {summary['mom_growth_pct']}%")
 
 if __name__ == "__main__":
     main()
