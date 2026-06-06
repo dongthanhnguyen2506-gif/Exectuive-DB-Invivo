@@ -1,0 +1,41 @@
+name: InVivo — Power BI Export (mỗi giờ)
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch:
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run export pipeline
+        env:
+          PBI_EMAIL:     ${{ secrets.PBI_EMAIL }}
+          PBI_PASS:      ${{ secrets.PBI_PASS }}
+          TENANT_ID:     ${{ secrets.TENANT_ID }}
+          DATASET_ID:    ${{ secrets.DATASET_ID }}
+          VERCEL_TOKEN:  ${{ secrets.VERCEL_TOKEN }}
+          BLOB_RW_TOKEN: ${{ secrets.BLOB_RW_TOKEN }}
+        run: python api/export.py
+
+      - name: Commit JSON vào repo
+        run: |
+          git config user.name  "invivo-bot"
+          git config user.email "bot@invivolab.vn"
+          git add public/summary_latest.json || true
+          git diff --cached --quiet || git commit -m "data: auto export $(date '+%Y-%m-%d %H:%M UTC')"
+          git push || true
