@@ -17,14 +17,15 @@ BLOB_RW_TOKEN = os.environ.get("BLOB_RW_TOKEN", "")
 TABLES = ["2025_10","2025_11","2025_12","2026_01","2026_02","2026_03","2026_04"]
 
 def get_token():
-    print("→ Lấy Access Token (Service Principal)...")
+    print("→ Lấy Access Token...")
     r = requests.post(
         f"https://login.microsoftonline.com/{TENANT_ID}/oauth2/v2.0/token",
         data={
-            "grant_type"   : "client_credentials",
-            "client_id"    : CLIENT_ID,
-            "client_secret": CLIENT_SECRET,
-            "scope"        : "https://analysis.windows.net/powerbi/api/.default",
+            "grant_type": "password",
+            "client_id" : "7f67af8a-fedc-4b08-8b4e-aa9179657f4d",
+            "scope"     : "https://analysis.windows.net/powerbi/api/.default",
+            "username"  : PBI_EMAIL,
+            "password"  : PBI_PASS,
         }
     )
     r.raise_for_status()
