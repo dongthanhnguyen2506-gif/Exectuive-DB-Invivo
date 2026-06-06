@@ -20,21 +20,21 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install requests
+        run: pip install requests msal
 
       - name: Run export pipeline
-env:
-          TENANT_ID:     ${{ secrets.TENANT_ID }}
-          DATASET_ID:    ${{ secrets.DATASET_ID }}
-          CLIENT_ID:     ${{ secrets.CLIENT_ID }}
+        env:
+          TENANT_ID: ${{ secrets.TENANT_ID }}
+          DATASET_ID: ${{ secrets.DATASET_ID }}
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
           CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
-          VERCEL_TOKEN:  ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           BLOB_RW_TOKEN: ${{ secrets.BLOB_RW_TOKEN }}
         run: python api/export.py
 
       - name: Commit JSON vào repo
         run: |
-          git config user.name  "invivo-bot"
+          git config user.name "invivo-bot"
           git config user.email "bot@invivolab.vn"
           git add public/summary_latest.json || true
           git diff --cached --quiet || git commit -m "data: auto export $(date '+%Y-%m-%d %H:%M UTC')"
