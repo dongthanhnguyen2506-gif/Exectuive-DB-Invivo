@@ -1,31 +1,30 @@
 """
 InVivo Lab — Power BI Export Script
-Chạy bởi GitHub Actions mỗi giờ
+Dùng Service Principal (Client ID + Secret) — không cần MFA
 """
 
 import os, json, requests, time
 from datetime import datetime
 from collections import defaultdict
 
-TENANT_ID    = os.environ["TENANT_ID"]
-DATASET_ID   = os.environ["DATASET_ID"]
-PBI_EMAIL    = os.environ["PBI_EMAIL"]
-PBI_PASS     = os.environ["PBI_PASS"]
-VERCEL_TOKEN = os.environ.get("VERCEL_TOKEN", "")
-BLOB_RW_TOKEN= os.environ.get("BLOB_RW_TOKEN", "")
+TENANT_ID     = os.environ["TENANT_ID"]
+DATASET_ID    = os.environ["DATASET_ID"]
+CLIENT_ID     = os.environ["CLIENT_ID"]
+CLIENT_SECRET = os.environ["CLIENT_SECRET"]
+VERCEL_TOKEN  = os.environ.get("VERCEL_TOKEN", "")
+BLOB_RW_TOKEN = os.environ.get("BLOB_RW_TOKEN", "")
 
 TABLES = ["2025_10","2025_11","2025_12","2026_01","2026_02","2026_03","2026_04"]
 
 def get_token():
-    print("→ Lấy Access Token...")
+    print("→ Lấy Access Token (Service Principal)...")
     r = requests.post(
         f"https://login.microsoftonline.com/{TENANT_ID}/oauth2/v2.0/token",
         data={
-            "grant_type": "password",
-            "client_id" : "7f67af8a-fedc-4b08-8b4e-aa9179657f4d",
-            "scope"     : "https://analysis.windows.net/powerbi/api/.default",
-            "username"  : PBI_EMAIL,
-            "password"  : PBI_PASS,
+            "grant_type"   : "client_credentials",
+            "client_id"    : CLIENT_ID,
+            "client_secret": CLIENT_SECRET,
+            "scope"        : "https://analysis.windows.net/powerbi/api/.default",
         }
     )
     r.raise_for_status()
@@ -141,20 +140,20 @@ def build_summary(rows):
 
     cur = monthly[-1] if monthly else {}
     summary = {
-        "updated_at"      : datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "updated_at_vn"   : datetime.utcnow().strftime("%H:%M %d/%m/%Y") + " (UTC)",
-        "current_month"   : sorted_months[-1] if sorted_months else "",
-        "total_revenue"   : cur.get("revenue_actual", 0),
-        "total_listed"    : cur.get("revenue_listed", 0),
-        "total_discount"  : cur.get("discount", 0),
-        "total_orders"    : cur.get("order_count", 0),
-        "active_partners" : cur.get("active_partners", 0),
-        "mom_growth_pct"  : mom,
+        "updated_at"       : datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "updated_at_vn"    : datetime.utcnow().strftime("%H:%M %d/%m/%Y") + " (UTC+7 +7h)",
+        "current_month"    : sorted_months[-1] if sorted_months else "",
+        "total_revenue"    : cur.get("revenue_actual", 0),
+        "total_listed"     : cur.get("revenue_listed", 0),
+        "total_discount"   : cur.get("discount", 0),
+        "total_orders"     : cur.get("order_count", 0),
+        "active_partners"  : cur.get("active_partners", 0),
+        "mom_growth_pct"   : mom,
         "discount_rate_pct": round(cur.get("discount",0)/cur.get("revenue_listed",1)*100,1) if cur.get("revenue_listed") else 0,
-        "monthly"         : monthly,
-        "top_partners"    : top_partners,
-        "service_mix"     : service_mix,
-        "lab_breakdown"   : lab_breakdown,
+        "monthly"          : monthly,
+        "top_partners"     : top_partners,
+        "service_mix"      : service_mix,
+        "lab_breakdown"    : lab_breakdown,
     }
     print("  ✓ Summary OK")
     return summary
@@ -165,11 +164,11 @@ def save_files(summary):
         json.dump(summary, f, ensure_ascii=False, indent=2)
     with open("public/updated_at.txt","w") as f:
         f.write(summary["updated_at"])
-    print("  ✓ Đã lưu public/summary_latest.json")
+    print("  ✓ Saved public/summary_latest.json")
 
 def push_vercel(summary):
     if not VERCEL_TOKEN:
-        print("  ⚠ Không có VERCEL_TOKEN — bỏ qua")
+        print("  ⚠ Không có VERCEL_TOKEN")
         return
     r = requests.put(
         "https://blob.vercel-storage.com/invivo/summary_latest.json",
@@ -181,7 +180,7 @@ def push_vercel(summary):
         data=json.dumps(summary, ensure_ascii=False)
     )
     if r.status_code in (200, 201):
-        print(f"  ✓ Vercel Blob: {r.json().get('url','OK')}")
+        print(f"  ✓ Vercel Blob OK: {r.json().get('url','')}")
     else:
         print(f"  ✗ Vercel lỗi {r.status_code}: {r.text[:300]}")
 
