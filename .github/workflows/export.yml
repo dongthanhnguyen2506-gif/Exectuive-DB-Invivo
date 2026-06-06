@@ -24,10 +24,10 @@ jobs:
 
       - name: Run export pipeline
         env:
-          PBI_EMAIL:     ${{ secrets.PBI_EMAIL }}
-          PBI_PASS:      ${{ secrets.PBI_PASS }}
           TENANT_ID:     ${{ secrets.TENANT_ID }}
           DATASET_ID:    ${{ secrets.DATASET_ID }}
+          CLIENT_ID:     ${{ secrets.CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
           VERCEL_TOKEN:  ${{ secrets.VERCEL_TOKEN }}
           BLOB_RW_TOKEN: ${{ secrets.BLOB_RW_TOKEN }}
         run: python api/export.py
