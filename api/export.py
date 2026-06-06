@@ -29,7 +29,7 @@ def get_token():
 
 def run_dax(token, dax):
     r = requests.post(
-        f"https://api.powerbi.com/v1.0/myorg/datasets/{DATASET_ID}/executeQueries",
+        f"https://api.powerbi.com/v1.0/myorg/groups/4d3d0ce8-09e0-4b64-ba8a-feb7f688e8e3/datasets/{DATASET_ID}/executeQueries",
         headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json"},
         json={"queries": [{"query": dax}], "serializerSettings": {"includeNulls": True}}
     )
