@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-06-08T01:10:09+07:00",
-  "updated_at_vn": "01:10 08/06/2026",
+  "updated_at": "2026-06-08T01:28:59+07:00",
+  "updated_at_vn": "01:28 08/06/2026",
   "current_month": "2026_06",
   "total_revenue": 806258438,
   "total_listed": 1342280000,
@@ -10,7 +10,7 @@
   "active_partners": 122,
   "inactive_partners": 79,
   "new_partners": 7,
-  "active_sales": 9,
+  "active_sales": 4,
   "mom_growth_pct": -77.1,
   "total_debt": 10968000,
   "top_debt": [
@@ -64,7 +64,7 @@
       "discount_pct": 42.8,
       "order_count": 8337,
       "active_partners": 202,
-      "active_sales": 11
+      "active_sales": 6
     },
     {
       "month": "2025_11",
@@ -74,7 +74,7 @@
       "discount_pct": 39.2,
       "order_count": 8355,
       "active_partners": 192,
-      "active_sales": 12
+      "active_sales": 6
     },
     {
       "month": "2025_12",
@@ -84,7 +84,7 @@
       "discount_pct": 43.3,
       "order_count": 7684,
       "active_partners": 205,
-      "active_sales": 12
+      "active_sales": 5
     },
     {
       "month": "2026_01",
@@ -94,7 +94,7 @@
       "discount_pct": 41.9,
       "order_count": 7170,
       "active_partners": 199,
-      "active_sales": 12
+      "active_sales": 4
     },
     {
       "month": "2026_02",
@@ -104,7 +104,7 @@
       "discount_pct": 41.5,
       "order_count": 5075,
       "active_partners": 182,
-      "active_sales": 13
+      "active_sales": 5
     },
     {
       "month": "2026_03",
@@ -114,17 +114,7 @@
       "discount_pct": 40.4,
       "order_count": 9235,
       "active_partners": 219,
-      "active_sales": 12
-    },
-    {
-      "month": "2026_04",
-      "revenue_actual": 3701246562,
-      "revenue_listed": 6765473000,
-      "discount": 3064226438,
-      "discount_pct": 45.3,
-      "order_count": 9023,
-      "active_partners": 220,
-      "active_sales": 12
+      "active_sales": 5
     },
     {
       "month": "2026_05",
@@ -134,7 +124,7 @@
       "discount_pct": 43.5,
       "order_count": 8155,
       "active_partners": 194,
-      "active_sales": 8
+      "active_sales": 5
     },
     {
       "month": "2026_06",
@@ -144,192 +134,289 @@
       "discount_pct": 39.9,
       "order_count": 1842,
       "active_partners": 122,
-      "active_sales": 9
+      "active_sales": 4
     }
   ],
   "top_partners": [
     {
-      "partnerCode": "00001",
-      "partnerName": "PHÒNG KHÁM TRUNG ĐỨC",
-      "contact": null,
+      "partnerCode": "1",
+      "partnerName": "1",
+      "contact": "",
+      "saleCode": "",
+      "saleName": "",
+      "team": "",
       "revenue": 139761600,
       "listed": 232936000,
       "orders": 356,
       "discount_pct": 40.0
     },
     {
-      "partnerCode": "01446",
-      "partnerName": "Trung tâm xét nghiệm Genmedic",
-      "contact": null,
+      "partnerCode": "1446",
+      "partnerName": "1446",
+      "contact": "",
+      "saleCode": "",
+      "saleName": "",
+      "team": "",
       "revenue": 104575747,
       "listed": 214611000,
       "orders": 183,
       "discount_pct": 51.3
     },
     {
-      "partnerCode": "01550",
-      "partnerName": "INVIVO LAB - HCM",
-      "contact": null,
+      "partnerCode": "1550",
+      "partnerName": "1550",
+      "contact": "",
+      "saleCode": "",
+      "saleName": "",
+      "team": "",
       "revenue": 93900000,
       "listed": 93900000,
       "orders": 22,
       "discount_pct": 0.0
     },
     {
-      "partnerCode": "01202",
-      "partnerName": "Khoa Sản Bệnh Viện Đa Khoa Hùng Vương",
-      "contact": null,
+      "partnerCode": "1202",
+      "partnerName": "1202",
+      "contact": "",
+      "saleCode": "",
+      "saleName": "",
+      "team": "",
       "revenue": 37824000,
       "listed": 86160000,
       "orders": 44,
       "discount_pct": 56.1
     },
     {
-      "partnerCode": "01403",
-      "partnerName": "PK GIEO MẦM CUỘC SỐNG",
-      "contact": null,
+      "partnerCode": "1403",
+      "partnerName": "1403",
+      "contact": "",
+      "saleCode": "",
+      "saleName": "",
+      "team": "",
       "revenue": 28296140,
       "listed": 45656000,
       "orders": 32,
       "discount_pct": 38.0
     },
     {
-      "partnerCode": "00360",
-      "partnerName": "PGS Đỗ Khắc Huỳnh",
-      "contact": null,
+      "partnerCode": "360",
+      "partnerName": "360",
+      "contact": "",
+      "saleCode": "",
+      "saleName": "",
+      "team": "",
       "revenue": 25542000,
       "listed": 42570000,
       "orders": 23,
       "discount_pct": 40.0
     },
     {
-      "partnerCode": "00650",
-      "partnerName": "Genome lab",
-      "contact": null,
+      "partnerCode": "650",
+      "partnerName": "650",
+      "contact": "",
+      "saleCode": "",
+      "saleName": "",
+      "team": "",
       "revenue": 25262310,
       "listed": 52490000,
       "orders": 34,
       "discount_pct": 51.9
     },
     {
-      "partnerCode": "01102",
-      "partnerName": "Bệnh viện ĐK Hùng Vương",
-      "contact": null,
+      "partnerCode": "1102",
+      "partnerName": "1102",
+      "contact": "",
+      "saleCode": "",
+      "saleName": "",
+      "team": "",
       "revenue": 24554195,
       "listed": 39054000,
       "orders": 62,
       "discount_pct": 37.1
     },
     {
-      "partnerCode": "01057",
-      "partnerName": "Nguyễn Thu Hiền",
-      "contact": null,
+      "partnerCode": "1057",
+      "partnerName": "1057",
+      "contact": "",
+      "saleCode": "",
+      "saleName": "",
+      "team": "",
       "revenue": 13617600,
       "listed": 22696000,
       "orders": 26,
       "discount_pct": 40.0
     },
     {
-      "partnerCode": "01186",
-      "partnerName": "Phòng khám đa khoa Việt Đức 365 Phổ Yên",
-      "contact": null,
+      "partnerCode": "1186",
+      "partnerName": "1186",
+      "contact": "",
+      "saleCode": "",
+      "saleName": "",
+      "team": "",
       "revenue": 12728000,
       "listed": 18920000,
       "orders": 32,
       "discount_pct": 32.7
     },
     {
-      "partnerCode": "01387",
-      "partnerName": "Bs Thức",
-      "contact": null,
+      "partnerCode": "1387",
+      "partnerName": "1387",
+      "contact": "",
+      "saleCode": "",
+      "saleName": "",
+      "team": "",
       "revenue": 12015000,
       "listed": 20025000,
       "orders": 17,
       "discount_pct": 40.0
     },
     {
-      "partnerCode": "01470",
-      "partnerName": "Phòng Khám  ST PAUL",
-      "contact": null,
+      "partnerCode": "1470",
+      "partnerName": "1470",
+      "contact": "",
+      "saleCode": "",
+      "saleName": "",
+      "team": "",
       "revenue": 11021400,
       "listed": 16956000,
       "orders": 44,
       "discount_pct": 35.0
     },
     {
-      "partnerCode": "01395",
-      "partnerName": "Vương Tấn Hữu",
-      "contact": null,
+      "partnerCode": "1395",
+      "partnerName": "1395",
+      "contact": "",
+      "saleCode": "",
+      "saleName": "",
+      "team": "",
       "revenue": 10539000,
       "listed": 17565000,
       "orders": 13,
       "discount_pct": 40.0
     },
     {
-      "partnerCode": "01201",
-      "partnerName": "Spintech",
-      "contact": null,
+      "partnerCode": "1201",
+      "partnerName": "1201",
+      "contact": "",
+      "saleCode": "",
+      "saleName": "",
+      "team": "",
       "revenue": 9873000,
       "listed": 16455000,
       "orders": 14,
       "discount_pct": 40.0
     },
     {
-      "partnerCode": "01217",
-      "partnerName": "PK Tâm An - Hà Nam (Tâm An Lý Nhân)",
-      "contact": null,
+      "partnerCode": "1217",
+      "partnerName": "1217",
+      "contact": "",
+      "saleCode": "",
+      "saleName": "",
+      "team": "",
       "revenue": 9824750,
       "listed": 15115000,
       "orders": 49,
       "discount_pct": 35.0
     },
     {
-      "partnerCode": "00242",
-      "partnerName": "Khoa Nội Thần kinh - Tim mạch BV Xanh Pôn",
-      "contact": null,
+      "partnerCode": "242",
+      "partnerName": "242",
+      "contact": "",
+      "saleCode": "",
+      "saleName": "",
+      "team": "",
       "revenue": 9690200,
       "listed": 14908000,
       "orders": 15,
       "discount_pct": 35.0
     },
     {
-      "partnerCode": "00638",
-      "partnerName": "Phòng khám Ánh Nga",
-      "contact": null,
+      "partnerCode": "638",
+      "partnerName": "638",
+      "contact": "",
+      "saleCode": "",
+      "saleName": "",
+      "team": "",
       "revenue": 8886800,
       "listed": 13672000,
       "orders": 16,
       "discount_pct": 35.0
     },
     {
-      "partnerCode": "01241",
-      "partnerName": "PK Tâm An - Cơ sở 1 (Tâm An Việt)",
-      "contact": null,
+      "partnerCode": "1241",
+      "partnerName": "1241",
+      "contact": "",
+      "saleCode": "",
+      "saleName": "",
+      "team": "",
       "revenue": 7688850,
       "listed": 11829000,
       "orders": 26,
       "discount_pct": 35.0
     },
     {
-      "partnerCode": "00489",
-      "partnerName": "Trung tâm sức khỏe nghề nghiệp",
-      "contact": null,
+      "partnerCode": "489",
+      "partnerName": "489",
+      "contact": "",
+      "saleCode": "",
+      "saleName": "",
+      "team": "",
       "revenue": 7110000,
       "listed": 18960000,
       "orders": 158,
       "discount_pct": 62.5
     },
     {
-      "partnerCode": "01308",
-      "partnerName": "Pk  Gia Đình Việt",
-      "contact": null,
+      "partnerCode": "1308",
+      "partnerName": "1308",
+      "contact": "",
+      "saleCode": "",
+      "saleName": "",
+      "team": "",
       "revenue": 7015800,
       "listed": 11693000,
       "orders": 14,
       "discount_pct": 40.0
     }
   ],
-  "top_sales": [],
+  "top_sales": [
+    {
+      "sales": "anhntt",
+      "salesName": "anhntt",
+      "team": "invivo",
+      "region": "HN",
+      "revenue": 5729750,
+      "listed": 8815000,
+      "orders": 9
+    },
+    {
+      "sales": "thuyetnv",
+      "salesName": "Nguyễn Văn Thuyết",
+      "team": "KD01",
+      "region": "HN",
+      "revenue": 490700,
+      "listed": 718000,
+      "orders": 3
+    },
+    {
+      "sales": "kdnamvv",
+      "salesName": "kdnamvv",
+      "team": "KD02",
+      "region": "HN",
+      "revenue": 409500,
+      "listed": 630000,
+      "orders": 2
+    },
+    {
+      "sales": "tungvt",
+      "salesName": "Vũ Thanh Tùng",
+      "team": "KD04",
+      "region": "HN",
+      "revenue": 306600,
+      "listed": 438000,
+      "orders": 1
+    }
+  ],
   "service_mix": [
     {
       "group": "Sàng lọc trước sinh",
@@ -458,7 +545,7 @@
     },
     {
       "branch": "HN",
-      "revenue": 0
+      "revenue": 1206800
     }
   ]
 }
