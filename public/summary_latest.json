@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-06-08T00:39:52+07:00",
-  "updated_at_vn": "00:39 08/06/2026",
+  "updated_at": "2026-06-08T01:10:09+07:00",
+  "updated_at_vn": "01:10 08/06/2026",
   "current_month": "2026_06",
   "total_revenue": 806258438,
   "total_listed": 1342280000,
@@ -329,197 +329,136 @@
       "discount_pct": 40.0
     }
   ],
-  "top_sales": [
-    {
-      "sales": "huongnt",
-      "salesName": "huongnt",
-      "team": "",
-      "revenue": 239134588,
-      "orders": 652
-    },
-    {
-      "sales": "labctv",
-      "salesName": "labctv",
-      "team": "",
-      "revenue": 143403988,
-      "orders": 274
-    },
-    {
-      "sales": "oanhdk",
-      "salesName": "oanhdk",
-      "team": "",
-      "revenue": 116959165,
-      "orders": 212
-    },
-    {
-      "sales": "tamntt",
-      "salesName": "tamntt",
-      "team": "",
-      "revenue": 101861189,
-      "orders": 259
-    },
-    {
-      "sales": "quynhdt",
-      "salesName": "quynhdt",
-      "team": "",
-      "revenue": 60489045,
-      "orders": 197
-    },
-    {
-      "sales": "anhpn",
-      "salesName": "anhpn",
-      "team": "",
-      "revenue": 20649382,
-      "orders": 62
-    },
-    {
-      "sales": "thaott",
-      "salesName": "thaott",
-      "team": "",
-      "revenue": 17206739,
-      "orders": 64
-    },
-    {
-      "sales": "anhpp",
-      "salesName": "anhpp",
-      "team": "",
-      "revenue": 227500,
-      "orders": 1
-    },
-    {
-      "sales": "linhlhm",
-      "salesName": "linhlhm",
-      "team": "",
-      "revenue": 156240,
-      "orders": 1
-    }
-  ],
+  "top_sales": [],
   "service_mix": [
     {
-      "group": "Hóa sinh",
-      "revenue": 5979131223,
-      "listed": 9968136000,
-      "count": 239974,
-      "discount_pct": 40.0
-    },
-    {
-      "group": "Miễn dịch ",
-      "revenue": 5174882008,
-      "listed": 8657478000,
-      "count": 47380,
-      "discount_pct": 40.2
-    },
-    {
       "group": "Sàng lọc trước sinh",
-      "revenue": 3161424970,
-      "listed": 5343520000,
-      "count": 2681,
-      "discount_pct": 40.8
+      "revenue": 240317011,
+      "listed": 348790000,
+      "count": 138,
+      "discount_pct": 31.1
+    },
+    {
+      "group": "Hóa sinh",
+      "revenue": 168869467,
+      "listed": 288589000,
+      "count": 6771,
+      "discount_pct": 41.5
+    },
+    {
+      "group": "Miễn dịch",
+      "revenue": 110395749,
+      "listed": 183452000,
+      "count": 978,
+      "discount_pct": 39.8
+    },
+    {
+      "group": "Sinh học phân tử",
+      "revenue": 58788828,
+      "listed": 112853000,
+      "count": 118,
+      "discount_pct": 47.9
     },
     {
       "group": "Sàng lọc sơ sinh",
-      "revenue": 2712407500,
-      "listed": 6117950000,
-      "count": 4030,
-      "discount_pct": 55.7
-    },
-    {
-      "group": "Sinh học phân tử ",
-      "revenue": 2608650566,
-      "listed": 4437666000,
-      "count": 5192,
-      "discount_pct": 41.2
+      "revenue": 46796000,
+      "listed": 105760000,
+      "count": 56,
+      "discount_pct": 55.8
     },
     {
       "group": "ELISA",
-      "revenue": 1901392339,
-      "listed": 3014912000,
-      "count": 9365,
-      "discount_pct": 36.9
+      "revenue": 42541251,
+      "listed": 69306000,
+      "count": 218,
+      "discount_pct": 38.6
     },
     {
       "group": "Huyết học",
-      "revenue": 1393943301,
-      "listed": 2302916000,
-      "count": 32838,
-      "discount_pct": 39.5
+      "revenue": 31744560,
+      "listed": 51350000,
+      "count": 786,
+      "discount_pct": 38.2
     },
     {
-      "group": "Nội tiết - hoocmon ",
-      "revenue": 1029387045,
-      "listed": 1728855000,
-      "count": 8890,
-      "discount_pct": 40.5
+      "group": "Tế bào - Giải phẫu bệnh",
+      "revenue": 23352452,
+      "listed": 46810000,
+      "count": 235,
+      "discount_pct": 50.1
     },
     {
-      "group": "Tế bào - Giải phẫu bệnh ",
-      "revenue": 745899558,
-      "listed": 1204380000,
-      "count": 3758,
-      "discount_pct": 38.1
+      "group": "Nội tiết - hoocmon",
+      "revenue": 21982775,
+      "listed": 37268000,
+      "count": 198,
+      "discount_pct": 41.0
+    },
+    {
+      "group": "Nước tiểu",
+      "revenue": 20405434,
+      "listed": 34172000,
+      "count": 621,
+      "discount_pct": 40.3
     },
     {
       "group": "Test nhanh",
-      "revenue": 676417338,
-      "listed": 1306992000,
-      "count": 12553,
-      "discount_pct": 48.2
+      "revenue": 11505892,
+      "listed": 18582000,
+      "count": 180,
+      "discount_pct": 38.1
     },
     {
-      "group": "Nước tiểu ",
-      "revenue": 637506827,
-      "listed": 1060685000,
-      "count": 19251,
-      "discount_pct": 39.9
+      "group": "Dị ứng",
+      "revenue": 10129960,
+      "listed": 15300000,
+      "count": 9,
+      "discount_pct": 33.8
     },
     {
       "group": "Di truyền",
-      "revenue": 360439970,
-      "listed": 592950000,
-      "count": 333,
-      "discount_pct": 39.2
+      "revenue": 9479760,
+      "listed": 14400000,
+      "count": 6,
+      "discount_pct": 34.2
     },
     {
-      "group": "Dị ứng ",
-      "revenue": 322741650,
-      "listed": 488400000,
-      "count": 291,
-      "discount_pct": 33.9
+      "group": "Cấy - Kháng sinh đồ",
+      "revenue": 5159000,
+      "listed": 8220000,
+      "count": 28,
+      "discount_pct": 37.2
     },
     {
-      "group": "Cấy - Kháng sinh đồ ",
-      "revenue": 157167500,
-      "listed": 250760000,
-      "count": 928,
-      "discount_pct": 37.3
-    },
-    {
-      "group": "Vi khuẩn - Ký sinh trùng ",
-      "revenue": 100133120,
-      "listed": 197965000,
-      "count": 1816,
-      "discount_pct": 49.4
+      "group": "Vi khuẩn - Ký sinh trùng",
+      "revenue": 2941300,
+      "listed": 4643000,
+      "count": 40,
+      "discount_pct": 36.7
     },
     {
       "group": "Tinh dịch",
-      "revenue": 51525360,
-      "listed": 96200000,
-      "count": 239,
-      "discount_pct": 46.4
-    },
-    {
-      "group": "Chất gây nghiện",
-      "revenue": 31942000,
-      "listed": 46000000,
-      "count": 32,
-      "discount_pct": 30.6
+      "revenue": 980000,
+      "listed": 1600000,
+      "count": 8,
+      "discount_pct": 38.8
     },
     {
       "group": "Kim loại",
-      "revenue": 9768250,
-      "listed": 14125000,
-      "count": 26,
-      "discount_pct": 30.8
+      "revenue": 869000,
+      "listed": 1185000,
+      "count": 3,
+      "discount_pct": 26.7
+    }
+  ],
+  "branch_breakdown": [
+    {
+      "branch": "HCM",
+      "revenue": 0
+    },
+    {
+      "branch": "HN",
+      "revenue": 0
     }
   ]
 }
