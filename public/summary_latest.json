@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-06-07T23:52:34+07:00",
-  "updated_at_vn": "23:52 07/06/2026",
+  "updated_at": "2026-06-08T00:39:52+07:00",
+  "updated_at_vn": "00:39 08/06/2026",
   "current_month": "2026_06",
   "total_revenue": 806258438,
   "total_listed": 1342280000,
@@ -332,46 +332,64 @@
   "top_sales": [
     {
       "sales": "huongnt",
+      "salesName": "huongnt",
+      "team": "",
       "revenue": 239134588,
       "orders": 652
     },
     {
       "sales": "labctv",
+      "salesName": "labctv",
+      "team": "",
       "revenue": 143403988,
       "orders": 274
     },
     {
       "sales": "oanhdk",
+      "salesName": "oanhdk",
+      "team": "",
       "revenue": 116959165,
       "orders": 212
     },
     {
       "sales": "tamntt",
+      "salesName": "tamntt",
+      "team": "",
       "revenue": 101861189,
       "orders": 259
     },
     {
       "sales": "quynhdt",
+      "salesName": "quynhdt",
+      "team": "",
       "revenue": 60489045,
       "orders": 197
     },
     {
       "sales": "anhpn",
+      "salesName": "anhpn",
+      "team": "",
       "revenue": 20649382,
       "orders": 62
     },
     {
       "sales": "thaott",
+      "salesName": "thaott",
+      "team": "",
       "revenue": 17206739,
       "orders": 64
     },
     {
       "sales": "anhpp",
+      "salesName": "anhpp",
+      "team": "",
       "revenue": 227500,
       "orders": 1
     },
     {
       "sales": "linhlhm",
+      "salesName": "linhlhm",
+      "team": "",
       "revenue": 156240,
       "orders": 1
     }
