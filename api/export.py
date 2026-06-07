@@ -45,7 +45,14 @@ def export_tables(token):
     all_rows = []
     for tbl in TABLES:
         try:
-            rows = run_dax(token, f"EVALUATE '{tbl}'")
+            dax = f"""
+            EVALUATE
+            ADDCOLUMNS(
+                '{tbl}',
+                "source_month", "{tbl}"
+            )
+            """
+            rows = run_dax(token, dax)
             cleaned = [clean_row(r) for r in rows]
             all_rows.extend(cleaned)
             print(f"  OK {tbl}: {len(rows)} dong")
