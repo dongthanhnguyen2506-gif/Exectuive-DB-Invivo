@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-06-07T16:29:09Z",
-  "updated_at_vn": "16:29 07/06/2026 UTC+7",
+  "updated_at": "2026-06-07T23:52:34+07:00",
+  "updated_at_vn": "23:52 07/06/2026",
   "current_month": "2026_06",
   "total_revenue": 806258438,
   "total_listed": 1342280000,
@@ -8,8 +8,53 @@
   "discount_pct": 39.9,
   "total_orders": 1842,
   "active_partners": 122,
+  "inactive_partners": 79,
+  "new_partners": 7,
   "active_sales": 9,
   "mom_growth_pct": -77.1,
+  "total_debt": 10968000,
+  "top_debt": [
+    {
+      "partnerCode": "01057",
+      "debt": 3142000
+    },
+    {
+      "partnerCode": "01372",
+      "debt": 1710000
+    },
+    {
+      "partnerCode": "01403",
+      "debt": 1564000
+    },
+    {
+      "partnerCode": "01552",
+      "debt": 1195000
+    },
+    {
+      "partnerCode": "00517",
+      "debt": 660000
+    },
+    {
+      "partnerCode": "00538",
+      "debt": 610000
+    },
+    {
+      "partnerCode": "00851",
+      "debt": 536000
+    },
+    {
+      "partnerCode": "01470",
+      "debt": 466000
+    },
+    {
+      "partnerCode": "01194",
+      "debt": 438000
+    },
+    {
+      "partnerCode": "01352",
+      "debt": 200000
+    }
+  ],
   "monthly": [
     {
       "month": "2025_10",
@@ -104,144 +149,184 @@
   ],
   "top_partners": [
     {
-      "partnerId": "1023",
       "partnerCode": "00001",
+      "partnerName": "PHÒNG KHÁM TRUNG ĐỨC",
+      "contact": null,
       "revenue": 139761600,
       "listed": 232936000,
-      "orders": 356
+      "orders": 356,
+      "discount_pct": 40.0
     },
     {
-      "partnerId": "5465",
       "partnerCode": "01446",
+      "partnerName": "Trung tâm xét nghiệm Genmedic",
+      "contact": null,
       "revenue": 104575747,
       "listed": 214611000,
-      "orders": 183
+      "orders": 183,
+      "discount_pct": 51.3
     },
     {
-      "partnerId": "5550",
       "partnerCode": "01550",
+      "partnerName": "INVIVO LAB - HCM",
+      "contact": null,
       "revenue": 93900000,
       "listed": 93900000,
-      "orders": 22
+      "orders": 22,
+      "discount_pct": 0.0
     },
     {
-      "partnerId": "5219",
       "partnerCode": "01202",
+      "partnerName": "Khoa Sản Bệnh Viện Đa Khoa Hùng Vương",
+      "contact": null,
       "revenue": 37824000,
       "listed": 86160000,
-      "orders": 44
+      "orders": 44,
+      "discount_pct": 56.1
     },
     {
-      "partnerId": "5422",
       "partnerCode": "01403",
+      "partnerName": "PK GIEO MẦM CUỘC SỐNG",
+      "contact": null,
       "revenue": 28296140,
       "listed": 45656000,
-      "orders": 32
+      "orders": 32,
+      "discount_pct": 38.0
     },
     {
-      "partnerId": "1380",
       "partnerCode": "00360",
+      "partnerName": "PGS Đỗ Khắc Huỳnh",
+      "contact": null,
       "revenue": 25542000,
       "listed": 42570000,
-      "orders": 23
+      "orders": 23,
+      "discount_pct": 40.0
     },
     {
-      "partnerId": "1672",
       "partnerCode": "00650",
+      "partnerName": "Genome lab",
+      "contact": null,
       "revenue": 25262310,
       "listed": 52490000,
-      "orders": 34
+      "orders": 34,
+      "discount_pct": 51.9
     },
     {
-      "partnerId": "5119",
       "partnerCode": "01102",
+      "partnerName": "Bệnh viện ĐK Hùng Vương",
+      "contact": null,
       "revenue": 24554195,
       "listed": 39054000,
-      "orders": 62
+      "orders": 62,
+      "discount_pct": 37.1
     },
     {
-      "partnerId": "5074",
       "partnerCode": "01057",
+      "partnerName": "Nguyễn Thu Hiền",
+      "contact": null,
       "revenue": 13617600,
       "listed": 22696000,
-      "orders": 26
+      "orders": 26,
+      "discount_pct": 40.0
     },
     {
-      "partnerId": "5203",
       "partnerCode": "01186",
+      "partnerName": "Phòng khám đa khoa Việt Đức 365 Phổ Yên",
+      "contact": null,
       "revenue": 12728000,
       "listed": 18920000,
-      "orders": 32
+      "orders": 32,
+      "discount_pct": 32.7
     },
     {
-      "partnerId": "5406",
       "partnerCode": "01387",
+      "partnerName": "Bs Thức",
+      "contact": null,
       "revenue": 12015000,
       "listed": 20025000,
-      "orders": 17
+      "orders": 17,
+      "discount_pct": 40.0
     },
     {
-      "partnerId": "5470",
       "partnerCode": "01470",
+      "partnerName": "Phòng Khám  ST PAUL",
+      "contact": null,
       "revenue": 11021400,
       "listed": 16956000,
-      "orders": 44
+      "orders": 44,
+      "discount_pct": 35.0
     },
     {
-      "partnerId": "5414",
       "partnerCode": "01395",
+      "partnerName": "Vương Tấn Hữu",
+      "contact": null,
       "revenue": 10539000,
       "listed": 17565000,
-      "orders": 13
+      "orders": 13,
+      "discount_pct": 40.0
     },
     {
-      "partnerId": "5218",
       "partnerCode": "01201",
+      "partnerName": "Spintech",
+      "contact": null,
       "revenue": 9873000,
       "listed": 16455000,
-      "orders": 14
+      "orders": 14,
+      "discount_pct": 40.0
     },
     {
-      "partnerId": "5234",
       "partnerCode": "01217",
+      "partnerName": "PK Tâm An - Hà Nam (Tâm An Lý Nhân)",
+      "contact": null,
       "revenue": 9824750,
       "listed": 15115000,
-      "orders": 49
+      "orders": 49,
+      "discount_pct": 35.0
     },
     {
-      "partnerId": "1263",
       "partnerCode": "00242",
+      "partnerName": "Khoa Nội Thần kinh - Tim mạch BV Xanh Pôn",
+      "contact": null,
       "revenue": 9690200,
       "listed": 14908000,
-      "orders": 15
+      "orders": 15,
+      "discount_pct": 35.0
     },
     {
-      "partnerId": "1660",
       "partnerCode": "00638",
+      "partnerName": "Phòng khám Ánh Nga",
+      "contact": null,
       "revenue": 8886800,
       "listed": 13672000,
-      "orders": 16
+      "orders": 16,
+      "discount_pct": 35.0
     },
     {
-      "partnerId": "5258",
       "partnerCode": "01241",
+      "partnerName": "PK Tâm An - Cơ sở 1 (Tâm An Việt)",
+      "contact": null,
       "revenue": 7688850,
       "listed": 11829000,
-      "orders": 26
+      "orders": 26,
+      "discount_pct": 35.0
     },
     {
-      "partnerId": "1509",
       "partnerCode": "00489",
+      "partnerName": "Trung tâm sức khỏe nghề nghiệp",
+      "contact": null,
       "revenue": 7110000,
       "listed": 18960000,
-      "orders": 158
+      "orders": 158,
+      "discount_pct": 62.5
     },
     {
-      "partnerId": "5325",
       "partnerCode": "01308",
+      "partnerName": "Pk  Gia Đình Việt",
+      "contact": null,
       "revenue": 7015800,
       "listed": 11693000,
-      "orders": 14
+      "orders": 14,
+      "discount_pct": 40.0
     }
   ],
   "top_sales": [
@@ -296,109 +381,127 @@
       "group": "Hóa sinh",
       "revenue": 5979131223,
       "listed": 9968136000,
-      "count": 239974
+      "count": 239974,
+      "discount_pct": 40.0
     },
     {
       "group": "Miễn dịch ",
       "revenue": 5174882008,
       "listed": 8657478000,
-      "count": 47380
+      "count": 47380,
+      "discount_pct": 40.2
     },
     {
       "group": "Sàng lọc trước sinh",
       "revenue": 3161424970,
       "listed": 5343520000,
-      "count": 2681
+      "count": 2681,
+      "discount_pct": 40.8
     },
     {
       "group": "Sàng lọc sơ sinh",
       "revenue": 2712407500,
       "listed": 6117950000,
-      "count": 4030
+      "count": 4030,
+      "discount_pct": 55.7
     },
     {
       "group": "Sinh học phân tử ",
       "revenue": 2608650566,
       "listed": 4437666000,
-      "count": 5192
+      "count": 5192,
+      "discount_pct": 41.2
     },
     {
       "group": "ELISA",
       "revenue": 1901392339,
       "listed": 3014912000,
-      "count": 9365
+      "count": 9365,
+      "discount_pct": 36.9
     },
     {
       "group": "Huyết học",
       "revenue": 1393943301,
       "listed": 2302916000,
-      "count": 32838
+      "count": 32838,
+      "discount_pct": 39.5
     },
     {
       "group": "Nội tiết - hoocmon ",
       "revenue": 1029387045,
       "listed": 1728855000,
-      "count": 8890
+      "count": 8890,
+      "discount_pct": 40.5
     },
     {
       "group": "Tế bào - Giải phẫu bệnh ",
       "revenue": 745899558,
       "listed": 1204380000,
-      "count": 3758
+      "count": 3758,
+      "discount_pct": 38.1
     },
     {
       "group": "Test nhanh",
       "revenue": 676417338,
       "listed": 1306992000,
-      "count": 12553
+      "count": 12553,
+      "discount_pct": 48.2
     },
     {
       "group": "Nước tiểu ",
       "revenue": 637506827,
       "listed": 1060685000,
-      "count": 19251
+      "count": 19251,
+      "discount_pct": 39.9
     },
     {
       "group": "Di truyền",
       "revenue": 360439970,
       "listed": 592950000,
-      "count": 333
+      "count": 333,
+      "discount_pct": 39.2
     },
     {
       "group": "Dị ứng ",
       "revenue": 322741650,
       "listed": 488400000,
-      "count": 291
+      "count": 291,
+      "discount_pct": 33.9
     },
     {
       "group": "Cấy - Kháng sinh đồ ",
       "revenue": 157167500,
       "listed": 250760000,
-      "count": 928
+      "count": 928,
+      "discount_pct": 37.3
     },
     {
       "group": "Vi khuẩn - Ký sinh trùng ",
       "revenue": 100133120,
       "listed": 197965000,
-      "count": 1816
+      "count": 1816,
+      "discount_pct": 49.4
     },
     {
       "group": "Tinh dịch",
       "revenue": 51525360,
       "listed": 96200000,
-      "count": 239
+      "count": 239,
+      "discount_pct": 46.4
     },
     {
       "group": "Chất gây nghiện",
       "revenue": 31942000,
       "listed": 46000000,
-      "count": 32
+      "count": 32,
+      "discount_pct": 30.6
     },
     {
       "group": "Kim loại",
       "revenue": 9768250,
       "listed": 14125000,
-      "count": 26
+      "count": 26,
+      "discount_pct": 30.8
     }
   ]
 }
