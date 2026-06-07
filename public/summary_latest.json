@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-06-07T16:19:39Z",
-  "updated_at_vn": "16:19 07/06/2026 UTC+7",
+  "updated_at": "2026-06-07T16:29:09Z",
+  "updated_at_vn": "16:29 07/06/2026 UTC+7",
   "current_month": "2026_06",
   "total_revenue": 806258438,
   "total_listed": 1342280000,
@@ -9,7 +9,7 @@
   "total_orders": 1842,
   "active_partners": 122,
   "active_sales": 9,
-  "mom_growth_pct": -78.2,
+  "mom_growth_pct": -77.1,
   "monthly": [
     {
       "month": "2025_10",
@@ -80,6 +80,16 @@
       "order_count": 9023,
       "active_partners": 220,
       "active_sales": 12
+    },
+    {
+      "month": "2026_05",
+      "revenue_actual": 3519316970,
+      "revenue_listed": 6223919000,
+      "discount": 2704602030,
+      "discount_pct": 43.5,
+      "order_count": 8155,
+      "active_partners": 194,
+      "active_sales": 8
     },
     {
       "month": "2026_06",
@@ -284,111 +294,111 @@
   "service_mix": [
     {
       "group": "Hóa sinh",
-      "revenue": 5168250029,
-      "listed": 8555628000,
-      "count": 207162
+      "revenue": 5979131223,
+      "listed": 9968136000,
+      "count": 239974
     },
     {
       "group": "Miễn dịch ",
-      "revenue": 4620080111,
-      "listed": 7728263000,
-      "count": 42309
+      "revenue": 5174882008,
+      "listed": 8657478000,
+      "count": 47380
     },
     {
       "group": "Sàng lọc trước sinh",
-      "revenue": 2561206447,
-      "listed": 4368140000,
-      "count": 2227
+      "revenue": 3161424970,
+      "listed": 5343520000,
+      "count": 2681
     },
     {
       "group": "Sàng lọc sơ sinh",
-      "revenue": 2387021500,
-      "listed": 5360520000,
-      "count": 3494
+      "revenue": 2712407500,
+      "listed": 6117950000,
+      "count": 4030
     },
     {
       "group": "Sinh học phân tử ",
-      "revenue": 2269330596,
-      "listed": 3764833000,
-      "count": 4446
+      "revenue": 2608650566,
+      "listed": 4437666000,
+      "count": 5192
     },
     {
       "group": "ELISA",
-      "revenue": 1663517248,
-      "listed": 2629330000,
-      "count": 8115
+      "revenue": 1901392339,
+      "listed": 3014912000,
+      "count": 9365
     },
     {
       "group": "Huyết học",
-      "revenue": 1217860945,
-      "listed": 2011376000,
-      "count": 28770
+      "revenue": 1393943301,
+      "listed": 2302916000,
+      "count": 32838
     },
     {
       "group": "Nội tiết - hoocmon ",
-      "revenue": 930210018,
-      "listed": 1555830000,
-      "count": 8006
+      "revenue": 1029387045,
+      "listed": 1728855000,
+      "count": 8890
     },
     {
       "group": "Tế bào - Giải phẫu bệnh ",
-      "revenue": 643957664,
-      "listed": 1021820000,
-      "count": 3252
+      "revenue": 745899558,
+      "listed": 1204380000,
+      "count": 3758
     },
     {
       "group": "Test nhanh",
-      "revenue": 624428541,
-      "listed": 1215230000,
-      "count": 11653
+      "revenue": 676417338,
+      "listed": 1306992000,
+      "count": 12553
     },
     {
       "group": "Nước tiểu ",
-      "revenue": 543045346,
-      "listed": 902670000,
-      "count": 16411
+      "revenue": 637506827,
+      "listed": 1060685000,
+      "count": 19251
     },
     {
       "group": "Di truyền",
-      "revenue": 320572520,
-      "listed": 535500000,
-      "count": 304
+      "revenue": 360439970,
+      "listed": 592950000,
+      "count": 333
     },
     {
       "group": "Dị ứng ",
-      "revenue": 271854890,
-      "listed": 411700000,
-      "count": 245
+      "revenue": 322741650,
+      "listed": 488400000,
+      "count": 291
     },
     {
       "group": "Cấy - Kháng sinh đồ ",
-      "revenue": 140195500,
-      "listed": 223380000,
-      "count": 823
+      "revenue": 157167500,
+      "listed": 250760000,
+      "count": 928
     },
     {
       "group": "Vi khuẩn - Ký sinh trùng ",
-      "revenue": 90669420,
-      "listed": 181421000,
-      "count": 1654
+      "revenue": 100133120,
+      "listed": 197965000,
+      "count": 1816
     },
     {
       "group": "Tinh dịch",
-      "revenue": 47099280,
-      "listed": 88200000,
-      "count": 210
+      "revenue": 51525360,
+      "listed": 96200000,
+      "count": 239
     },
     {
       "group": "Chất gây nghiện",
-      "revenue": 26632000,
-      "listed": 38400000,
-      "count": 27
+      "revenue": 31942000,
+      "listed": 46000000,
+      "count": 32
     },
     {
       "group": "Kim loại",
-      "revenue": 9511500,
-      "listed": 13730000,
-      "count": 25
+      "revenue": 9768250,
+      "listed": 14125000,
+      "count": 26
     }
   ]
 }
