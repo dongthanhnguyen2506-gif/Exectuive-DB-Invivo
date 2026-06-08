@@ -420,6 +420,32 @@ const dPct=(lst,rev)=>(!lst)?'0.0%':((lst-rev)/lst*100).toFixed(1)+'%';
 const pct=(n,d=1)=>n!=null?(n>=0?'+':'')+parseFloat(n).toFixed(d)+'%':'—';
 
 // ── Filter helpers ────────────────────────────────────────────
+function khStats(){
+  const m=curMonthData();
+  if(!SEL_TEAM||SEL_TEAM===''){
+    return {
+      active:m.active_partners||0,
+      active_hcm:m.active_hcm||0, active_hn:m.active_hn||0,
+      inactive:m.inactive_partners||0,
+      inactive_hcm:m.inactive_hcm||0, inactive_hn:m.inactive_hn||0,
+      newP:m.new_partners||0, new_hcm:m.new_hcm||0, new_hn:m.new_hn||0,
+    };
+  }
+  const pbm=D.partners_by_month||[];
+  const ms=D.monthly||[];
+  const idx=ms.findIndex(x=>x.month===SEL_MONTH);
+  const prevMo=idx>0?ms[idx-1].month:null;
+  const curSet=new Set(pbm.filter(p=>p.month===SEL_MONTH&&p.team===SEL_TEAM&&!INTERNAL.has(p.saleCode||'')).map(p=>p.partnerCode));
+  const prevSet=prevMo?new Set(pbm.filter(p=>p.month===prevMo&&p.team===SEL_TEAM&&!INTERNAL.has(p.saleCode||'')).map(p=>p.partnerCode)):new Set();
+  return {
+    active:curSet.size, active_hcm:0, active_hn:0,
+    inactive:[...prevSet].filter(c=>!curSet.has(c)).length,
+    inactive_hcm:0, inactive_hn:0,
+    newP:[...curSet].filter(c=>!prevSet.has(c)).length,
+    new_hcm:0, new_hn:0,
+  };
+}
+
 function curMonthData(){
   const ms=D.monthly||[];
   return ms.find(m=>m.month===SEL_MONTH)||ms[ms.length-1]||{};
@@ -605,16 +631,24 @@ function p0(cur,prev,ms){
   const listed=cur.revenue_listed||0, actual=cur.revenue_actual||0;
   const disc=(cur.discount!=null)?cur.discount:(listed-actual);
   const mom=D.mom_growth_pct??(prev.revenue_actual?((actual-prev.revenue_actual)/prev.revenue_actual*100):null);
-  const inactive=D.inactive_partners??0, newP=D.new_partners??0, debt=D.total_debt||0;
+  const kh=khStats();
+  const inactive=kh.inactive, newP=kh.newP, debt=D.total_debt||0;
 
+  // KH stats theo filter
+  const activeVal = SEL_TEAM?kh.active:(SEL_TEAM===''?fmtN(cur.active_partners):fmtN(kh.active));
   mkKPI('kpi0',[
     {label:'DT Ghi nhận',val:fmtM(actual)+' Tr',vc:'var(--green)',c:'g',
       ch:(mom!=null?(mom>=0?'↑ +':'↓ ')+Math.abs(mom).toFixed(1)+'% MoM':'↔ MTD'),cc:mom!=null?(mom>=0?'up':'dn'):'fl'},
-    {label:'DT HCM (KD)',val:fmtM(cur.revenue_hcm)+' Tr',c:'b',ch:'↔ Chi nhánh HCM'},
-    {label:'DT HN (KD)',val:fmtM(cur.revenue_hn)+' Tr',c:'b',ch:'↔ Chi nhánh HN'},
-    {label:'KH Active',val:fmtN(cur.active_partners),c:'g',ch:'↔ Có giao dịch'},
-    {label:'KH Inactive',val:fmtN(inactive),vc:inactive>20?'var(--red)':'var(--amber)',
-      c:inactive>20?'r':'a',ch:'↓ Không phát sinh 30 ngày'},
+    {label:SEL_TEAM?'DT '+SEL_TEAM:'DT HCM (KD)',
+      val:SEL_TEAM?fmtM(filteredPartners(999).reduce((s,p)=>s+p.revenue,0))+' Tr':fmtM(cur.revenue_hcm)+' Tr',
+      c:'b',ch:'↔ '+ml(SEL_MONTH)},
+    {label:'KH Active',val:fmtN(kh.active),c:'g',
+      ch:SEL_TEAM?'↔ '+SEL_TEAM:'↔ HCM '+fmtN(kh.active_hcm)+' · HN '+fmtN(kh.active_hn)},
+    {label:'KH Inactive',val:fmtN(kh.inactive),vc:kh.inactive>20?'var(--red)':'var(--amber)',
+      c:kh.inactive>20?'r':'a',
+      ch:SEL_TEAM?'↓ vs tháng trước':'↓ HCM '+fmtN(kh.inactive_hcm)+' · HN '+fmtN(kh.inactive_hn)},
+    {label:'KH Mới',val:fmtN(kh.newP),vc:'var(--green)',c:'g',
+      ch:SEL_TEAM?'↑ lần đầu kỳ này':'↑ HCM '+fmtN(kh.new_hcm)+' · HN '+fmtN(kh.new_hn)},
     {label:'Công nợ',val:debt?fmtM(debt)+' Tr':'—',vc:'var(--red)',c:'r',ch:'⚠ Chưa thu hồi'},
   ]);
 
@@ -634,15 +668,47 @@ function p0(cur,prev,ms){
     datasets:[{data:svc.map(s=>s.revenue),backgroundColor:COLORS,borderWidth:2,borderColor:'#0d1117'}]
   },{plugins:{legend:{position:'right'}}});
 
-  // Alerts
+  // Alerts — filter theo team + tháng
+  const filterTag2=`${ml(SEL_MONTH)}${SEL_TEAM?' · '+SEL_TEAM:''}`;
   const alerts=[];
-  if(mom!=null) alerts.push({c:mom>10?'g':mom>=0?'a':'r',name:'MoM',meta:`vs ${ml(prev.month||'')}`,val:pct(mom)});
+  if(mom!=null) alerts.push({c:mom>10?'g':mom>=0?'a':'r',
+    name:'Tăng trưởng MoM',meta:`vs ${ml(prev.month||'')}`,val:pct(mom)});
   const dp=listed?(listed-actual)/listed*100:0;
-  alerts.push({c:dp>30?'r':dp>20?'a':'g',name:'Chiết khấu',meta:`${fmtM(disc)} Tr`,val:dp.toFixed(1)+'%'});
-  if(inactive>0) alerts.push({c:inactive>20?'r':'a',name:'KH Inactive',meta:'30 ngày',val:fmtN(inactive)+' KH'});
-  if(debt) alerts.push({c:debt>500e6?'r':'a',name:'Công nợ',meta:'Chưa thu',val:fmtM(debt)+' Tr'});
-  if(newP>0) alerts.push({c:newP>=3?'g':'a',name:'KH Mới',meta:'Kỳ này',val:fmtN(newP)+' KH'});
-  document.getElementById('alerts0').innerHTML=alerts.slice(0,5).map(a=>`
+  alerts.push({c:dp>30?'r':dp>20?'a':'g',
+    name:'Chiết khấu · '+filterTag2,meta:`${fmtM(disc)} Tr tổng CK`,val:dp.toFixed(1)+'%'});
+  if(kh.inactive>0) alerts.push({c:kh.inactive>20?'r':'a',
+    name:'KH Inactive · '+filterTag2,meta:'Không phát sinh 30 ngày',val:fmtN(kh.inactive)+' KH'});
+  if(kh.newP>0) alerts.push({c:kh.newP>=3?'g':'a',
+    name:'KH Mới · '+filterTag2,meta:'Lần đầu phát sinh kỳ này',val:fmtN(kh.newP)+' KH'});
+  if(debt) alerts.push({c:debt>500e6?'r':'a',
+    name:'Công nợ tổng',meta:'Chưa thu hồi',val:fmtM(debt)+' Tr'});
+
+  // Top KH giảm DT so với tháng trước (cảnh báo thông minh)
+  const pbm=D.partners_by_month||[];
+  const ms2=D.monthly||[];
+  const pidx=ms2.findIndex(x=>x.month===SEL_MONTH);
+  const prevMo2=pidx>0?ms2[pidx-1].month:null;
+  if(prevMo2){
+    const curRevMap={}, prevRevMap={};
+    pbm.filter(p=>p.month===SEL_MONTH&&(SEL_TEAM===''||p.team===SEL_TEAM)&&!INTERNAL.has(p.saleCode||''))
+       .forEach(p=>curRevMap[p.partnerCode]=p.revenue);
+    pbm.filter(p=>p.month===prevMo2&&(SEL_TEAM===''||p.team===SEL_TEAM)&&!INTERNAL.has(p.saleCode||''))
+       .forEach(p=>prevRevMap[p.partnerCode]=p.revenue);
+    // KH lon giam > 20%
+    const drops=Object.entries(curRevMap)
+      .filter(([c,r])=>prevRevMap[c]&&prevRevMap[c]>5e6&&r<prevRevMap[c]*0.8)
+      .map(([c,r])=>({code:c,rev:r,prev:prevRevMap[c],drop:(prevRevMap[c]-r)/prevRevMap[c]*100}))
+      .sort((a,b)=>b.drop-a.drop).slice(0,2);
+    drops.forEach(d=>{
+      const p=pbm.find(x=>x.partnerCode===d.code&&x.month===SEL_MONTH);
+      const name=p?.partnerName||d.code;
+      alerts.push({c:'r',name:`⚠ ${name.substring(0,20)}`,
+        meta:`Giảm ${d.drop.toFixed(0)}% vs ${ml(prevMo2)}`,
+        val:fmtM(d.rev)+' Tr'});
+    });
+  }
+
+  document.getElementById('alerts0').innerHTML=alerts.slice(0,6).map(a=>`
     <div class="alert-row ${a.c}">
       <div><div style="font-size:12px;font-weight:600">${a.name}</div>
         <div style="font-size:10px;color:var(--muted)">${a.meta}</div></div>
@@ -717,17 +783,21 @@ function p2(cur,ms){
   const fp=filteredPartners(20);
   const totalRev=fp.reduce((s,p)=>s+p.revenue,0)||1;
   const top5=fp.slice(0,5).reduce((s,p)=>s+p.revenue,0);
-  const inactive=D.inactive_partners??0, newP=D.new_partners??0;
+  const kh2=khStats(), inactive=kh2.inactive, newP=kh2.newP;
   const tag=`${ml(SEL_MONTH)}${SEL_TEAM?' · '+SEL_TEAM:''}`;
   document.getElementById('c2b-sub').textContent=`Top 10 KH · ${tag}`;
   document.getElementById('tbl2-sub').textContent=tag;
   document.getElementById('churn-sub').textContent=`${ml(SEL_MONTH)}`;
 
   mkKPI('kpi2',[
-    {label:'KH Active',val:fmtN(cur.active_partners),c:'b',ch:'↔ Tháng này'},
-    {label:'KH Inactive',val:fmtN(inactive),vc:inactive>20?'var(--red)':'var(--amber)',c:inactive>20?'r':'a',ch:'↓ 30 ngày'},
-    {label:'KH Mới',val:fmtN(newP),vc:'var(--green)',c:'g',ch:'↑ Kỳ này'},
-    {label:'Top 5 / Tổng',val:(top5/totalRev*100).toFixed(0)+'%',vc:'var(--amber)',c:'r',ch:'⚠ Tập trung'},
+    {label:'KH Active · '+ml(SEL_MONTH),val:fmtN(kh2.active),c:'b',
+      ch:SEL_TEAM?'↔ '+SEL_TEAM:'↔ HCM '+fmtN(kh2.active_hcm)+' · HN '+fmtN(kh2.active_hn)},
+    {label:'KH Inactive · '+ml(SEL_MONTH),val:fmtN(inactive),
+      vc:inactive>20?'var(--red)':'var(--amber)',c:inactive>20?'r':'a',
+      ch:SEL_TEAM?'↓ vs tháng trước':'↓ HCM '+fmtN(kh2.inactive_hcm)+' · HN '+fmtN(kh2.inactive_hn)},
+    {label:'KH Mới · '+ml(SEL_MONTH),val:fmtN(newP),vc:'var(--green)',c:'g',
+      ch:SEL_TEAM?'↑ lần đầu':'↑ HCM '+fmtN(kh2.new_hcm)+' · HN '+fmtN(kh2.new_hn)},
+    {label:'Top 5 / Tổng DT',val:(top5/totalRev*100).toFixed(0)+'%',vc:'var(--amber)',c:'r',ch:'⚠ Tập trung'},
   ]);
 
   mkChart('c2a','line',{labels:ms.map(m=>ml(m.month)),datasets:[{
@@ -763,17 +833,19 @@ function p2(cur,ms){
     `</tbody></table></div>`:`<div class="empty-state">Không có dữ liệu</div>`;
   document.getElementById('debtSec').innerHTML=dHTML;
 
+  const churnTag=`${ml(SEL_MONTH)}${SEL_TEAM?' · '+SEL_TEAM:''}`;
   document.getElementById('churnSec').innerHTML=`
-    <div style="display:flex;gap:12px;margin-top:8px">
+    <div style="font-size:10px;color:var(--muted);margin-bottom:8px">So với tháng trước · ${churnTag}</div>
+    <div style="display:flex;gap:10px">
       <div style="flex:1;background:var(--red-bg);border:1px solid rgba(248,81,73,.2);border-radius:8px;padding:12px;text-align:center">
-        <div style="font-size:28px;font-weight:800;color:var(--red)">${fmtN(inactive)}</div>
+        <div style="font-size:26px;font-weight:800;color:var(--red)">${fmtN(kh2.inactive)}</div>
         <div style="font-size:11px;color:var(--muted);margin-top:4px">KH Inactive</div>
-        <div style="font-size:10px;color:var(--muted)">Không phát sinh 30 ngày</div>
+        ${!SEL_TEAM?`<div style="font-size:10px;color:var(--muted)">HCM ${fmtN(kh2.inactive_hcm)} · HN ${fmtN(kh2.inactive_hn)}</div>`:''}
       </div>
       <div style="flex:1;background:var(--green-bg);border:1px solid rgba(63,185,80,.2);border-radius:8px;padding:12px;text-align:center">
-        <div style="font-size:28px;font-weight:800;color:var(--green)">${fmtN(newP)}</div>
+        <div style="font-size:26px;font-weight:800;color:var(--green)">${fmtN(kh2.newP)}</div>
         <div style="font-size:11px;color:var(--muted);margin-top:4px">KH Mới</div>
-        <div style="font-size:10px;color:var(--muted)">Lần đầu phát sinh kỳ này</div>
+        ${!SEL_TEAM?`<div style="font-size:10px;color:var(--muted)">HCM ${fmtN(kh2.new_hcm)} · HN ${fmtN(kh2.new_hn)}</div>`:''}
       </div>
     </div>`;
 }
