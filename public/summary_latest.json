@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-06-08T13:44:48+07:00",
-  "updated_at_vn": "13:44 08/06/2026",
+  "updated_at": "2026-06-08T13:58:31+07:00",
+  "updated_at_vn": "13:58 08/06/2026",
   "current_month": "2026_06",
   "total_revenue": 826369361,
   "total_listed": 1418874000,
@@ -12,7 +12,7 @@
   "new_partners": 14,
   "active_sales": 18,
   "mom_growth_pct": -77.6,
-  "total_debt": 21977000,
+  "total_debt": 22296000,
   "top_debt": [
     {
       "partnerCode": "01365",
@@ -84,7 +84,7 @@
       "new_hn": 0,
       "active_sales": 14,
       "revenue_hcm": 64718750,
-      "revenue_hn": 2802692498
+      "revenue_hn": 1986755848
     },
     {
       "month": "2025_11",
@@ -104,7 +104,7 @@
       "new_hn": 35,
       "active_sales": 14,
       "revenue_hcm": 64268750,
-      "revenue_hn": 3249166082
+      "revenue_hn": 1678650192
     },
     {
       "month": "2025_12",
@@ -124,7 +124,7 @@
       "new_hn": 35,
       "active_sales": 15,
       "revenue_hcm": 74751980,
-      "revenue_hn": 2958703828
+      "revenue_hn": 1291913659
     },
     {
       "month": "2026_01",
@@ -144,7 +144,7 @@
       "new_hn": 26,
       "active_sales": 14,
       "revenue_hcm": 94804080,
-      "revenue_hn": 3002602776
+      "revenue_hn": 1224462754
     },
     {
       "month": "2026_02",
@@ -164,7 +164,7 @@
       "new_hn": 19,
       "active_sales": 13,
       "revenue_hcm": 84603650,
-      "revenue_hn": 2366703348
+      "revenue_hn": 893072126
     },
     {
       "month": "2026_03",
@@ -184,7 +184,7 @@
       "new_hn": 34,
       "active_sales": 18,
       "revenue_hcm": 153741949,
-      "revenue_hn": 4094645863
+      "revenue_hn": 1466914616
     },
     {
       "month": "2026_04",
@@ -203,8 +203,8 @@
       "new_hcm": 21,
       "new_hn": 29,
       "active_sales": 19,
-      "revenue_hcm": 202268157,
-      "revenue_hn": 3531512393
+      "revenue_hcm": 198900157,
+      "revenue_hn": 1379554626
     },
     {
       "month": "2026_05",
@@ -223,8 +223,8 @@
       "new_hcm": 27,
       "new_hn": 24,
       "active_sales": 20,
-      "revenue_hcm": 392625600,
-      "revenue_hn": 3296221021
+      "revenue_hcm": 387025600,
+      "revenue_hn": 1457531741
     },
     {
       "month": "2026_06",
@@ -243,8 +243,8 @@
       "new_hcm": 8,
       "new_hn": 6,
       "active_sales": 20,
-      "revenue_hcm": 103836903,
-      "revenue_hn": 722532458
+      "revenue_hcm": 102276903,
+      "revenue_hn": 340439255
     }
   ],
   "top_partners": [
