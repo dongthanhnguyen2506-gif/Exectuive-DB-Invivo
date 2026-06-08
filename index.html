@@ -358,7 +358,7 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);font-s
       <th>Team</th><th>Phân loại</th>
       <th class="r">DT (Tr)</th><th class="r">DT Ròng</th>
       <th class="r">KH</th><th class="r">Sales</th>
-      <th class="r">%CK</th><th>MoM</th>
+      <th class="r">%CK</th><th class="r">%SvCK</th><th>MoM</th>
     </tr></thead><tbody id="t0team"></tbody></table></div>
   </div>
 </div>
@@ -399,7 +399,7 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);font-s
     <div class="card"><div class="ct">Xu hướng nhóm DV</div><div class="cs" id="s3b">Top 4 theo tháng</div><div style="position:relative;height:220px"><canvas id="c3b"></canvas></div></div>
   </div>
   <div class="card"><div class="ct">Chi tiết dịch vụ</div><div class="cs" id="s3t">Tháng &amp; team</div>
-    <div class="tw"><table class="tbl"><thead><tr><th>Nhóm DV</th><th class="r">DT (Tr)</th><th class="r">DT Ròng</th><th class="r">SL</th><th class="r">Tỷ trọng</th><th class="r">DT/XN (K)</th><th class="r">%CK</th></tr></thead><tbody id="t3"></tbody></table></div>
+    <div class="tw"><table class="tbl"><thead><tr><th>Nhóm DV</th><th class="r">DT (Tr)</th><th class="r">SL</th><th class="r">Tỷ trọng</th><th class="r">DT/XN (K)</th><th class="r">%MoM</th><th class="r">%SvCK</th></tr></thead><tbody id="t3"></tbody></table></div>
   </div>
 </div>
 
@@ -497,7 +497,7 @@ function isInternal(p){
 }
 const PAGES=['Tổng quan','Doanh thu','Khách hàng','Dịch vụ','Chiết khấu','Sales','Chi nhánh'];
 const KPI_TARGET=300e6;
-let D=null,SM=null,SP=null,charts={},sbOpen=false,pickerOpen=false;
+let D=null,SM=null,SP='',charts={},sbOpen=false,pickerOpen=false;
 
 // ── AUTH ──
 function login(){
@@ -575,7 +575,8 @@ function tStats(mo,team){
 function khStats(){
   const m=cur(),pbm=D.partners_by_month||[],ms=D.monthly||[];
   const idx=ms.findIndex(x=>x.month===SM),pmo=idx>0?ms[idx-1].month:null;
-  if(!SP){
+  if(!SP){  // SP null or empty = Tất cả
+  
     return{active:m.active_partners||0,ahcm:m.active_hcm||0,ahn:m.active_hn||0,
       inactive:m.inactive_partners||0,ihcm:m.inactive_hcm||0,ihn:m.inactive_hn||0,
       newP:m.new_partners||0,nhcm:m.new_hcm||0,nhn:m.new_hn||0,
@@ -592,17 +593,18 @@ function khStats(){
     reactive,rrate:pset.size?Math.round(reactive/pset.size*100):0,managed};
 }
 function fPtn(limit){
-  return(D.partners_by_month||[]).filter(p=>p.month===SM&&(SP===''||p.team===SP)&&!isInternal(p)).sort((a,b)=>b.revenue-a.revenue).slice(0,limit||20);
+  return(D.partners_by_month||[]).filter(p=>p.month===SM&&(!SP||p.team===SP)&&!isInternal(p)).sort((a,b)=>b.revenue-a.revenue).slice(0,limit||20);
 }
 function iPtn(){return(D.partners_by_month||[]).filter(p=>p.month===SM&&INTERNAL.has(p.saleCode||'')).sort((a,b)=>b.revenue-a.revenue);}
 function fSvc(){
   const smbm=D.service_mix_by_month||[];
-  let rows=smbm.filter(s=>s.month===SM&&(SP===''||s.team===SP));
+  let rows=smbm.filter(s=>s.month===SM&&(!SP||s.team===SP));
   if(!rows.length)return D.service_mix||[];
-  if(!SP){const ag={};rows.forEach(s=>{if(!ag[s.group])ag[s.group]={...s};else{ag[s.group].revenue+=s.revenue;ag[s.group].listed+=s.listed;ag[s.group].count+=s.count;}});return Object.values(ag).sort((a,b)=>b.revenue-a.revenue);}
+  if(!SP){  // SP null or empty = Tất cả
+  const ag={};rows.forEach(s=>{if(!ag[s.group])ag[s.group]={...s};else{ag[s.group].revenue+=s.revenue;ag[s.group].listed+=s.listed;ag[s.group].count+=s.count;}});return Object.values(ag).sort((a,b)=>b.revenue-a.revenue);}
   return rows.sort((a,b)=>b.revenue-a.revenue);
 }
-function fSales(){return(D.sales_monthly||[]).filter(s=>s.month===SM&&(SP===''||s.team===SP)&&!isInternal(s)).sort((a,b)=>b.revenue-a.revenue);}
+function fSales(){return(D.sales_monthly||[]).filter(s=>s.month===SM&&(!SP||s.team===SP)&&!isInternal(s)).sort((a,b)=>b.revenue-a.revenue);}
 function stackDS(ms,smAll){
   const getR=(m,t)=>smAll.filter(s=>s.month===m.month&&s.team===t).reduce((a,x)=>a+(x.revenue||0),0);
   const at=SP?[SP]:Object.keys(TC).filter(t=>ms.some(m=>getR(m,t)>0));
@@ -751,8 +753,8 @@ function p0(cm,pm,ms){
   const pbm=D.partners_by_month||[];
   if(pm.month){
     const cm2={},pm2={};
-    pbm.filter(p=>p.month===SM&&(SP===''||p.team===SP)&&!isInternal(p)).forEach(p=>cm2[p.partnerCode]=p.revenue);
-    pbm.filter(p=>p.month===pm.month&&(SP===''||p.team===SP)&&!isInternal(p)).forEach(p=>pm2[p.partnerCode]=p.revenue);
+    pbm.filter(p=>p.month===SM&&(!SP||p.team===SP)&&!isInternal(p)).forEach(p=>cm2[p.partnerCode]=p.revenue);
+    pbm.filter(p=>p.month===pm.month&&(!SP||p.team===SP)&&!isInternal(p)).forEach(p=>pm2[p.partnerCode]=p.revenue);
     Object.entries(cm2).filter(([c,r])=>pm2[c]&&pm2[c]>5e6&&r<pm2[c]*.8).map(([c,r])=>({c,r,d:(pm2[c]-r)/pm2[c]*100})).sort((a,b)=>b.d-a.d).slice(0,2).forEach(d=>{
       const p=pbm.find(x=>x.partnerCode===d.c&&x.month===SM);
       al.push({c:'r',n:'⚠ '+(p?.partnerName||d.c).substring(0,22),m:'Giảm '+d.d.toFixed(0)+'% vs '+ml(pm.month),v:fM(d.r,0)+' Tr'});
@@ -783,7 +785,20 @@ function p0(cm,pm,ms){
     const isCurTeam=SM===D.current_month&&D.mtd_days;
     const momLabel=isCurTeam&&mom0!=null?'~'+mom0.toFixed(1)+'%*':mom0!=null?mom0.toFixed(1)+'%':null;
     const ck0=nl0?(nl0-rn0)/nl0*100:0;
-    return{team,nl:nl0,rn:rn0,kh:kh0,sc:sc0,mom:mom0,momLabel,ck:ck0};
+    // %SvCK: so sanh nl0 vs prev MTD estimate (prev total / prev days * mtd_days)
+    let svck=null;
+    if(pnl0>0&&isCurTeam&&D.mtd_days){
+      // Tim so ngay thang truoc
+      const pmo2=pm.month||'';
+      const pmoMs=pmo2?(D.monthly||[]).find(x=>x.month===pmo2):null;
+      // Uoc tinh so ngay thang truoc tu cac fields (dung 30 neu khong co)
+      const prevDays=pmo2?new Date(parseInt(pmo2.split('_')[0]),parseInt(pmo2.split('_')[1]),0).getDate():30;
+      const prevMtd=pnl0/prevDays*D.mtd_days;
+      svck=prevMtd?((nl0-prevMtd)/prevMtd*100):null;
+    }else if(pnl0>0&&!isCurTeam){
+      svck=mom0; // thang day thi svck = mom
+    }
+    return{team,nl:nl0,rn:rn0,kh:kh0,sc:sc0,mom:mom0,momLabel,ck:ck0,svck};
   }).filter(Boolean).sort((a,b)=>b.nl-a.nl);
 
   document.getElementById('t0team').innerHTML=trows0.length?trows0.map((t,i)=>{
@@ -797,6 +812,7 @@ function p0(cm,pm,ms){
       '<td class="r">'+t.kh+'</td>'+
       '<td class="r">'+t.sc+'</td>'+
       '<td class="r">'+t.ck.toFixed(1)+'%</td>'+
+      '<td class="r">'+(t.svck!=null?'<span class="pill '+(t.svck>=0?'g':'r')+'" style="font-size:10px">'+(t.svck>=0?'+':'')+t.svck.toFixed(1)+'%</span>':'—')+'</td>'+
       '<td>'+(t.momLabel?'<span class="pill '+(t.mom>=0?'g':'r')+'">'+( t.mom>=0?'+':'')+t.momLabel+'</span>':'—')+'</td>'+
     '</tr>';
   }).join(''):empty(8);
@@ -912,15 +928,41 @@ function p3(ms){
   ]);
   if(svc.length)mkC('c3a','bar',{labels:svc.slice(0,8).map(s=>s.group),datasets:[{label:'DT (Tr)',data:svc.slice(0,8).map(s=>+(s.revenue/1e6).toFixed(1)),backgroundColor:COLS.map(c=>c+'bb'),borderRadius:3}]},{indexAxis:'y',scales:{x:{ticks:{callback:v=>v+'M'}},y:{ticks:{font:{size:10}}}}});
   const smbm=D.service_mix_by_month||[],top4=svc.slice(0,4).map(s=>s.group);
-  mkC('c3b','line',{labels:ms.map(m=>ml(m.month)),datasets:top4.map((g,ci)=>({label:g,data:ms.map(m=>{const rows=smbm.filter(s=>s.month===m.month&&s.group===g&&(SP===''||s.team===SP));return rows.length?+(rows.reduce((a,x)=>a+x.revenue,0)/1e6).toFixed(1):null;}),borderColor:COLS[ci],backgroundColor:'transparent',tension:.4,borderWidth:2,pointRadius:2,pointBorderWidth:0}))},{scales:{y:{ticks:{callback:v=>v+'M'}}}});
-  document.getElementById('t3').innerHTML=svc.length?svc.map(s=>`<tr>
-    <td style="font-weight:600">${s.group}</td>
-    <td class="r mono" style="color:var(--cy)">${fM(s.revenue,0)}</td>
-    <td class="r mono" style="color:var(--gr)">${fM(s.listed||s.revenue,0)}</td>
-    <td class="r">${fN(s.count)}</td>
-    <td class="r"><span class="pill b">${(s.revenue/tot*100).toFixed(1)}%</span></td>
-    <td class="r">${s.count?fK(s.revenue/s.count):'—'}</td>
-    <td class="r">${s.discount_pct!=null?s.discount_pct.toFixed(1)+'%':'—'}</td></tr>`).join(''):empty(7);
+  mkC('c3b','line',{labels:ms.map(m=>ml(m.month)),datasets:top4.map((g,ci)=>({label:g,data:ms.map(m=>{const rows=smbm.filter(s=>s.month===m.month&&s.group===g&&(!SP||s.team===SP));return rows.length?+(rows.reduce((a,x)=>a+x.revenue,0)/1e6).toFixed(1):null;}),borderColor:COLS[ci],backgroundColor:'transparent',tension:.4,borderWidth:2,pointRadius:2,pointBorderWidth:0}))},{scales:{y:{ticks:{callback:v=>v+'M'}}}});
+  // Tinh MoM va SvCK cho tung nhom DV
+  const smbmAll=D.service_mix_by_month||[];
+  const prevMoSvc=prev().month||'';
+  const isCurSvc=SM===D.current_month&&D.mtd_days;
+  const prevDaysSvc=prevMoSvc?new Date(parseInt(prevMoSvc.split('_')[0]),parseInt(prevMoSvc.split('_')[1]),0).getDate():30;
+
+  document.getElementById('t3').innerHTML=svc.length?svc.map(s=>{
+    // Lay DT nhom DV thang truoc
+    const prevRows=smbmAll.filter(x=>x.month===prevMoSvc&&x.group===s.group&&(!SP||x.team===SP));
+    const prevAgg=!SP?prevRows:{};
+    let prevRev=0;
+    if(!SP){const ag={};prevRows.forEach(x=>{ag[x.group]=(ag[x.group]||0)+x.revenue;});prevRev=ag[s.group]||0;}
+    else prevRev=prevRows.reduce((a,x)=>a+x.revenue,0);
+
+    let mom=null,svck=null;
+    if(prevRev>0){
+      mom=((s.revenue-prevRev)/prevRev*100);
+      if(isCurSvc){
+        const prevMtdSvc=prevRev/prevDaysSvc*D.mtd_days;
+        svck=prevMtdSvc?((s.revenue-prevMtdSvc)/prevMtdSvc*100):null;
+      }else{svck=mom;}
+    }
+    const momPill=mom!=null?'<span class="pill '+(mom>=0?'g':'r')+'">'+(mom>=0?'+':'')+mom.toFixed(1)+'%</span>':'—';
+    const svckPill=svck!=null?'<span class="pill '+(svck>=0?'g':'r')+'">'+(svck>=0?'+':'')+svck.toFixed(1)+'%</span>':'—';
+    return'<tr>'+
+      '<td style="font-weight:600">'+s.group+'</td>'+
+      '<td class="r mono" style="color:var(--cy)">'+fM(s.revenue,0)+'</td>'+
+      '<td class="r">'+fN(s.count)+'</td>'+
+      '<td class="r"><span class="pill b">'+(s.revenue/tot*100).toFixed(1)+'%</span></td>'+
+      '<td class="r">'+(s.count?fK(s.revenue/s.count):'—')+'</td>'+
+      '<td class="r">'+momPill+'</td>'+
+      '<td class="r">'+svckPill+'</td>'+
+    '</tr>';
+  }).join(''):empty(7);
 }
 
 // ════ P4 DISCOUNT ══════════════════════════════════════════
@@ -936,7 +978,8 @@ function p4(cm,ms){
   ]);
   document.getElementById('s4a').textContent=(SP?(TN[SP]||SP)+' · ':'')+'Tr.đ và %';
   const smAll=D.sales_monthly||[];
-  const dAmt=ms.map(m=>{if(!SP){const d=(m.discount!=null)?m.discount:(m.revenue_actual-(m.revenue_net||0));return+(d/1e6).toFixed(1);}const r=smAll.filter(s=>s.month===m.month&&s.team===SP&&!isInternal(s));const n=r.reduce((a,x)=>a+(x.revenue||0),0),rn=r.reduce((a,x)=>a+(x.revenue_net!=null?x.revenue_net:x.revenue||0),0);return+((n-rn)/1e6).toFixed(1);});
+  const dAmt=ms.map(m=>{if(!SP){  // SP null or empty = Tất cả
+  const d=(m.discount!=null)?m.discount:(m.revenue_actual-(m.revenue_net||0));return+(d/1e6).toFixed(1);}const r=smAll.filter(s=>s.month===m.month&&s.team===SP&&!isInternal(s));const n=r.reduce((a,x)=>a+(x.revenue||0),0),rn=r.reduce((a,x)=>a+(x.revenue_net!=null?x.revenue_net:x.revenue||0),0);return+((n-rn)/1e6).toFixed(1);});
   const dPct=ms.map(m=>{if(!SP)return m.revenue_actual?+((m.revenue_actual-(m.revenue_net||0))/m.revenue_actual*100).toFixed(1):0;const r=smAll.filter(s=>s.month===m.month&&s.team===SP&&!isInternal(s));const n=r.reduce((a,x)=>a+(x.revenue||0),0),rn=r.reduce((a,x)=>a+(x.revenue_net!=null?x.revenue_net:x.revenue||0),0);return n?+((n-rn)/n*100).toFixed(1):0;});
   mkC('c4a','line',{labels:ms.map(m=>ml(m.month)),datasets:[
     {label:'% CK',data:dPct,borderColor:PAL.am,backgroundColor:'rgba(255,179,71,.07)',fill:true,tension:.4,borderWidth:2,pointRadius:3,pointBorderWidth:0,yAxisID:'y1'},
