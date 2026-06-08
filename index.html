@@ -227,8 +227,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;backgroun
     <div class="card-title">Chi tiết doanh thu theo tháng</div>
     <div class="card-sub">Đơn vị: Tr.đ | Tháng đang chọn được highlight</div>
     <div class="tbl-wrap"><table class="tbl"><thead><tr>
-      <th>Tháng</th><th style="text-align:right">DT NL</th>
-      <th style="text-align:right">DT GN</th><th style="text-align:right">Chiết khấu</th>
+      <th>Tháng</th><th style="text-align:right">DT Ròng</th>
+      <th style="text-align:right">Doanh thu</th><th style="text-align:right">Chiết khấu</th>
       <th style="text-align:right">% CK</th><th style="text-align:right">HCM</th>
       <th style="text-align:right">HN</th><th style="text-align:right">Đơn</th>
       <th style="text-align:right">KH</th><th style="text-align:right">MoM</th>
@@ -256,8 +256,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;backgroun
     <div class="card-sub" id="tbl2-sub">Tháng & team đang chọn</div>
     <div class="tbl-wrap"><table class="tbl"><thead><tr>
       <th>#</th><th>Tên khách hàng</th><th>Team</th><th>Sales</th>
-      <th style="text-align:right">DT GN (Tr.đ)</th>
-      <th style="text-align:right">DT NL (Tr.đ)</th>
+      <th style="text-align:right">Doanh thu (Tr.đ)</th>
+      <th style="text-align:right">DT Ròng (Tr.đ)</th>
       <th style="text-align:right">% CK</th>
       <th style="text-align:right">Đơn</th>
     </tr></thead><tbody id="tbl2"></tbody></table></div>
@@ -282,7 +282,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;backgroun
   <div class="g2">
     <div class="card">
       <div class="card-title">Top nhóm dịch vụ</div>
-      <div class="card-sub" id="c3a-sub">DT GN · tháng & team</div>
+      <div class="card-sub" id="c3a-sub">DT · tháng & team</div>
       <div style="position:relative;height:220px"><canvas id="c3a"></canvas></div>
     </div>
     <div class="card">
@@ -296,8 +296,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;backgroun
     <div class="card-sub" id="tbl3-sub">Tháng & team đang chọn</div>
     <div class="tbl-wrap"><table class="tbl"><thead><tr>
       <th>Nhóm DV</th>
-      <th style="text-align:right">DT GN (Tr.đ)</th>
-      <th style="text-align:right">DT NL (Tr.đ)</th>
+      <th style="text-align:right">Doanh thu (Tr.đ)</th>
+      <th style="text-align:right">DT Ròng (Tr.đ)</th>
       <th style="text-align:right">Số lượng</th>
       <th style="text-align:right">Tỷ trọng</th>
       <th style="text-align:right">DT TB/XN (K)</th>
@@ -326,7 +326,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;backgroun
     <div class="card-sub" id="tbl4-sub">Tháng & team đang chọn</div>
     <div class="tbl-wrap"><table class="tbl"><thead><tr>
       <th>#</th><th>Khách hàng</th><th>Team</th>
-      <th style="text-align:right">DT GN</th><th style="text-align:right">DT NL</th>
+      <th style="text-align:right">Doanh thu</th><th style="text-align:right">DT Ròng</th>
       <th style="text-align:right">% CK</th><th style="text-align:right">Đơn</th>
     </tr></thead><tbody id="tbl4"></tbody></table></div>
   </div>
@@ -338,7 +338,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;backgroun
   <div class="g2">
     <div class="card">
       <div class="card-title">Ranking Sales</div>
-      <div class="card-sub" id="c5a-sub">DT GN · tháng & team</div>
+      <div class="card-sub" id="c5a-sub">DT · tháng & team</div>
       <div style="position:relative;height:220px"><canvas id="c5a"></canvas></div>
     </div>
     <div class="card">
@@ -352,8 +352,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;backgroun
     <div class="card-sub" id="tbl5-sub">Tháng & team đang chọn</div>
     <div class="tbl-wrap"><table class="tbl"><thead><tr>
       <th>#</th><th>Sales</th><th>Team</th>
-      <th style="text-align:right">DT GN (Tr.đ)</th>
-      <th style="text-align:right">DT NL (Tr.đ)</th>
+      <th style="text-align:right">Doanh thu (Tr.đ)</th>
+      <th style="text-align:right">DT Ròng (Tr.đ)</th>
       <th style="text-align:right">Đơn</th>
       <th style="text-align:right">DT/Đơn (K)</th>
       <th style="text-align:right">% CK</th>
@@ -382,7 +382,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;backgroun
     <div class="card-sub" id="tbl6-sub">Partner không có NVKD · tháng đang chọn</div>
     <div class="tbl-wrap"><table class="tbl"><thead><tr>
       <th>#</th><th>Khách hàng</th><th>Chi nhánh</th>
-      <th style="text-align:right">DT GN (Tr.đ)</th><th style="text-align:right">Đơn</th>
+      <th style="text-align:right">Doanh thu (Tr.đ)</th><th style="text-align:right">Đơn</th>
     </tr></thead><tbody id="tbl6"></tbody></table></div>
   </div>
 </div>
@@ -637,7 +637,7 @@ function p0(cur,prev,ms){
   // KH stats theo filter
   const activeVal = SEL_TEAM?kh.active:(SEL_TEAM===''?fmtN(cur.active_partners):fmtN(kh.active));
   mkKPI('kpi0',[
-    {label:'DT Ghi nhận',val:fmtM(actual)+' Tr',vc:'var(--green)',c:'g',
+    {label:'Doanh thu',val:fmtM(actual)+' Tr',vc:'var(--green)',c:'g',
       ch:(mom!=null?(mom>=0?'↑ +':'↓ ')+Math.abs(mom).toFixed(1)+'% MoM':'↔ MTD'),cc:mom!=null?(mom>=0?'up':'dn'):'fl'},
     {label:SEL_TEAM?'DT '+SEL_TEAM:'DT HCM (KD)',
       val:SEL_TEAM?fmtM(filteredPartners(999).reduce((s,p)=>s+p.revenue,0))+' Tr':fmtM(cur.revenue_hcm)+' Tr',
@@ -718,7 +718,7 @@ function p0(cur,prev,ms){
   mkWF('wf0',[
     {label:'DT Niêm yết',val:listed,pct:100,color:'#1f6feb'},
     {label:'(-) Chiết khấu',val:-disc,pct:-(disc/listed*100||0),color:'#da3633'},
-    {label:'DT Ghi nhận',val:actual,pct:actual/listed*100||0,color:'#238636'},
+    {label:'Doanh thu',val:actual,pct:actual/listed*100||0,color:'#238636'},
   ]);
   document.getElementById('wf0-sub').textContent=`${ml(SEL_MONTH)}`;
 
@@ -739,9 +739,9 @@ function p1(cur,prev,ms){
   const mom=D.mom_growth_pct??(prev.revenue_actual?((actual-prev.revenue_actual)/prev.revenue_actual*100):null);
 
   mkKPI('kpi1',[
-    {label:'DT Ghi nhận MTD',val:fmtM(actual)+' Tr',vc:'var(--green)',c:'g',
+    {label:'Doanh thu (NL)',val:fmtM(actual)+' Tr',vc:'var(--blue)',c:'b',
       ch:(mom!=null?(mom>=0?'↑ +':'↓ ')+Math.abs(mom).toFixed(1)+'% MoM':'↔'),cc:mom!=null?(mom>=0?'up':'dn'):'fl'},
-    {label:'DT Niêm yết',val:fmtM(listed)+' Tr',c:'b',ch:'↔'},
+    {label:'DT Ròng (sau CK)',val:fmtM(cur.total_revenue_net||cur.revenue_net||0)+' Tr',vc:'var(--green)',c:'g',ch:'↔ Thực nhận'},
     {label:'Chiết khấu',val:fmtM(disc)+' Tr',vc:'var(--amber)',c:'a',ch:'↔ '+dPct(listed,actual)},
     {label:'DT TB/Đơn',val:cur.order_count?fmtK(actual/cur.order_count)+'K':'—',c:'b',ch:'↔ '+fmtN(cur.order_count)+' đơn'},
   ]);
@@ -819,8 +819,8 @@ function p2(cur,ms){
     <td>${teamPill(p.team)}</td>
     <td>${p.saleName||'—'}</td>
     <td style="text-align:right"><b>${fmtM(p.revenue)}</b></td>
-    <td style="text-align:right">${fmtM(p.listed)}</td>
-    <td style="text-align:right">${dPct(p.listed,p.revenue)}</td>
+    <td style="text-align:right">${fmtM(p.revenue_net!=null?p.revenue_net:p.listed)}</td>
+    <td style="text-align:right">${p.discount_pct!=null?p.discount_pct.toFixed(1)+'%':dPct(p.revenue,p.revenue_net||0)}</td>
     <td style="text-align:right">${p.orders||0}</td></tr>`).join(''):empty(8);
 
   // Công nợ
@@ -855,7 +855,7 @@ function p3(ms){
   const svc=filteredSvc();
   const totRev=svc.reduce((s,v)=>s+v.revenue,0)||1;
   const tag=`${ml(SEL_MONTH)}${SEL_TEAM?' · '+SEL_TEAM:''}`;
-  document.getElementById('c3a-sub').textContent=`DT GN · ${tag}`;
+  document.getElementById('c3a-sub').textContent=`DT · ${tag}`;
   document.getElementById('c3b-sub').textContent=`Top 4 nhóm · ${SEL_TEAM||'tất cả'}`;
   document.getElementById('tbl3-sub').textContent=tag;
 
@@ -868,7 +868,7 @@ function p3(ms){
 
   if(svc.length) mkChart('c3a','bar',{
     labels:svc.slice(0,8).map(s=>s.group),
-    datasets:[{label:'DT GN (Tr)',data:svc.slice(0,8).map(s=>+(s.revenue/1e6).toFixed(1)),backgroundColor:COLORS}]
+    datasets:[{label:'DT (Tr)',data:svc.slice(0,8).map(s=>+(s.revenue/1e6).toFixed(1)),backgroundColor:COLORS}]
   },{indexAxis:'y',scales:{x:{ticks:{callback:v=>v+'M'}},y:{ticks:{font:{size:10}}}}});
 
   const top4=svc.slice(0,4).map(s=>s.group);
@@ -895,7 +895,7 @@ function p4(cur,ms){
   const disc=(cur.discount!=null)?cur.discount:(listed-actual);
   mkKPI('kpi4',[
     {label:'DT Niêm yết',val:fmtM(listed)+' Tr',c:'b',ch:'↔'},
-    {label:'DT Ghi nhận',val:fmtM(actual)+' Tr',vc:'var(--green)',c:'g',ch:'↑ Sau CK'},
+    {label:'Doanh thu',val:fmtM(actual)+' Tr',vc:'var(--green)',c:'g',ch:'↔ Niêm yết'},
     {label:'Chiết khấu',val:fmtM(disc)+' Tr',vc:'var(--red)',c:'r',ch:'↓ '+dPct(listed,actual)},
     {label:'% CK',val:dPct(listed,actual),vc:'var(--amber)',c:'a',ch:'↔ Tháng này'},
   ]);
@@ -911,7 +911,7 @@ function p4(cur,ms){
   mkWF('wf4',[
     {label:'DT Niêm yết',val:listed,pct:100,color:'#1f6feb'},
     {label:'(-) Chiết khấu',val:-disc,pct:-(disc/listed*100||0),color:'#da3633'},
-    {label:'DT Ghi nhận',val:actual,pct:actual/listed*100||0,color:'#238636'},
+    {label:'Doanh thu',val:actual,pct:actual/listed*100||0,color:'#238636'},
   ]);
 
   const fp=filteredPartners(20).filter(p=>p.listed>0).sort((a,b)=>((b.listed-b.revenue)/b.listed)-((a.listed-a.revenue)/a.listed));
@@ -930,7 +930,7 @@ function p4(cur,ms){
 function p5(ms){
   const sales=filteredSales();
   const tag=`${ml(SEL_MONTH)}${SEL_TEAM?' · '+SEL_TEAM:''}`;
-  document.getElementById('c5a-sub').textContent=`DT GN · ${tag}`;
+  document.getElementById('c5a-sub').textContent=`DT · ${tag}`;
   document.getElementById('c5b-sub').textContent=`Top 4 · ${SEL_TEAM||'tất cả'}`;
   document.getElementById('tbl5-sub').textContent=tag;
 
@@ -949,7 +949,7 @@ function p5(ms){
 
   mkChart('c5a','bar',{
     labels:sales.map(s=>s.salesName||s.sales),
-    datasets:[{label:'DT GN (Tr)',data:sales.map(s=>+(s.revenue/1e6).toFixed(1)),backgroundColor:sales.map((_,i)=>COLORS[i%COLORS.length])}]
+    datasets:[{label:'DT (Tr)',data:sales.map(s=>+(s.revenue/1e6).toFixed(1)),backgroundColor:sales.map((_,i)=>COLORS[i%COLORS.length])}]
   },{indexAxis:'y',scales:{x:{ticks:{callback:v=>v+'M'}},y:{ticks:{font:{size:10}}}}});
 
   const top4=sales.slice(0,4).map(s=>s.sales);
