@@ -154,8 +154,37 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);font-s
 @media(max-width:900px){.k6,.k4,.k3{grid-template-columns:repeat(2,1fr)}.g2,.g3r{grid-template-columns:1fr}}
 @media(max-width:700px){
   .sidebar{width:0;overflow:hidden;border:none}.sidebar.open{width:210px;overflow:visible}
-  .main{margin-left:0!important}.topbar,.fbar{padding-left:14px;padding-right:14px}
-  .content{padding:12px 14px}}
+  .main{margin-left:0!important;padding-bottom:64px}.topbar,.fbar{padding-left:14px;padding-right:14px}
+  .content{padding:12px 14px}
+  .bnav{display:flex}
+}
+/* ── BOTTOM NAV (mobile only) ── */
+.bnav{
+  display:none;
+  position:fixed;bottom:0;left:0;right:0;z-index:200;
+  background:rgba(4,10,24,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-top:1px solid rgba(255,255,255,.08);
+  padding:6px 0 env(safe-area-inset-bottom,6px);
+}
+.bnav-items{display:flex;justify-content:space-around;align-items:center}
+.bni{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;
+  padding:6px 2px;cursor:pointer;color:rgba(160,185,220,.5);transition:.15s;
+  border:none;background:none;-webkit-tap-highlight-color:transparent}
+.bni.on{color:var(--cyan)}
+.bni svg{width:18px;height:18px;flex-shrink:0}
+.bni span{font-size:9px;font-weight:600;white-space:nowrap;font-family:'Sora',sans-serif}
+.bnav-more{position:fixed;bottom:64px;left:0;right:0;z-index:199;
+  background:rgba(4,10,24,.96);backdrop-filter:blur(20px);
+  border-top:1px solid rgba(255,255,255,.08);
+  padding:8px 16px;display:none;flex-wrap:wrap;gap:8px;justify-content:center}
+.bnav-more.show{display:flex}
+.bmore-item{display:flex;flex-direction:column;align-items:center;gap:4px;
+  padding:10px 16px;cursor:pointer;color:rgba(160,185,220,.5);
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);
+  border-radius:10px;min-width:72px;transition:.15s}
+.bmore-item.on{color:var(--cyan);background:rgba(0,212,255,.08);border-color:rgba(0,212,255,.2)}
+.bmore-item svg{width:20px;height:20px}
+.bmore-item span{font-size:10px;font-weight:600;font-family:'Sora',sans-serif}
 
 /* ── GLASS CARDS ── */
 .card{background:var(--glass);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
@@ -386,6 +415,46 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);font-s
 
 </div></div></div><!-- /content /main /app -->
 
+<!-- BOTTOM NAV (mobile) -->
+<div class="bnav" id="bnav">
+  <div class="bnav-items">
+    <button class="bni on" onclick="gpMobile(0,this)" data-page="0">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+      <span>Tổng quan</span>
+    </button>
+    <button class="bni" onclick="gpMobile(1,this)" data-page="1">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      <span>Doanh thu</span>
+    </button>
+    <button class="bni" onclick="gpMobile(2,this)" data-page="2">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+      <span>KH</span>
+    </button>
+    <button class="bni" onclick="gpMobile(5,this)" data-page="5">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+      <span>Sales</span>
+    </button>
+    <button class="bni" onclick="toggleMore()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg>
+      <span>Thêm</span>
+    </button>
+  </div>
+</div>
+<div class="bnav-more" id="bnavMore">
+  <div class="bmore-item" onclick="gpMobile(3,null);toggleMore()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+    <span>Dịch vụ</span>
+  </div>
+  <div class="bmore-item" onclick="gpMobile(4,null);toggleMore()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+    <span>Chiết khấu</span>
+  </div>
+  <div class="bmore-item" onclick="gpMobile(6,null);toggleMore()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+    <span>Chi nhánh</span>
+  </div>
+</div>
+
 <script>
 const PASS="InVivo@2026";
 const DATA_URL="https://raw.githubusercontent.com/dongthanhnguyen2506-gif/Exectuive-DB-Invivo/main/public/summary_latest.json";
@@ -395,6 +464,11 @@ const TC={'KD HCM':'#00d4ff','KD01':'#00e5a0','KD04':'#ffb347','KD05':'#a78bfa',
 const TN={'KD HCM':'KD HCM','KD01':'KD01','KD04':'KD04','KD05':'KD05','invivo':'InVivo','invivo HN':'Nội bộ HN','invivo HCM':'Nội bộ HCM'};
 const COLS=['#00d4ff','#00e5a0','#ffb347','#a78bfa','#ff4d6d','#4db8ff','#f472b6','#34d399'];
 const INTERNAL=new Set(['invivoHCM','invivoHN']);
+function isInternal(p){
+  const sc=p.saleCode||p.sales||'';
+  const tm=p.team||'';
+  return INTERNAL.has(sc)||sc.startsWith('invivo')||tm==='invivo'||tm==='invivo HN'||tm==='invivo HCM';
+}
 const PAGES=['Tổng quan','Doanh thu','Khách hàng','Dịch vụ','Chiết khấu','Sales','Chi nhánh'];
 const KPI_TARGET=300e6;
 let D=null,SM=null,SP=null,charts={},sbOpen=false,pickerOpen=false;
@@ -419,11 +493,37 @@ function toggleSB(){
   document.getElementById('main').classList.toggle('wide',sbOpen);
   document.getElementById('ticon').style.transform=sbOpen?'rotate(180deg)':'';
 }
+let moreOpen=false;
+function toggleMore(){
+  moreOpen=!moreOpen;
+  document.getElementById('bnavMore').classList.toggle('show',moreOpen);
+}
+function gpMobile(n,el){
+  gp(n, document.querySelectorAll('.nav')[n] || document.createElement('div'));
+  // sync bottom nav
+  document.querySelectorAll('.bni').forEach(b=>{
+    b.classList.toggle('on', parseInt(b.dataset.page)===n);
+  });
+  document.querySelectorAll('.bmore-item').forEach((b,i)=>{
+    b.classList.toggle('on',[3,4,6][i]===n);
+  });
+  if(moreOpen)toggleMore();
+}
+// show bottom nav only on mobile
+function initNav(){
+  if(window.innerWidth<=700)document.getElementById('bnav').style.display='block';
+}
+window.addEventListener('resize',()=>{
+  const bnav=document.getElementById('bnav');
+  if(bnav)bnav.style.display=window.innerWidth<=700?'block':'none';
+});
 function gp(n,el){
   document.querySelectorAll('.page').forEach((p,i)=>p.classList.toggle('on',i===n));
   document.querySelectorAll('.nav').forEach(x=>x.classList.remove('on'));
   el.classList.add('on');
   document.getElementById('ptitle').textContent=PAGES[n]||'';
+  ACTIVE_PAGE=n;
+  if(D){const ms=D.monthly||[];try{PAGE_FNS[n](ms);}catch(e){console.error('p'+n,e);}}
   if(window.innerWidth<700&&sbOpen)toggleSB();
 }
 
@@ -442,7 +542,7 @@ const mono=(v,color='')=>`<span class="mono"${color?` style="color:${color}"`:''
 function cur(){return(D.monthly||[]).find(m=>m.month===SM)||{};}
 function prev(){const ms=D.monthly||[],i=ms.findIndex(m=>m.month===SM);return i>0?ms[i-1]:{};}
 function tStats(mo,team){
-  const rows=(D.sales_monthly||[]).filter(s=>s.month===mo&&(team===''||s.team===team)&&!INTERNAL.has(s.sales));
+  const rows=(D.sales_monthly||[]).filter(s=>s.month===mo&&(team===''||s.team===team)&&!isInternal(s));
   const nl=rows.reduce((a,x)=>a+(x.revenue||0),0);
   const rn=rows.reduce((a,x)=>a+(x.revenue_net!=null?x.revenue_net:x.revenue||0),0);
   const ord=rows.reduce((a,x)=>a+(x.orders||0),0);
@@ -458,8 +558,8 @@ function khStats(){
       reactive:m.reactive_partners||0,rrate:m.reactive_rate||0,
       managed:D.total_managed?Object.values(D.total_managed).reduce((a,x)=>a+x,0):0};
   }
-  const cset=new Set(pbm.filter(p=>p.month===SM&&p.team===SP&&!INTERNAL.has(p.saleCode||'')).map(p=>p.partnerCode));
-  const pset=pmo?new Set(pbm.filter(p=>p.month===pmo&&p.team===SP&&!INTERNAL.has(p.saleCode||'')).map(p=>p.partnerCode)):new Set();
+  const cset=new Set(pbm.filter(p=>p.month===SM&&p.team===SP&&!isInternal(p)).map(p=>p.partnerCode));
+  const pset=pmo?new Set(pbm.filter(p=>p.month===pmo&&p.team===SP&&!isInternal(p)).map(p=>p.partnerCode)):new Set();
   const reactive=[...cset].filter(c=>pset.has(c)).length;
   const managed=(D.total_managed&&D.total_managed[SP])||0;
   return{active:cset.size,ahcm:0,ahn:0,
@@ -468,7 +568,7 @@ function khStats(){
     reactive,rrate:pset.size?Math.round(reactive/pset.size*100):0,managed};
 }
 function fPtn(limit){
-  return(D.partners_by_month||[]).filter(p=>p.month===SM&&(SP===''||p.team===SP)&&!INTERNAL.has(p.saleCode||'')).sort((a,b)=>b.revenue-a.revenue).slice(0,limit||20);
+  return(D.partners_by_month||[]).filter(p=>p.month===SM&&(SP===''||p.team===SP)&&!isInternal(p)).sort((a,b)=>b.revenue-a.revenue).slice(0,limit||20);
 }
 function iPtn(){return(D.partners_by_month||[]).filter(p=>p.month===SM&&INTERNAL.has(p.saleCode||'')).sort((a,b)=>b.revenue-a.revenue);}
 function fSvc(){
@@ -478,7 +578,7 @@ function fSvc(){
   if(!SP){const ag={};rows.forEach(s=>{if(!ag[s.group])ag[s.group]={...s};else{ag[s.group].revenue+=s.revenue;ag[s.group].listed+=s.listed;ag[s.group].count+=s.count;}});return Object.values(ag).sort((a,b)=>b.revenue-a.revenue);}
   return rows.sort((a,b)=>b.revenue-a.revenue);
 }
-function fSales(){return(D.sales_monthly||[]).filter(s=>s.month===SM&&(SP===''||s.team===SP)&&!INTERNAL.has(s.sales)).sort((a,b)=>b.revenue-a.revenue);}
+function fSales(){return(D.sales_monthly||[]).filter(s=>s.month===SM&&(SP===''||s.team===SP)&&!isInternal(s)).sort((a,b)=>b.revenue-a.revenue);}
 function stackDS(ms,smAll){
   const getR=(m,t)=>smAll.filter(s=>s.month===m.month&&s.team===t).reduce((a,x)=>a+(x.revenue||0),0);
   const at=SP?[SP]:Object.keys(TC).filter(t=>ms.some(m=>getR(m,t)>0));
@@ -564,18 +664,27 @@ async function loadData(){
   try{const r=await fetch(DATA_URL+'?t='+Date.now());D=await r.json();}catch(e){D={};}
   if(!D||!D.monthly||!D.monthly.length){document.getElementById('psub').textContent='Lỗi tải dữ liệu';return;}
   document.getElementById('utime').textContent=D.updated_at_vn||'';
-  buildFilter();render();
+  buildFilter();render();initNav();
 }
+let ACTIVE_PAGE=0;
+const PAGE_FNS=[
+  (ms)=>p0(cur(),prev(),ms),
+  (ms)=>p1(cur(),prev(),ms),
+  (ms)=>p2(cur(),ms),
+  (ms)=>p3(ms),
+  (ms)=>p4(cur(),ms),
+  (ms)=>p5(ms),
+  (ms)=>p6(ms)
+];
 function render(){
   const ms=D.monthly||[];
   updTag();
-  try{p0(cur(),prev(),ms);}catch(e){console.error('p0',e);}
-  try{p1(cur(),prev(),ms);}catch(e){console.error('p1',e);}
-  try{p2(cur(),ms);}catch(e){console.error('p2',e);}
-  try{p3(ms);}catch(e){console.error('p3',e);}
-  try{p4(cur(),ms);}catch(e){console.error('p4',e);}
-  try{p5(ms);}catch(e){console.error('p5',e);}
-  try{p6(ms);}catch(e){console.error('p6',e);}
+  try{PAGE_FNS[ACTIVE_PAGE](ms);}catch(e){console.error('p'+ACTIVE_PAGE,e);}
+}
+function renderAll(){
+  const ms=D.monthly||[];
+  updTag();
+  PAGE_FNS.forEach((fn,i)=>{try{fn(ms);}catch(e){console.error('p'+i,e);}});
 }
 
 // ════ P0 OVERVIEW ════════════════════════════════════════
@@ -616,8 +725,8 @@ function p0(cm,pm,ms){
   const pbm=D.partners_by_month||[];
   if(pm.month){
     const cm2={},pm2={};
-    pbm.filter(p=>p.month===SM&&(SP===''||p.team===SP)&&!INTERNAL.has(p.saleCode||'')).forEach(p=>cm2[p.partnerCode]=p.revenue);
-    pbm.filter(p=>p.month===pm.month&&(SP===''||p.team===SP)&&!INTERNAL.has(p.saleCode||'')).forEach(p=>pm2[p.partnerCode]=p.revenue);
+    pbm.filter(p=>p.month===SM&&(SP===''||p.team===SP)&&!isInternal(p)).forEach(p=>cm2[p.partnerCode]=p.revenue);
+    pbm.filter(p=>p.month===pm.month&&(SP===''||p.team===SP)&&!isInternal(p)).forEach(p=>pm2[p.partnerCode]=p.revenue);
     Object.entries(cm2).filter(([c,r])=>pm2[c]&&pm2[c]>5e6&&r<pm2[c]*.8).map(([c,r])=>({c,r,d:(pm2[c]-r)/pm2[c]*100})).sort((a,b)=>b.d-a.d).slice(0,2).forEach(d=>{
       const p=pbm.find(x=>x.partnerCode===d.c&&x.month===SM);
       al.push({c:'r',n:'⚠ '+(p?.partnerName||d.c).substring(0,22),m:'Giảm '+d.d.toFixed(0)+'% vs '+ml(pm.month),v:fM(d.r,0)+' Tr'});
@@ -681,7 +790,7 @@ function p2(cm,ms){
     {l:'Top 5 / Tổng DT',v:(top5/tot*100).toFixed(0)+'%',c:'r',ch:'⚠ Tập trung'},
   ]);
   const pbm=D.partners_by_month||[];
-  const khData=ms.map(m=>SP?new Set(pbm.filter(p=>p.month===m.month&&p.team===SP&&!INTERNAL.has(p.saleCode||'')).map(p=>p.partnerCode)).size:(m.active_partners||0));
+  const khData=ms.map(m=>SP?new Set(pbm.filter(p=>p.month===m.month&&p.team===SP&&!isInternal(p)).map(p=>p.partnerCode)).size:(m.active_partners||0));
   document.getElementById('s2a').textContent='KH active · '+(SP?TN[SP]||SP:'Tất cả');
   mkC('c2a','line',{labels:ms.map(m=>ml(m.month)),datasets:[{label:'KH active',data:khData,borderColor:PAL.cy,backgroundColor:'rgba(0,212,255,.06)',fill:true,tension:.4,borderWidth:2,pointBackgroundColor:ms.map(m=>m.month===SM?PAL.am:PAL.cy),pointRadius:ms.map(m=>m.month===SM?5:3),pointBorderWidth:0}]});
   document.getElementById('s2b').textContent=`Top 10 KH · ${tag}`;
@@ -766,8 +875,8 @@ function p4(cm,ms){
   ]);
   document.getElementById('s4a').textContent=(SP?(TN[SP]||SP)+' · ':'')+'Tr.đ và %';
   const smAll=D.sales_monthly||[];
-  const dAmt=ms.map(m=>{if(!SP){const d=(m.discount!=null)?m.discount:(m.revenue_actual-(m.revenue_net||0));return+(d/1e6).toFixed(1);}const r=smAll.filter(s=>s.month===m.month&&s.team===SP&&!INTERNAL.has(s.sales));const n=r.reduce((a,x)=>a+(x.revenue||0),0),rn=r.reduce((a,x)=>a+(x.revenue_net!=null?x.revenue_net:x.revenue||0),0);return+((n-rn)/1e6).toFixed(1);});
-  const dPct=ms.map(m=>{if(!SP)return m.revenue_actual?+((m.revenue_actual-(m.revenue_net||0))/m.revenue_actual*100).toFixed(1):0;const r=smAll.filter(s=>s.month===m.month&&s.team===SP&&!INTERNAL.has(s.sales));const n=r.reduce((a,x)=>a+(x.revenue||0),0),rn=r.reduce((a,x)=>a+(x.revenue_net!=null?x.revenue_net:x.revenue||0),0);return n?+((n-rn)/n*100).toFixed(1):0;});
+  const dAmt=ms.map(m=>{if(!SP){const d=(m.discount!=null)?m.discount:(m.revenue_actual-(m.revenue_net||0));return+(d/1e6).toFixed(1);}const r=smAll.filter(s=>s.month===m.month&&s.team===SP&&!isInternal(s));const n=r.reduce((a,x)=>a+(x.revenue||0),0),rn=r.reduce((a,x)=>a+(x.revenue_net!=null?x.revenue_net:x.revenue||0),0);return+((n-rn)/1e6).toFixed(1);});
+  const dPct=ms.map(m=>{if(!SP)return m.revenue_actual?+((m.revenue_actual-(m.revenue_net||0))/m.revenue_actual*100).toFixed(1):0;const r=smAll.filter(s=>s.month===m.month&&s.team===SP&&!isInternal(s));const n=r.reduce((a,x)=>a+(x.revenue||0),0),rn=r.reduce((a,x)=>a+(x.revenue_net!=null?x.revenue_net:x.revenue||0),0);return n?+((n-rn)/n*100).toFixed(1):0;});
   mkC('c4a','line',{labels:ms.map(m=>ml(m.month)),datasets:[
     {label:'% CK',data:dPct,borderColor:PAL.am,backgroundColor:'rgba(255,179,71,.07)',fill:true,tension:.4,borderWidth:2,pointRadius:3,pointBorderWidth:0,yAxisID:'y1'},
     {label:'CK (Tr)',data:dAmt,borderColor:PAL.re,fill:false,tension:.4,borderWidth:1.5,pointRadius:2,pointBorderWidth:0,yAxisID:'y'}
@@ -833,12 +942,12 @@ function p6(ms){
   const TLBLS={'KD HCM':'KD HCM','KD01':'KD01','KD04':'KD04','KD05':'KD05 · Gia Lai','invivo':'InVivo'};
   document.getElementById('s6t').textContent=`Doanh thu · ${ml(SM)}`;
   const trows=TEAMS.map(team=>{
-    const c=smAll.filter(s=>s.month===SM&&s.team===team&&!INTERNAL.has(s.sales));
-    const p=smAll.filter(s=>s.month===(pm.month||'')&&s.team===team&&!INTERNAL.has(s.sales));
+    const c=smAll.filter(s=>s.month===SM&&s.team===team&&!isInternal(s));
+    const p=smAll.filter(s=>s.month===(pm.month||'')&&s.team===team&&!isInternal(s));
     const nl=c.reduce((s,x)=>s+(x.revenue||0),0);if(!nl)return null;
     const rn=c.reduce((s,x)=>s+(x.revenue_net!=null?x.revenue_net:x.revenue||0),0);
     const pnl=p.reduce((s,x)=>s+(x.revenue||0),0);
-    const kh=new Set(pbm.filter(x=>x.month===SM&&x.team===team&&!INTERNAL.has(x.saleCode||'')).map(x=>x.partnerCode)).size;
+    const kh=new Set(pbm.filter(x=>x.month===SM&&x.team===team&&!isInternal(x)).map(x=>x.partnerCode)).size;
     const sc=new Set(c.map(x=>x.sales)).size;
     const mom=pnl?((nl-pnl)/pnl*100):null;const ck=nl?(nl-rn)/nl*100:0;
     return{team,nl,rn,kh,sc,mom,ck};
