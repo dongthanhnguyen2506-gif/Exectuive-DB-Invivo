@@ -1,17 +1,17 @@
 {
-  "updated_at": "2026-06-08T15:29:12+07:00",
-  "updated_at_vn": "15:29 08/06/2026",
+  "updated_at": "2026-06-08T15:41:55+07:00",
+  "updated_at_vn": "15:41 08/06/2026",
   "current_month": "2026_06",
-  "total_revenue": 1447514000,
-  "total_listed": 1447514000,
-  "total_discount": 607176242,
-  "discount_pct": 41.9,
-  "total_orders": 2087,
+  "total_revenue": 1450161000,
+  "total_listed": 1450161000,
+  "total_discount": 608593210,
+  "discount_pct": 42.0,
+  "total_orders": 2090,
   "active_partners": 160,
   "inactive_partners": 92,
   "new_partners": 14,
   "active_sales": 18,
-  "mom_growth_pct": -77.9,
+  "mom_growth_pct": -77.8,
   "total_debt": 24038000,
   "top_debt": [
     {
@@ -236,12 +236,12 @@
     },
     {
       "month": "2026_06",
-      "revenue_actual": 1447514000,
-      "revenue_net": 840337758,
-      "revenue_listed": 1447514000,
-      "discount": 607176242,
-      "discount_pct": 41.9,
-      "order_count": 2087,
+      "revenue_actual": 1450161000,
+      "revenue_net": 841567790,
+      "revenue_listed": 1450161000,
+      "discount": 608593210,
+      "discount_pct": 42.0,
+      "order_count": 2090,
       "active_partners": 160,
       "active_hcm": 42,
       "active_hn": 118,
@@ -253,7 +253,7 @@
       "new_hn": 6,
       "active_sales": 20,
       "revenue_hcm": 156183000,
-      "revenue_hn": 2054334000
+      "revenue_hn": 2059628000
     }
   ],
   "top_partners": [
@@ -279,10 +279,10 @@
       "team": "invivo HN",
       "region": "HN",
       "month": "2026_06",
-      "revenue": 233456000,
-      "revenue_net": 112295037,
-      "listed": 233456000,
-      "orders": 206,
+      "revenue": 236103000,
+      "revenue_net": 113525070,
+      "listed": 236103000,
+      "orders": 209,
       "discount_pct": 51.9
     },
     {
@@ -23717,10 +23717,10 @@
       "team": "invivo HN",
       "region": "HN",
       "month": "2026_06",
-      "revenue": 233456000,
-      "revenue_net": 112295037,
-      "listed": 233456000,
-      "orders": 206,
+      "revenue": 236103000,
+      "revenue_net": 113525070,
+      "listed": 236103000,
+      "orders": 209,
       "discount_pct": 51.9
     },
     {
@@ -26161,10 +26161,10 @@
       "salesName": "InVivo HN (nội bộ)",
       "team": "invivo HN",
       "region": "HN",
-      "revenue": 715806000,
-      "revenue_net": 400435494,
-      "listed": 715806000,
-      "orders": 938,
+      "revenue": 718453000,
+      "revenue_net": 401665526,
+      "listed": 718453000,
+      "orders": 941,
       "discount_pct": 44.1
     },
     {
@@ -27939,19 +27939,19 @@
       "salesName": "InVivo HN (nội bộ)",
       "team": "invivo HN",
       "region": "HN",
-      "revenue": 715806000,
-      "revenue_net": 400435494,
-      "listed": 715806000,
-      "orders": 938,
+      "revenue": 718453000,
+      "revenue_net": 401665526,
+      "listed": 718453000,
+      "orders": 941,
       "discount_pct": 44.1
     }
   ],
   "service_mix": [
     {
       "group": "Hóa sinh",
-      "revenue": 336396000,
-      "listed": 336396000,
-      "count": 7790,
+      "revenue": 337150000,
+      "listed": 337150000,
+      "count": 7808,
       "discount_pct": 0.0
     },
     {
@@ -27963,9 +27963,9 @@
     },
     {
       "group": "Miễn dịch",
-      "revenue": 207302000,
-      "listed": 207302000,
-      "count": 1108,
+      "revenue": 207422000,
+      "listed": 207422000,
+      "count": 1109,
       "discount_pct": 0.0
     },
     {
@@ -27984,16 +27984,16 @@
     },
     {
       "group": "ELISA",
-      "revenue": 75582000,
-      "listed": 75582000,
-      "count": 245,
+      "revenue": 75792000,
+      "listed": 75792000,
+      "count": 246,
       "discount_pct": 0.0
     },
     {
       "group": "Huyết học",
-      "revenue": 72626000,
-      "listed": 72626000,
-      "count": 1132,
+      "revenue": 72686000,
+      "listed": 72686000,
+      "count": 1133,
       "discount_pct": 0.0
     },
     {
@@ -28005,16 +28005,16 @@
     },
     {
       "group": "Nội tiết - hoocmon",
-      "revenue": 41255000,
-      "listed": 41255000,
-      "count": 220,
+      "revenue": 42713000,
+      "listed": 42713000,
+      "count": 227,
       "discount_pct": 0.0
     },
     {
       "group": "Nước tiểu",
-      "revenue": 36357000,
-      "listed": 36357000,
-      "count": 661,
+      "revenue": 36402000,
+      "listed": 36402000,
+      "count": 662,
       "discount_pct": 0.0
     },
     {
@@ -34516,9 +34516,9 @@
       "team": "invivo HN",
       "month": "2026_06",
       "group": "Hóa sinh",
-      "revenue": 216466000,
-      "listed": 216466000,
-      "count": 5141,
+      "revenue": 217220000,
+      "listed": 217220000,
+      "count": 5159,
       "discount_pct": 0.0
     },
     {
@@ -34534,9 +34534,9 @@
       "team": "invivo HN",
       "month": "2026_06",
       "group": "Miễn dịch",
-      "revenue": 84326000,
-      "listed": 84326000,
-      "count": 491,
+      "revenue": 84446000,
+      "listed": 84446000,
+      "count": 492,
       "discount_pct": 0.0
     },
     {
@@ -34552,27 +34552,36 @@
       "team": "invivo HN",
       "month": "2026_06",
       "group": "Huyết học",
-      "revenue": 37198000,
-      "listed": 37198000,
-      "count": 561,
+      "revenue": 37258000,
+      "listed": 37258000,
+      "count": 562,
       "discount_pct": 0.0
     },
     {
       "team": "invivo HN",
       "month": "2026_06",
       "group": "Nước tiểu",
-      "revenue": 30632000,
-      "listed": 30632000,
-      "count": 549,
+      "revenue": 30677000,
+      "listed": 30677000,
+      "count": 550,
       "discount_pct": 0.0
     },
     {
       "team": "invivo HN",
       "month": "2026_06",
       "group": "ELISA",
-      "revenue": 27118000,
-      "listed": 27118000,
-      "count": 66,
+      "revenue": 27328000,
+      "listed": 27328000,
+      "count": 67,
+      "discount_pct": 0.0
+    },
+    {
+      "team": "invivo HN",
+      "month": "2026_06",
+      "group": "Nội tiết - hoocmon",
+      "revenue": 17656000,
+      "listed": 17656000,
+      "count": 80,
       "discount_pct": 0.0
     },
     {
@@ -34582,15 +34591,6 @@
       "revenue": 16840000,
       "listed": 16840000,
       "count": 41,
-      "discount_pct": 0.0
-    },
-    {
-      "team": "invivo HN",
-      "month": "2026_06",
-      "group": "Nội tiết - hoocmon",
-      "revenue": 16198000,
-      "listed": 16198000,
-      "count": 73,
       "discount_pct": 0.0
     },
     {
@@ -34666,9 +34666,9 @@
     },
     {
       "branch": "HN",
-      "revenue": 2054334000,
-      "revenue_invivo": 715806000,
-      "revenue_total": 2770140000
+      "revenue": 2059628000,
+      "revenue_invivo": 718453000,
+      "revenue_total": 2778081000
     }
   ],
   "teams": [
