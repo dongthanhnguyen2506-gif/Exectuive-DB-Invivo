@@ -1,68 +1,68 @@
 {
-  "updated_at": "2026-06-08T09:12:52+07:00",
-  "updated_at_vn": "09:12 08/06/2026",
+  "updated_at": "2026-06-08T09:58:54+07:00",
+  "updated_at_vn": "09:58 08/06/2026",
   "current_month": "2026_06",
-  "total_revenue": 809479238,
-  "total_listed": 1347638000,
-  "total_discount": 538158762,
+  "total_revenue": 818043408,
+  "total_listed": 1361513000,
+  "total_discount": 543469592,
   "discount_pct": 39.9,
-  "total_orders": 1850,
-  "active_partners": 122,
-  "inactive_partners": 79,
+  "total_orders": 1877,
+  "active_partners": 125,
+  "inactive_partners": 76,
   "new_partners": 7,
   "active_sales": 5,
-  "mom_growth_pct": -77.0,
-  "total_debt": 10176000,
+  "mom_growth_pct": -76.8,
+  "total_debt": 10370000,
   "top_debt": [
     {
-      "partnerCode": "01057",
-      "partnerName": "Nguyễn Thu Hiền",
-      "amount": 2230000
+      "partnerCode": "01395",
+      "partnerName": "Vương Tấn Hữu",
+      "amount": 3100000
     },
     {
-      "partnerCode": "01372",
-      "partnerName": "PK Hà Nam Ninh",
-      "amount": 1710000
+      "partnerCode": "01257",
+      "partnerName": "Lăng Thị Hoài Liên",
+      "amount": 2850000
     },
     {
-      "partnerCode": "01403",
-      "partnerName": "PK GIEO MẦM CUỘC SỐNG",
-      "amount": 1564000
+      "partnerCode": "01275",
+      "partnerName": "Trần Thị Chung",
+      "amount": 2750000
     },
     {
-      "partnerCode": "01552",
-      "partnerName": "Bs Sơn-PK Tâm An Ecopark",
-      "amount": 1195000
+      "partnerCode": "01312",
+      "partnerName": "Nay Siu H Sa Li",
+      "amount": 510000
     },
     {
-      "partnerCode": "00517",
-      "partnerName": "Nguyễn Thị Hoà",
-      "amount": 660000
+      "partnerCode": "00709",
+      "partnerName": "Bs. Hoàng Ngọc Tuyền ",
+      "amount": 280000
     },
     {
-      "partnerCode": "00538",
-      "partnerName": "Nha khoa singae",
-      "amount": 610000
+      "partnerCode": "01259",
+      "partnerName": "Lê Thị Ánh Hồng",
+      "amount": 190000
     },
     {
-      "partnerCode": "00851",
-      "partnerName": "PK Tâm Anh",
-      "amount": 536000
+      "partnerCode": "01493",
+      "partnerName": "Nha Khoa Thúy Đức",
+      "amount": 179000
     },
     {
-      "partnerCode": "01470",
-      "partnerName": "Phòng Khám  ST PAUL",
-      "amount": 466000
+      "partnerCode": "01387",
+      "partnerName": "Bs Thức",
+      "amount": 158000
     },
     {
-      "partnerCode": "01194",
-      "partnerName": "Bs Nhung",
-      "amount": 438000
+      "partnerCode": "01419",
+      "partnerName": "Nguyễn Thị Linh ",
+      "amount": 148000
     },
     {
-      "partnerCode": "01352",
-      "partnerName": "Pk sản phụ khoa 20 Phúc Diễn",
-      "amount": 200000
+      "partnerCode": "01270",
+      "partnerName": "Ngô Duy Anh",
+      "amount": 145000
     }
   ],
   "monthly": [
@@ -148,12 +148,12 @@
     },
     {
       "month": "2026_06",
-      "revenue_actual": 809479238,
-      "revenue_listed": 1347638000,
-      "discount": 538158762,
+      "revenue_actual": 818043408,
+      "revenue_listed": 1361513000,
+      "discount": 543469592,
       "discount_pct": 39.9,
-      "order_count": 1850,
-      "active_partners": 122,
+      "order_count": 1877,
+      "active_partners": 125,
       "active_sales": 5
     }
   ],
@@ -289,6 +289,19 @@
       "discount_pct": 32.7
     },
     {
+      "partnerCode": "01395",
+      "partnerName": "Vương Tấn Hữu",
+      "saleCode": "",
+      "saleName": "",
+      "team": "KD HCM",
+      "region": "HCM",
+      "month": "2026_06",
+      "revenue": 12399000,
+      "listed": 20665000,
+      "orders": 14,
+      "discount_pct": 40.0
+    },
+    {
       "partnerCode": "01387",
       "partnerName": "Bs Thức",
       "saleCode": "",
@@ -296,9 +309,9 @@
       "team": "KD HCM",
       "region": "HCM",
       "month": "2026_06",
-      "revenue": 12015000,
-      "listed": 20025000,
-      "orders": 17,
+      "revenue": 12109800,
+      "listed": 20183000,
+      "orders": 18,
       "discount_pct": 40.0
     },
     {
@@ -325,19 +338,6 @@
       "revenue": 10916400,
       "listed": 18194000,
       "orders": 15,
-      "discount_pct": 40.0
-    },
-    {
-      "partnerCode": "01395",
-      "partnerName": "Vương Tấn Hữu",
-      "saleCode": "",
-      "saleName": "",
-      "team": "KD HCM",
-      "region": "HCM",
-      "month": "2026_06",
-      "revenue": 10539000,
-      "listed": 17565000,
-      "orders": 13,
       "discount_pct": 40.0
     },
     {
@@ -393,6 +393,19 @@
       "discount_pct": 35.0
     },
     {
+      "partnerCode": "01257",
+      "partnerName": "Lăng Thị Hoài Liên",
+      "saleCode": "",
+      "saleName": "",
+      "team": "KD HCM",
+      "region": "HCM",
+      "month": "2026_06",
+      "revenue": 7170300,
+      "listed": 11968000,
+      "orders": 14,
+      "discount_pct": 40.1
+    },
+    {
       "partnerCode": "00489",
       "partnerName": "Trung tâm sức khỏe nghề nghiệp",
       "saleCode": "",
@@ -404,19 +417,6 @@
       "listed": 18960000,
       "orders": 158,
       "discount_pct": 62.5
-    },
-    {
-      "partnerCode": "01308",
-      "partnerName": "Pk  Gia Đình Việt",
-      "saleCode": "",
-      "saleName": "",
-      "team": "KD HCM",
-      "region": "HCM",
-      "month": "2026_06",
-      "revenue": 7015800,
-      "listed": 11693000,
-      "orders": 14,
-      "discount_pct": 40.0
     }
   ],
   "partners_by_month": [
@@ -21364,6 +21364,19 @@
       "discount_pct": 32.7
     },
     {
+      "partnerCode": "01395",
+      "partnerName": "Vương Tấn Hữu",
+      "saleCode": "",
+      "saleName": "",
+      "team": "KD HCM",
+      "region": "HCM",
+      "month": "2026_06",
+      "revenue": 12399000,
+      "listed": 20665000,
+      "orders": 14,
+      "discount_pct": 40.0
+    },
+    {
       "partnerCode": "01387",
       "partnerName": "Bs Thức",
       "saleCode": "",
@@ -21371,9 +21384,9 @@
       "team": "KD HCM",
       "region": "HCM",
       "month": "2026_06",
-      "revenue": 12015000,
-      "listed": 20025000,
-      "orders": 17,
+      "revenue": 12109800,
+      "listed": 20183000,
+      "orders": 18,
       "discount_pct": 40.0
     },
     {
@@ -21400,19 +21413,6 @@
       "revenue": 10916400,
       "listed": 18194000,
       "orders": 15,
-      "discount_pct": 40.0
-    },
-    {
-      "partnerCode": "01395",
-      "partnerName": "Vương Tấn Hữu",
-      "saleCode": "",
-      "saleName": "",
-      "team": "KD HCM",
-      "region": "HCM",
-      "month": "2026_06",
-      "revenue": 10539000,
-      "listed": 17565000,
-      "orders": 13,
       "discount_pct": 40.0
     },
     {
@@ -21466,6 +21466,19 @@
       "listed": 11829000,
       "orders": 26,
       "discount_pct": 35.0
+    },
+    {
+      "partnerCode": "01257",
+      "partnerName": "Lăng Thị Hoài Liên",
+      "saleCode": "",
+      "saleName": "",
+      "team": "KD HCM",
+      "region": "HCM",
+      "month": "2026_06",
+      "revenue": 7170300,
+      "listed": 11968000,
+      "orders": 14,
+      "discount_pct": 40.1
     },
     {
       "partnerCode": "00489",
@@ -21572,6 +21585,19 @@
       "discount_pct": 35.0
     },
     {
+      "partnerCode": "01270",
+      "partnerName": "Ngô Duy Anh",
+      "saleCode": "",
+      "saleName": "",
+      "team": "KD HCM",
+      "region": "HCM",
+      "month": "2026_06",
+      "revenue": 5574150,
+      "listed": 9354000,
+      "orders": 17,
+      "discount_pct": 40.4
+    },
+    {
       "partnerCode": "01006",
       "partnerName": "Phòng Khám Xét Nghiệm Family Lab",
       "saleCode": "",
@@ -21598,32 +21624,6 @@
       "discount_pct": 35.0
     },
     {
-      "partnerCode": "01270",
-      "partnerName": "Ngô Duy Anh",
-      "saleCode": "",
-      "saleName": "",
-      "team": "KD HCM",
-      "region": "HCM",
-      "month": "2026_06",
-      "revenue": 5491400,
-      "listed": 9209000,
-      "orders": 16,
-      "discount_pct": 40.4
-    },
-    {
-      "partnerCode": "01257",
-      "partnerName": "Lăng Thị Hoài Liên",
-      "saleCode": "",
-      "saleName": "",
-      "team": "KD HCM",
-      "region": "HCM",
-      "month": "2026_06",
-      "revenue": 5460300,
-      "listed": 9118000,
-      "orders": 10,
-      "discount_pct": 40.1
-    },
-    {
       "partnerCode": "00943",
       "partnerName": "Phòng khám EcoHealth",
       "saleCode": "",
@@ -21635,6 +21635,19 @@
       "listed": 8100000,
       "orders": 9,
       "discount_pct": 35.0
+    },
+    {
+      "partnerCode": "00290",
+      "partnerName": "PK Chân Trời Mới",
+      "saleCode": "",
+      "saleName": "",
+      "team": "",
+      "region": "",
+      "month": "2026_06",
+      "revenue": 4858700,
+      "listed": 6941000,
+      "orders": 6,
+      "discount_pct": 30.0
     },
     {
       "partnerCode": "01324",
@@ -21657,10 +21670,10 @@
       "team": "",
       "region": "",
       "month": "2026_06",
-      "revenue": 4643232,
-      "listed": 8956000,
-      "orders": 13,
-      "discount_pct": 48.2
+      "revenue": 4713952,
+      "listed": 9086000,
+      "orders": 14,
+      "discount_pct": 48.1
     },
     {
       "partnerCode": "01426",
@@ -21735,9 +21748,9 @@
       "team": "",
       "region": "",
       "month": "2026_06",
-      "revenue": 4108300,
-      "listed": 5869000,
-      "orders": 6,
+      "revenue": 4150300,
+      "listed": 5929000,
+      "orders": 7,
       "discount_pct": 30.0
     },
     {
@@ -21754,19 +21767,6 @@
       "discount_pct": 30.0
     },
     {
-      "partnerCode": "00290",
-      "partnerName": "PK Chân Trời Mới",
-      "saleCode": "",
-      "saleName": "",
-      "team": "",
-      "region": "",
-      "month": "2026_06",
-      "revenue": 3784200,
-      "listed": 5406000,
-      "orders": 4,
-      "discount_pct": 30.0
-    },
-    {
       "partnerCode": "00245",
       "partnerName": "Phòng khám 52 Nguyễn Trãi",
       "saleCode": "",
@@ -21778,6 +21778,19 @@
       "listed": 6230000,
       "orders": 15,
       "discount_pct": 42.1
+    },
+    {
+      "partnerCode": "01381",
+      "partnerName": "PK MEDSUN",
+      "saleCode": "",
+      "saleName": "",
+      "team": "KD HCM",
+      "region": "HCM",
+      "month": "2026_06",
+      "revenue": 3606000,
+      "listed": 6010000,
+      "orders": 13,
+      "discount_pct": 40.0
     },
     {
       "partnerCode": "01300",
@@ -21845,6 +21858,19 @@
       "discount_pct": 40.0
     },
     {
+      "partnerCode": "01275",
+      "partnerName": "Trần Thị Chung",
+      "saleCode": "",
+      "saleName": "",
+      "team": "KD HCM",
+      "region": "HCM",
+      "month": "2026_06",
+      "revenue": 2994000,
+      "listed": 5060000,
+      "orders": 10,
+      "discount_pct": 40.8
+    },
+    {
       "partnerCode": "00628",
       "partnerName": "Dr.Care (Công nợ)",
       "saleCode": "",
@@ -21856,19 +21882,6 @@
       "listed": 4460000,
       "orders": 9,
       "discount_pct": 35.0
-    },
-    {
-      "partnerCode": "01381",
-      "partnerName": "PK MEDSUN",
-      "saleCode": "",
-      "saleName": "",
-      "team": "KD HCM",
-      "region": "HCM",
-      "month": "2026_06",
-      "revenue": 2706000,
-      "listed": 4510000,
-      "orders": 12,
-      "discount_pct": 40.0
     },
     {
       "partnerCode": "01534",
@@ -21897,6 +21910,19 @@
       "discount_pct": 33.0
     },
     {
+      "partnerCode": "01281",
+      "partnerName": "PK HOÀNG GIA",
+      "saleCode": "",
+      "saleName": "",
+      "team": "KD HCM",
+      "region": "HCM",
+      "month": "2026_06",
+      "revenue": 2505100,
+      "listed": 3854000,
+      "orders": 13,
+      "discount_pct": 35.0
+    },
+    {
       "partnerCode": "01273",
       "partnerName": "Bs Hồng Đăng",
       "saleCode": "",
@@ -21907,19 +21933,6 @@
       "revenue": 2437500,
       "listed": 3750000,
       "orders": 5,
-      "discount_pct": 35.0
-    },
-    {
-      "partnerCode": "01281",
-      "partnerName": "PK HOÀNG GIA",
-      "saleCode": "",
-      "saleName": "",
-      "team": "KD HCM",
-      "region": "HCM",
-      "month": "2026_06",
-      "revenue": 2381600,
-      "listed": 3664000,
-      "orders": 11,
       "discount_pct": 35.0
     },
     {
@@ -21947,6 +21960,19 @@
       "listed": 3467000,
       "orders": 13,
       "discount_pct": 40.0
+    },
+    {
+      "partnerCode": "01259",
+      "partnerName": "Lê Thị Ánh Hồng",
+      "saleCode": "",
+      "saleName": "",
+      "team": "KD HCM",
+      "region": "HCM",
+      "month": "2026_06",
+      "revenue": 1980900,
+      "listed": 3328000,
+      "orders": 4,
+      "discount_pct": 40.5
     },
     {
       "partnerCode": "01365",
@@ -22025,19 +22051,6 @@
       "listed": 3118000,
       "orders": 2,
       "discount_pct": 40.0
-    },
-    {
-      "partnerCode": "01259",
-      "partnerName": "Lê Thị Ánh Hồng",
-      "saleCode": "",
-      "saleName": "",
-      "team": "KD HCM",
-      "region": "HCM",
-      "month": "2026_06",
-      "revenue": 1866900,
-      "listed": 3138000,
-      "orders": 2,
-      "discount_pct": 40.5
     },
     {
       "partnerCode": "01254",
@@ -22196,19 +22209,6 @@
       "discount_pct": 35.0
     },
     {
-      "partnerCode": "01275",
-      "partnerName": "Trần Thị Chung",
-      "saleCode": "",
-      "saleName": "",
-      "team": "KD HCM",
-      "region": "HCM",
-      "month": "2026_06",
-      "revenue": 1344000,
-      "listed": 2310000,
-      "orders": 5,
-      "discount_pct": 41.8
-    },
-    {
       "partnerCode": "00323",
       "partnerName": "BS Trần Hoài Linh - Khoa HSTC BV Xanh Pôn",
       "saleCode": "",
@@ -22261,6 +22261,19 @@
       "discount_pct": 43.6
     },
     {
+      "partnerCode": "01312",
+      "partnerName": "Nay Siu H Sa Li",
+      "saleCode": "",
+      "saleName": "",
+      "team": "KD HCM",
+      "region": "HCM",
+      "month": "2026_06",
+      "revenue": 1201800,
+      "listed": 2003000,
+      "orders": 5,
+      "discount_pct": 40.0
+    },
+    {
       "partnerCode": "01380",
       "partnerName": "PK An Sinh 5 - Ninh Bình (DOANH NGHIỆP TƯ NHÂN DỊCH VỤ Y TẾ TOÀN MINH - CHI NHÁNH PHÒNG KHÁM ĐA KHOA AN SINH 5)",
       "saleCode": "",
@@ -22300,6 +22313,19 @@
       "discount_pct": 40.0
     },
     {
+      "partnerCode": "01493",
+      "partnerName": "Nha Khoa Thúy Đức",
+      "saleCode": "",
+      "saleName": "",
+      "team": "KD HCM",
+      "region": "HCM",
+      "month": "2026_06",
+      "revenue": 966600,
+      "listed": 1074000,
+      "orders": 6,
+      "discount_pct": 10.0
+    },
+    {
       "partnerCode": "01284",
       "partnerName": "Bs Huyền",
       "saleCode": "",
@@ -22311,32 +22337,6 @@
       "listed": 1307000,
       "orders": 2,
       "discount_pct": 30.0
-    },
-    {
-      "partnerCode": "01312",
-      "partnerName": "Nay Siu H Sa Li",
-      "saleCode": "",
-      "saleName": "",
-      "team": "KD HCM",
-      "region": "HCM",
-      "month": "2026_06",
-      "revenue": 895800,
-      "listed": 1493000,
-      "orders": 3,
-      "discount_pct": 40.0
-    },
-    {
-      "partnerCode": "01493",
-      "partnerName": "Nha Khoa Thúy Đức",
-      "saleCode": "",
-      "saleName": "",
-      "team": "KD HCM",
-      "region": "HCM",
-      "month": "2026_06",
-      "revenue": 805500,
-      "listed": 895000,
-      "orders": 5,
-      "discount_pct": 10.0
     },
     {
       "partnerCode": "00517",
@@ -22729,6 +22729,19 @@
       "discount_pct": 30.0
     },
     {
+      "partnerCode": "00709",
+      "partnerName": "Bs. Hoàng Ngọc Tuyền",
+      "saleCode": "",
+      "saleName": "",
+      "team": "",
+      "region": "",
+      "month": "2026_06",
+      "revenue": 196000,
+      "listed": 280000,
+      "orders": 1,
+      "discount_pct": 30.0
+    },
+    {
       "partnerCode": "00921",
       "partnerName": "Sản Phụ Khoa Hiếm Muộn Bạch Tuyết",
       "saleCode": "",
@@ -22791,6 +22804,32 @@
       "revenue": 117000,
       "listed": 195000,
       "orders": 2,
+      "discount_pct": 40.0
+    },
+    {
+      "partnerCode": "01018",
+      "partnerName": "Vũ Đình Thành",
+      "saleCode": "",
+      "saleName": "",
+      "team": "",
+      "region": "",
+      "month": "2026_06",
+      "revenue": 90000,
+      "listed": 150000,
+      "orders": 1,
+      "discount_pct": 40.0
+    },
+    {
+      "partnerCode": "01419",
+      "partnerName": "Nguyễn Thị Linh",
+      "saleCode": "",
+      "saleName": "",
+      "team": "KD HCM",
+      "region": "HCM",
+      "month": "2026_06",
+      "revenue": 88800,
+      "listed": 148000,
+      "orders": 1,
       "discount_pct": 40.0
     },
     {
@@ -23454,31 +23493,31 @@
   "service_mix": [
     {
       "group": "Sàng lọc trước sinh",
-      "revenue": 240317011,
-      "listed": 348790000,
-      "count": 138,
-      "discount_pct": 31.1
+      "revenue": 243977011,
+      "listed": 354890000,
+      "count": 141,
+      "discount_pct": 31.3
     },
     {
       "group": "Hóa sinh",
-      "revenue": 170694668,
-      "listed": 291621000,
-      "count": 6849,
-      "discount_pct": 41.5
+      "revenue": 172057088,
+      "listed": 293641000,
+      "count": 6891,
+      "discount_pct": 41.4
     },
     {
       "group": "Miễn dịch",
-      "revenue": 110929148,
-      "listed": 184341000,
-      "count": 984,
+      "revenue": 111121548,
+      "listed": 184637000,
+      "count": 986,
       "discount_pct": 39.8
     },
     {
       "group": "Sinh học phân tử",
-      "revenue": 58788828,
-      "listed": 112853000,
-      "count": 118,
-      "discount_pct": 47.9
+      "revenue": 61518828,
+      "listed": 117403000,
+      "count": 127,
+      "discount_pct": 47.6
     },
     {
       "group": "Sàng lọc sơ sinh",
@@ -23496,16 +23535,16 @@
     },
     {
       "group": "Huyết học",
-      "revenue": 32387760,
-      "listed": 52422000,
-      "count": 803,
-      "discount_pct": 38.2
+      "revenue": 32746860,
+      "listed": 52901000,
+      "count": 811,
+      "discount_pct": 38.1
     },
     {
       "group": "Tế bào - Giải phẫu bệnh",
-      "revenue": 23352452,
-      "listed": 46810000,
-      "count": 235,
+      "revenue": 23442452,
+      "listed": 46960000,
+      "count": 236,
       "discount_pct": 50.1
     },
     {
@@ -23517,9 +23556,9 @@
     },
     {
       "group": "Nước tiểu",
-      "revenue": 20624434,
-      "listed": 34537000,
-      "count": 628,
+      "revenue": 20794684,
+      "listed": 34817000,
+      "count": 632,
       "discount_pct": 40.3
     },
     {
@@ -27924,27 +27963,27 @@
       "team": "KD HCM",
       "month": "2026_06",
       "group": "Sàng lọc trước sinh",
-      "revenue": 185170461,
-      "listed": 248690000,
-      "count": 89,
-      "discount_pct": 25.5
+      "revenue": 188830461,
+      "listed": 254790000,
+      "count": 92,
+      "discount_pct": 25.9
     },
     {
       "team": "KD HCM",
       "month": "2026_06",
       "group": "Miễn dịch",
-      "revenue": 53802496,
-      "listed": 92916000,
-      "count": 500,
+      "revenue": 53891296,
+      "listed": 93064000,
+      "count": 501,
       "discount_pct": 42.1
     },
     {
       "team": "KD HCM",
       "month": "2026_06",
       "group": "Hóa sinh",
-      "revenue": 47561530,
-      "listed": 87426000,
-      "count": 1932,
+      "revenue": 47801830,
+      "listed": 87814000,
+      "count": 1941,
       "discount_pct": 45.6
     },
     {
@@ -27960,10 +27999,10 @@
       "team": "KD HCM",
       "month": "2026_06",
       "group": "Sinh học phân tử",
-      "revenue": 39564488,
-      "listed": 83350000,
-      "count": 84,
-      "discount_pct": 52.5
+      "revenue": 42294488,
+      "listed": 87900000,
+      "count": 93,
+      "discount_pct": 51.9
     },
     {
       "team": "KD HCM",
@@ -27987,10 +28026,10 @@
       "team": "KD HCM",
       "month": "2026_06",
       "group": "Huyết học",
-      "revenue": 12363420,
-      "listed": 19797000,
-      "count": 305,
-      "discount_pct": 37.5
+      "revenue": 12596520,
+      "listed": 20096000,
+      "count": 310,
+      "discount_pct": 37.3
     },
     {
       "team": "KD HCM",
@@ -28041,10 +28080,10 @@
       "team": "KD HCM",
       "month": "2026_06",
       "group": "Nước tiểu",
-      "revenue": 2114984,
-      "listed": 3790000,
-      "count": 82,
-      "discount_pct": 44.2
+      "revenue": 2253734,
+      "listed": 4025000,
+      "count": 85,
+      "discount_pct": 44.0
     },
     {
       "team": "KD HCM",
@@ -28176,18 +28215,18 @@
       "team": "unknown",
       "month": "2026_06",
       "group": "Hóa sinh",
-      "revenue": 121837038,
-      "listed": 202267000,
-      "count": 4869,
-      "discount_pct": 39.8
+      "revenue": 122959158,
+      "listed": 203899000,
+      "count": 4902,
+      "discount_pct": 39.7
     },
     {
       "team": "unknown",
       "month": "2026_06",
       "group": "Miễn dịch",
-      "revenue": 56384352,
-      "listed": 90283000,
-      "count": 477,
+      "revenue": 56487952,
+      "listed": 90431000,
+      "count": 478,
       "discount_pct": 37.5
     },
     {
@@ -28212,10 +28251,10 @@
       "team": "unknown",
       "month": "2026_06",
       "group": "Huyết học",
-      "revenue": 19710640,
-      "listed": 32147000,
-      "count": 490,
-      "discount_pct": 38.7
+      "revenue": 19836640,
+      "listed": 32327000,
+      "count": 493,
+      "discount_pct": 38.6
     },
     {
       "team": "unknown",
@@ -28230,19 +28269,19 @@
       "team": "unknown",
       "month": "2026_06",
       "group": "Nước tiểu",
-      "revenue": 18480200,
-      "listed": 30702000,
-      "count": 545,
+      "revenue": 18511700,
+      "listed": 30747000,
+      "count": 546,
       "discount_pct": 39.8
     },
     {
       "team": "unknown",
       "month": "2026_06",
       "group": "Tế bào - Giải phẫu bệnh",
-      "revenue": 11473964,
-      "listed": 25660000,
-      "count": 176,
-      "discount_pct": 55.3
+      "revenue": 11563964,
+      "listed": 25810000,
+      "count": 177,
+      "discount_pct": 55.2
     },
     {
       "team": "unknown",
@@ -28302,7 +28341,7 @@
   "branch_breakdown": [
     {
       "branch": "HCM",
-      "revenue": 454167660
+      "revenue": 461258610
     },
     {
       "branch": "HN",
