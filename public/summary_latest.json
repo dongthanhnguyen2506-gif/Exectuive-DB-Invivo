@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-06-08T13:01:03+07:00",
-  "updated_at_vn": "13:01 08/06/2026",
+  "updated_at": "2026-06-08T13:07:23+07:00",
+  "updated_at_vn": "13:07 08/06/2026",
   "current_month": "2026_06",
   "total_revenue": 822865911,
   "total_listed": 1413377000,
@@ -10,7 +10,7 @@
   "active_partners": 159,
   "inactive_partners": 93,
   "new_partners": 14,
-  "active_sales": 20,
+  "active_sales": 18,
   "mom_growth_pct": -77.7,
   "total_debt": 25400000,
   "top_debt": [
@@ -23816,17 +23816,6 @@
   "top_sales": [
     {
       "month": "2026_06",
-      "sales": "invivoHN",
-      "salesName": "InVivo HN (noi bo)",
-      "team": "invivo HN",
-      "region": "HN",
-      "revenue": 391200104,
-      "listed": 694582000,
-      "orders": 912,
-      "discount_pct": 43.7
-    },
-    {
-      "month": "2026_06",
       "sales": "khuyenhn",
       "salesName": "Hà Ngọc Khuyến",
       "team": "KD04",
@@ -24003,17 +23992,6 @@
     },
     {
       "month": "2026_06",
-      "sales": "invivoHCM",
-      "salesName": "InVivo HCM (noi bo)",
-      "team": "invivo HCM",
-      "region": "HN",
-      "revenue": 1560000,
-      "listed": 3465000,
-      "orders": 4,
-      "discount_pct": 55.0
-    },
-    {
-      "month": "2026_06",
       "sales": "phunb",
       "salesName": "phunb",
       "team": "KD HCM",
@@ -24033,6 +24011,30 @@
       "listed": 280000,
       "orders": 1,
       "discount_pct": 30.0
+    }
+  ],
+  "internal_sales": [
+    {
+      "month": "2026_06",
+      "sales": "invivoHN",
+      "salesName": "InVivo HN (noi bo)",
+      "team": "invivo HN",
+      "region": "HN",
+      "revenue": 391200104,
+      "listed": 694582000,
+      "orders": 912,
+      "discount_pct": 43.7
+    },
+    {
+      "month": "2026_06",
+      "sales": "invivoHCM",
+      "salesName": "InVivo HCM (noi bo)",
+      "team": "invivo HCM",
+      "region": "HN",
+      "revenue": 1560000,
+      "listed": 3465000,
+      "orders": 4,
+      "discount_pct": 55.0
     }
   ],
   "sales_monthly": [
