@@ -163,7 +163,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;backgroun
 </div>
 <!-- PAGE 2 -->
 <div class="page" id="page-2">
-  <div class="kpi-grid g4" id="kpi2"></div>
+  <div class="kpi-grid g6" id="kpi2"></div>
   <div class="g2">
     <div class="card"><div class="card-title">KH Active theo tháng</div><div class="card-sub" id="c2a-sub">Số KH có giao dịch</div><div style="position:relative;height:200px"><canvas id="c2a"></canvas></div></div>
     <div class="card"><div class="card-title">Pareto — Tập trung doanh thu</div><div class="card-sub" id="c2b-sub">Top 10 KH</div><div style="position:relative;height:200px"><canvas id="c2b"></canvas></div></div>
@@ -270,15 +270,23 @@ function khStats(){
   const m=curMonth(),pbm=D.partners_by_month||[],ms=D.monthly||[];
   const idx=ms.findIndex(x=>x.month===SEL_MONTH),prevMo=idx>0?ms[idx-1].month:null;
   if(!SEL_TEAM){
+    const reactive=m.reactive_partners||0;
+    const reactRate=m.reactive_rate||0;
+    const managed=D.total_managed?Object.values(D.total_managed).reduce((a,x)=>a+x,0):0;
     return{active:m.active_partners||0,active_hcm:m.active_hcm||0,active_hn:m.active_hn||0,
       inactive:m.inactive_partners||0,inactive_hcm:m.inactive_hcm||0,inactive_hn:m.inactive_hn||0,
-      newP:m.new_partners||0,new_hcm:m.new_hcm||0,new_hn:m.new_hn||0};
+      newP:m.new_partners||0,new_hcm:m.new_hcm||0,new_hn:m.new_hn||0,
+      reactive,reactRate,managed};
   }
   const cur=new Set(pbm.filter(p=>p.month===SEL_MONTH&&p.team===SEL_TEAM&&!INTERNAL.has(p.saleCode||'')).map(p=>p.partnerCode));
   const prev=prevMo?new Set(pbm.filter(p=>p.month===prevMo&&p.team===SEL_TEAM&&!INTERNAL.has(p.saleCode||'')).map(p=>p.partnerCode)):new Set();
+  const reactive=[...cur].filter(c=>prev.has(c)).length;
+  const reactRate=prev.size?Math.round(reactive/prev.size*100):0;
+  const managed=(D.total_managed&&D.total_managed[SEL_TEAM])||0;
   return{active:cur.size,active_hcm:0,active_hn:0,
     inactive:[...prev].filter(c=>!cur.has(c)).length,inactive_hcm:0,inactive_hn:0,
-    newP:[...cur].filter(c=>!prev.has(c)).length,new_hcm:0,new_hn:0};
+    newP:[...cur].filter(c=>!prev.has(c)).length,new_hcm:0,new_hn:0,
+    reactive,reactRate,managed};
 }
 
 function filteredPartners(limit){
@@ -339,7 +347,16 @@ function mkWF(id,rows){
   const mx=Math.max(...rows.map(r=>Math.abs(r.val)));
   document.getElementById(id).innerHTML=rows.map(w=>`<div class="wf-row"><div class="wf-label">${w.label}</div><div class="wf-track"><div class="wf-fill" style="width:${Math.min(100,Math.abs(w.val)/mx*100)}%;background:${w.color}">${fmtM(Math.abs(w.val))} Tr</div></div><div class="wf-num" style="color:${w.val<0?'var(--red)':'var(--blue)'}">${w.val<0?'-':''}${fmtM(Math.abs(w.val))} Tr</div></div>`).join('');
 }
-function perfBar(rev,mx,ci){const p=Math.round(rev/mx*100);return`<div style="display:flex;align-items:center;gap:5px"><div style="flex:1;height:5px;background:var(--surface2);border-radius:3px;min-width:50px"><div style="width:${p}%;height:100%;background:${COLORS[ci%COLORS.length]};border-radius:3px"></div></div><span style="font-size:10px;color:var(--muted)">${p}%</span></div>`;}
+const KPI_TARGET=300e6;
+function perfBar(rev,_u,ci){
+  const c=COLORS[ci%COLORS.length];
+  const pct=Math.min(200,Math.round(rev/KPI_TARGET*100));
+  const over=rev>KPI_TARGET;
+  const barW=Math.min(100,pct);
+  const label=over?`+${Math.round((rev-KPI_TARGET)/1e6)}Tr vượt KPI`:`${pct}% KPI`;
+  const barColor=over?'#00e5a0':c;
+  return`<div style="display:flex;align-items:center;gap:6px"><div style="flex:1;height:5px;background:rgba(255,255,255,.06);border-radius:3px;min-width:60px"><div style="width:${barW}%;height:100%;background:${barColor};border-radius:3px;transition:width .5s"></div></div><span style="font-size:10px;color:${over?'#00e5a0':'rgba(160,180,220,.6)'};white-space:nowrap">${label}</span></div>`;
+}
 
 // ── Data load ──────────────────────────────────────────────
 async function loadData(){
@@ -368,7 +385,9 @@ function p0(cur,prev,ms){
   const nl=SEL_TEAM?ts.nl:(cur.revenue_actual||0);
   const rn=SEL_TEAM?ts.rn:(cur.revenue_net||cur.total_revenue_net||0);
   const disc=nl-rn,prevNl=SEL_TEAM?tsp.nl:(prev.revenue_actual||0);
-  const mom=prevNl?((nl-prevNl)/prevNl*100):null;
+  const isCurMonth=SEL_MONTH===D.current_month;
+  const mom=(isCurMonth&&!SEL_TEAM&&D.mom_mtd_pct!=null)?D.mom_mtd_pct:(prevNl?((nl-prevNl)/prevNl*100):null);
+  const mtdDays=D.mtd_days||null;
   const kh=khStats(),debt=D.total_debt||0;
   const tag=`${ml(SEL_MONTH)}${SEL_TEAM?' · '+SEL_TEAM:''}`;
 
@@ -376,35 +395,34 @@ function p0(cur,prev,ms){
     {label:'Doanh thu (NL) · '+tag,val:fmtM(nl)+' Tr',vc:'var(--blue)',c:'b',
       ch:mom!=null?(mom>=0?'↑ +':'↓ ')+Math.abs(mom).toFixed(1)+'% MoM':'↔ MTD',cc:mom!=null?(mom>=0?'up':'dn'):'fl'},
     {label:'DT Ròng · '+tag,val:fmtM(rn)+' Tr',vc:'var(--green)',c:'g',ch:'↔ Thực nhận sau CK'},
-    {label:'KH Active · '+ml(SEL_MONTH),val:fmtN(kh.active),c:'g',
-      ch:SEL_TEAM?'↔ '+SEL_TEAM:'↔ HCM '+fmtN(kh.active_hcm)+' · HN '+fmtN(kh.active_hn)},
-    {label:'KH Inactive',val:fmtN(kh.inactive),vc:kh.inactive>20?'var(--red)':'var(--amber)',c:kh.inactive>20?'r':'a',
+    {label:'KH Active · '+ml(SEL_MONTH),val:fmtN(kh.active),c:'b',
+      ch:SEL_TEAM?'↔ '+(TEAM_NAMES[SEL_TEAM]||SEL_TEAM):'↔ HCM '+fmtN(kh.active_hcm)+' · HN '+fmtN(kh.active_hn)},
+    {label:'Reactive · '+ml(SEL_MONTH),val:fmtN(kh.reactive||0),c:'g',
+      ch:'↔ '+(kh.reactRate||0)+'% giữ chân vs tháng trước'},
+    {label:'KH Mới',val:fmtN(kh.newP),c:'g',
+      ch:SEL_TEAM?'↑ lần đầu':'↑ HCM '+fmtN(kh.new_hcm)+' · HN '+fmtN(kh.new_hn)},
+    {label:'KH Inactive',val:fmtN(kh.inactive),c:kh.inactive>20?'r':'a',
       ch:SEL_TEAM?'↓ vs tháng trước':'↓ HCM '+fmtN(kh.inactive_hcm)+' · HN '+fmtN(kh.inactive_hn)},
-    {label:'KH Mới',val:fmtN(kh.newP),vc:'var(--green)',c:'g',
-      ch:SEL_TEAM?'↑ lần đầu kỳ này':'↑ HCM '+fmtN(kh.new_hcm)+' · HN '+fmtN(kh.new_hn)},
-    {label:'Công nợ',val:debt?fmtM(debt)+' Tr':'—',vc:'var(--red)',c:'r',ch:'⚠ HN+HCM chưa thu'},
   ]);
 
-  // Chart stacked by team
+  // Chart stacked by team - include tat ca teams ke ca invivo
   {
     const smAll=D.sales_monthly||[];
-    const TEAM_COLORS={'KD HCM':PAL.blue,'KD01':PAL.green,'KD04':PAL.amber,'KD05':PAL.purple,'invivo':PAL.muted};
-    const labels0=ms.map(m=>ml(m.month));
-    // Lay cac team active (co DT > 0 trong bat ky thang nao), filter theo SEL_TEAM
-    const allTeams=Object.keys(TEAM_COLORS);
-    const activeTeams=SEL_TEAM?[SEL_TEAM]:allTeams.filter(t=>
-      ms.some(m=>smAll.filter(s=>s.month===m.month&&s.team===t&&!INTERNAL.has(s.sales)).reduce((a,x)=>a+(x.revenue||0),0)>0)
-    );
-    const datasets0=activeTeams.map(t=>{
-      const color=TEAM_COLORS[t]||PAL.muted;
-      return{
-        label:t,stack:'s',
-        data:ms.map(m=>+(smAll.filter(s=>s.month===m.month&&s.team===t&&!INTERNAL.has(s.sales)).reduce((a,x)=>a+(x.revenue||0),0)/1e6).toFixed(1)),
-        backgroundColor:ms.map(m=>m.month===SEL_MONTH?color:color.replace('#','#')+' ').map((c,i)=>ms[i].month===SEL_MONTH?color:color+'55'),
-      };
+    const ALL_TC={'KD HCM':'#00d4ff','KD01':'#00e5a0','KD04':'#ffb347','KD05':'#a78bfa','invivo':'rgba(139,148,158,.8)','invivo HN':'rgba(100,115,140,.7)','invivo HCM':'rgba(80,100,130,.7)'};
+    const ALL_TN={'KD HCM':'KD HCM','KD01':'KD01','KD04':'KD04','KD05':'KD05','invivo':'InVivo','invivo HN':'Nội bộ HN','invivo HCM':'Nội bộ HCM'};
+    const getR=(m,t)=>smAll.filter(s=>s.month===m.month&&s.team===t).reduce((a,x)=>a+(x.revenue||0),0);
+    const allT=Object.keys(ALL_TC);
+    const activeT=SEL_TEAM?[SEL_TEAM]:allT.filter(t=>ms.some(m=>getR(m,t)>0));
+    const datasets0=activeT.map(t=>{
+      const c=ALL_TC[t]||'#888';
+      const isSolid=!c.includes('rgba');
+      return{label:ALL_TN[t]||t,stack:'s',
+        data:ms.map(m=>+(getR(m,t)/1e6).toFixed(1)),
+        backgroundColor:ms.map((_,i)=>ms[i].month===SEL_MONTH?c:(isSolid?c+'44':c.replace(/[\d.]+\)$/,'0.25)'))),
+        borderRadius:2,borderSkipped:false};
     });
-    document.getElementById('c0a-sub').textContent=(SEL_TEAM?SEL_TEAM+' · ':'')+'Stacked theo Team · Tr.đ';
-    mkChart('c0a','bar',{labels:labels0,datasets:datasets0},{scales:{x:{stacked:true},y:{stacked:true,ticks:{callback:v=>v+'M'}}}});
+    document.getElementById('c0a-sub').textContent=(SEL_TEAM?(ALL_TN[SEL_TEAM]||SEL_TEAM)+' · ':'')+'Stacked theo Team · Tr.đ';
+    mkChart('c0a','bar',{labels:ms.map(m=>ml(m.month)),datasets:datasets0},{scales:{x:{stacked:true},y:{stacked:true,ticks:{callback:v=>v+'M'}}}});
   }
 
   // Doughnut dịch vụ
@@ -463,20 +481,18 @@ function p1(cur,prev,ms){
 
   {
     const smAll1=D.sales_monthly||[];
-    const TEAM_COLORS1={'KD HCM':PAL.blue,'KD01':PAL.green,'KD04':PAL.amber,'KD05':PAL.purple,'invivo':PAL.muted};
-    const allTeams1=Object.keys(TEAM_COLORS1);
-    const activeTeams1=SEL_TEAM?[SEL_TEAM]:allTeams1.filter(t=>
-      ms.some(m=>smAll1.filter(s=>s.month===m.month&&s.team===t&&!INTERNAL.has(s.sales)).reduce((a,x)=>a+(x.revenue||0),0)>0)
-    );
-    const datasets1=activeTeams1.map(t=>{
-      const color=TEAM_COLORS1[t]||PAL.muted;
-      return{
-        label:t,stack:'s',
-        data:ms.map(m=>+(smAll1.filter(s=>s.month===m.month&&s.team===t&&!INTERNAL.has(s.sales)).reduce((a,x)=>a+(x.revenue||0),0)/1e6).toFixed(1)),
-        backgroundColor:ms.map((_,i)=>ms[i].month===SEL_MONTH?color:color+'55'),
-      };
+    const ALL_TC1={'KD HCM':'#00d4ff','KD01':'#00e5a0','KD04':'#ffb347','KD05':'#a78bfa','invivo':'rgba(139,148,158,.8)','invivo HN':'rgba(100,115,140,.7)','invivo HCM':'rgba(80,100,130,.7)'};
+    const ALL_TN1={'KD HCM':'KD HCM','KD01':'KD01','KD04':'KD04','KD05':'KD05','invivo':'InVivo','invivo HN':'Nội bộ HN','invivo HCM':'Nội bộ HCM'};
+    const getR1=(m,t)=>smAll1.filter(s=>s.month===m.month&&s.team===t).reduce((a,x)=>a+(x.revenue||0),0);
+    const activeT1=SEL_TEAM?[SEL_TEAM]:Object.keys(ALL_TC1).filter(t=>ms.some(m=>getR1(m,t)>0));
+    const datasets1=activeT1.map(t=>{
+      const c1=ALL_TC1[t]||'#888';const isSolid1=!c1.includes('rgba');
+      return{label:ALL_TN1[t]||t,stack:'s',
+        data:ms.map(m=>+(getR1(m,t)/1e6).toFixed(1)),
+        backgroundColor:ms.map((_,i)=>ms[i].month===SEL_MONTH?c1:(isSolid1?c1+'44':c1.replace(/[\d.]+\)$/, '0.25)'))),
+        borderRadius:2,borderSkipped:false};
     });
-    document.getElementById('c1a-sub').textContent=(SEL_TEAM?SEL_TEAM+' · ':'')+'Stacked theo Team · Tr.đ';
+    document.getElementById('c1a-sub').textContent=(SEL_TEAM?(ALL_TN1[SEL_TEAM]||SEL_TEAM)+' · ':'')+'Stacked theo Team · Tr.đ';
     mkChart('c1a','bar',{labels:ms.map(m=>ml(m.month)),datasets:datasets1},{scales:{x:{stacked:true},y:{stacked:true,ticks:{callback:v=>v+'M'}}}});
   }
 
@@ -513,12 +529,16 @@ function p2(cur,ms){
 
   mkKPI('kpi2',[
     {label:'KH Active · '+tag,val:fmtN(kh.active),c:'b',
-      ch:SEL_TEAM?'↔ '+SEL_TEAM:'↔ HCM '+fmtN(kh.active_hcm)+' · HN '+fmtN(kh.active_hn)},
-    {label:'KH Inactive · '+tag,val:fmtN(kh.inactive),vc:kh.inactive>20?'var(--red)':'var(--amber)',c:kh.inactive>20?'r':'a',
-      ch:SEL_TEAM?'↓ vs tháng trước':'↓ HCM '+fmtN(kh.inactive_hcm)+' · HN '+fmtN(kh.inactive_hn)},
-    {label:'KH Mới · '+tag,val:fmtN(kh.newP),vc:'var(--green)',c:'g',
+      ch:SEL_TEAM?'↔ '+(TEAM_NAMES[SEL_TEAM]||SEL_TEAM):'↔ HCM '+fmtN(kh.active_hcm)+' · HN '+fmtN(kh.active_hn)},
+    {label:'Reactive · '+tag,val:fmtN(kh.reactive||0),c:'g',
+      ch:'↔ '+(kh.reactRate||0)+'% giữ chân vs tháng trước'},
+    {label:'KH Mới · '+tag,val:fmtN(kh.newP),c:'g',
       ch:SEL_TEAM?'↑ lần đầu':'↑ HCM '+fmtN(kh.new_hcm)+' · HN '+fmtN(kh.new_hn)},
-    {label:'Top 5 / Tổng DT',val:(top5/totRev*100).toFixed(0)+'%',vc:'var(--amber)',c:'r',ch:'⚠ Tập trung'},
+    {label:'KH Inactive · '+tag,val:fmtN(kh.inactive),c:kh.inactive>20?'r':'a',
+      ch:SEL_TEAM?'↓ vs tháng trước':'↓ HCM '+fmtN(kh.inactive_hcm)+' · HN '+fmtN(kh.inactive_hn)},
+    {label:'Tổng KH Quản lý',val:fmtN(kh.managed||0),c:'a',
+      ch:'↔ '+(SEL_TEAM?TEAM_NAMES[SEL_TEAM]||SEL_TEAM:'Toàn công ty')+' all-time'},
+    {label:'Top 5 / Tổng DT',val:(top5/totRev*100).toFixed(0)+'%',c:'r',ch:'⚠ Tập trung'},
   ]);
 
   // Chart KH active filter team
@@ -551,12 +571,27 @@ function p2(cur,ms){
     <td style="text-align:right"><b>${fmtM(p.revenue)}</b></td>
     <td style="text-align:right;color:var(--green)">${fmtM(p.revenue_net!=null?p.revenue_net:p.listed)}</td>
     <td style="text-align:right">${p.discount_pct!=null?p.discount_pct.toFixed(1)+'%':'—'}</td>
-    <td style="text-align:right">${p.orders||0}</td></tr>`).join(''):empty(8);
+    <td style="text-align:right">${p.orders||0}</td>
+    <td style="text-align:right;font-family:'JetBrains Mono',monospace;color:var(--muted)">${p.orders?fmtK(p.revenue/p.orders)+'K':'—'}</td></tr>`).join(''):empty(9);
 
   // Cong no
-  const td=D.top_debt||[],totDebt=D.total_debt;
-  let dHTML=totDebt?`<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);margin-bottom:8px"><span style="font-size:11px;color:var(--muted)">Tổng công nợ HN+HCM</span><span style="font-size:18px;font-weight:800;color:var(--red)">${fmtM(totDebt)} Tr.đ</span></div>`:'';
-  dHTML+=td.length?'<div class="tbl-wrap"><table class="tbl"><thead><tr><th>Khách hàng</th><th style="text-align:right">Nợ (Tr)</th></tr></thead><tbody>'+td.slice(0,8).map(d=>`<tr><td>${d.partnerName||d.partnerCode||'—'}</td><td style="text-align:right;color:var(--red)"><b>${fmtM(d.amount||0)}</b></td></tr>`).join('')+'</tbody></table></div>':'<div class="empty-state">Không có dữ liệu</div>';
+  // Top KH insight thay cho cong no
+  const fp2=filteredPartners(5);
+  const prevMo3=curMonth()&&D.monthly?D.monthly[(D.monthly.findIndex(x=>x.month===SEL_MONTH)||1)-1]?.month:null;
+  const pbm3=D.partners_by_month||[];
+  let insHTML='<div style="font-size:10px;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">Top KH · '+tag+'</div>';
+  insHTML+=fp2.map(p=>{
+    const prev3=prevMo3?pbm3.find(x=>x.partnerCode===p.partnerCode&&x.month===prevMo3):null;
+    const chg3=prev3&&prev3.revenue?(p.revenue-prev3.revenue)/prev3.revenue*100:null;
+    return`<div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.04)">
+      <div><div style="font-weight:600;font-size:12px">${p.partnerName||p.partnerCode}</div>
+        <div style="font-size:10px;color:var(--muted)">${p.saleName||''}</div></div>
+      <div style="text-align:right">
+        <div style="font-family:'JetBrains Mono',monospace;color:var(--cyan);font-weight:700">${fmtM(p.revenue)} Tr</div>
+        ${chg3!=null?`<div style="font-size:10px;color:${chg3>=0?'var(--green)':'var(--red)'}">${chg3>=0?'↑+':'↓'}${Math.abs(chg3).toFixed(0)}% vs T.trước</div>`:'<div style="font-size:10px;color:var(--muted)">KH mới</div>'}
+      </div></div>`;
+  }).join('');
+  document.getElementById('debtSec').innerHTML=insHTML;
   document.getElementById('debtSec').innerHTML=dHTML;
 
   document.getElementById('churn-sub').textContent=`So với tháng trước · ${tag}`;
@@ -698,7 +733,7 @@ function p5(ms){
     <td style="text-align:right">${fmtN(s.orders)}</td>
     <td style="text-align:right">${s.orders?fmtK(s.revenue/s.orders):'—'}</td>
     <td style="text-align:right">${s.discount_pct!=null?s.discount_pct.toFixed(1)+'%':'—'}</td>
-    <td>${perfBar(s.revenue,maxRev,i)}</td></tr>`).join('');
+    <td>${perfBar(s.revenue,null,i)}</td></tr>`).join('');
 }
 
 // ════ PAGE 6 ═════════════════════════════════════════════════
@@ -716,13 +751,15 @@ function p6(ms){
 
   {
     const smAll6c=D.sales_monthly||[];
-    const TC6={'KD HCM':PAL.blue,'KD01':PAL.green,'KD04':PAL.amber,'KD05':PAL.purple,'invivo':PAL.muted};
-    const aT6=Object.keys(TC6).filter(t=>ms.some(m=>smAll6c.filter(s=>s.month===m.month&&s.team===t&&!INTERNAL.has(s.sales)).reduce((a,x)=>a+(x.revenue||0),0)>0));
+    const TC6={'KD HCM':'#00d4ff','KD01':'#00e5a0','KD04':'#ffb347','KD05':'#a78bfa','invivo':'rgba(139,148,158,.8)','invivo HN':'rgba(100,115,140,.7)','invivo HCM':'rgba(80,100,130,.7)'};
+    const TN6={'KD HCM':'KD HCM','KD01':'KD01','KD04':'KD04','KD05':'KD05','invivo':'InVivo','invivo HN':'Nội bộ HN','invivo HCM':'Nội bộ HCM'};
+    const getR6=(m,t)=>smAll6c.filter(s=>s.month===m.month&&s.team===t).reduce((a,x)=>a+(x.revenue||0),0);
+    const aT6=Object.keys(TC6).filter(t=>ms.some(m=>getR6(m,t)>0));
     mkChart('c6a','bar',{labels:ms.map(m=>ml(m.month)),datasets:aT6.map(t=>{
-      const color=TC6[t];
-      return{label:t,stack:'s',
-        data:ms.map(m=>+(smAll6c.filter(s=>s.month===m.month&&s.team===t&&!INTERNAL.has(s.sales)).reduce((a,x)=>a+(x.revenue||0),0)/1e6).toFixed(1)),
-        backgroundColor:ms.map((_,i)=>ms[i].month===SEL_MONTH?color:color+'55')};
+      const c6=TC6[t];const isSolid6=!c6.includes('rgba');
+      return{label:TN6[t]||t,stack:'s',
+        data:ms.map(m=>+(getR6(m,t)/1e6).toFixed(1)),
+        backgroundColor:ms.map((_,i)=>ms[i].month===SEL_MONTH?c6:(isSolid6?c6+'44':c6.replace(/[\d.]+\)$/,'0.25)')))};
     })},{scales:{x:{stacked:true},y:{stacked:true,ticks:{callback:v=>v+'M'}}}});
   }
 
