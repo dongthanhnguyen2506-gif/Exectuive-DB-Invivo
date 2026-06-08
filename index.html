@@ -385,18 +385,26 @@ function p0(cur,prev,ms){
     {label:'Công nợ',val:debt?fmtM(debt)+' Tr':'—',vc:'var(--red)',c:'r',ch:'⚠ HN+HCM chưa thu'},
   ]);
 
-  // Chart HCM vs HN
-  if(!SEL_TEAM){
-    mkChart('c0a','bar',{labels:ms.map(m=>ml(m.month)),datasets:[
-      {label:'HCM',data:ms.map(m=>+((m.revenue_hcm||0)/1e6).toFixed(1)),backgroundColor:ms.map(m=>m.month===SEL_MONTH?PAL.blue:'rgba(88,166,255,.3)'),stack:'s'},
-      {label:'HN', data:ms.map(m=>+((m.revenue_hn||0)/1e6).toFixed(1)),backgroundColor:ms.map(m=>m.month===SEL_MONTH?PAL.green:'rgba(63,185,80,.3)'),stack:'s'},
-    ]},{scales:{x:{stacked:true},y:{stacked:true,ticks:{callback:v=>v+'M'}}}});
-  }else{
+  // Chart stacked by team
+  {
     const smAll=D.sales_monthly||[];
-    mkChart('c0a','bar',{labels:ms.map(m=>ml(m.month)),datasets:[
-      {label:SEL_TEAM,data:ms.map(m=>+(smAll.filter(s=>s.month===m.month&&s.team===SEL_TEAM&&!INTERNAL.has(s.sales)).reduce((a,x)=>a+(x.revenue||0),0)/1e6).toFixed(1)),
-        backgroundColor:ms.map(m=>m.month===SEL_MONTH?PAL.amber:'rgba(210,153,34,.3)')},
-    ]},{scales:{y:{ticks:{callback:v=>v+'M'}}}});
+    const TEAM_COLORS={'KD HCM':PAL.blue,'KD01':PAL.green,'KD04':PAL.amber,'KD05':PAL.purple,'invivo':PAL.muted};
+    const labels0=ms.map(m=>ml(m.month));
+    // Lay cac team active (co DT > 0 trong bat ky thang nao), filter theo SEL_TEAM
+    const allTeams=Object.keys(TEAM_COLORS);
+    const activeTeams=SEL_TEAM?[SEL_TEAM]:allTeams.filter(t=>
+      ms.some(m=>smAll.filter(s=>s.month===m.month&&s.team===t&&!INTERNAL.has(s.sales)).reduce((a,x)=>a+(x.revenue||0),0)>0)
+    );
+    const datasets0=activeTeams.map(t=>{
+      const color=TEAM_COLORS[t]||PAL.muted;
+      return{
+        label:t,stack:'s',
+        data:ms.map(m=>+(smAll.filter(s=>s.month===m.month&&s.team===t&&!INTERNAL.has(s.sales)).reduce((a,x)=>a+(x.revenue||0),0)/1e6).toFixed(1)),
+        backgroundColor:ms.map(m=>m.month===SEL_MONTH?color:color.replace('#','#')+' ').map((c,i)=>ms[i].month===SEL_MONTH?color:color+'55'),
+      };
+    });
+    document.getElementById('c0a-sub').textContent=(SEL_TEAM?SEL_TEAM+' · ':'')+'Stacked theo Team · Tr.đ';
+    mkChart('c0a','bar',{labels:labels0,datasets:datasets0},{scales:{x:{stacked:true},y:{stacked:true,ticks:{callback:v=>v+'M'}}}});
   }
 
   // Doughnut dịch vụ
@@ -453,18 +461,23 @@ function p1(cur,prev,ms){
     {label:'DT TB/Đơn',val:orders?fmtK(nl/orders)+'K':'—',c:'b',ch:'↔ '+fmtN(orders)+' đơn'},
   ]);
 
-  document.getElementById('c1a-sub').textContent=SEL_TEAM?SEL_TEAM+' · Tr.đ':'HCM + HN · Tr.đ';
-  const smAll=D.sales_monthly||[];
-  if(!SEL_TEAM){
-    mkChart('c1a','bar',{labels:ms.map(m=>ml(m.month)),datasets:[
-      {label:'HCM',data:ms.map(m=>+((m.revenue_hcm||0)/1e6).toFixed(1)),backgroundColor:ms.map(m=>m.month===SEL_MONTH?PAL.blue:'rgba(88,166,255,.3)'),stack:'s'},
-      {label:'HN', data:ms.map(m=>+((m.revenue_hn||0)/1e6).toFixed(1)),backgroundColor:ms.map(m=>m.month===SEL_MONTH?PAL.green:'rgba(63,185,80,.3)'),stack:'s'},
-    ]},{scales:{x:{stacked:true},y:{stacked:true,ticks:{callback:v=>v+'M'}}}});
-  }else{
-    mkChart('c1a','bar',{labels:ms.map(m=>ml(m.month)),datasets:[
-      {label:SEL_TEAM,data:ms.map(m=>+(smAll.filter(s=>s.month===m.month&&s.team===SEL_TEAM&&!INTERNAL.has(s.sales)).reduce((a,x)=>a+(x.revenue||0),0)/1e6).toFixed(1)),
-        backgroundColor:ms.map(m=>m.month===SEL_MONTH?PAL.amber:'rgba(210,153,34,.3)')},
-    ]},{scales:{y:{ticks:{callback:v=>v+'M'}}}});
+  {
+    const smAll1=D.sales_monthly||[];
+    const TEAM_COLORS1={'KD HCM':PAL.blue,'KD01':PAL.green,'KD04':PAL.amber,'KD05':PAL.purple,'invivo':PAL.muted};
+    const allTeams1=Object.keys(TEAM_COLORS1);
+    const activeTeams1=SEL_TEAM?[SEL_TEAM]:allTeams1.filter(t=>
+      ms.some(m=>smAll1.filter(s=>s.month===m.month&&s.team===t&&!INTERNAL.has(s.sales)).reduce((a,x)=>a+(x.revenue||0),0)>0)
+    );
+    const datasets1=activeTeams1.map(t=>{
+      const color=TEAM_COLORS1[t]||PAL.muted;
+      return{
+        label:t,stack:'s',
+        data:ms.map(m=>+(smAll1.filter(s=>s.month===m.month&&s.team===t&&!INTERNAL.has(s.sales)).reduce((a,x)=>a+(x.revenue||0),0)/1e6).toFixed(1)),
+        backgroundColor:ms.map((_,i)=>ms[i].month===SEL_MONTH?color:color+'55'),
+      };
+    });
+    document.getElementById('c1a-sub').textContent=(SEL_TEAM?SEL_TEAM+' · ':'')+'Stacked theo Team · Tr.đ';
+    mkChart('c1a','bar',{labels:ms.map(m=>ml(m.month)),datasets:datasets1},{scales:{x:{stacked:true},y:{stacked:true,ticks:{callback:v=>v+'M'}}}});
   }
 
   const momData=ms.map((m,i)=>i>0?+((m.revenue_actual-ms[i-1].revenue_actual)/ms[i-1].revenue_actual*100).toFixed(1):null);
@@ -701,13 +714,31 @@ function p6(ms){
     {label:'HCM / Tổng KD',val:totKD?(hcmNl/totKD*100).toFixed(0)+'%':'—',c:'b',ch:'↔ Tỷ trọng'},
   ]);
 
-  mkChart('c6a','bar',{labels:ms.map(m=>ml(m.month)),datasets:[
-    {label:'HCM',data:ms.map(m=>+((m.revenue_hcm||0)/1e6).toFixed(1)),backgroundColor:ms.map(m=>m.month===SEL_MONTH?PAL.blue:'rgba(88,166,255,.3)'),stack:'s'},
-    {label:'HN', data:ms.map(m=>+((m.revenue_hn||0)/1e6).toFixed(1)),backgroundColor:ms.map(m=>m.month===SEL_MONTH?PAL.green:'rgba(63,185,80,.3)'),stack:'s'},
-  ]},{scales:{x:{stacked:true},y:{stacked:true,ticks:{callback:v=>v+'M'}}}});
+  {
+    const smAll6c=D.sales_monthly||[];
+    const TC6={'KD HCM':PAL.blue,'KD01':PAL.green,'KD04':PAL.amber,'KD05':PAL.purple,'invivo':PAL.muted};
+    const aT6=Object.keys(TC6).filter(t=>ms.some(m=>smAll6c.filter(s=>s.month===m.month&&s.team===t&&!INTERNAL.has(s.sales)).reduce((a,x)=>a+(x.revenue||0),0)>0));
+    mkChart('c6a','bar',{labels:ms.map(m=>ml(m.month)),datasets:aT6.map(t=>{
+      const color=TC6[t];
+      return{label:t,stack:'s',
+        data:ms.map(m=>+(smAll6c.filter(s=>s.month===m.month&&s.team===t&&!INTERNAL.has(s.sales)).reduce((a,x)=>a+(x.revenue||0),0)/1e6).toFixed(1)),
+        backgroundColor:ms.map((_,i)=>ms[i].month===SEL_MONTH?color:color+'55')};
+    })},{scales:{x:{stacked:true},y:{stacked:true,ticks:{callback:v=>v+'M'}}}});
+  }
 
-  document.getElementById('c6b-sub').textContent=`${ml(SEL_MONTH)} · KD thật`;
-  if(totKD)mkChart('c6b','doughnut',{labels:['HCM','HN'],datasets:[{data:[hcmNl,hnNl],backgroundColor:[PAL.blue,PAL.green],borderWidth:2,borderColor:'#0d1117'}]},{plugins:{legend:{position:'right'}}});
+  document.getElementById('c6b-sub').textContent=`${ml(SEL_MONTH)} · theo Team`;
+  {
+    const smAll6d=D.sales_monthly||[];
+    const TC6d={'KD HCM':PAL.blue,'KD01':PAL.green,'KD04':PAL.amber,'KD05':PAL.purple,'invivo':PAL.muted};
+    const teamRevCur=Object.entries(TC6d).map(([t,c])=>{
+      const rev=smAll6d.filter(s=>s.month===SEL_MONTH&&s.team===t&&!INTERNAL.has(s.sales)).reduce((a,x)=>a+(x.revenue||0),0);
+      return{t,c,rev};
+    }).filter(x=>x.rev>0);
+    if(teamRevCur.length)mkChart('c6b','doughnut',{
+      labels:teamRevCur.map(x=>x.t),
+      datasets:[{data:teamRevCur.map(x=>+(x.rev/1e6).toFixed(1)),backgroundColor:teamRevCur.map(x=>x.c),borderWidth:2,borderColor:'#0d1117'}]
+    },{plugins:{legend:{position:'right'}}});
+  }
 
   // Bảng so sánh team
   const smAll=D.sales_monthly||[];const pbm=D.partners_by_month||[];
