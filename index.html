@@ -610,10 +610,24 @@ function p4(cur,ms){
     {label:'% CK · '+tag,val:ckP.toFixed(1)+'%',vc:'var(--amber)',c:'a',ch:'↔ Tháng này'},
   ]);
 
-  const discAmt=ms.map(m=>{const d=(m.discount!=null)?m.discount:(m.revenue_actual-(m.revenue_net||0));return+(d/1e6).toFixed(1);});
-  const discPct=ms.map(m=>m.revenue_actual?+((m.revenue_actual-(m.revenue_net||0))/m.revenue_actual*100).toFixed(1):0);
+  // CK chart filter theo team
+  const smAll4=D.sales_monthly||[];
+  const discAmt=ms.map(m=>{
+    if(!SEL_TEAM){const d=(m.discount!=null)?m.discount:(m.revenue_actual-(m.revenue_net||0));return+(d/1e6).toFixed(1);}
+    const rows=smAll4.filter(s=>s.month===m.month&&s.team===SEL_TEAM&&!INTERNAL.has(s.sales));
+    const nl=rows.reduce((a,x)=>a+(x.revenue||0),0);
+    const rn=rows.reduce((a,x)=>a+(x.revenue_net!=null?x.revenue_net:x.revenue||0),0);
+    return+((nl-rn)/1e6).toFixed(1);
+  });
+  const discPct=ms.map((m,i)=>{
+    if(!SEL_TEAM)return m.revenue_actual?+((m.revenue_actual-(m.revenue_net||0))/m.revenue_actual*100).toFixed(1):0;
+    const rows=smAll4.filter(s=>s.month===m.month&&s.team===SEL_TEAM&&!INTERNAL.has(s.sales));
+    const nl=rows.reduce((a,x)=>a+(x.revenue||0),0);
+    const rn=rows.reduce((a,x)=>a+(x.revenue_net!=null?x.revenue_net:x.revenue||0),0);
+    return nl?+((nl-rn)/nl*100).toFixed(1):0;
+  });
   mkChart('c4a','line',{labels:ms.map(m=>ml(m.month)),datasets:[
-    {label:'% CK',data:discPct,borderColor:PAL.amber,backgroundColor:'rgba(210,153,34,.08)',fill:true,tension:.4,borderWidth:2,pointRadius:3,yAxisID:'y1'},
+    {label:'% CK'+(SEL_TEAM?' · '+SEL_TEAM:''),data:discPct,borderColor:PAL.amber,backgroundColor:'rgba(210,153,34,.08)',fill:true,tension:.4,borderWidth:2,pointRadius:3,yAxisID:'y1'},
     {label:'CK (Tr)',data:discAmt,borderColor:PAL.red,fill:false,tension:.4,borderWidth:1.5,pointRadius:2,yAxisID:'y'}
   ]},{scales:{y:{ticks:{callback:v=>v+'M'}},y1:{position:'right',grid:{display:false},ticks:{color:PAL.amber,callback:v=>v+'%'}}}});
 
