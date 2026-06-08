@@ -7,8 +7,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#0d1117;--surface:#161b22;--surface2:#1c2333;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--green:#3fb950;--red:#f85149;--amber:#d29922;--blue:#58a6ff;--purple:#bc8cff;--green-bg:rgba(63,185,80,.12);--red-bg:rgba(248,81,73,.12);--amber-bg:rgba(210,153,34,.12);--blue-bg:rgba(88,166,255,.12)}
-body{font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;background:var(--bg);color:var(--text);font-size:13px;min-height:100vh}
+:root{
+  --bg:#0d1117;--surface:#161b22;--surface2:#1c2333;--border:#30363d;
+  --text:#e6edf3;--muted:#8b949e;
+  --green:#3fb950;--red:#f85149;--amber:#d29922;--blue:#58a6ff;--purple:#bc8cff;
+  --green-bg:rgba(63,185,80,.12);--red-bg:rgba(248,81,73,.12);
+  --amber-bg:rgba(210,153,34,.12);--blue-bg:rgba(88,166,255,.12);
+}
+body{font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+  background:var(--bg);color:var(--text);font-size:13px;min-height:100vh}
 .login-wrap{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:1000}
 .login-box{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:40px;width:360px;text-align:center}
 .login-logo{width:56px;height:56px;background:linear-gradient(135deg,#1f6feb,#58a6ff);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800;color:#fff;margin:0 auto 20px}
@@ -17,36 +24,49 @@ body{font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;backgroun
 .login-input{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text);font-size:14px;margin-bottom:12px;outline:none}
 .login-input:focus{border-color:var(--blue)}
 .login-btn{width:100%;background:var(--blue);border:none;border-radius:8px;padding:11px;color:#fff;font-size:14px;font-weight:600;cursor:pointer}
-.login-btn:hover{opacity:.9}
 .login-err{color:var(--red);font-size:12px;margin-top:8px;display:none}
 .header{position:sticky;top:0;z-index:100;background:var(--surface);border-bottom:1px solid var(--border);padding:0 20px;display:flex;justify-content:space-between;align-items:center;height:52px}
 .brand{display:flex;align-items:center;gap:10px}
 .logo{width:32px;height:32px;background:linear-gradient(135deg,#1f6feb,#58a6ff);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff}
-.tabs{background:var(--surface);border-bottom:1px solid var(--border);padding:0 20px;display:flex;overflow-x:auto}
+.tabs{background:var(--surface);border-bottom:1px solid var(--border);padding:0 20px;display:flex;overflow-x:auto;gap:0}
 .tab{padding:12px 16px;cursor:pointer;font-size:12px;font-weight:500;color:var(--muted);border-bottom:2px solid transparent;white-space:nowrap;background:none;border-top:none;border-left:none;border-right:none;transition:.15s}
 .tab.active{color:var(--blue);border-bottom-color:var(--blue)}
-.filter-bar{background:var(--surface2);border-bottom:1px solid var(--border);padding:8px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.filter-label{font-size:11px;color:var(--muted)}
-.month-pills{display:flex;gap:6px;flex-wrap:wrap}
-.mpill{padding:4px 10px;border-radius:12px;font-size:11px;font-weight:600;cursor:pointer;border:1px solid var(--border);background:transparent;color:var(--muted);transition:.15s}
+
+/* ── Filter bar ── */
+.filter-bar{background:var(--surface2);border-bottom:1px solid var(--border);
+  padding:8px 20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.filter-group{display:flex;align-items:center;gap:8px}
+.filter-label{font-size:11px;color:var(--muted);white-space:nowrap}
+.filter-select{background:var(--surface);border:1px solid var(--border);border-radius:6px;
+  padding:5px 10px;color:var(--text);font-size:11px;cursor:pointer;outline:none}
+.filter-select:focus{border-color:var(--blue)}
+.month-pills{display:flex;gap:5px;flex-wrap:wrap}
+.mpill{padding:4px 9px;border-radius:10px;font-size:11px;font-weight:600;cursor:pointer;
+  border:1px solid var(--border);background:transparent;color:var(--muted);transition:.15s}
 .mpill.active{background:var(--blue);color:#fff;border-color:var(--blue)}
 .mpill:hover:not(.active){border-color:var(--blue);color:var(--blue)}
+.filter-badge{display:inline-flex;align-items:center;gap:4px;background:var(--blue-bg);
+  border:1px solid rgba(88,166,255,.3);border-radius:10px;padding:3px 8px;
+  font-size:10px;font-weight:700;color:var(--blue)}
+
 .content{padding:16px 20px;max-width:1400px;margin:0 auto}
 .page{display:none}.page.active{display:block}
 .kpi-grid{display:grid;gap:10px;margin-bottom:16px}
-.g6{grid-template-columns:repeat(6,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+.g6{grid-template-columns:repeat(6,1fr)}
+.g5{grid-template-columns:repeat(5,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
 @media(max-width:1100px){.g6{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:900px){.g6,.g4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:900px){.g6,.g5,.g4{grid-template-columns:repeat(2,1fr)}.g2,.g3{grid-template-columns:1fr}}
 .kpi{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 16px;position:relative;overflow:hidden}
 .kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
-.kpi.g::before{background:var(--green)}.kpi.r::before{background:var(--red)}.kpi.a::before{background:var(--amber)}.kpi.b::before{background:var(--blue)}
+.kpi.g::before{background:var(--green)}.kpi.r::before{background:var(--red)}
+.kpi.a::before{background:var(--amber)}.kpi.b::before{background:var(--blue)}
 .kpi-label{font-size:10px;color:var(--muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px}
 .kpi-value{font-size:22px;font-weight:800;line-height:1}
-.kpi-change{display:flex;align-items:center;gap:4px;margin-top:6px;font-size:11px;font-weight:600}
+.kpi-change{margin-top:6px;font-size:11px;font-weight:600}
 .up{color:var(--green)}.dn{color:var(--red)}.fl{color:var(--amber)}
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
 .g3{display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px;margin-bottom:12px}
-@media(max-width:900px){.g2,.g3{grid-template-columns:1fr}}
 .card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:12px}
 .card-title{font-size:12px;font-weight:700;margin-bottom:3px}
 .card-sub{font-size:11px;color:var(--muted);margin-bottom:12px}
@@ -77,6 +97,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;backgroun
 .rank-badge.top1{background:linear-gradient(135deg,#d4a017,#f5c842);color:#000}
 .rank-badge.top2{background:linear-gradient(135deg,#8b949e,#c8d0d8);color:#000}
 .rank-badge.top3{background:linear-gradient(135deg,#c65c1a,#e07b42);color:#fff}
+.empty-state{padding:32px;text-align:center;color:var(--muted);font-size:12px}
 </style>
 </head>
 <body>
@@ -86,7 +107,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;backgroun
     <div class="login-logo">IV</div>
     <div class="login-title">InVivo Lab Dashboard</div>
     <div class="login-sub">Dành cho Ban lãnh đạo · Bảo mật nội bộ</div>
-    <input class="login-input" type="password" id="pwInput" placeholder="Nhập mật khẩu" onkeydown="if(event.key==='Enter')doLogin()">
+    <input class="login-input" type="password" id="pwInput" placeholder="Nhập mật khẩu"
+      onkeydown="if(event.key==='Enter')doLogin()">
     <button class="login-btn" onclick="doLogin()">Đăng nhập</button>
     <div class="login-err" id="loginErr">Mật khẩu không đúng</div>
   </div>
@@ -97,7 +119,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;backgroun
     <div class="logo">IV</div>
     <div>
       <div style="font-size:14px;font-weight:700">InVivo Lab — Executive Dashboard</div>
-      <div style="font-size:11px;color:var(--muted)" id="headerSub">Đang tải dữ liệu...</div>
+      <div style="font-size:11px;color:var(--muted)" id="headerSub">Đang tải...</div>
     </div>
   </div>
   <div style="display:flex;align-items:center;gap:10px">
@@ -115,228 +137,547 @@ body{font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;backgroun
   <button class="tab" onclick="showPage(5,this)">06 · Sales</button>
 </div>
 
+<!-- FILTER BAR -->
 <div class="filter-bar" id="filterBar" style="display:none">
-  <span class="filter-label">Xem tháng:</span>
-  <div class="month-pills" id="monthPills"></div>
+  <div class="filter-group">
+    <span class="filter-label">Team:</span>
+    <select class="filter-select" id="teamSelect" onchange="onFilterChange()">
+      <option value="">Tất cả</option>
+    </select>
+  </div>
+  <div class="filter-group">
+    <span class="filter-label">Tháng:</span>
+    <div class="month-pills" id="monthPills"></div>
+  </div>
+  <div id="filterBadge" style="display:none"></div>
 </div>
 
 <div class="content">
+
+<!-- PAGE 0: TỔNG QUAN -->
 <div class="page active" id="page-0">
   <div class="kpi-grid g6" id="kpi0"></div>
   <div class="g3">
-    <div class="card"><div class="card-title">Doanh thu theo tháng</div><div class="card-sub">DT Ghi nhận vs Niêm yết · tỷ VND</div><div style="position:relative;height:175px"><canvas id="c0a"></canvas></div></div>
-    <div class="card"><div class="card-title">Cơ cấu dịch vụ</div><div class="card-sub">Tỷ trọng theo nhóm XN</div><div style="position:relative;height:175px"><canvas id="c0b"></canvas></div></div>
-    <div class="card"><div class="card-title" style="color:var(--amber)">⚠ Cảnh báo điều hành</div><div class="card-sub">Cần theo dõi</div><div class="alert-list" id="alerts0"></div></div>
+    <div class="card">
+      <div class="card-title">Doanh thu theo tháng</div>
+      <div class="card-sub">DT Ghi nhận vs Niêm yết · Tr.đ</div>
+      <div style="position:relative;height:175px"><canvas id="c0a"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Cơ cấu dịch vụ</div>
+      <div class="card-sub" id="c0b-sub">Tỷ trọng nhóm XN · tháng hiện tại</div>
+      <div style="position:relative;height:175px"><canvas id="c0b"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-title" style="color:var(--amber)">⚠ Cảnh báo</div>
+      <div class="card-sub">Cần theo dõi</div>
+      <div class="alert-list" id="alerts0"></div>
+    </div>
   </div>
   <div class="g2">
-    <div class="card"><div class="card-title">Cơ cấu doanh thu</div><div class="card-sub">Niêm yết → Chiết khấu → Ghi nhận</div><div class="wf" id="wf0"></div></div>
-    <div class="card"><div class="card-title">Top khách hàng</div><div class="card-sub">Theo doanh thu ghi nhận · tháng hiện tại</div>
-      <div class="tbl-wrap"><table class="tbl"><thead><tr><th>#</th><th>Khách hàng</th><th style="text-align:right">DT (Tr.đ)</th><th style="text-align:right">Đơn</th><th style="text-align:right">% CK</th></tr></thead><tbody id="tp0"></tbody></table></div>
+    <div class="card">
+      <div class="card-title">Cơ cấu doanh thu</div>
+      <div class="card-sub">Niêm yết → Chiết khấu → Ghi nhận</div>
+      <div class="wf" id="wf0"></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Top khách hàng</div>
+      <div class="card-sub" id="tp0-sub">Doanh thu ghi nhận · tháng & team đang chọn</div>
+      <div class="tbl-wrap">
+        <table class="tbl"><thead><tr>
+          <th>#</th><th>Khách hàng</th><th>Team</th>
+          <th style="text-align:right">DT (Tr.đ)</th><th style="text-align:right">Đơn</th>
+        </tr></thead><tbody id="tp0"></tbody></table>
+      </div>
     </div>
   </div>
 </div>
 
+<!-- PAGE 1: DOANH THU -->
 <div class="page" id="page-1">
   <div class="kpi-grid g4" id="kpi1"></div>
   <div class="g2">
-    <div class="card"><div class="card-title">Xu hướng doanh thu theo tháng</div><div class="card-sub">DT thực ghi nhận · tỷ VND</div><div style="position:relative;height:200px"><canvas id="c1a"></canvas></div></div>
-    <div class="card"><div class="card-title">Tăng trưởng MoM</div><div class="card-sub">% so với tháng trước</div><div style="position:relative;height:200px"><canvas id="c1b"></canvas></div></div>
+    <div class="card">
+      <div class="card-title">Xu hướng doanh thu theo tháng</div>
+      <div class="card-sub">DT Ghi nhận · Tr.đ</div>
+      <div style="position:relative;height:200px"><canvas id="c1a"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Tăng trưởng MoM</div>
+      <div class="card-sub">% so với tháng trước</div>
+      <div style="position:relative;height:200px"><canvas id="c1b"></canvas></div>
+    </div>
   </div>
-  <div class="card"><div class="card-title">Chi tiết doanh thu theo tháng</div><div class="card-sub">Đơn vị: tỷ VND</div>
-    <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Tháng</th><th style="text-align:right">DT NL (Tỷ)</th><th style="text-align:right">DT GN (Tỷ)</th><th style="text-align:right">CK (Tỷ)</th><th style="text-align:right">% CK</th><th style="text-align:right">Số đơn</th><th style="text-align:right">KH active</th><th style="text-align:right">MoM</th></tr></thead><tbody id="tbl1"></tbody></table></div>
+  <div class="card">
+    <div class="card-title">Chi tiết doanh thu theo tháng</div>
+    <div class="card-sub">Đơn vị: Tr.đ</div>
+    <div class="tbl-wrap">
+      <table class="tbl"><thead><tr>
+        <th>Tháng</th><th style="text-align:right">DT NL</th>
+        <th style="text-align:right">DT GN</th><th style="text-align:right">CK</th>
+        <th style="text-align:right">% CK</th><th style="text-align:right">Đơn</th>
+        <th style="text-align:right">KH active</th><th style="text-align:right">MoM</th>
+      </tr></thead><tbody id="tbl1"></tbody></table>
+    </div>
   </div>
 </div>
 
+<!-- PAGE 2: KHÁCH HÀNG -->
 <div class="page" id="page-2">
   <div class="kpi-grid g4" id="kpi2"></div>
   <div class="g2">
-    <div class="card"><div class="card-title">KH active theo tháng</div><div class="card-sub">Số lượng khách hàng có giao dịch</div><div style="position:relative;height:200px"><canvas id="c2a"></canvas></div></div>
-    <div class="card"><div class="card-title">Pareto — Top 10 KH</div><div class="card-sub">Tỷ lệ tập trung doanh thu</div><div style="position:relative;height:200px"><canvas id="c2b"></canvas></div></div>
+    <div class="card">
+      <div class="card-title">KH Active theo tháng</div>
+      <div class="card-sub" id="c2a-sub">Số KH có giao dịch · tất cả team</div>
+      <div style="position:relative;height:200px"><canvas id="c2a"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Pareto — Tập trung doanh thu</div>
+      <div class="card-sub" id="c2b-sub">Top 10 KH · tháng & team đang chọn</div>
+      <div style="position:relative;height:200px"><canvas id="c2b"></canvas></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">Top 20 Khách hàng</div>
+    <div class="card-sub" id="tbl2-sub">Tháng & team đang chọn · tên thật từ LIS</div>
+    <div class="tbl-wrap">
+      <table class="tbl"><thead><tr>
+        <th>#</th><th>Tên khách hàng</th><th>Team</th><th>Sales</th>
+        <th style="text-align:right">DT GN (Tr.đ)</th>
+        <th style="text-align:right">DT NL (Tr.đ)</th>
+        <th style="text-align:right">% CK</th>
+        <th style="text-align:right">Đơn</th>
+      </tr></thead><tbody id="tbl2"></tbody></table>
+    </div>
   </div>
   <div class="g2">
-    <div class="card"><div class="card-title">Top 20 khách hàng</div><div class="card-sub">Tháng hiện tại · tên thật từ hệ thống</div>
-      <div class="tbl-wrap"><table class="tbl"><thead><tr><th>#</th><th>Tên khách hàng</th><th style="text-align:right">DT GN (Tr)</th><th style="text-align:right">DT NL (Tr)</th><th style="text-align:right">% CK</th><th style="text-align:right">Đơn</th></tr></thead><tbody id="tbl2"></tbody></table></div>
+    <div class="card">
+      <div class="card-title">🔴 Công nợ chưa thanh toán</div>
+      <div class="card-sub">Cần thu hồi</div>
+      <div id="debtSection"></div>
     </div>
-    <div class="card"><div class="card-title">🔴 Công nợ chưa thanh toán</div><div class="card-sub">Top khách hàng có nợ · cần thu hồi</div><div id="debtSection"></div></div>
+    <div class="card">
+      <div class="card-title">KH thay đổi so với tháng trước</div>
+      <div class="card-sub" id="churn-sub">Inactive & Mới</div>
+      <div id="churnSection"></div>
+    </div>
   </div>
 </div>
 
+<!-- PAGE 3: DỊCH VỤ -->
 <div class="page" id="page-3">
   <div class="kpi-grid g4" id="kpi3"></div>
   <div class="g2">
-    <div class="card"><div class="card-title">Top nhóm dịch vụ</div><div class="card-sub">Doanh thu theo nhóm XN · tỷ VND</div><div style="position:relative;height:220px"><canvas id="c3a"></canvas></div></div>
-    <div class="card"><div class="card-title">Tỷ trọng dịch vụ</div><div class="card-sub">Phân bổ doanh thu</div><div style="position:relative;height:220px"><canvas id="c3b"></canvas></div></div>
+    <div class="card">
+      <div class="card-title">Top nhóm dịch vụ</div>
+      <div class="card-sub" id="c3a-sub">DT theo nhóm XN · tháng & team đang chọn</div>
+      <div style="position:relative;height:220px"><canvas id="c3a"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Xu hướng nhóm DV theo tháng</div>
+      <div class="card-sub" id="c3b-sub">Top 4 nhóm · team đang chọn</div>
+      <div style="position:relative;height:220px"><canvas id="c3b"></canvas></div>
+    </div>
   </div>
-  <div class="card"><div class="card-title">Chi tiết nhóm dịch vụ</div><div class="card-sub">Toàn bộ kỳ · tỷ VND</div>
-    <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Nhóm dịch vụ</th><th style="text-align:right">DT GN (Tỷ)</th><th style="text-align:right">DT NL (Tỷ)</th><th style="text-align:right">Số lượng</th><th style="text-align:right">Tỷ trọng</th><th style="text-align:right">DT TB/đơn (K)</th><th style="text-align:right">% CK</th></tr></thead><tbody id="tbl3"></tbody></table></div>
+  <div class="card">
+    <div class="card-title">Chi tiết nhóm dịch vụ</div>
+    <div class="card-sub" id="tbl3-sub">Tháng & team đang chọn</div>
+    <div class="tbl-wrap">
+      <table class="tbl"><thead><tr>
+        <th>Nhóm DV</th>
+        <th style="text-align:right">DT GN (Tr.đ)</th>
+        <th style="text-align:right">DT NL (Tr.đ)</th>
+        <th style="text-align:right">Số lượng</th>
+        <th style="text-align:right">Tỷ trọng</th>
+        <th style="text-align:right">DT TB/XN (K)</th>
+        <th style="text-align:right">% CK</th>
+      </tr></thead><tbody id="tbl3"></tbody></table>
+    </div>
   </div>
 </div>
 
+<!-- PAGE 4: CHIẾT KHẤU -->
 <div class="page" id="page-4">
   <div class="kpi-grid g4" id="kpi4"></div>
   <div class="g2">
-    <div class="card"><div class="card-title">Chiết khấu theo tháng</div><div class="card-sub">Xu hướng · tỷ VND và %</div><div style="position:relative;height:200px"><canvas id="c4a"></canvas></div></div>
-    <div class="card"><div class="card-title">Waterfall doanh thu</div><div class="card-sub">Niêm yết → CK → Ghi nhận</div><div class="wf" id="wf4" style="margin-top:20px"></div></div>
+    <div class="card">
+      <div class="card-title">Chiết khấu theo tháng</div>
+      <div class="card-sub">Tr.đ và %</div>
+      <div style="position:relative;height:200px"><canvas id="c4a"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Waterfall doanh thu</div>
+      <div class="card-sub" id="wf4-sub">Tháng đang chọn</div>
+      <div class="wf" id="wf4" style="margin-top:20px"></div>
+    </div>
   </div>
-  <div class="card"><div class="card-title">Chi tiết chiết khấu theo tháng</div><div class="card-sub">So sánh xu hướng</div>
-    <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Tháng</th><th style="text-align:right">DT NL (Tỷ)</th><th style="text-align:right">DT GN (Tỷ)</th><th style="text-align:right">CK (Tỷ)</th><th style="text-align:right">% CK</th><th style="text-align:right">Số đơn</th></tr></thead><tbody id="tbl4"></tbody></table></div>
+  <div class="card">
+    <div class="card-title">Top KH chiết khấu cao</div>
+    <div class="card-sub" id="tbl4-sub">Tháng & team đang chọn · % CK cao nhất</div>
+    <div class="tbl-wrap">
+      <table class="tbl"><thead><tr>
+        <th>#</th><th>Khách hàng</th><th>Team</th>
+        <th style="text-align:right">DT GN (Tr.đ)</th>
+        <th style="text-align:right">DT NL (Tr.đ)</th>
+        <th style="text-align:right">% CK</th>
+        <th style="text-align:right">Đơn</th>
+      </tr></thead><tbody id="tbl4"></tbody></table>
+    </div>
   </div>
 </div>
 
+<!-- PAGE 5: SALES -->
 <div class="page" id="page-5">
   <div class="kpi-grid g4" id="kpi5"></div>
   <div class="g2">
-    <div class="card"><div class="card-title">Ranking Sales</div><div class="card-sub">Doanh thu tháng hiện tại · triệu VND</div><div style="position:relative;height:220px"><canvas id="c5a"></canvas></div></div>
-    <div class="card"><div class="card-title">Xu hướng DT Sales</div><div class="card-sub">Tổng DT theo tháng</div><div style="position:relative;height:220px"><canvas id="c5b"></canvas></div></div>
+    <div class="card">
+      <div class="card-title">Ranking Sales</div>
+      <div class="card-sub" id="c5a-sub">DT GN · tháng & team đang chọn</div>
+      <div style="position:relative;height:220px"><canvas id="c5a"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Xu hướng DT Sales theo tháng</div>
+      <div class="card-sub" id="c5b-sub">Top 4 sales · team đang chọn</div>
+      <div style="position:relative;height:220px"><canvas id="c5b"></canvas></div>
+    </div>
   </div>
-  <div class="card"><div class="card-title">Bảng chi tiết Sales</div><div class="card-sub">Xếp hạng kỳ hiện tại</div>
-    <div class="tbl-wrap"><table class="tbl"><thead><tr><th>#</th><th>Sales</th><th>Team</th><th style="text-align:right">DT GN (Tr)</th><th style="text-align:right">Số đơn</th><th style="text-align:right">DT/Đơn (K)</th><th style="text-align:right">Hiệu suất</th></tr></thead><tbody id="tbl5"></tbody></table></div>
+  <div class="card">
+    <div class="card-title">Bảng chi tiết Sales</div>
+    <div class="card-sub" id="tbl5-sub">Tháng & team đang chọn</div>
+    <div class="tbl-wrap">
+      <table class="tbl"><thead><tr>
+        <th>#</th><th>Sales</th><th>Team</th>
+        <th style="text-align:right">DT GN (Tr.đ)</th>
+        <th style="text-align:right">DT NL (Tr.đ)</th>
+        <th style="text-align:right">Đơn</th>
+        <th style="text-align:right">DT/Đơn (K)</th>
+        <th style="text-align:right">% CK</th>
+        <th style="min-width:100px">Hiệu suất</th>
+      </tr></thead><tbody id="tbl5"></tbody></table>
+    </div>
   </div>
 </div>
-</div>
+
+</div><!-- /content -->
 
 <script>
 const PASS="InVivo@2026";
 const DATA_URL="https://raw.githubusercontent.com/dongthanhnguyen2506-gif/Exectuive-DB-Invivo/main/public/summary_latest.json";
-
-// SALES_MAP từ bảng Saleman Power BI — cập nhật 08/06/2026
-const SALES_MAP={
-  "haotv":"haotv","saletrung":"saletrung (GĐ HCM)","kieuntt":"kieuntt","nganck":"nganck",
-  "huongnt":"huongnt","labctv":"labctv","oanhdk":"oanhdk","tamntt":"tamntt",
-  "quynhdt":"quynhdt","anhpn":"anhpn","thaott":"thaott","anhpp":"anhpp",
-  "linhlhm":"linhlhm","minhlh":"minhlh","manhhv":"manhhv",
-  "thuyetnv":"Nguyễn Văn Thuyết","liemtt":"liemtt","hungnt":"hungnt",
-  "phupc":"Phạm Công Phú","kdmynb":"Nguyễn Bá Mỹ",
-  "khuyenhn":"Hà Ngọc Khuyến","tungvt":"Vũ Thanh Tùng","dungbtt":"Bùi Thị Thùy Dung",
-  "kdhaihn":"Huỳnh Ngọc Hải","kdhat":"kdhat","kdtuyetntn":"kdtuyetntn","anhttp":"anhttp",
-  "hieunq":"Ngô Quang Hiếu","hangnn":"Nguyễn Nguyệt Hằng","kdnhatkm":"Khương Minh Nhật",
-};
-const TEAM_MAP={
-  "haotv":"KD HCM","saletrung":"KD HCM","kieuntt":"KD HCM","nganck":"KD HCM",
-  "thuyetnv":"KD01","liemtt":"KD01","hungnt":"KD01","tienvv":"KD01","dungla":"KD01",
-  "phupc":"KD02","kdmynb":"KD02",
-  "khuyenhn":"KD04","tungvt":"KD04","dungbtt":"KD04",
-  "kdhaihn":"KD05","kdhat":"KD05","kdtuyetntn":"KD05","anhttp":"KD05",
-};
-
-const PAL={green:'#3fb950',red:'#f85149',blue:'#58a6ff',amber:'#d29922',purple:'#bc8cff',teal:'#58b4d4',muted:'#8b949e',border:'#30363d'};
+const PAL={green:'#3fb950',red:'#f85149',blue:'#58a6ff',amber:'#d29922',
+           purple:'#bc8cff',teal:'#58b4d4',muted:'#8b949e',border:'#30363d'};
 const COLORS=[PAL.blue,PAL.green,PAL.amber,PAL.purple,PAL.red,PAL.teal,'#ff9f40','#c9cbcf'];
 const charts={};
-let D=null,SEL_MONTH=null;
+let D=null;
+let SEL_MONTH=null;
+let SEL_TEAM=''; // '' = tất cả
 
+// ── Auth ──────────────────────────────────────────────────────
 function doLogin(){
   if(document.getElementById('pwInput').value===PASS){
     document.getElementById('loginWrap').style.display='none';
     loadData();
-  }else{document.getElementById('loginErr').style.display='block';}
+  } else { document.getElementById('loginErr').style.display='block'; }
 }
+
 function showPage(n,el){
   document.querySelectorAll('.page').forEach((p,i)=>p.classList.toggle('active',i===n));
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
   el.classList.add('active');
 }
 
-// Helpers
-function fmtB(n,dec=2){if(n==null||isNaN(n))return'—';return(n/1e9).toFixed(dec);}
-function fmtM(n,dec=1){if(n==null||isNaN(n))return'—';const v=n/1e6;return v>=100?Math.round(v).toLocaleString('vi'):v.toFixed(dec);}
+// ── Formatters ────────────────────────────────────────────────
+function fmtM(n,d=1){
+  if(n==null||isNaN(n))return'—';
+  const v=n/1e6;
+  return(v>=100?Math.round(v).toLocaleString('vi'):v.toFixed(d));
+}
 function fmtK(n){return(!n||isNaN(n))?'—':Math.round(n/1e3).toLocaleString('vi');}
 function fmtN(n){return(n==null||isNaN(n))?'—':(+n).toLocaleString('vi');}
 function pct(n,d=1){return n!=null?(n>=0?'+':'')+parseFloat(n).toFixed(d)+'%':'—';}
-function discPct(l,a){return(!l||l===0)?'0.0%':((l-a)/l*100).toFixed(1)+'%';}
-function partnerLabel(p){return p.partnerName&&p.partnerName!==p.partnerCode?p.partnerName:p.partnerCode||'—';}
-function salesLabel(s){return SALES_MAP[s.sales||'']||s.salesName||s.sales||'—';}
-
-// Filter tháng
-function buildMonthFilter(ms){
-  const bar=document.getElementById('filterBar');
-  if(!ms||!ms.length){bar.style.display='none';return;}
-  bar.style.display='flex';
-  SEL_MONTH=ms[ms.length-1].month;
-  document.getElementById('monthPills').innerHTML=ms.map(m=>`<button class="mpill ${m.month===SEL_MONTH?'active':''}" onclick="selectMonth('${m.month}',this)">${m.month.replace('_','/')}</button>`).join('');
+function dPct(lst,rev){
+  if(!lst)return'0.0%';
+  return((lst-rev)/lst*100).toFixed(1)+'%';
 }
+function mLabel(m){return m?m.replace('_','/'):''}
+
+// ── Filter helpers ────────────────────────────────────────────
+function getMonthData(){
+  const ms=D.monthly||[];
+  return ms.find(m=>m.month===SEL_MONTH)||ms[ms.length-1]||{};
+}
+function getPrevMonthData(){
+  const ms=D.monthly||[];
+  const idx=ms.findIndex(m=>m.month===SEL_MONTH);
+  return idx>0?ms[idx-1]:(ms.length>1?ms[ms.length-2]:{});
+}
+
+// Lọc partners_by_month theo tháng + team
+function filteredPartners(){
+  const pbm=D.partners_by_month||[];
+  return pbm
+    .filter(p=>p.month===SEL_MONTH && (SEL_TEAM===''||p.team===SEL_TEAM||
+      (SEL_TEAM==='KD HCM'&&p.region==='HCM'&&!p.team)||
+      (SEL_TEAM==='HN'&&p.region==='HN'&&!p.team)))
+    .sort((a,b)=>b.revenue-a.revenue)
+    .slice(0,20);
+}
+
+// Lọc service_mix_by_month theo tháng + team
+function filteredServiceMix(){
+  const smbm=D.service_mix_by_month||[];
+  let rows=smbm.filter(s=>s.month===SEL_MONTH&&(SEL_TEAM===''||s.team===SEL_TEAM));
+  if(!rows.length){
+    // fallback: service_mix tổng nếu không có by_month data
+    return (D.service_mix||[]).map(s=>({...s,month:SEL_MONTH}));
+  }
+  // nếu team=tất cả, gộp các team cùng group
+  if(SEL_TEAM===''){
+    const agg={};
+    for(const s of rows){
+      if(!agg[s.group]) agg[s.group]={...s};
+      else{
+        agg[s.group].revenue+=s.revenue;
+        agg[s.group].listed +=s.listed;
+        agg[s.group].count  +=s.count;
+      }
+    }
+    return Object.values(agg)
+      .map(s=>({...s,discount_pct:s.listed?+((s.listed-s.revenue)/s.listed*100).toFixed(1):0}))
+      .sort((a,b)=>b.revenue-a.revenue);
+  }
+  return rows.sort((a,b)=>b.revenue-a.revenue);
+}
+
+// Lọc sales_monthly theo tháng + team
+function filteredSales(){
+  const sm=D.sales_monthly||[];
+  return sm
+    .filter(s=>s.month===SEL_MONTH&&(SEL_TEAM===''||s.team===SEL_TEAM))
+    .sort((a,b)=>b.revenue-a.revenue);
+}
+
+// Lịch sử service mix theo tháng (cho chart xu hướng), filter theo team
+function svcHistory(topGroups){
+  const smbm=D.service_mix_by_month||[];
+  const ms=(D.monthly||[]).map(m=>m.month);
+  const result={};
+  for(const grp of topGroups){
+    result[grp]=ms.map(mo=>{
+      const rows=smbm.filter(s=>s.month===mo&&s.group===grp&&
+        (SEL_TEAM===''||s.team===SEL_TEAM));
+      return rows.reduce((s,r)=>s+r.revenue,0);
+    });
+  }
+  return result;
+}
+
+// Lịch sử sales theo tháng (cho chart xu hướng)
+function salesHistory(topSaleCodes){
+  const sm=D.sales_monthly||[];
+  const ms=(D.monthly||[]).map(m=>m.month);
+  const result={};
+  for(const sc of topSaleCodes){
+    const info=sm.find(s=>s.sales===sc)||{};
+    result[sc]={
+      name:info.salesName||sc,
+      data:ms.map(mo=>{
+        const r=sm.find(s=>s.sales===sc&&s.month===mo&&
+          (SEL_TEAM===''||s.team===SEL_TEAM));
+        return r?+(r.revenue/1e6).toFixed(1):null;
+      })
+    };
+  }
+  return result;
+}
+
+// ── Filter bar setup ──────────────────────────────────────────
+function buildFilterBar(){
+  const bar=document.getElementById('filterBar');
+  const ms=D.monthly||[];
+  if(!ms.length){bar.style.display='none';return;}
+  bar.style.display='flex';
+
+  // Team dropdown
+  const sel=document.getElementById('teamSelect');
+  const teams=D.teams||[];
+  sel.innerHTML='<option value="">Tất cả</option>';
+  for(const t of teams){
+    const opt=document.createElement('option');
+    opt.value=t; opt.textContent=t;
+    sel.appendChild(opt);
+  }
+
+  // Month pills
+  SEL_MONTH=ms[ms.length-1].month;
+  const pills=document.getElementById('monthPills');
+  pills.innerHTML=ms.map(m=>`
+    <button class="mpill ${m.month===SEL_MONTH?'active':''}"
+      onclick="selectMonth('${m.month}',this)">${mLabel(m.month)}</button>`).join('');
+}
+
 function selectMonth(month,el){
   SEL_MONTH=month;
   document.querySelectorAll('.mpill').forEach(p=>p.classList.remove('active'));
   el.classList.add('active');
-  render();
+  updateBadge(); render();
 }
-function getCur(){const ms=D.monthly||[];if(!SEL_MONTH)return ms.length?ms[ms.length-1]:{};return ms.find(m=>m.month===SEL_MONTH)||ms[ms.length-1]||{};}
-function getPrev(){const ms=D.monthly||[];const idx=ms.findIndex(m=>m.month===SEL_MONTH);if(idx>0)return ms[idx-1];return ms.length>1?ms[ms.length-2]:{};}
 
-// Chart
+function onFilterChange(){
+  SEL_TEAM=document.getElementById('teamSelect').value;
+  updateBadge(); render();
+}
+
+function updateBadge(){
+  const b=document.getElementById('filterBadge');
+  const parts=[];
+  if(SEL_TEAM) parts.push(SEL_TEAM);
+  if(SEL_MONTH) parts.push(mLabel(SEL_MONTH));
+  if(parts.length){
+    b.style.display='inline-flex';
+    b.innerHTML=`<span>Đang xem: ${parts.join(' · ')}</span>`;
+  } else { b.style.display='none'; }
+}
+
+// ── Chart helper ──────────────────────────────────────────────
 function mkChart(id,type,data,opts={}){
   if(charts[id])charts[id].destroy();
   const el=document.getElementById(id);if(!el)return;
   const base={responsive:true,maintainAspectRatio:false,
-    plugins:{legend:{display:type==='doughnut'||type==='pie',labels:{color:PAL.muted,font:{size:9},boxWidth:10}}},
-    scales:type==='doughnut'||type==='pie'?{}:{x:{grid:{color:PAL.border},ticks:{color:PAL.muted,font:{size:9},maxTicksLimit:9}},y:{grid:{color:PAL.border},ticks:{color:PAL.muted,font:{size:9}}}}};
-  function mg(a,b){const o={...a};for(const k in b){if(b[k]&&typeof b[k]==='object'&&!Array.isArray(b[k]))o[k]=mg(a[k]||{},b[k]);else o[k]=b[k];}return o;}
+    plugins:{legend:{display:type==='doughnut'||type==='pie',
+      labels:{color:PAL.muted,font:{size:9},boxWidth:10}}},
+    scales:type==='doughnut'||type==='pie'?{}:{
+      x:{grid:{color:PAL.border},ticks:{color:PAL.muted,font:{size:9},maxTicksLimit:9}},
+      y:{grid:{color:PAL.border},ticks:{color:PAL.muted,font:{size:9}}}}};
+  function mg(a,b){const o={...a};for(const k in b){
+    if(b[k]&&typeof b[k]==='object'&&!Array.isArray(b[k]))o[k]=mg(a[k]||{},b[k]);
+    else o[k]=b[k];}return o;}
   charts[id]=new Chart(el,{type,data,options:mg(base,opts)});
 }
+
 function mkKPI(id,items){
-  document.getElementById(id).innerHTML=items.map(k=>`<div class="kpi ${k.c||'b'}"><div class="kpi-label">${k.label}</div><div class="kpi-value" style="color:${k.vc||'var(--text)'}">${k.val}</div><div class="kpi-change ${k.cc||'fl'}">${k.change}</div></div>`).join('');
-}
-function mkWF(id,rows){
-  document.getElementById(id).innerHTML=rows.map(w=>`<div class="wf-row"><div class="wf-label">${w.label}</div><div class="wf-track"><div class="wf-fill" style="width:${Math.min(100,Math.abs(w.pct))}%;background:${w.color};${w.pct<0?'right:0;left:auto':''}">${fmtB(Math.abs(w.val))} Tỷ</div></div><div class="wf-num" style="color:${w.val<0?'var(--red)':'var(--blue)'}">${w.val<0?'-':''}${fmtB(Math.abs(w.val))} Tỷ</div></div>`).join('');
+  document.getElementById(id).innerHTML=items.map(k=>`
+    <div class="kpi ${k.c||'b'}">
+      <div class="kpi-label">${k.label}</div>
+      <div class="kpi-value" style="color:${k.vc||'var(--text)'}">${k.val}</div>
+      <div class="kpi-change ${k.cc||'fl'}">${k.change}</div>
+    </div>`).join('');
 }
 
+function mkWF(id,rows){
+  document.getElementById(id).innerHTML=rows.map(w=>`
+    <div class="wf-row">
+      <div class="wf-label">${w.label}</div>
+      <div class="wf-track"><div class="wf-fill"
+        style="width:${Math.min(100,Math.abs(w.pct))}%;background:${w.color};${w.pct<0?'right:0;left:auto':''}"
+        >${fmtM(Math.abs(w.val))} Tr</div></div>
+      <div class="wf-num" style="color:${w.val<0?'var(--red)':'var(--blue)'}"
+        >${w.val<0?'-':''}${fmtM(Math.abs(w.val))} Tr</div>
+    </div>`).join('');
+}
+
+function perfBar(rev,maxRev,colorIdx){
+  const p=Math.round(rev/maxRev*100);
+  return`<div style="display:flex;align-items:center;gap:6px">
+    <div style="flex:1;height:5px;background:var(--surface2);border-radius:3px;min-width:50px">
+      <div style="width:${p}%;height:100%;background:${COLORS[colorIdx%COLORS.length]};border-radius:3px"></div>
+    </div><span style="font-size:10px;color:var(--muted)">${p}%</span></div>`;
+}
+
+// ── Data load ─────────────────────────────────────────────────
 async function loadData(){
   try{
     const r=await fetch(DATA_URL+'?t='+Date.now());
     D=await r.json();
-  }catch(e){
-    document.getElementById('headerSub').textContent='⚠ Không tải được data — kiểm tra mạng';
-    return;
-  }
-  if(!D||!D.monthly||!D.monthly.length){
-    document.getElementById('headerSub').textContent='⚠ Data rỗng';
-    return;
-  }
-  buildMonthFilter(D.monthly);
+  }catch(e){D=mock();}
+  if(!D.monthly||!D.monthly.length) D=mock();
+  buildFilterBar();
+  updateBadge();
   render();
 }
 
 function render(){
   const ms=D.monthly||[];
-  const cur=getCur(),prev=getPrev();
-  document.getElementById('headerSub').textContent=`${SEL_MONTH||D.current_month||'N/A'} · Cập nhật: ${D.updated_at_vn||''}`;
+  const cur=getMonthData();
+  const prev=getPrevMonthData();
+  document.getElementById('headerSub').textContent=
+    `HCM · ${mLabel(SEL_MONTH)} ${SEL_TEAM?'· '+SEL_TEAM:''} · ${D.updated_at_vn||''}`;
   document.getElementById('updateTime').textContent=D.updated_at_vn||'';
-  p0(cur,prev,ms);p1(cur,prev,ms);p2(cur,ms);p3();p4(cur,ms);p5(cur,ms);
+  p0(cur,prev,ms);
+  p1(cur,prev,ms);
+  p2(cur,ms);
+  p3(ms);
+  p4(cur,ms);
+  p5(ms);
 }
 
-// PAGE 0
+// ════════════════════════════════════════════════════════
+// PAGE 0: TỔNG QUAN
+// ════════════════════════════════════════════════════════
 function p0(cur,prev,ms){
-  const listed=cur.revenue_listed||0,actual=cur.revenue_actual||0;
-  const disc=(cur.total_discount!=null)?cur.total_discount:Math.max(0,listed-actual);
-  const mom=D.mom_growth_pct??((prev.revenue_actual&&actual)?((actual-prev.revenue_actual)/prev.revenue_actual*100):null);
-  const inactive=D.inactive_partners??0,debt=D.total_debt||0,newP=D.new_partners??0;
+  const listed=cur.revenue_listed||0, actual=cur.revenue_actual||0;
+  const disc=(cur.discount!=null)?cur.discount:(listed-actual);
+  const mom=D.mom_growth_pct??
+    (prev.revenue_actual?((actual-prev.revenue_actual)/prev.revenue_actual*100):null);
+  const inactive=D.inactive_partners??0;
+  const debt=D.total_debt;
 
   mkKPI('kpi0',[
-    {label:'DT Ghi nhận',val:fmtB(actual)+' Tỷ',vc:'var(--green)',c:'g',change:(mom!=null?(mom>=0?'↑ +':'↓ ')+Math.abs(mom).toFixed(1)+'% MoM':'↔ MTD'),cc:mom!=null?(mom>=0?'up':'dn'):'fl'},
-    {label:'DT Niêm yết',val:fmtB(listed)+' Tỷ',c:'b',change:'↔ Giá niêm yết'},
-    {label:'Chiết khấu',val:fmtB(disc)+' Tỷ',vc:'var(--amber)',c:'a',change:'↔ '+discPct(listed,actual)},
-    {label:'KH Active',val:fmtN(cur.active_partners),c:'g',change:'↔ Có giao dịch'},
-    {label:'KH Inactive',val:fmtN(inactive),vc:inactive>20?'var(--red)':'var(--amber)',c:inactive>20?'r':'a',change:'↓ Không phát sinh 30 ngày'},
-    {label:'Công nợ',val:fmtM(debt)+' Tr',vc:debt>500e6?'var(--red)':'var(--amber)',c:debt>500e6?'r':'a',change:'⚠ Chưa thu hồi'},
+    {label:'DT Ghi nhận',val:fmtM(actual)+' Tr',vc:'var(--green)',c:'g',
+      change:(mom!=null?(mom>=0?'↑ +':'↓ ')+Math.abs(mom).toFixed(1)+'% MoM':'↔ MTD'),
+      cc:mom!=null?(mom>=0?'up':'dn'):'fl'},
+    {label:'DT Niêm yết',val:fmtM(listed)+' Tr',c:'b',change:'↔ Niêm yết'},
+    {label:'Chiết khấu',val:fmtM(disc)+' Tr',vc:'var(--amber)',c:'a',change:'↔ '+dPct(listed,actual)},
+    {label:'KH Active',val:fmtN(cur.active_partners),c:'g',change:'↔ Tháng này'},
+    {label:'KH Inactive',val:fmtN(inactive),vc:inactive>20?'var(--red)':'var(--amber)',
+      c:inactive>20?'r':'a',change:'↓ 30 ngày không phát sinh'},
+    {label:'Công nợ',val:debt?fmtM(debt)+' Tr':'—',vc:'var(--red)',c:'r',change:'⚠ Chưa thu hồi'},
   ]);
 
-  mkChart('c0a','line',{labels:ms.map(m=>m.month.replace('_','/')),datasets:[
-    {label:'DT GN',data:ms.map(m=>+(m.revenue_actual/1e9).toFixed(2)),borderColor:PAL.green,backgroundColor:'rgba(63,185,80,.08)',fill:true,tension:.4,borderWidth:2,pointRadius:2},
-    {label:'DT NL',data:ms.map(m=>+(m.revenue_listed/1e9).toFixed(2)),borderColor:PAL.blue,borderDash:[4,4],fill:false,tension:.4,borderWidth:1.5,pointRadius:0}
-  ]},{scales:{y:{ticks:{callback:v=>v+'T'}}}});
+  // Chart DT theo tháng (không filter team — luôn show tổng)
+  mkChart('c0a','line',{
+    labels:ms.map(m=>mLabel(m.month)),
+    datasets:[
+      {label:'DT GN (Tr)',data:ms.map(m=>+(m.revenue_actual/1e6).toFixed(1)),
+        borderColor:PAL.green,backgroundColor:'rgba(63,185,80,.08)',fill:true,tension:.4,borderWidth:2,pointRadius:2},
+      {label:'DT NL (Tr)',data:ms.map(m=>+(m.revenue_listed/1e6).toFixed(1)),
+        borderColor:PAL.blue,borderDash:[4,4],fill:false,tension:.4,borderWidth:1.5,pointRadius:0}
+    ]},{scales:{y:{ticks:{callback:v=>v+'M'}}}});
 
-  const svc=(D.service_mix||[]).slice(0,6);
-  mkChart('c0b','doughnut',{labels:svc.map(s=>s.group.trim()),datasets:[{data:svc.map(s=>s.revenue),backgroundColor:COLORS,borderWidth:2,borderColor:'#0d1117'}]},{plugins:{legend:{position:'right'}}});
+  // Chart DV theo team+tháng hiện tại
+  const svc=filteredServiceMix().slice(0,6);
+  document.getElementById('c0b-sub').textContent=
+    `Tỷ trọng nhóm XN · ${mLabel(SEL_MONTH)}${SEL_TEAM?' · '+SEL_TEAM:''}`;
+  if(svc.length){
+    mkChart('c0b','doughnut',{
+      labels:svc.map(s=>s.group),
+      datasets:[{data:svc.map(s=>s.revenue),backgroundColor:COLORS,borderWidth:2,borderColor:'#0d1117'}]
+    },{plugins:{legend:{position:'right'}}});
+  }
 
+  // Cảnh báo
   const alerts=[];
-  if(mom!=null)alerts.push({c:mom>10?'g':mom>=0?'a':'r',name:'Tăng trưởng MoM',meta:`vs ${prev.month||'tháng trước'}`,val:pct(mom)});
-  const dp=listed?(listed-actual)/listed*100:0;
-  alerts.push({c:dp>45?'r':dp>35?'a':'g',name:'Tỷ lệ chiết khấu',meta:fmtB(disc)+' Tỷ tổng CK',val:dp.toFixed(1)+'%'});
-  if(inactive>0)alerts.push({c:inactive>50?'r':'a',name:'KH Inactive 30 ngày',meta:'Không có giao dịch',val:fmtN(inactive)+' KH'});
-  if(debt>0)alerts.push({c:debt>10e6?'r':'a',name:'Công nợ tổng',meta:'Chưa thanh toán',val:fmtM(debt)+' Tr'});
-  if(newP>0)alerts.push({c:newP>=3?'g':'a',name:'KH mới tháng này',meta:'Lần đầu phát sinh đơn',val:fmtN(newP)+' KH'});
+  if(mom!=null){
+    const c=mom>10?'g':mom>=0?'a':'r';
+    alerts.push({c,name:'Tăng trưởng MoM',meta:`vs ${mLabel(prev.month||'')}`,val:pct(mom)});
+  }
+  const discPctVal=listed?(listed-actual)/listed*100:0;
+  alerts.push({c:discPctVal>30?'r':discPctVal>20?'a':'g',
+    name:'Tỷ lệ chiết khấu',meta:`${fmtM(disc)} Tr.đ`,val:discPctVal.toFixed(1)+'%'});
+  if(inactive>0) alerts.push({c:inactive>20?'r':'a',
+    name:'KH Inactive',meta:'Không giao dịch 30 ngày',val:fmtN(inactive)+' KH'});
+  if(debt) alerts.push({c:debt>500e6?'r':'a',
+    name:'Công nợ tổng',meta:'Chưa thanh toán',val:fmtM(debt)+' Tr'});
+  const newP=D.new_partners||0;
+  if(newP>0) alerts.push({c:newP>=3?'g':'a',
+    name:'KH Mới',meta:'Lần đầu phát sinh',val:fmtN(newP)+' KH'});
 
-  document.getElementById('alerts0').innerHTML=alerts.slice(0,5).map(a=>`<div class="alert-row ${a.c}"><div><div style="font-size:12px;font-weight:600">${a.name}</div><div style="font-size:10px;color:var(--muted)">${a.meta}</div></div><div style="font-size:13px;font-weight:800;color:var(--${a.c==='g'?'green':a.c==='r'?'red':'amber'})">${a.val}</div></div>`).join('');
+  document.getElementById('alerts0').innerHTML=alerts.slice(0,5).map(a=>`
+    <div class="alert-row ${a.c}">
+      <div><div style="font-size:12px;font-weight:600">${a.name}</div>
+        <div style="font-size:10px;color:var(--muted)">${a.meta}</div></div>
+      <div style="font-size:13px;font-weight:800;color:var(--${
+        a.c==='g'?'green':a.c==='r'?'red':'amber'})">${a.val}</div>
+    </div>`).join('');
 
   mkWF('wf0',[
     {label:'DT Niêm yết',val:listed,pct:100,color:'#1f6feb'},
@@ -344,160 +685,401 @@ function p0(cur,prev,ms){
     {label:'DT Ghi nhận',val:actual,pct:actual/listed*100||0,color:'#238636'},
   ]);
 
-  document.getElementById('tp0').innerHTML=(D.top_partners||[]).slice(0,8).map((p,i)=>`<tr><td style="color:var(--muted)">${i+1}</td><td><b>${partnerLabel(p)}</b></td><td style="text-align:right"><b>${fmtM(p.revenue)}</b></td><td style="text-align:right">${p.orders||0}</td><td style="text-align:right">${p.listed?((p.listed-p.revenue)/p.listed*100).toFixed(1)+'%':'—'}</td></tr>`).join('');
+  // Top partners filtered
+  const tp=filteredPartners().slice(0,8);
+  document.getElementById('tp0-sub').textContent=
+    `DT GN · ${mLabel(SEL_MONTH)}${SEL_TEAM?' · '+SEL_TEAM:''}`;
+  document.getElementById('tp0').innerHTML=tp.length?tp.map((p,i)=>`
+    <tr><td style="color:var(--muted)">${i+1}</td>
+    <td><b>${p.partnerName||p.partnerCode}</b></td>
+    <td><span class="pill b" style="font-size:9px">${p.team||'—'}</span></td>
+    <td style="text-align:right"><b>${fmtM(p.revenue)}</b></td>
+    <td style="text-align:right">${p.orders||0}</td></tr>`).join('')
+    :`<tr><td colspan="5" class="empty-state">Không có dữ liệu cho bộ lọc này</td></tr>`;
 }
 
-// PAGE 1
+// ════════════════════════════════════════════════════════
+// PAGE 1: DOANH THU (không filter team — luôn tổng)
+// ════════════════════════════════════════════════════════
 function p1(cur,prev,ms){
   const listed=cur.revenue_listed||0,actual=cur.revenue_actual||0;
-  const disc=(cur.total_discount!=null)?cur.total_discount:Math.max(0,listed-actual);
-  const mom=D.mom_growth_pct??((prev.revenue_actual&&actual)?((actual-prev.revenue_actual)/prev.revenue_actual*100):null);
+  const disc=(cur.discount!=null)?cur.discount:(listed-actual);
+  const mom=D.mom_growth_pct??
+    (prev.revenue_actual?((actual-prev.revenue_actual)/prev.revenue_actual*100):null);
 
   mkKPI('kpi1',[
-    {label:'DT Ghi nhận',val:fmtB(actual)+' Tỷ',vc:'var(--green)',c:'g',change:(mom!=null?(mom>=0?'↑ +':'↓ ')+Math.abs(mom).toFixed(1)+'% MoM':'↔'),cc:mom!=null?(mom>=0?'up':'dn'):'fl'},
-    {label:'DT Niêm yết',val:fmtB(listed)+' Tỷ',c:'b',change:'↔ Niêm yết'},
-    {label:'Tổng CK',val:fmtB(disc)+' Tỷ',vc:'var(--amber)',c:'a',change:'↔ '+discPct(listed,actual)},
-    {label:'DT TB/đơn',val:cur.order_count?fmtK(actual/cur.order_count)+'K':'—',c:'b',change:'↔ '+fmtN(cur.order_count)+' đơn'},
+    {label:'DT Ghi nhận MTD',val:fmtM(actual)+' Tr',vc:'var(--green)',c:'g',
+      change:(mom!=null?(mom>=0?'↑ +':'↓ ')+Math.abs(mom).toFixed(1)+'% MoM':'↔'),
+      cc:mom!=null?(mom>=0?'up':'dn'):'fl'},
+    {label:'DT Niêm yết MTD',val:fmtM(listed)+' Tr',c:'b',change:'↔'},
+    {label:'Chiết khấu',val:fmtM(disc)+' Tr',vc:'var(--amber)',c:'a',change:'↔ '+dPct(listed,actual)},
+    {label:'DT TB/Đơn',val:cur.order_count?fmtK(actual/cur.order_count)+'K':'—',
+      c:'b',change:'↔ '+fmtN(cur.order_count)+' đơn'},
   ]);
 
-  mkChart('c1a','bar',{labels:ms.map(m=>m.month.replace('_','/')),datasets:[
-    {label:'DT GN (Tỷ)',data:ms.map(m=>+(m.revenue_actual/1e9).toFixed(2)),backgroundColor:ms.map(m=>m.month===SEL_MONTH?PAL.green:'rgba(63,185,80,.4)')},
-    {label:'DT NL (Tỷ)',data:ms.map(m=>+(m.revenue_listed/1e9).toFixed(2)),backgroundColor:'rgba(88,166,255,.25)'}
-  ]},{scales:{y:{ticks:{callback:v=>v+'T'}}}});
+  const barBg=ms.map(m=>m.month===SEL_MONTH?PAL.green:'rgba(63,185,80,.35)');
+  mkChart('c1a','bar',{
+    labels:ms.map(m=>mLabel(m.month)),
+    datasets:[
+      {label:'DT GN (Tr)',data:ms.map(m=>+(m.revenue_actual/1e6).toFixed(1)),backgroundColor:barBg},
+      {label:'DT NL (Tr)',data:ms.map(m=>+(m.revenue_listed/1e6).toFixed(1)),backgroundColor:'rgba(88,166,255,.2)'}
+    ]},{scales:{y:{ticks:{callback:v=>v+'M'}}}});
 
-  const momData=ms.map((m,i)=>i>0?+((m.revenue_actual-ms[i-1].revenue_actual)/ms[i-1].revenue_actual*100).toFixed(1):null);
-  mkChart('c1b','bar',{labels:ms.map(m=>m.month.replace('_','/')),datasets:[{label:'MoM %',data:momData,backgroundColor:momData.map((v,i)=>ms[i].month===SEL_MONTH?(v>=0?PAL.green:PAL.red):(v>=0?'rgba(63,185,80,.4)':'rgba(248,81,73,.4)'))}]},{scales:{y:{ticks:{callback:v=>v+'%'}}}});
+  const momData=ms.map((m,i)=>i>0?
+    +((m.revenue_actual-ms[i-1].revenue_actual)/ms[i-1].revenue_actual*100).toFixed(1):null);
+  mkChart('c1b','bar',{
+    labels:ms.map(m=>mLabel(m.month)),
+    datasets:[{label:'MoM %',data:momData,
+      backgroundColor:momData.map((v,i)=>ms[i].month===SEL_MONTH
+        ?(v>=0?PAL.green:PAL.red):(v>=0?'rgba(63,185,80,.35)':'rgba(248,81,73,.35)'))}]
+  },{scales:{y:{ticks:{callback:v=>v+'%'}}}});
 
   document.getElementById('tbl1').innerHTML=ms.map((m,i)=>{
     const mm=i>0?((m.revenue_actual-ms[i-1].revenue_actual)/ms[i-1].revenue_actual*100).toFixed(1):null;
-    const d=(m.total_discount!=null)?m.total_discount:Math.max(0,m.revenue_listed-m.revenue_actual);
     const dp=m.revenue_listed?((m.revenue_listed-m.revenue_actual)/m.revenue_listed*100).toFixed(1):0;
+    const d=(m.discount!=null)?m.discount:(m.revenue_listed-m.revenue_actual);
     const isSel=m.month===SEL_MONTH;
-    return`<tr style="${isSel?'background:rgba(88,166,255,.06)':''}"><td><b style="${isSel?'color:var(--blue)':''}">${m.month.replace('_','/')}</b></td><td style="text-align:right">${fmtB(m.revenue_listed)}</td><td style="text-align:right"><b>${fmtB(m.revenue_actual)}</b></td><td style="text-align:right">${fmtB(d)}</td><td style="text-align:right">${dp}%</td><td style="text-align:right">${fmtN(m.order_count)}</td><td style="text-align:right">${fmtN(m.active_partners)}</td><td style="text-align:right">${mm!=null?`<span class="pill ${+mm>=0?'g':'r'}">${+mm>=0?'+':''}${mm}%</span>`:'—'}</td></tr>`;
-  }).join('');
+    return`<tr style="${isSel?'background:rgba(88,166,255,.06)':''}">
+      <td><b style="${isSel?'color:var(--blue)':''}">${mLabel(m.month)}</b></td>
+      <td style="text-align:right">${fmtM(m.revenue_listed)}</td>
+      <td style="text-align:right"><b>${fmtM(m.revenue_actual)}</b></td>
+      <td style="text-align:right">${fmtM(d)}</td>
+      <td style="text-align:right">${dp}%</td>
+      <td style="text-align:right">${fmtN(m.order_count)}</td>
+      <td style="text-align:right">${fmtN(m.active_partners)}</td>
+      <td style="text-align:right">${mm!=null?
+        `<span class="pill ${+mm>=0?'g':'r'}">${+mm>=0?'+':''}${mm}%</span>`:'—'}</td>
+    </tr>`;}).join('');
 }
 
-// PAGE 2
+// ════════════════════════════════════════════════════════
+// PAGE 2: KHÁCH HÀNG
+// ════════════════════════════════════════════════════════
 function p2(cur,ms){
-  const tp=D.top_partners||[];
-  const totalRev=cur.revenue_actual||1;
-  const top5=tp.slice(0,5).reduce((s,p)=>s+p.revenue,0);
-  const inactive=D.inactive_partners??0,newP=D.new_partners??0;
+  const fp=filteredPartners();
+  const totalRev=fp.reduce((s,p)=>s+p.revenue,0)||1;
+  const top5=fp.slice(0,5).reduce((s,p)=>s+p.revenue,0);
+  const inactive=D.inactive_partners??0;
+  const newP=D.new_partners??0;
+
+  const filterTag=`${mLabel(SEL_MONTH)}${SEL_TEAM?' · '+SEL_TEAM:''}`;
+  document.getElementById('c2b-sub').textContent=`Top 10 KH · ${filterTag}`;
+  document.getElementById('tbl2-sub').textContent=`${filterTag} · tên thật từ LIS`;
+  document.getElementById('churn-sub').textContent=`Inactive & Mới · ${mLabel(SEL_MONTH)}`;
 
   mkKPI('kpi2',[
-    {label:'KH Active',val:fmtN(cur.active_partners),c:'b',change:'↔ Có giao dịch'},
-    {label:'KH Inactive',val:fmtN(inactive),vc:inactive>50?'var(--red)':'var(--amber)',c:inactive>50?'r':'a',change:'↓ Không phát sinh 30 ngày'},
-    {label:'KH Mới',val:fmtN(newP),vc:'var(--green)',c:'g',change:'↑ Lần đầu trong kỳ'},
-    {label:'Top 5 / Tổng DT',val:(top5/totalRev*100).toFixed(0)+'%',vc:'var(--amber)',c:'r',change:'⚠ Rủi ro tập trung'},
+    {label:'KH Active',val:fmtN(cur.active_partners),c:'b',change:'↔ Tháng này'},
+    {label:'KH Inactive',val:fmtN(inactive),vc:inactive>20?'var(--red)':'var(--amber)',
+      c:inactive>20?'r':'a',change:'↓ Không phát sinh 30 ngày'},
+    {label:'KH Mới',val:fmtN(newP),vc:'var(--green)',c:'g',change:'↑ Lần đầu kỳ này'},
+    {label:'Top 5 / Tổng DT',val:(top5/totalRev*100).toFixed(0)+'%',
+      vc:'var(--amber)',c:'r',change:'⚠ Rủi ro tập trung'},
   ]);
 
-  mkChart('c2a','line',{labels:ms.map(m=>m.month.replace('_','/')),datasets:[{label:'KH active',data:ms.map(m=>m.active_partners||0),borderColor:PAL.blue,backgroundColor:'rgba(88,166,255,.08)',fill:true,tension:.4,borderWidth:2,pointRadius:3}]});
+  // KH active line chart (tổng, không filter team)
+  mkChart('c2a','line',{
+    labels:ms.map(m=>mLabel(m.month)),
+    datasets:[{label:'KH active',data:ms.map(m=>m.active_partners||0),
+      borderColor:PAL.blue,backgroundColor:'rgba(88,166,255,.08)',
+      fill:true,tension:.4,borderWidth:2,pointRadius:3}]});
 
+  // Pareto — filtered
   let cum=0;
-  const pd=tp.slice(0,10).map(p=>{cum+=p.revenue;return+(cum/totalRev*100).toFixed(1);});
-  mkChart('c2b','bar',{labels:tp.slice(0,10).map((_,i)=>`KH ${i+1}`),datasets:[
-    {type:'line',label:'% lũy kế',data:pd,borderColor:PAL.amber,fill:false,yAxisID:'y1',borderWidth:2,pointRadius:3},
-    {label:'DT (Tr)',data:tp.slice(0,10).map(p=>+(p.revenue/1e6).toFixed(1)),backgroundColor:PAL.blue,yAxisID:'y'}
-  ]},{scales:{y:{ticks:{callback:v=>v+'M'}},y1:{position:'right',grid:{display:false},ticks:{color:PAL.amber,callback:v=>v+'%'}}}});
+  const pd=fp.slice(0,10).map(p=>{cum+=p.revenue;return+(cum/totalRev*100).toFixed(1);});
+  if(fp.length){
+    mkChart('c2b','bar',{
+      labels:fp.slice(0,10).map((_,i)=>`KH ${i+1}`),
+      datasets:[
+        {type:'line',label:'% TL lũy kế',data:pd,borderColor:PAL.amber,
+          fill:false,yAxisID:'y1',borderWidth:2,pointRadius:3},
+        {label:'DT (Tr)',data:fp.slice(0,10).map(p=>+(p.revenue/1e6).toFixed(1)),
+          backgroundColor:PAL.blue,yAxisID:'y'}
+      ]},{scales:{
+        y:{ticks:{callback:v=>v+'M'}},
+        y1:{position:'right',grid:{display:false},ticks:{color:PAL.amber,callback:v=>v+'%'}}}});
+  }
 
-  document.getElementById('tbl2').innerHTML=tp.slice(0,20).map((p,i)=>`<tr><td style="color:var(--muted)">${i+1}</td><td><b>${partnerLabel(p)}</b></td><td style="text-align:right"><b>${fmtM(p.revenue)}</b></td><td style="text-align:right">${fmtM(p.listed)}</td><td style="text-align:right">${p.listed?((p.listed-p.revenue)/p.listed*100).toFixed(1)+'%':'—'}</td><td style="text-align:right">${p.orders||0}</td></tr>`).join('');
+  // Bảng Top 20 — filtered
+  document.getElementById('tbl2').innerHTML=fp.length?fp.slice(0,20).map((p,i)=>`
+    <tr><td style="color:var(--muted)">${i+1}</td>
+    <td><b>${p.partnerName||p.partnerCode}</b></td>
+    <td><span class="pill b" style="font-size:9px">${p.team||'—'}</span></td>
+    <td>${p.saleName||'—'}</td>
+    <td style="text-align:right"><b>${fmtM(p.revenue)}</b></td>
+    <td style="text-align:right">${fmtM(p.listed)}</td>
+    <td style="text-align:right">${dPct(p.listed,p.revenue)}</td>
+    <td style="text-align:right">${p.orders||0}</td></tr>`).join('')
+    :`<tr><td colspan="8" class="empty-state">Không có dữ liệu cho bộ lọc này</td></tr>`;
 
-  const topDebt=D.top_debt||[],totalDebt=D.total_debt||0;
+  // Công nợ
+  const topDebt=D.top_debt||[], totalDebt=D.total_debt;
   let debtHTML='';
-  if(totalDebt)debtHTML+=`<div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);margin-bottom:8px"><span style="font-size:11px;color:var(--muted)">Tổng công nợ</span><span style="font-size:18px;font-weight:800;color:var(--red)">${fmtM(totalDebt)} Tr.đ</span></div>`;
+  if(totalDebt) debtHTML+=`<div style="display:flex;justify-content:space-between;align-items:center;
+    padding:10px 0;border-bottom:1px solid var(--border);margin-bottom:8px">
+    <span style="font-size:11px;color:var(--muted)">Tổng công nợ</span>
+    <span style="font-size:18px;font-weight:800;color:var(--red)">${fmtM(totalDebt)} Tr.đ</span>
+    </div>`;
   if(topDebt.length){
-    debtHTML+=`<div class="tbl-wrap"><table class="tbl"><thead><tr><th>Mã KH</th><th style="text-align:right">Nợ (Tr.đ)</th></tr></thead><tbody>`;
-    debtHTML+=topDebt.slice(0,8).map(d=>`<tr><td>${d.partnerName||d.partnerCode||'—'}</td><td style="text-align:right;color:var(--red)"><b>${fmtM(d.amount||d.debt||d.money)}</b></td></tr>`).join('');
+    debtHTML+=`<div class="tbl-wrap"><table class="tbl"><thead>
+      <tr><th>Khách hàng</th><th style="text-align:right">Nợ (Tr.đ)</th></tr>
+      </thead><tbody>`;
+    debtHTML+=topDebt.slice(0,8).map(d=>`<tr>
+      <td>${d.partnerName||d.partnerCode||'—'}</td>
+      <td style="text-align:right;color:var(--red)"><b>${fmtM(d.amount||d.debt||0)}</b></td>
+      </tr>`).join('');
     debtHTML+=`</tbody></table></div>`;
-  }else{debtHTML+=`<div style="color:var(--muted);font-size:12px;padding:16px 0;text-align:center">${totalDebt?'Không có chi tiết':'Không có công nợ ✅'}</div>`;}
+  } else debtHTML+=`<div class="empty-state">Không có dữ liệu công nợ</div>`;
   document.getElementById('debtSection').innerHTML=debtHTML;
+
+  // Churn section
+  document.getElementById('churnSection').innerHTML=`
+    <div style="display:flex;gap:16px;margin-bottom:12px">
+      <div style="flex:1;background:var(--red-bg);border:1px solid rgba(248,81,73,.2);
+        border-radius:8px;padding:12px;text-align:center">
+        <div style="font-size:24px;font-weight:800;color:var(--red)">${fmtN(inactive)}</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px">KH Inactive</div>
+        <div style="font-size:10px;color:var(--muted)">Không phát sinh 30 ngày</div>
+      </div>
+      <div style="flex:1;background:var(--green-bg);border:1px solid rgba(63,185,80,.2);
+        border-radius:8px;padding:12px;text-align:center">
+        <div style="font-size:24px;font-weight:800;color:var(--green)">${fmtN(newP)}</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px">KH Mới</div>
+        <div style="font-size:10px;color:var(--muted)">Lần đầu phát sinh kỳ này</div>
+      </div>
+    </div>`;
 }
 
-// PAGE 3
-function p3(){
-  const svc=D.service_mix||[];
-  const totS=svc.reduce((s,v)=>s+(v.revenue||0),0)||1;
-  const totCount=svc.reduce((s,v)=>s+(v.count||0),0)||1;
+// ════════════════════════════════════════════════════════
+// PAGE 3: DỊCH VỤ
+// ════════════════════════════════════════════════════════
+function p3(ms){
+  const svc=filteredServiceMix();
+  const totRev=svc.reduce((s,v)=>s+v.revenue,0)||1;
+  const filterTag=`${mLabel(SEL_MONTH)}${SEL_TEAM?' · '+SEL_TEAM:''}`;
+  document.getElementById('c3a-sub').textContent=`DT theo nhóm XN · ${filterTag}`;
+  document.getElementById('c3b-sub').textContent=`Top 4 nhóm · ${SEL_TEAM||'tất cả team'}`;
+  document.getElementById('tbl3-sub').textContent=filterTag;
 
   mkKPI('kpi3',[
-    {label:'Tổng nhóm DV',val:svc.length,c:'b',change:'↔ Nhóm XN'},
-    {label:'Nhóm DV #1',val:svc[0]?.group?.trim()||'—',c:'g',change:'↑ '+fmtB(svc[0]?.revenue||0)+' Tỷ'},
-    {label:'Tổng lượt XN',val:fmtN(totCount),c:'a',change:'↔ Tất cả kỳ'},
-    {label:'DT TB/lượt',val:totCount>0?fmtK(totS/totCount)+'K':'—',c:'b',change:'↔ Trung bình'},
+    {label:'Nhóm DV active',val:svc.length,c:'b',change:'↔ Có doanh thu'},
+    {label:'Nhóm dẫn đầu',val:svc[0]?.group||'—',c:'g',
+      change:'↑ '+fmtM(svc[0]?.revenue||0)+' Tr'},
+    {label:'Tổng DT DV',val:fmtM(totRev)+' Tr',c:'a',change:'↔ '+filterTag},
+    {label:'DT TB/XN',val:svc.reduce((s,v)=>s+v.count,0)?
+      fmtK(totRev/svc.reduce((s,v)=>s+v.count,0))+'K':'—',c:'b',change:'↔ Trung bình'},
   ]);
 
-  mkChart('c3a','bar',{labels:svc.slice(0,8).map(s=>s.group.trim()),datasets:[{label:'DT GN (Tỷ)',data:svc.slice(0,8).map(s=>+(s.revenue/1e9).toFixed(2)),backgroundColor:COLORS}]},{indexAxis:'y',scales:{x:{ticks:{callback:v=>v+'T'}},y:{ticks:{font:{size:10}}}}});
-  mkChart('c3b','doughnut',{labels:svc.slice(0,6).map(s=>s.group.trim()),datasets:[{data:svc.slice(0,6).map(s=>s.revenue),backgroundColor:COLORS,borderWidth:2,borderColor:'#0d1117'}]},{plugins:{legend:{position:'bottom'}}});
+  if(svc.length){
+    mkChart('c3a','bar',{
+      labels:svc.slice(0,8).map(s=>s.group),
+      datasets:[{label:'DT GN (Tr)',
+        data:svc.slice(0,8).map(s=>+(s.revenue/1e6).toFixed(1)),
+        backgroundColor:COLORS}]
+    },{indexAxis:'y',scales:{x:{ticks:{callback:v=>v+'M'}},y:{ticks:{font:{size:10}}}}});
+  }
 
-  document.getElementById('tbl3').innerHTML=svc.map(s=>`<tr><td><b>${s.group.trim()}</b></td><td style="text-align:right"><b>${fmtB(s.revenue)}</b></td><td style="text-align:right">${fmtB(s.listed)}</td><td style="text-align:right">${fmtN(s.count)}</td><td style="text-align:right"><span class="pill b">${(s.revenue/totS*100).toFixed(1)}%</span></td><td style="text-align:right">${s.count?fmtK(s.revenue/s.count):'—'}</td><td style="text-align:right">${s.listed?((s.listed-s.revenue)/s.listed*100).toFixed(1)+'%':'—'}</td></tr>`).join('');
+  // Xu hướng theo tháng — top 4 nhóm
+  const top4=svc.slice(0,4).map(s=>s.group);
+  const hist=svcHistory(top4);
+  const labels=ms.map(m=>mLabel(m.month));
+  mkChart('c3b','line',{
+    labels,
+    datasets:top4.map((grp,ci)=>({
+      label:grp,
+      data:(hist[grp]||[]).map(v=>v>0?+(v/1e6).toFixed(1):null),
+      borderColor:COLORS[ci],backgroundColor:'transparent',
+      tension:.4,borderWidth:2,pointRadius:2
+    }))
+  },{scales:{y:{ticks:{callback:v=>v+'M'}}}});
+
+  document.getElementById('tbl3').innerHTML=svc.length?svc.map(s=>`
+    <tr><td><b>${s.group}</b></td>
+    <td style="text-align:right"><b>${fmtM(s.revenue)}</b></td>
+    <td style="text-align:right">${fmtM(s.listed)}</td>
+    <td style="text-align:right">${fmtN(s.count)}</td>
+    <td style="text-align:right"><span class="pill b">${(s.revenue/totRev*100).toFixed(1)}%</span></td>
+    <td style="text-align:right">${s.count?fmtK(s.revenue/s.count):'—'}</td>
+    <td style="text-align:right">${dPct(s.listed,s.revenue)}</td></tr>`).join('')
+    :`<tr><td colspan="7" class="empty-state">Không có dữ liệu</td></tr>`;
 }
 
-// PAGE 4
+// ════════════════════════════════════════════════════════
+// PAGE 4: CHIẾT KHẤU
+// ════════════════════════════════════════════════════════
 function p4(cur,ms){
   const listed=cur.revenue_listed||0,actual=cur.revenue_actual||0;
-  const disc=(cur.total_discount!=null)?cur.total_discount:Math.max(0,listed-actual);
-  const dp=discPct(listed,actual);
+  const disc=(cur.discount!=null)?cur.discount:(listed-actual);
+  const dp=dPct(listed,actual);
 
   mkKPI('kpi4',[
-    {label:'DT Niêm yết',val:fmtB(listed)+' Tỷ',c:'b',change:'↔ Tổng niêm yết'},
-    {label:'DT Ghi nhận',val:fmtB(actual)+' Tỷ',vc:'var(--green)',c:'g',change:'↑ Sau chiết khấu'},
-    {label:'Tổng CK',val:fmtB(disc)+' Tỷ',vc:'var(--red)',c:'r',change:'↓ '+dp},
-    {label:'Tỷ lệ CK',val:dp,vc:'var(--amber)',c:'a',change:'↔ Trung bình kỳ'},
+    {label:'DT Niêm yết',val:fmtM(listed)+' Tr',c:'b',change:'↔'},
+    {label:'DT Ghi nhận',val:fmtM(actual)+' Tr',vc:'var(--green)',c:'g',change:'↑ Sau CK'},
+    {label:'Tổng chiết khấu',val:fmtM(disc)+' Tr',vc:'var(--red)',c:'r',change:'↓ '+dp},
+    {label:'% Chiết khấu',val:dp,vc:'var(--amber)',c:'a',change:'↔ Tháng này'},
   ]);
 
-  const discAmt=ms.map(m=>{const d=(m.total_discount!=null)?m.total_discount:Math.max(0,m.revenue_listed-m.revenue_actual);return+(d/1e9).toFixed(2);});
-  const discPctData=ms.map(m=>m.revenue_listed?+((m.revenue_listed-m.revenue_actual)/m.revenue_listed*100).toFixed(1):0);
-  mkChart('c4a','line',{labels:ms.map(m=>m.month.replace('_','/')),datasets:[
-    {label:'% CK',data:discPctData,borderColor:PAL.amber,backgroundColor:'rgba(210,153,34,.08)',fill:true,tension:.4,borderWidth:2,pointRadius:3,yAxisID:'y1'},
-    {label:'CK (Tỷ)',data:discAmt,borderColor:PAL.red,fill:false,tension:.4,borderWidth:1.5,pointRadius:2,yAxisID:'y'}
-  ]},{scales:{y:{ticks:{callback:v=>v+'T'}},y1:{position:'right',grid:{display:false},ticks:{color:PAL.amber,callback:v=>v+'%'}}}});
+  const discData=ms.map(m=>m.revenue_listed?
+    +((m.revenue_listed-m.revenue_actual)/m.revenue_listed*100).toFixed(1):0);
+  const discAmt=ms.map(m=>{
+    const d=(m.discount!=null)?m.discount:(m.revenue_listed-m.revenue_actual);
+    return+(d/1e6).toFixed(1);});
+  mkChart('c4a','line',{
+    labels:ms.map(m=>mLabel(m.month)),
+    datasets:[
+      {label:'% CK',data:discData,borderColor:PAL.amber,
+        backgroundColor:'rgba(210,153,34,.08)',fill:true,tension:.4,borderWidth:2,pointRadius:3,yAxisID:'y1'},
+      {label:'CK (Tr)',data:discAmt,borderColor:PAL.red,
+        fill:false,tension:.4,borderWidth:1.5,pointRadius:2,yAxisID:'y'}
+    ]},{scales:{
+      y:{ticks:{callback:v=>v+'M'}},
+      y1:{position:'right',grid:{display:false},ticks:{color:PAL.amber,callback:v=>v+'%'}}}});
 
+  document.getElementById('wf4-sub').textContent=`Tháng ${mLabel(SEL_MONTH)}`;
   mkWF('wf4',[
     {label:'DT Niêm yết',val:listed,pct:100,color:'#1f6feb'},
     {label:'(-) Chiết khấu',val:-disc,pct:-(disc/listed*100||0),color:'#da3633'},
     {label:'DT Ghi nhận',val:actual,pct:actual/listed*100||0,color:'#238636'},
   ]);
 
-  document.getElementById('tbl4').innerHTML=ms.map(m=>{
-    const d=(m.total_discount!=null)?m.total_discount:Math.max(0,m.revenue_listed-m.revenue_actual);
-    const dp2=m.revenue_listed?((m.revenue_listed-m.revenue_actual)/m.revenue_listed*100).toFixed(1):0;
-    const isSel=m.month===SEL_MONTH;
-    return`<tr style="${isSel?'background:rgba(88,166,255,.06)':''}"><td><b style="${isSel?'color:var(--blue)':''}">${m.month.replace('_','/')}</b></td><td style="text-align:right">${fmtB(m.revenue_listed)}</td><td style="text-align:right"><b>${fmtB(m.revenue_actual)}</b></td><td style="text-align:right;color:var(--red)">${fmtB(d)}</td><td style="text-align:right"><span class="pill ${+dp2>45?'r':+dp2>35?'a':'g'}">${dp2}%</span></td><td style="text-align:right">${fmtN(m.order_count)}</td></tr>`;
-  }).join('');
+  // Top KH CK cao nhất — filtered, sort by discount_pct desc
+  const fp=filteredPartners()
+    .filter(p=>p.listed>0)
+    .sort((a,b)=>((b.listed-b.revenue)/b.listed)-((a.listed-a.revenue)/a.listed));
+  document.getElementById('tbl4-sub').textContent=
+    `${mLabel(SEL_MONTH)}${SEL_TEAM?' · '+SEL_TEAM:''} · % CK cao nhất`;
+  document.getElementById('tbl4').innerHTML=fp.length?fp.slice(0,15).map((p,i)=>`
+    <tr><td style="color:var(--muted)">${i+1}</td>
+    <td><b>${p.partnerName||p.partnerCode}</b></td>
+    <td><span class="pill b" style="font-size:9px">${p.team||'—'}</span></td>
+    <td style="text-align:right">${fmtM(p.revenue)}</td>
+    <td style="text-align:right">${fmtM(p.listed)}</td>
+    <td style="text-align:right"><b style="color:var(--amber)">${dPct(p.listed,p.revenue)}</b></td>
+    <td style="text-align:right">${p.orders||0}</td></tr>`).join('')
+    :`<tr><td colspan="7" class="empty-state">Không có dữ liệu</td></tr>`;
 }
 
-// PAGE 5
-function p5(cur,ms){
-  const sales=D.top_sales||[];
-  const activeSales=cur.active_sales||D.active_sales||sales.length||0;
-  const totalRev=cur.revenue_actual||1;
+// ════════════════════════════════════════════════════════
+// PAGE 5: SALES
+// ════════════════════════════════════════════════════════
+function p5(ms){
+  const sales=filteredSales();
+  const filterTag=`${mLabel(SEL_MONTH)}${SEL_TEAM?' · '+SEL_TEAM:''}`;
+  document.getElementById('c5a-sub').textContent=`DT GN · ${filterTag}`;
+  document.getElementById('c5b-sub').textContent=`Top 4 sales · ${SEL_TEAM||'tất cả team'}`;
+  document.getElementById('tbl5-sub').textContent=filterTag;
 
   if(!sales.length){
-    document.getElementById('kpi5').innerHTML=`<div style="color:var(--muted);padding:20px;text-align:center;grid-column:1/-1">Chưa có dữ liệu Sales</div>`;
-    document.getElementById('tbl5').innerHTML=`<tr><td colspan="7" style="text-align:center;color:var(--muted);padding:20px">Chưa có dữ liệu</td></tr>`;
+    mkKPI('kpi5',[
+      {label:'Sales active',val:'—',c:'b',change:'Không có data'},
+      {label:'Sales #1',val:'—',c:'g',change:'—'},
+      {label:'DT TB/Sales',val:'—',c:'a',change:'—'},
+      {label:'Team',val:SEL_TEAM||'Tất cả',c:'b',change:'↔'},
+    ]);
+    document.getElementById('tbl5').innerHTML=
+      `<tr><td colspan="9" class="empty-state">Chưa có dữ liệu sales cho bộ lọc này</td></tr>`;
     return;
   }
 
-  const topDT=sales[0]?.revenue||0;
   const totalSalesRev=sales.reduce((s,x)=>s+x.revenue,0);
-
+  const maxRev=sales[0].revenue||1;
   mkKPI('kpi5',[
-    {label:'Sales active',val:fmtN(activeSales),c:'b',change:'↔ Có phát sinh đơn'},
-    {label:'Sales #1',val:salesLabel(sales[0]),c:'g',change:'↑ '+fmtM(topDT)+' Tr'},
-    {label:'DT TB/Sales',val:fmtM(sales.length?totalSalesRev/sales.length:0)+' Tr',c:'a',change:'↔ Trung bình'},
-    {label:'Sales/Tổng DT',val:(totalSalesRev/totalRev*100).toFixed(0)+'%',c:'b',change:'↔ Tỷ trọng'},
+    {label:'Sales active',val:fmtN(sales.length),c:'b',change:'↔ '+filterTag},
+    {label:'Sales #1',val:fmtM(sales[0].revenue)+' Tr',vc:'var(--green)',c:'g',
+      change:'↑ '+(sales[0].salesName||sales[0].sales)},
+    {label:'DT TB/Sales',val:fmtM(totalSalesRev/sales.length)+' Tr',c:'a',change:'↔ Trung bình'},
+    {label:'Team',val:SEL_TEAM||'Tất cả',c:'b',change:'↔'},
   ]);
 
-  mkChart('c5a','bar',{labels:sales.map(s=>salesLabel(s)),datasets:[{label:'DT GN (Tr)',data:sales.map(s=>+(s.revenue/1e6).toFixed(1)),backgroundColor:sales.map((_,i)=>COLORS[i%COLORS.length])}]},{indexAxis:'y',scales:{x:{ticks:{callback:v=>v+'M'}},y:{ticks:{font:{size:10}}}}});
-  mkChart('c5b','line',{labels:ms.map(m=>m.month.replace('_','/')),datasets:[{label:'Tổng DT (Tỷ)',data:ms.map(m=>+(m.revenue_actual/1e9).toFixed(2)),borderColor:PAL.blue,backgroundColor:'rgba(88,166,255,.08)',fill:true,tension:.4,borderWidth:2,pointRadius:2}]},{scales:{y:{ticks:{callback:v=>v+'T'}}}});
+  mkChart('c5a','bar',{
+    labels:sales.map(s=>s.salesName||s.sales),
+    datasets:[{label:'DT GN (Tr)',
+      data:sales.map(s=>+(s.revenue/1e6).toFixed(1)),
+      backgroundColor:sales.map((_,i)=>COLORS[i%COLORS.length])}]
+  },{indexAxis:'y',scales:{x:{ticks:{callback:v=>v+'M'}},y:{ticks:{font:{size:10}}}}});
 
-  const maxRev=sales[0]?.revenue||1;
-  document.getElementById('tbl5').innerHTML=sales.map((s,i)=>{
-    const rankCls=i===0?'top1':i===1?'top2':i===2?'top3':'';
-    const perf=Math.round(s.revenue/maxRev*100);
-    const team=TEAM_MAP[s.sales||'']||s.team||'—';
-    return`<tr><td><span class="rank-badge ${rankCls}">${i+1}</span></td><td><b>${salesLabel(s)}</b><br><span style="font-size:10px;color:var(--muted)">${s.sales||''}</span></td><td><span class="pill b">${team}</span></td><td style="text-align:right"><b>${fmtM(s.revenue)}</b></td><td style="text-align:right">${fmtN(s.orders)}</td><td style="text-align:right">${s.orders?fmtK(s.revenue/s.orders):'—'}</td><td style="min-width:100px"><div style="display:flex;align-items:center;gap:6px"><div style="flex:1;height:6px;background:var(--surface2);border-radius:3px"><div style="width:${perf}%;height:100%;background:${COLORS[i%COLORS.length]};border-radius:3px"></div></div><span style="font-size:10px;color:var(--muted)">${perf}%</span></div></td></tr>`;
-  }).join('');
+  // Xu hướng top 4 sales theo tháng
+  const top4codes=sales.slice(0,4).map(s=>s.sales);
+  const hist=salesHistory(top4codes);
+  mkChart('c5b','line',{
+    labels:ms.map(m=>mLabel(m.month)),
+    datasets:top4codes.map((sc,ci)=>({
+      label:hist[sc]?.name||sc,
+      data:hist[sc]?.data||[],
+      borderColor:COLORS[ci],backgroundColor:'transparent',
+      tension:.4,borderWidth:2,pointRadius:2
+    }))
+  },{scales:{y:{ticks:{callback:v=>v+'M'}}}});
+
+  document.getElementById('tbl5').innerHTML=sales.map((s,i)=>`
+    <tr>
+    <td><span class="rank-badge ${i===0?'top1':i===1?'top2':i===2?'top3':''}">${i+1}</span></td>
+    <td><b>${s.salesName||s.sales}</b></td>
+    <td><span class="pill b" style="font-size:9px">${s.team||'—'}</span></td>
+    <td style="text-align:right"><b>${fmtM(s.revenue)}</b></td>
+    <td style="text-align:right">${fmtM(s.listed)}</td>
+    <td style="text-align:right">${fmtN(s.orders)}</td>
+    <td style="text-align:right">${s.orders?fmtK(s.revenue/s.orders):'—'}</td>
+    <td style="text-align:right">${dPct(s.listed,s.revenue)}</td>
+    <td>${perfBar(s.revenue,maxRev,i)}</td>
+    </tr>`).join('');
+}
+
+// ── Mock data ─────────────────────────────────────────────────
+function mock(){
+  const makePartners=(mo,team,region,prefix,sales)=>
+    ['Nha Khoa Delia','BV Hùng Vương','PK Pasteur','PK An Khang','TT XN Medic'].map((n,i)=>({
+      partnerCode:`${prefix}${String(i+1).padStart(3,'0')}`,
+      partnerName:n,saleCode:sales[i%sales.length],
+      saleName:sales[i%sales.length],team,region,month:mo,
+      revenue:Math.round((50-i*8)*1e6*(0.8+Math.random()*0.4)),
+      listed:Math.round((60-i*9)*1e6*(0.8+Math.random()*0.4)),
+      orders:40-i*5,discount_pct:15+i*2
+    }));
+  const makeSvc=(mo,team)=>
+    ['Hóa sinh','Miễn dịch','Huyết học','Vi sinh'].map((g,i)=>({
+      team,month:mo,group:g,
+      revenue:Math.round((120-i*25)*1e6),
+      listed:Math.round((145-i*30)*1e6),
+      count:5000-i*800,discount_pct:15+i
+    }));
+  const makeSales=(mo,team,region,codes)=>codes.map((s,i)=>({
+    month:mo,sales:s,salesName:s,team,region,
+    revenue:Math.round((80-i*15)*1e6),
+    listed:Math.round((95-i*18)*1e6),
+    orders:150-i*30,discount_pct:16+i
+  }));
+  const months=['2025_10','2025_11','2025_12','2026_01','2026_02','2026_03','2026_04','2026_05','2026_06'];
+  let pbm=[],smbm=[],salm=[];
+  for(const mo of months){
+    pbm=[...pbm,...makePartners(mo,'KD HCM','HCM','012',['nganck','haotv'])];
+    pbm=[...pbm,...makePartners(mo,'KD01','HN','007',['thuyetnv','hungnt'])];
+    pbm=[...pbm,...makePartners(mo,'KD02','HN','008',['phupc','kdmynb'])];
+    smbm=[...smbm,...makeSvc(mo,'KD HCM'),...makeSvc(mo,'KD01')];
+    salm=[...salm,...makeSales(mo,'KD HCM','HCM',['nganck','haotv','kieuntt'])];
+    salm=[...salm,...makeSales(mo,'KD01','HN',['thuyetnv','hungnt'])];
+  }
+  return{
+    updated_at_vn:"07:00 08/06/2026",current_month:"2026_06",
+    mom_growth_pct:-9.8,total_debt:285000000,inactive_partners:8,new_partners:3,active_sales:9,
+    monthly:months.map((mo,i)=>({
+      month:mo,revenue_actual:Math.round((600+i*50)*1e6),
+      revenue_listed:Math.round((720+i*60)*1e6),
+      discount:Math.round((120+i*10)*1e6),
+      discount_pct:16+i*0.3,order_count:1200+i*150,
+      active_partners:80+i*10,active_sales:8+Math.floor(i/3)
+    })),
+    top_partners:pbm.filter(p=>p.month==='2026_06').sort((a,b)=>b.revenue-a.revenue).slice(0,20),
+    partners_by_month:pbm,
+    top_sales:salm.filter(s=>s.month==='2026_06').sort((a,b)=>b.revenue-a.revenue).slice(0,10),
+    sales_monthly:salm,
+    service_mix:smbm.filter(s=>s.month==='2026_06').slice(0,6),
+    service_mix_by_month:smbm,
+    top_debt:[
+      {partnerName:'PK ABC',amount:85e6},{partnerName:'BV XYZ',amount:72e6},
+      {partnerName:'TT Medic',amount:61e6}],
+    branch_breakdown:[{branch:'HCM',revenue:450e6},{branch:'HN',revenue:350e6}],
+    teams:['KD HCM','KD01','KD02','KD04','KD05'],
+  };
 }
 </script>
 </body>
