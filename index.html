@@ -59,10 +59,10 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);font-s
 
 /* ── SIDEBAR ── */
 .sidebar{width:60px;min-height:100vh;position:fixed;top:0;left:0;z-index:100;
-  background:rgba(4,10,25,.85);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  background:rgba(4,10,25,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
   border-right:1px solid var(--border2);
   display:flex;flex-direction:column;align-items:center;padding:14px 0;
-  transition:.3s cubic-bezier(.16,1,.3,1)}
+  transition:width .25s cubic-bezier(.16,1,.3,1);will-change:width}
 .sidebar.open{width:210px;align-items:flex-start;padding:14px 10px}
 .sb-logo{width:38px;height:38px;border-radius:9px;overflow:hidden;cursor:pointer;
   margin-bottom:20px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
@@ -97,7 +97,7 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);font-s
 
 /* ── TOPBAR ── */
 .topbar{position:sticky;top:0;z-index:50;height:54px;
-  background:rgba(4,10,24,.75);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  background:rgba(4,10,24,.75);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
   border-bottom:1px solid var(--border2);
   padding:0 20px;display:flex;align-items:center;justify-content:space-between}
 .tb-l{display:flex;align-items:center;gap:10px}
@@ -116,10 +116,11 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);font-s
   border-bottom:1px solid var(--border2);background:rgba(4,10,24,.5);backdrop-filter:blur(10px);
   position:relative}
 .flabel{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.7px}
-.fsel{background:var(--glass);border:1px solid var(--border2);border-radius:8px;
+.fsel{background:#0d1829;border:1px solid var(--border2);border-radius:8px;
   padding:6px 10px;color:var(--text);font-size:12px;font-family:'Sora',sans-serif;
-  cursor:pointer;outline:none;transition:.15s}
+  cursor:pointer;outline:none;transition:.15s;-webkit-appearance:auto}
 .fsel:focus{border-color:var(--cyan);box-shadow:0 0 0 2px rgba(0,212,255,.1)}
+.fsel option{background:#0d1829;color:#f0f4ff;padding:6px}
 .mnav{display:flex;align-items:center;gap:6px}
 .mbtn{width:27px;height:27px;border-radius:7px;border:1px solid var(--border2);
   background:var(--glass);color:var(--muted);cursor:pointer;
@@ -154,9 +155,29 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);font-s
 @media(max-width:900px){.k6,.k4,.k3{grid-template-columns:repeat(2,1fr)}.g2,.g3r{grid-template-columns:1fr}}
 @media(max-width:700px){
   .sidebar{width:0;overflow:hidden;border:none}.sidebar.open{width:210px;overflow:visible}
-  .main{margin-left:0!important;padding-bottom:64px}.topbar,.fbar{padding-left:14px;padding-right:14px}
-  .content{padding:12px 14px}
-  .bnav{display:flex}
+  .main{margin-left:0!important;padding-bottom:68px}.topbar,.fbar{padding-left:12px;padding-right:12px}
+  .content{padding:10px 12px}
+  .bnav{display:block}
+  /* Fix grid on mobile */
+  .g2{grid-template-columns:1fr!important}
+  .g3r{grid-template-columns:1fr!important}
+  .kg.k6{grid-template-columns:repeat(2,1fr)!important}
+  .kg.k4{grid-template-columns:repeat(2,1fr)!important}
+  .kg.k3{grid-template-columns:repeat(2,1fr)!important}
+  /* KPI value smaller on mobile */
+  .kg-val{font-size:16px!important}
+  .kg-lbl{font-size:8px!important}
+  .kg-ch{font-size:9px!important}
+  /* Table scroll hint */
+  .tw{-webkit-overflow-scrolling:touch}
+  /* Chart height on mobile */
+  .card canvas{max-height:160px}
+  /* Reduce card padding */
+  .card{padding:12px}
+  .kpi{padding:10px 12px}
+  /* fbar */
+  .fbar{gap:8px}
+  .fdiv{display:none}
 }
 /* ── BOTTOM NAV (mobile only) ── */
 .bnav{
@@ -187,7 +208,7 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);font-s
 .bmore-item span{font-size:10px;font-weight:600;font-family:'Sora',sans-serif}
 
 /* ── GLASS CARDS ── */
-.card{background:var(--glass);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+.card{background:var(--glass);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
   border:1px solid var(--border2);border-radius:var(--r);padding:16px;margin-bottom:12px;
   box-shadow:0 4px 20px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.04);transition:.2s}
 .card:hover{border-color:rgba(77,184,255,.2);box-shadow:0 8px 32px rgba(0,0,0,.24),0 0 32px rgba(0,200,255,.06),inset 0 1px 0 rgba(255,255,255,.06)}
@@ -195,7 +216,7 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);font-s
 .cs{font-size:10px;color:var(--muted);margin-bottom:10px}
 
 /* ── KPI ── */
-.kpi{background:var(--glass);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+.kpi{background:var(--glass);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
   border:1px solid var(--border2);border-radius:var(--r-sm);padding:14px 15px;
   position:relative;overflow:hidden;transition:.2s}
 .kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;border-radius:2px 2px 0 0}
@@ -286,7 +307,7 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);font-s
   <div class="nav"     onclick="gp(3,this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg><span class="nav-lbl">Dịch vụ</span><span class="nav-tip">Dịch vụ</span></div>
   <div class="nav"     onclick="gp(4,this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span class="nav-lbl">Chiết khấu</span><span class="nav-tip">Chiết khấu</span></div>
   <div class="nav"     onclick="gp(5,this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg><span class="nav-lbl">Sales</span><span class="nav-tip">Sales</span></div>
-  <div class="nav"     onclick="gp(6,this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span class="nav-lbl">Chi nhánh</span><span class="nav-tip">Chi nhánh</span></div>
+  <!-- Chi nhánh hidden -->
   <div class="sb-bot"><div class="sb-div"></div>
     <div class="sb-toggle" onclick="toggleSB()">
       <svg id="ticon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:15px;height:15px"><polyline points="9 18 15 12 9 6"/></svg>
@@ -331,6 +352,14 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);font-s
     <div class="card"><div class="ct">Top Khách hàng</div><div class="cs" id="s0t">Tháng &amp; team</div>
       <div class="tw"><table class="tbl"><thead><tr><th>#</th><th>Khách hàng</th><th>Team</th><th class="r">DT (Tr)</th><th class="r">Đơn</th></tr></thead><tbody id="t0"></tbody></table></div>
     </div>
+  </div>
+  <div class="card"><div class="ct">So sánh Team</div><div class="cs" id="s0team">Doanh thu theo team · tháng đang chọn</div>
+    <div class="tw"><table class="tbl"><thead><tr>
+      <th>Team</th><th>Phân loại</th>
+      <th class="r">DT (Tr)</th><th class="r">DT Ròng</th>
+      <th class="r">KH</th><th class="r">Sales</th>
+      <th class="r">%CK</th><th>MoM</th>
+    </tr></thead><tbody id="t0team"></tbody></table></div>
   </div>
 </div>
 
@@ -449,10 +478,7 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);font-s
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
     <span>Chiết khấu</span>
   </div>
-  <div class="bmore-item" onclick="gpMobile(6,null);toggleMore()">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-    <span>Chi nhánh</span>
-  </div>
+  <!-- Chi nhánh hidden -->
 </div>
 
 <script>
@@ -520,10 +546,8 @@ window.addEventListener('resize',()=>{
 function gp(n,el){
   document.querySelectorAll('.page').forEach((p,i)=>p.classList.toggle('on',i===n));
   document.querySelectorAll('.nav').forEach(x=>x.classList.remove('on'));
-  el.classList.add('on');
+  if(el)el.classList.add('on');
   document.getElementById('ptitle').textContent=PAGES[n]||'';
-  ACTIVE_PAGE=n;
-  if(D){const ms=D.monthly||[];try{PAGE_FNS[n](ms);}catch(e){console.error('p'+n,e);}}
   if(window.innerWidth<700&&sbOpen)toggleSB();
 }
 
@@ -666,25 +690,16 @@ async function loadData(){
   document.getElementById('utime').textContent=D.updated_at_vn||'';
   buildFilter();render();initNav();
 }
-let ACTIVE_PAGE=0;
-const PAGE_FNS=[
-  (ms)=>p0(cur(),prev(),ms),
-  (ms)=>p1(cur(),prev(),ms),
-  (ms)=>p2(cur(),ms),
-  (ms)=>p3(ms),
-  (ms)=>p4(cur(),ms),
-  (ms)=>p5(ms),
-  (ms)=>p6(ms)
-];
 function render(){
   const ms=D.monthly||[];
   updTag();
-  try{PAGE_FNS[ACTIVE_PAGE](ms);}catch(e){console.error('p'+ACTIVE_PAGE,e);}
-}
-function renderAll(){
-  const ms=D.monthly||[];
-  updTag();
-  PAGE_FNS.forEach((fn,i)=>{try{fn(ms);}catch(e){console.error('p'+i,e);}});
+  try{p0(cur(),prev(),ms);}catch(e){console.error('p0',e);}
+  try{p1(cur(),prev(),ms);}catch(e){console.error('p1',e);}
+  try{p2(cur(),ms);}catch(e){console.error('p2',e);}
+  try{p3(ms);}catch(e){console.error('p3',e);}
+  try{p4(cur(),ms);}catch(e){console.error('p4',e);}
+  try{p5(ms);}catch(e){console.error('p5',e);}
+  try{p6(ms);}catch(e){console.error('p6',e);}
 }
 
 // ════ P0 OVERVIEW ════════════════════════════════════════
@@ -699,7 +714,7 @@ function p0(cm,pm,ms){
 
   mkKPI('k0',[
     {l:'DT (NL) · '+tag,v:fM(nl,0)+' Tr',c:'b',
-      ch:mom!=null?(mom>=0?'↑ +':'↓ ')+Math.abs(mom).toFixed(1)+'%'+(isCur&&D.mtd_days?' ('+D.mtd_days+'ng)':' MoM'):'↔ MTD',
+      ch:mom!=null?(mom>=0?'↑ +':'↓ ')+Math.abs(mom).toFixed(1)+'%'+(isCur&&D.mtd_days?' · cùng kỳ '+D.mtd_days+'ng TB':' MoM'):'↔ MTD',
       cc:mom!=null?(mom>=0?'up':'dn'):null},
     {l:'DT Ròng · '+tag,v:fM(rn,0)+' Tr',c:'g',ch:'↔ Thực nhận sau CK'},
     {l:'KH Active · '+ml(SM),v:fN(kh.active),c:'b',ch:SP?'↔ '+(TN[SP]||SP):'↔ HCM '+fN(kh.ahcm)+' · HN '+fN(kh.ahn)},
@@ -711,9 +726,20 @@ function p0(cm,pm,ms){
   document.getElementById('s0a').textContent=(SP?(TN[SP]||SP)+' · ':'')+'Stacked theo Team · Tr.đ';
   mkC('c0a','bar',{labels:ms.map(m=>ml(m.month)),datasets:stackDS(ms,smAll)},{scales:{x:{stacked:true},y:{stacked:true,ticks:{callback:v=>v+'M'}}}});
 
-  const svc=fSvc().slice(0,7);
-  document.getElementById('s0b').textContent=`Tỷ trọng · ${tag}`;
-  if(svc.length)mkC('c0b','doughnut',{labels:svc.map(s=>s.group),datasets:[{data:svc.map(s=>+(s.revenue/1e6).toFixed(1)),backgroundColor:COLS,borderWidth:0,hoverOffset:4}]},{cutout:'62%',plugins:{legend:{position:'right',labels:{font:{size:9},boxWidth:8,padding:8}}}});
+  // Top 6 dịch vụ + Khác = 100%
+  const svcAll=fSvc();
+  const svcTop=svcAll.slice(0,6);
+  const totSvc=svcAll.reduce((s,v)=>s+v.revenue,0)||1;
+  const top6Rev=svcTop.reduce((s,v)=>s+v.revenue,0);
+  const otherRev=totSvc-top6Rev;
+  const svcChart=[...svcTop];
+  if(otherRev>0)svcChart.push({group:'Khác',revenue:otherRev});
+  const svcPct=svcChart.map(s=>+(s.revenue/totSvc*100).toFixed(1));
+  document.getElementById('s0b').textContent='Tỷ trọng · '+tag;
+  if(svcChart.length)mkC('c0b','doughnut',{
+    labels:svcChart.map((s,i)=>s.group+' '+svcPct[i]+'%'),
+    datasets:[{data:svcPct,backgroundColor:[...COLS,'#555'],borderWidth:0,hoverOffset:4}]
+  },{cutout:'62%',plugins:{legend:{position:'right',labels:{font:{size:9},boxWidth:8,padding:6}}}});
 
   document.getElementById('s0c').textContent=`Cần xem xét · ${tag}`;
   const al=[];
@@ -739,6 +765,41 @@ function p0(cm,pm,ms){
   const fp=fPtn(8);
   document.getElementById('s0t').textContent=tag;
   document.getElementById('t0').innerHTML=fp.length?fp.map((p,i)=>`<tr><td><span class="rbadge${i<3?' r'+(i+1):''}">${i+1}</span></td><td style="font-weight:600">${p.partnerName||p.partnerCode}</td><td>${tbadge(p.team)}</td><td class="r mono" style="color:var(--cy)">${fM(p.revenue,0)}</td><td class="r">${p.orders||0}</td></tr>`).join(''):empty(5);
+
+  // Bảng So sánh Team trong Tổng quan
+  document.getElementById('s0team').textContent='Doanh thu theo team · '+tag;
+  const TEAMS0=['KD HCM','KD01','KD04','KD05','invivo'];
+  const TLBLS0={'KD HCM':'KD HCM','KD01':'KD01','KD04':'KD04','KD05':'KD05 · Gia Lai','invivo':'InVivo'};
+  const trows0=TEAMS0.map(team=>{
+    const cRows=smAll.filter(s=>s.month===SM&&s.team===team&&!isInternal(s));
+    const pRows=smAll.filter(s=>s.month===(pm.month||'')&&s.team===team&&!isInternal(s));
+    const nl0=cRows.reduce((s,x)=>s+(x.revenue||0),0);if(!nl0)return null;
+    const rn0=cRows.reduce((s,x)=>s+(x.revenue_net!=null?x.revenue_net:x.revenue||0),0);
+    const pnl0=pRows.reduce((s,x)=>s+(x.revenue||0),0);
+    const kh0=new Set((D.partners_by_month||[]).filter(x=>x.month===SM&&x.team===team&&!isInternal(x)).map(x=>x.partnerCode)).size;
+    const sc0=new Set(cRows.map(x=>x.sales)).size;
+    const mom0=pnl0?((nl0-pnl0)/pnl0*100):null;
+    // Neu la thang hien tai, dung TB ngay
+    const isCurTeam=SM===D.current_month&&D.mtd_days;
+    const momLabel=isCurTeam&&mom0!=null?'~'+mom0.toFixed(1)+'%*':mom0!=null?mom0.toFixed(1)+'%':null;
+    const ck0=nl0?(nl0-rn0)/nl0*100:0;
+    return{team,nl:nl0,rn:rn0,kh:kh0,sc:sc0,mom:mom0,momLabel,ck:ck0};
+  }).filter(Boolean).sort((a,b)=>b.nl-a.nl);
+
+  document.getElementById('t0team').innerHTML=trows0.length?trows0.map((t,i)=>{
+    const cls=i===0?'<span class="pill g">Chủ lực</span>':t.mom!=null&&t.mom>10?'<span class="pill b">Tăng trưởng</span>':t.mom!=null&&t.mom<-10?'<span class="pill r">Suy giảm</span>':'<span class="pill a">Ổn định</span>';
+    const col=TC[t.team]||PAL.mu;
+    return'<tr>'+
+      '<td><span style="font-weight:700;color:'+col+'">'+( TLBLS0[t.team]||t.team)+'</span></td>'+
+      '<td>'+cls+'</td>'+
+      '<td class="r mono" style="color:var(--cy)"><b>'+fM(t.nl,0)+'</b></td>'+
+      '<td class="r mono" style="color:var(--gr)">'+fM(t.rn,0)+'</td>'+
+      '<td class="r">'+t.kh+'</td>'+
+      '<td class="r">'+t.sc+'</td>'+
+      '<td class="r">'+t.ck.toFixed(1)+'%</td>'+
+      '<td>'+(t.momLabel?'<span class="pill '+(t.mom>=0?'g':'r')+'">'+( t.mom>=0?'+':'')+t.momLabel+'</span>':'—')+'</td>'+
+    '</tr>';
+  }).join(''):empty(8);
 }
 
 // ════ P1 REVENUE ══════════════════════════════════════════
@@ -751,7 +812,7 @@ function p1(cm,pm,ms){
   const mom=isCur&&!SP&&D.mom_mtd_pct!=null?D.mom_mtd_pct:(pnl?((nl-pnl)/pnl*100):null);
   const tag=`${ml(SM)}${SP?' · '+(TN[SP]||SP):''}`;
   mkKPI('k1',[
-    {l:'DT (NL) · '+tag,v:fM(nl,0)+' Tr',c:'b',ch:mom!=null?(mom>=0?'↑ +':'↓ ')+Math.abs(mom).toFixed(1)+'%'+(isCur&&D.mtd_days?' ('+D.mtd_days+'ng)':' MoM'):'↔ MTD',cc:mom!=null?(mom>=0?'up':'dn'):'fl'},
+    {l:'DT (NL) · '+tag,v:fM(nl,0)+' Tr',c:'b',ch:mom!=null?(mom>=0?'↑ +':'↓ ')+Math.abs(mom).toFixed(1)+'%'+(isCur&&D.mtd_days?' · cùng kỳ '+D.mtd_days+'ng TB':' MoM'):'↔ MTD',cc:mom!=null?(mom>=0?'up':'dn'):'fl'},
     {l:'DT Ròng · '+tag,v:fM(rn,0)+' Tr',c:'g',ch:'↔ Thực nhận sau CK'},
     {l:'Chiết khấu',v:fM(disc,0)+' Tr',c:'a',ch:'↔ '+(nl?(disc/nl*100).toFixed(1):0)+'%'},
     {l:'DT TB/Đơn',v:orders?fK(nl/orders)+'K':'—',c:'b',ch:'↔ '+fN(orders)+' đơn'},
