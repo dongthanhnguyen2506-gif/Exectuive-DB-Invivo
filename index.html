@@ -485,7 +485,7 @@ function stackDS(ms,smAll){
   return at.map(t=>{const c=TC[t]||'#888',solid=!c.includes('rgba');
     return{label:TN[t]||t,stack:'s',
       data:ms.map(m=>+(getR(m,t)/1e6).toFixed(1)),
-      backgroundColor:ms.map((_,i)=>{if(ms[i].month===SM)return c;if(solid)return c+'44';const m=c.match(/rgba\(([^)]+)\)/);return m?`rgba(${m[1]},0.22)`:c+'44';}),
+      backgroundColor:ms.map((_,i)=>{if(ms[i].month===SM)return c;if(solid)return c+'44';return c.slice(0,c.lastIndexOf(','))+',.22)';}),
       borderRadius:2,borderSkipped:false};});
 }
 
@@ -642,7 +642,7 @@ function p1(cm,pm,ms){
   const mom=isCur&&!SP&&D.mom_mtd_pct!=null?D.mom_mtd_pct:(pnl?((nl-pnl)/pnl*100):null);
   const tag=`${ml(SM)}${SP?' · '+(TN[SP]||SP):''}`;
   mkKPI('k1',[
-    {l:'DT (NL) · '+tag,v:fM(nl,0)+' Tr',c:'b',ch:mom!=null?(mom>=0?'↑ +':'↓ ')+Math.abs(mom).toFixed(1)+'%'+(isCur&&D.mtd_days?' ('+D.mtd_days+'ng)':' MoM'),cc:mom!=null?(mom>=0?'up':'dn'):null},
+    {l:'DT (NL) · '+tag,v:fM(nl,0)+' Tr',c:'b',ch:mom!=null?(mom>=0?'↑ +':'↓ ')+Math.abs(mom).toFixed(1)+'%'+(isCur&&D.mtd_days?' ('+D.mtd_days+'ng)':' MoM'):'↔ MTD',cc:mom!=null?(mom>=0?'up':'dn'):'fl'},
     {l:'DT Ròng · '+tag,v:fM(rn,0)+' Tr',c:'g',ch:'↔ Thực nhận sau CK'},
     {l:'Chiết khấu',v:fM(disc,0)+' Tr',c:'a',ch:'↔ '+(nl?(disc/nl*100).toFixed(1):0)+'%'},
     {l:'DT TB/Đơn',v:orders?fK(nl/orders)+'K':'—',c:'b',ch:'↔ '+fN(orders)+' đơn'},
