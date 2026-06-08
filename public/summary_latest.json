@@ -1,18 +1,18 @@
 {
-  "updated_at": "2026-06-08T15:15:46+07:00",
-  "updated_at_vn": "15:15 08/06/2026",
+  "updated_at": "2026-06-08T15:29:12+07:00",
+  "updated_at_vn": "15:29 08/06/2026",
   "current_month": "2026_06",
-  "total_revenue": 1439479000,
-  "total_listed": 1439479000,
-  "total_discount": 602442332,
+  "total_revenue": 1447514000,
+  "total_listed": 1447514000,
+  "total_discount": 607176242,
   "discount_pct": 41.9,
-  "total_orders": 2080,
+  "total_orders": 2087,
   "active_partners": 160,
   "inactive_partners": 92,
   "new_partners": 14,
   "active_sales": 18,
-  "mom_growth_pct": -78.0,
-  "total_debt": 23900000,
+  "mom_growth_pct": -77.9,
+  "total_debt": 24038000,
   "top_debt": [
     {
       "partnerCode": "01365",
@@ -85,7 +85,7 @@
       "new_hn": 0,
       "active_sales": 14,
       "revenue_hcm": 105743000,
-      "revenue_hn": 4855381000
+      "revenue_hn": 6323165000
     },
     {
       "month": "2025_11",
@@ -106,7 +106,7 @@
       "new_hn": 35,
       "active_sales": 14,
       "revenue_hcm": 105038000,
-      "revenue_hn": 5346094000
+      "revenue_hn": 7884072000
     },
     {
       "month": "2025_12",
@@ -127,7 +127,7 @@
       "new_hn": 35,
       "active_sales": 15,
       "revenue_hcm": 122142000,
-      "revenue_hn": 5207259000
+      "revenue_hn": 8345967000
     },
     {
       "month": "2026_01",
@@ -148,7 +148,7 @@
       "new_hn": 26,
       "active_sales": 14,
       "revenue_hcm": 149366000,
-      "revenue_hn": 5211305000
+      "revenue_hn": 8381875000
     },
     {
       "month": "2026_02",
@@ -169,7 +169,7 @@
       "new_hn": 19,
       "active_sales": 13,
       "revenue_hcm": 135438000,
-      "revenue_hn": 4130891000
+      "revenue_hn": 6731502000
     },
     {
       "month": "2026_03",
@@ -190,7 +190,7 @@
       "new_hn": 34,
       "active_sales": 18,
       "revenue_hcm": 239532000,
-      "revenue_hn": 7009884000
+      "revenue_hn": 11592217000
     },
     {
       "month": "2026_04",
@@ -211,7 +211,7 @@
       "new_hn": 29,
       "active_sales": 19,
       "revenue_hcm": 298376000,
-      "revenue_hn": 6600861000
+      "revenue_hn": 10949774000
     },
     {
       "month": "2026_05",
@@ -232,16 +232,16 @@
       "new_hn": 24,
       "active_sales": 20,
       "revenue_hcm": 686021000,
-      "revenue_hn": 6009788000
+      "revenue_hn": 9624306000
     },
     {
       "month": "2026_06",
-      "revenue_actual": 1439479000,
-      "revenue_net": 837036668,
-      "revenue_listed": 1439479000,
-      "discount": 602442332,
+      "revenue_actual": 1447514000,
+      "revenue_net": 840337758,
+      "revenue_listed": 1447514000,
+      "discount": 607176242,
       "discount_pct": 41.9,
-      "order_count": 2080,
+      "order_count": 2087,
       "active_partners": 160,
       "active_hcm": 42,
       "active_hn": 118,
@@ -253,7 +253,7 @@
       "new_hn": 6,
       "active_sales": 20,
       "revenue_hcm": 156183000,
-      "revenue_hn": 1299779000
+      "revenue_hn": 2054334000
     }
   ],
   "top_partners": [
@@ -279,11 +279,11 @@
       "team": "invivo HN",
       "region": "HN",
       "month": "2026_06",
-      "revenue": 225421000,
-      "revenue_net": 108993947,
-      "listed": 225421000,
-      "orders": 199,
-      "discount_pct": 51.6
+      "revenue": 233456000,
+      "revenue_net": 112295037,
+      "listed": 233456000,
+      "orders": 206,
+      "discount_pct": 51.9
     },
     {
       "partnerCode": "01202",
@@ -23717,11 +23717,11 @@
       "team": "invivo HN",
       "region": "HN",
       "month": "2026_06",
-      "revenue": 225421000,
-      "revenue_net": 108993947,
-      "listed": 225421000,
-      "orders": 199,
-      "discount_pct": 51.6
+      "revenue": 233456000,
+      "revenue_net": 112295037,
+      "listed": 233456000,
+      "orders": 206,
+      "discount_pct": 51.9
     },
     {
       "partnerCode": "01202",
@@ -26050,7 +26050,7 @@
       "sales": "kdhaihn",
       "salesName": "Huỳnh Ngọc Hải",
       "team": "KD05",
-      "region": "HN",
+      "region": "Gia Lai",
       "revenue": 19107000,
       "revenue_net": 11289300,
       "listed": 19107000,
@@ -26161,11 +26161,11 @@
       "salesName": "InVivo HN (nội bộ)",
       "team": "invivo HN",
       "region": "HN",
-      "revenue": 707771000,
-      "revenue_net": 397134404,
-      "listed": 707771000,
-      "orders": 931,
-      "discount_pct": 43.9
+      "revenue": 715806000,
+      "revenue_net": 400435494,
+      "listed": 715806000,
+      "orders": 938,
+      "discount_pct": 44.1
     },
     {
       "month": "2026_06",
@@ -26294,7 +26294,7 @@
       "sales": "kdhaihn",
       "salesName": "Huỳnh Ngọc Hải",
       "team": "KD05",
-      "region": "HN",
+      "region": "Gia Lai",
       "revenue": 30324000,
       "revenue_net": 17952850,
       "listed": 30324000,
@@ -26474,7 +26474,7 @@
       "sales": "kdhaihn",
       "salesName": "Huỳnh Ngọc Hải",
       "team": "KD05",
-      "region": "HN",
+      "region": "Gia Lai",
       "revenue": 36706000,
       "revenue_net": 21634050,
       "listed": 36706000,
@@ -26654,7 +26654,7 @@
       "sales": "kdhaihn",
       "salesName": "Huỳnh Ngọc Hải",
       "team": "KD05",
-      "region": "HN",
+      "region": "Gia Lai",
       "revenue": 51216000,
       "revenue_net": 30696350,
       "listed": 51216000,
@@ -26822,7 +26822,7 @@
       "sales": "kdhaihn",
       "salesName": "Huỳnh Ngọc Hải",
       "team": "KD05",
-      "region": "HN",
+      "region": "Gia Lai",
       "revenue": 65958000,
       "revenue_net": 38452200,
       "listed": 65958000,
@@ -26990,7 +26990,7 @@
       "sales": "kdhaihn",
       "salesName": "Huỳnh Ngọc Hải",
       "team": "KD05",
-      "region": "HN",
+      "region": "Gia Lai",
       "revenue": 47990000,
       "revenue_net": 28144300,
       "listed": 47990000,
@@ -27194,7 +27194,7 @@
       "sales": "kdhaihn",
       "salesName": "Huỳnh Ngọc Hải",
       "team": "KD05",
-      "region": "HN",
+      "region": "Gia Lai",
       "revenue": 81070000,
       "revenue_net": 47116900,
       "listed": 81070000,
@@ -27410,7 +27410,7 @@
       "sales": "kdhaihn",
       "salesName": "Huỳnh Ngọc Hải",
       "team": "KD05",
-      "region": "HN",
+      "region": "Gia Lai",
       "revenue": 92850000,
       "revenue_net": 54108300,
       "listed": 92850000,
@@ -27650,7 +27650,7 @@
       "sales": "kdhaihn",
       "salesName": "Huỳnh Ngọc Hải",
       "team": "KD05",
-      "region": "HN",
+      "region": "Gia Lai",
       "revenue": 127618000,
       "revenue_net": 75571500,
       "listed": 127618000,
@@ -27890,7 +27890,7 @@
       "sales": "kdhaihn",
       "salesName": "Huỳnh Ngọc Hải",
       "team": "KD05",
-      "region": "HN",
+      "region": "Gia Lai",
       "revenue": 19107000,
       "revenue_net": 11289300,
       "listed": 19107000,
@@ -27939,40 +27939,40 @@
       "salesName": "InVivo HN (nội bộ)",
       "team": "invivo HN",
       "region": "HN",
-      "revenue": 707771000,
-      "revenue_net": 397134404,
-      "listed": 707771000,
-      "orders": 931,
-      "discount_pct": 43.9
+      "revenue": 715806000,
+      "revenue_net": 400435494,
+      "listed": 715806000,
+      "orders": 938,
+      "discount_pct": 44.1
     }
   ],
   "service_mix": [
     {
       "group": "Hóa sinh",
-      "revenue": 335402000,
-      "listed": 335402000,
-      "count": 7770,
+      "revenue": 336396000,
+      "listed": 336396000,
+      "count": 7790,
       "discount_pct": 0.0
     },
     {
       "group": "Sàng lọc trước sinh",
-      "revenue": 317090000,
-      "listed": 317090000,
-      "count": 134,
+      "revenue": 321785000,
+      "listed": 321785000,
+      "count": 136,
       "discount_pct": 0.0
     },
     {
       "group": "Miễn dịch",
-      "revenue": 206331000,
-      "listed": 206331000,
-      "count": 1102,
+      "revenue": 207302000,
+      "listed": 207302000,
+      "count": 1108,
       "discount_pct": 0.0
     },
     {
       "group": "Sinh học phân tử",
-      "revenue": 120222000,
-      "listed": 120222000,
-      "count": 134,
+      "revenue": 120817000,
+      "listed": 120817000,
+      "count": 135,
       "discount_pct": 0.0
     },
     {
@@ -27991,9 +27991,9 @@
     },
     {
       "group": "Huyết học",
-      "revenue": 71846000,
-      "listed": 71846000,
-      "count": 1128,
+      "revenue": 72626000,
+      "listed": 72626000,
+      "count": 1132,
       "discount_pct": 0.0
     },
     {
@@ -34516,45 +34516,45 @@
       "team": "invivo HN",
       "month": "2026_06",
       "group": "Hóa sinh",
-      "revenue": 215472000,
-      "listed": 215472000,
-      "count": 5121,
+      "revenue": 216466000,
+      "listed": 216466000,
+      "count": 5141,
       "discount_pct": 0.0
     },
     {
       "team": "invivo HN",
       "month": "2026_06",
       "group": "Sàng lọc trước sinh",
-      "revenue": 174025000,
-      "listed": 174025000,
-      "count": 78,
+      "revenue": 178720000,
+      "listed": 178720000,
+      "count": 80,
       "discount_pct": 0.0
     },
     {
       "team": "invivo HN",
       "month": "2026_06",
       "group": "Miễn dịch",
-      "revenue": 83355000,
-      "listed": 83355000,
-      "count": 485,
+      "revenue": 84326000,
+      "listed": 84326000,
+      "count": 491,
       "discount_pct": 0.0
     },
     {
       "team": "invivo HN",
       "month": "2026_06",
       "group": "Sinh học phân tử",
-      "revenue": 72483000,
-      "listed": 72483000,
-      "count": 65,
+      "revenue": 73078000,
+      "listed": 73078000,
+      "count": 66,
       "discount_pct": 0.0
     },
     {
       "team": "invivo HN",
       "month": "2026_06",
       "group": "Huyết học",
-      "revenue": 36418000,
-      "listed": 36418000,
-      "count": 557,
+      "revenue": 37198000,
+      "listed": 37198000,
+      "count": 561,
       "discount_pct": 0.0
     },
     {
@@ -34666,9 +34666,9 @@
     },
     {
       "branch": "HN",
-      "revenue": 1299779000,
-      "revenue_invivo": 707771000,
-      "revenue_total": 2007550000
+      "revenue": 2054334000,
+      "revenue_invivo": 715806000,
+      "revenue_total": 2770140000
     }
   ],
   "teams": [
