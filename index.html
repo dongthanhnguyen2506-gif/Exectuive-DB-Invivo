@@ -8,6 +8,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{max-width:100%;overflow-x:hidden}
 :root{
   --bg:#0a0a0f;--glass:rgba(255,255,255,.04);--glass2:rgba(255,255,255,.07);
   --border:rgba(120,120,180,.15);--border2:rgba(255,255,255,.07);
@@ -166,7 +167,7 @@ body{font-family:'Sora',sans-serif;background:#08080f;color:var(--text);font-siz
 .page{display:none}.page.on{display:block}
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
 .g3r{display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px;margin-bottom:12px}
-.kg{display:grid;gap:10px;margin-bottom:12px}
+.kg{display:grid;gap:10px;margin-bottom:12px;width:100%}
 .k6{grid-template-columns:repeat(6,1fr)}.k4{grid-template-columns:repeat(4,1fr)}
 .k3{grid-template-columns:repeat(3,1fr)}
 @media(max-width:1200px){.k6{grid-template-columns:repeat(3,1fr)}.k4{grid-template-columns:repeat(2,1fr)}}
@@ -184,27 +185,28 @@ body{font-family:'Sora',sans-serif;background:#08080f;color:var(--text);font-siz
   .mdisp{font-size:0.875rem;padding:8px 16px;min-width:100px;flex-shrink:0;border-radius:10px}
   .mbtn{flex-shrink:0;width:32px;height:32px}
   .ftag{display:none!important}
-  .content{padding:14px 16px;overflow-x:hidden;width:100%;box-sizing:border-box}
+  .content{padding:10px 10px;overflow-x:hidden;width:100%;box-sizing:border-box}
 
   .bnav{display:block}
 
   /* Grids */
-  .g2,.g3r{grid-template-columns:1fr!important;gap:12px!important}
+  .g2,.g3r{grid-template-columns:1fr!important;gap:10px!important;width:100%}
 
-  /* KPI 2 cột đều nhau */
-  .kg{display:grid!important;grid-template-columns:repeat(2,1fr)!important;gap:10px!important;width:100%!important;margin-bottom:12px}
-  .kg.k6,.kg.k4,.kg.k3{grid-template-columns:repeat(2,1fr)!important}
+  /* KPI grid - 2 cột, không tràn */
+  .kg{display:grid!important;gap:8px!important;margin-bottom:12px!important}
+  .kg.k6,.kg.k4,.kg.k3{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important}
 
-  /* KPI card lớn hơn, dễ đọc */
-  .kpi{padding:16px 14px;min-width:0;overflow:hidden;border-radius:12px}
-  .kg-lbl{font-size:0.65rem!important;letter-spacing:.4px;margin-bottom:8px;
-    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
-  .kg-val{font-size:1.6rem!important;font-weight:800;letter-spacing:-.5px;line-height:1}
-  .kg-ch{font-size:0.7rem!important;margin-top:6px;
-    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
+  /* KPI card */
+  .kpi{padding:14px 12px;min-width:0;overflow:hidden;border-radius:12px;word-break:break-word}
+  .kg-lbl{font-size:0.6rem!important;letter-spacing:.3px;margin-bottom:8px;
+    overflow:hidden;text-overflow:ellipsis;display:block;white-space:nowrap}
+  .kg-val{font-size:1.5rem!important;font-weight:800;letter-spacing:-.5px;line-height:1.1;
+    overflow:hidden;text-overflow:ellipsis;display:block}
+  .kg-ch{font-size:0.65rem!important;margin-top:5px;color:var(--muted);
+    overflow:hidden;text-overflow:ellipsis;display:block;white-space:nowrap}
 
   /* Cards */
-  .card{padding:16px 14px;margin-bottom:12px;border-radius:14px}
+  .card{padding:14px 12px;margin-bottom:10px;border-radius:12px;overflow:hidden}
   .ct{font-size:0.9rem;font-weight:700}
   .cs{font-size:0.75rem;margin-bottom:12px}
 
