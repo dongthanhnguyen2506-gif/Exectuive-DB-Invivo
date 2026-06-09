@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>InVivo Lab — Executive Dashboard</title>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
@@ -172,38 +172,60 @@ body{font-family:'Sora',sans-serif;background:#08080f;color:var(--text);font-siz
 @media(max-width:1200px){.k6{grid-template-columns:repeat(3,1fr)}.k4{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:900px){.k6,.k4,.k3{grid-template-columns:repeat(2,1fr)}.g2,.g3r{grid-template-columns:1fr}}
 @media(max-width:700px){
-  .sidebar{width:0;overflow:hidden;border:none}.sidebar.open{width:220px;overflow:visible}
-  .main{margin-left:0!important;padding-bottom:calc(80px + env(safe-area-inset-bottom,0px))}
-  .topbar{padding:0 14px;height:48px}
-  .tb-title{font-size:15px}.tb-sub{font-size:10px}
-  .fbar{padding:8px 14px;gap:8px;overflow-x:auto;flex-wrap:nowrap}.fdiv{display:none}
-  .flabel{font-size:10px;flex-shrink:0}
-  .fsel{font-size:13px;padding:7px 10px;flex-shrink:0}
-  .mdisp{font-size:13px;padding:6px 14px;min-width:90px;flex-shrink:0}
-  .mbtn{flex-shrink:0}
+  html{font-size:16px}
+  .sidebar{width:0;overflow:hidden;border:none}.sidebar.open{width:80vw;max-width:280px;overflow:visible}
+  .main{margin-left:0!important;padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))}
+  .topbar{padding:0 16px;height:52px}
+  .tb-title{font-size:1rem}.tb-sub{font-size:0.7rem}
+  .fbar{padding:10px 16px;gap:10px;overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch}
+  .fdiv{display:none}
+  .flabel{font-size:0.75rem;flex-shrink:0;font-weight:600}
+  .fsel{font-size:0.875rem;padding:8px 12px;flex-shrink:0;border-radius:10px}
+  .mdisp{font-size:0.875rem;padding:8px 16px;min-width:100px;flex-shrink:0;border-radius:10px}
+  .mbtn{flex-shrink:0;width:32px;height:32px}
   .ftag{display:none!important}
-  .content{padding:10px 12px;overflow-x:hidden}
+  .content{padding:14px 16px;overflow-x:hidden;width:100%;box-sizing:border-box}
+
   .bnav{display:block}
-  /* Grids: 1 col */
-  .g2,.g3r{grid-template-columns:1fr!important}
-  /* KPI: 1 col trên mobile - hiển thị đủ, không bị cắt */
-  .kg.k6,.kg.k4,.kg.k3{grid-template-columns:1fr 1fr!important;width:100%}
-  .kg{gap:8px!important}
-  /* KPI card */
-  .kpi{padding:14px 12px;min-width:0;overflow:hidden}
-  .kg-lbl{font-size:9px!important;letter-spacing:.3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .kg-val{font-size:22px!important;letter-spacing:-.3px}
-  .kg-ch{font-size:10px!important;margin-top:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+  /* Grids */
+  .g2,.g3r{grid-template-columns:1fr!important;gap:12px!important}
+
+  /* KPI 2 cột đều nhau */
+  .kg{display:grid!important;grid-template-columns:repeat(2,1fr)!important;gap:10px!important;width:100%!important;margin-bottom:12px}
+  .kg.k6,.kg.k4,.kg.k3{grid-template-columns:repeat(2,1fr)!important}
+
+  /* KPI card lớn hơn, dễ đọc */
+  .kpi{padding:16px 14px;min-width:0;overflow:hidden;border-radius:12px}
+  .kg-lbl{font-size:0.65rem!important;letter-spacing:.4px;margin-bottom:8px;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
+  .kg-val{font-size:1.6rem!important;font-weight:800;letter-spacing:-.5px;line-height:1}
+  .kg-ch{font-size:0.7rem!important;margin-top:6px;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
+
   /* Cards */
-  .card{padding:14px 12px;margin-bottom:10px}
-  .ct{font-size:13px}.cs{font-size:11px}
-  /* Charts */
-  .card canvas{max-height:220px}
-  /* Table */
-  .tbl{font-size:12px}
-  .tbl th{font-size:9px;padding:7px 8px}
-  .tbl td{padding:7px 8px}
-  .tw{-webkit-overflow-scrolling:touch}
+  .card{padding:16px 14px;margin-bottom:12px;border-radius:14px}
+  .ct{font-size:0.9rem;font-weight:700}
+  .cs{font-size:0.75rem;margin-bottom:12px}
+
+  /* Chart full width, taller */
+  .card [style*="height"]{height:200px!important}
+
+  /* Tables - scroll ngang */
+  .tw{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:10px}
+  .tbl{font-size:0.8rem;white-space:nowrap}
+  .tbl th{font-size:0.65rem;padding:8px 10px}
+  .tbl td{padding:8px 10px}
+
+  /* Waterfall */
+  .wfl{width:80px;font-size:0.7rem}
+  .wfn{width:70px;font-size:0.75rem}
+  .wff{font-size:0.7rem}
+
+  /* Alert rows */
+  .arow{padding:10px}
+  .an{font-size:0.8rem}.am{font-size:0.7rem}
+  .av{font-size:0.9rem}
 }
 /* ── BOTTOM NAV (mobile only) ── */
 .bnav{
