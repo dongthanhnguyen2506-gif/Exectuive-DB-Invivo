@@ -4,6 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>InVivo Lab — Executive Dashboard</title>
+<!-- PWA -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="InVivo Lab">
+<meta name="theme-color" content="#08080f">
+<link rel="apple-touch-icon" href="https://raw.githubusercontent.com/dongthanhnguyen2506-gif/Exectuive-DB-Invivo/main/public/icon.png">
+<link rel="manifest" href="https://raw.githubusercontent.com/dongthanhnguyen2506-gif/Exectuive-DB-Invivo/main/public/manifest.json">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <style>
@@ -427,7 +434,7 @@ body{font-family:'Sora',sans-serif;background:#08080f;color:var(--text);font-siz
     <div class="l-brand">Invivo Lab</div>
     <div class="l-welcome">Chào mừng trở lại</div>
     <div class="ltitle">Executive Dashboard</div>
-    <input class="linput" type="password" id="pw" placeholder="Mật khẩu" onkeydown="if(event.key==='Enter')login()">
+    <input class="linput" type="password" id="pw" placeholder="Mật khẩu" autocomplete="current-password" onkeydown="if(event.key==='Enter')login()">
     <button class="lbtn" onclick="login()">Đăng nhập</button>
     <div class="lerr" id="lerr">Mật khẩu không chính xác</div>
   </div>
@@ -620,7 +627,7 @@ body{font-family:'Sora',sans-serif;background:#08080f;color:var(--text);font-siz
 </div>
 
 <script>
-const PASS="InVivo@2026";
+const PASS="Invivo2026";
 const DATA_URL="https://raw.githubusercontent.com/dongthanhnguyen2506-gif/Exectuive-DB-Invivo/main/public/summary_latest.json";
 const P=colors=>{const C={cy:'#00d4ff',gr:'#00e5a0',re:'#ff4d6d',am:'#ffb347',pu:'#a78bfa',bl:'#4db8ff',mu:'rgba(160,185,220,.55)',bd:'rgba(255,255,255,.07)'};return C};
 const PAL=P();
@@ -934,6 +941,14 @@ function p0(cm,pm,ms){
   document.getElementById('s0team').textContent='Doanh thu theo team · '+tag;
   const TEAMS0=['KD HCM','KD01','KD04','KD05','invivo'];
   const TLBLS0={'KD HCM':'KD HCM','KD01':'KD01','KD04':'KD04','KD05':'KD05 · Gia Lai','invivo':'InVivo'};
+  // Tính mtd_days 1 lần cho toàn bộ map
+  const MTD_DAYS=(()=>{
+    if(D.mtd_days) return D.mtd_days;
+    if(!D.current_month) return 0;
+    const tn=new Date(),cy=parseInt(D.current_month.split('_')[0]),cm=parseInt(D.current_month.split('_')[1]);
+    return(tn.getFullYear()===cy&&tn.getMonth()+1===cm)?tn.getDate():0;
+  })();
+  const IS_CUR_MONTH=SM===D.current_month&&MTD_DAYS>0;
   const trows0=TEAMS0.map(team=>{
     const cRows=smAll.filter(s=>s.month===SM&&s.team===team&&!isInternal(s));
     const pRows=smAll.filter(s=>s.month===(pm.month||'')&&s.team===team&&!isInternal(s));
@@ -944,26 +959,28 @@ function p0(cm,pm,ms){
     const sc0=new Set(cRows.map(x=>x.sales)).size;
     const mom0=pnl0?((nl0-pnl0)/pnl0*100):null;
     // Neu la thang hien tai, dung TB ngay
-    const isCurTeam=SM===D.current_month&&(D.mtd_days||mtdDaysTeam)>0;
+    const isCurTeam=IS_CUR_MONTH;
     const momLabel=isCurTeam&&mom0!=null?'~'+mom0.toFixed(1)+'%*':mom0!=null?mom0.toFixed(1)+'%':null;
     const ck0=nl0?(nl0-rn0)/nl0*100:0;
     // %SvCK (ước tính): cur_rev / (prev_total / prev_days * mtd_days)
     let svck=null;
-    const mtdDaysTeam=D.mtd_days||(()=>{
-      const tn=new Date();const cy=parseInt((D.current_month||'').split('_')[0]),cm=parseInt((D.current_month||'').split('_')[1]);
-      return(tn.getFullYear()===cy&&tn.getMonth()+1===cm)?tn.getDate():0;
-    })();
-    if(pnl0>0&&mtdDaysTeam>0&&SM===D.current_month){
+    if(pnl0>0&&IS_CUR_MONTH){
       const pmo2=pm.month||'';
       const prevDays=pmo2?new Date(parseInt(pmo2.split('_')[0]),parseInt(pmo2.split('_')[1]),0).getDate():30;
-      const prevMtdEst=pnl0/prevDays*mtdDaysTeam;
-      svck=prevMtdEst?((nl0-prevMtdEst)/prevMtdEst*100):null;
+      const prevMtdEst=pnl0/prevDays*MTD_DAYS;
+      svck=prevMtdEst?+((nl0-prevMtdEst)/prevMtdEst*100).toFixed(1):null;
     }
     return{team,nl:nl0,rn:rn0,kh:kh0,sc:sc0,mom:mom0,momLabel,ck:ck0,svck};
   }).filter(Boolean).sort((a,b)=>b.nl-a.nl);
 
   document.getElementById('t0team').innerHTML=trows0.length?trows0.map((t,i)=>{
-    const cls=i===0?'<span class="pill g">Chủ lực</span>':t.mom!=null&&t.mom>10?'<span class="pill b">Tăng trưởng</span>':t.mom!=null&&t.mom<-10?'<span class="pill r">Suy giảm</span>':'<span class="pill a">Ổn định</span>';
+    // Phân loại dựa trên %SvCK (ưu tiên) hoặc MoM
+    const metric=t.svck!=null?t.svck:t.mom;
+    const cls=metric==null?'<span class="pill a">Ổn định</span>':
+      metric>10?'<span class="pill b">Tăng trưởng</span>':
+      metric>=-5?'<span class="pill a">Ổn định</span>':
+      metric>=-20?'<span class="pill a" style="color:var(--amber);border-color:var(--amber)">Chú ý</span>':
+      '<span class="pill r">Suy giảm</span>';
     const col=TC[t.team]||PAL.mu;
     return'<tr>'+
       '<td><span style="font-weight:700;color:'+col+'">'+( TLBLS0[t.team]||t.team)+'</span></td>'+
@@ -1227,7 +1244,13 @@ function p6(ms){
     return{team,nl,rn,kh,sc,mom,ck};
   }).filter(Boolean).sort((a,b)=>b.nl-a.nl);
   document.getElementById('t6b').innerHTML=trows.length?trows.map((t,i)=>{
-    const cls=i===0?'<span class="pill g">Chủ lực</span>':t.mom!=null&&t.mom>10?'<span class="pill b">Tăng trưởng</span>':t.mom!=null&&t.mom<-10?'<span class="pill r">Suy giảm</span>':'<span class="pill a">Ổn định</span>';
+    // Phân loại dựa trên %SvCK (ưu tiên) hoặc MoM
+    const metric=t.svck!=null?t.svck:t.mom;
+    const cls=metric==null?'<span class="pill a">Ổn định</span>':
+      metric>10?'<span class="pill b">Tăng trưởng</span>':
+      metric>=-5?'<span class="pill a">Ổn định</span>':
+      metric>=-20?'<span class="pill a" style="color:var(--amber);border-color:var(--amber)">Chú ý</span>':
+      '<span class="pill r">Suy giảm</span>';
     const color=TC[t.team]||PAL.mu;
     return`<tr>
       <td><span style="font-weight:700;color:${color}">${TLBLS[t.team]||t.team}</span></td>
