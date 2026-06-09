@@ -138,7 +138,7 @@ body{font-family:'Sora',sans-serif;background:#08080f;color:var(--text);font-siz
   background:rgba(6,6,12,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
   border-bottom:1px solid var(--border2);
   padding-left:20px;padding-right:20px;padding-bottom:10px;
-  display:flex;align-items:flex-end;justify-content:space-between}0 20px;display:flex;align-items:center;justify-content:space-between}
+  display:flex;align-items:flex-end;justify-content:space-between}
 .tb-l{display:flex;align-items:center;gap:10px}
 .tb-title{font-size:15px;font-weight:700}
 .tb-sub{font-size:10px;color:var(--muted)}
@@ -377,6 +377,113 @@ body{font-family:'Sora',sans-serif;background:#08080f;color:var(--text);font-siz
 
 .empty{padding:28px;text-align:center;color:var(--muted);font-size:12px}
 .hdiv{height:1px;background:var(--border2);margin:8px 0}
+
+
+/* =========================================================
+   MOBILE OVERFLOW FIX ONLY
+   Mục tiêu: chống tràn ngang mobile, không đổi UI desktop
+   ========================================================= */
+@media (max-width:700px){
+  html,
+  body{
+    width:100%!important;
+    max-width:100%!important;
+    overflow-x:hidden!important;
+  }
+
+  .app,
+  .main,
+  .content,
+  .page,
+  .card,
+  .kg,
+  .g2,
+  .g3r{
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+    box-sizing:border-box!important;
+  }
+
+  .content{
+    padding-left:12px!important;
+    padding-right:12px!important;
+    overflow-x:hidden!important;
+  }
+
+  .g2,
+  .g3r{
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+
+  .kg,
+  .kg.k6,
+  .kg.k4,
+  .kg.k3{
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+  }
+
+  .kpi,
+  .card{
+    min-width:0!important;
+    max-width:100%!important;
+    overflow:hidden!important;
+  }
+
+  .kg-lbl,
+  .kg-val,
+  .kg-ch,
+  .ct,
+  .cs{
+    max-width:100%!important;
+    overflow:hidden!important;
+    text-overflow:ellipsis!important;
+  }
+
+  canvas{
+    display:block!important;
+    width:100%!important;
+    max-width:100%!important;
+  }
+
+  .tw{
+    width:100%!important;
+    max-width:100%!important;
+    overflow-x:auto!important;
+    -webkit-overflow-scrolling:touch!important;
+  }
+
+  .tbl{
+    width:max-content!important;
+    min-width:100%!important;
+  }
+
+  .arow,
+  .wfr{
+    max-width:100%!important;
+    min-width:0!important;
+    overflow:hidden!important;
+  }
+
+  .arow > div:first-child,
+  .wft{
+    min-width:0!important;
+    overflow:hidden!important;
+  }
+
+  .an,
+  .am{
+    white-space:nowrap!important;
+    overflow:hidden!important;
+    text-overflow:ellipsis!important;
+  }
+
+  .av,
+  .wfn{
+    flex-shrink:0!important;
+  }
+}
+
 </style>
 </head>
 <body>
