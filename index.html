@@ -893,15 +893,52 @@ function p0(cm,pm,ms){
   const mom=isCur&&!SP&&D.mom_mtd_pct!=null?D.mom_mtd_pct:(pnl?((nl-pnl)/pnl*100):null);
   const kh=khStats(),tag=`${ml(SM)}${SP?' · '+(TN[SP]||SP):''}`;
 
+  // 1. DT: dùng SvCK nếu tháng hiện tại, MoM nếu tháng đầy
+  const MTD_DAYS0=(()=>{if(D.mtd_days)return D.mtd_days;if(!D.current_month)return 0;const tn=new Date(),cy=parseInt(D.current_month.split('_')[0]),cm=parseInt(D.current_month.split('_')[1]);return(tn.getFullYear()===cy&&tn.getMonth()+1===cm)?tn.getDate():0;})();
+  const isCurM0=SM===D.current_month&&MTD_DAYS0>0;
+  // Tính SvCK cho DT
+  let svckDT=null;
+  if(isCurM0&&pnl>0){
+    const pmo0=pm.month||'';
+    const pd0=pmo0?new Date(parseInt(pmo0.split('_')[0]),parseInt(pmo0.split('_')[1]),0).getDate():30;
+    const prevMtd0=pnl/pd0*MTD_DAYS0;
+    svckDT=prevMtd0?+((nl-prevMtd0)/prevMtd0*100).toFixed(1):null;
+  }
+  const dtMetric=svckDT!=null?svckDT:mom;
+  const dtLabel=svckDT!=null
+    ?(svckDT>=0?'↑ +':'↓ ')+Math.abs(svckDT).toFixed(1)+'% · cùng kỳ '+MTD_DAYS0+'ng'
+    :mom!=null?(mom>=0?'↑ +':'↓ ')+Math.abs(mom).toFixed(1)+'% MoM':'↔ MTD';
+
+  // 2. KH Active: tỉ lệ active/tổng quản lý
+  const managed0=SP?(D.total_managed&&D.total_managed[SP]||0):(D.total_managed?Object.values(D.total_managed).reduce((a,x)=>a+x,0):0);
+  const activeRate=managed0>0?Math.round(kh.active/managed0*100):null;
+  const activeLabel=activeRate!=null
+    ?activeRate+'% tỉ lệ active'+(SP?' ('+(TN[SP]||SP)+')':'')
+    :SP?'↔ '+(TN[SP]||SP):'↔ HCM '+fN(kh.ahcm)+' · HN '+fN(kh.ahn);
+
+  // 3. KH Inactive: so sánh vs tháng trước (số tuyệt đối + mũi tên)
+  const prevMs0=D.monthly||[];
+  const prevIdx0=prevMs0.findIndex(x=>x.month===SM);
+  const prevMoData0=prevIdx0>0?prevMs0[prevIdx0-1]:null;
+  let inactiveDiff=null,prevInactive=null;
+  if(prevMoData0){
+    prevInactive=SP
+      ?(()=>{const pbm0=D.partners_by_month||[],pm0=prevMoData0.month;const pc=new Set(pbm0.filter(p=>p.month===SM&&p.team===SP&&!isInternal(p)).map(p=>p.partnerCode));const pp=new Set(pbm0.filter(p=>p.month===pm0&&p.team===SP&&!isInternal(p)).map(p=>p.partnerCode));return[...pp].filter(x=>!pc.has(x)).length;})()
+      :(prevMoData0.inactive_partners||0);
+    inactiveDiff=kh.inactive-prevInactive;
+  }
+  const inactiveLabel=inactiveDiff!=null
+    ?(inactiveDiff>0?'↑ +':'↓ ')+Math.abs(inactiveDiff)+' so với '+ml(prevMoData0.month)
+    :'↔ vs tháng trước';
+
   mkKPI('k0',[
     {l:'DT (NL) · '+tag,v:fM(nl,0)+' Tr',c:'b',
-      ch:mom!=null?(mom>=0?'↑ +':'↓ ')+Math.abs(mom).toFixed(1)+'%'+(isCur&&D.mtd_days?' · cùng kỳ '+D.mtd_days+'ng TB':' MoM'):'↔ MTD',
-      cc:mom!=null?(mom>=0?'up':'dn'):null},
+      ch:dtLabel,cc:dtMetric!=null?(dtMetric>=0?'up':'dn'):null},
     {l:'DT Ròng · '+tag,v:fM(rn,0)+' Tr',c:'g',ch:'↔ Thực nhận sau CK'},
-    {l:'KH Active · '+ml(SM),v:fN(kh.active),c:'b',ch:SP?'↔ '+(TN[SP]||SP):'↔ HCM '+fN(kh.ahcm)+' · HN '+fN(kh.ahn)},
+    {l:'KH Active · '+ml(SM),v:fN(kh.active),c:'b',ch:activeLabel},
     {l:'Reactive · '+ml(SM),v:fN(kh.reactive||0),c:'g',ch:'↔ '+(kh.rrate||0)+'% giữ chân vs tháng trước'},
     {l:'KH Mới',v:fN(kh.newP),c:'g',ch:SP?'↑ lần đầu':'↑ HCM '+fN(kh.nhcm)+' · HN '+fN(kh.nhn)},
-    {l:'KH Inactive',v:fN(kh.inactive),c:kh.inactive>20?'r':'a',ch:SP?'↓ vs tháng trước':'↓ HCM '+fN(kh.ihcm)+' · HN '+fN(kh.ihn)},
+    {l:'KH Inactive',v:fN(kh.inactive),c:kh.inactive>20?'r':'a',ch:inactiveLabel},
   ]);
 
   document.getElementById('s0a').textContent=(SP?(TN[SP]||SP)+' · ':'')+'Stacked theo Team · Tr.đ';
