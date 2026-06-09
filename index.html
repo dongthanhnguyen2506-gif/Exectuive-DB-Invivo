@@ -138,7 +138,7 @@ body{font-family:'Sora',sans-serif;background:#08080f;color:var(--text);font-siz
   background:rgba(6,6,12,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
   border-bottom:1px solid var(--border2);
   padding-left:20px;padding-right:20px;padding-bottom:10px;
-  display:flex;align-items:flex-end;justify-content:space-between}
+  display:flex;align-items:flex-end;justify-content:space-between}0 20px;display:flex;align-items:center;justify-content:space-between}
 .tb-l{display:flex;align-items:center;gap:10px}
 .tb-title{font-size:15px;font-weight:700}
 .tb-sub{font-size:10px;color:var(--muted)}
@@ -377,113 +377,6 @@ body{font-family:'Sora',sans-serif;background:#08080f;color:var(--text);font-siz
 
 .empty{padding:28px;text-align:center;color:var(--muted);font-size:12px}
 .hdiv{height:1px;background:var(--border2);margin:8px 0}
-
-
-/* =========================================================
-   MOBILE OVERFLOW FIX ONLY
-   Mục tiêu: chống tràn ngang mobile, không đổi UI desktop
-   ========================================================= */
-@media (max-width:700px){
-  html,
-  body{
-    width:100%!important;
-    max-width:100%!important;
-    overflow-x:hidden!important;
-  }
-
-  .app,
-  .main,
-  .content,
-  .page,
-  .card,
-  .kg,
-  .g2,
-  .g3r{
-    width:100%!important;
-    max-width:100%!important;
-    min-width:0!important;
-    box-sizing:border-box!important;
-  }
-
-  .content{
-    padding-left:12px!important;
-    padding-right:12px!important;
-    overflow-x:hidden!important;
-  }
-
-  .g2,
-  .g3r{
-    grid-template-columns:minmax(0,1fr)!important;
-  }
-
-  .kg,
-  .kg.k6,
-  .kg.k4,
-  .kg.k3{
-    grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
-  }
-
-  .kpi,
-  .card{
-    min-width:0!important;
-    max-width:100%!important;
-    overflow:hidden!important;
-  }
-
-  .kg-lbl,
-  .kg-val,
-  .kg-ch,
-  .ct,
-  .cs{
-    max-width:100%!important;
-    overflow:hidden!important;
-    text-overflow:ellipsis!important;
-  }
-
-  canvas{
-    display:block!important;
-    width:100%!important;
-    max-width:100%!important;
-  }
-
-  .tw{
-    width:100%!important;
-    max-width:100%!important;
-    overflow-x:auto!important;
-    -webkit-overflow-scrolling:touch!important;
-  }
-
-  .tbl{
-    width:max-content!important;
-    min-width:100%!important;
-  }
-
-  .arow,
-  .wfr{
-    max-width:100%!important;
-    min-width:0!important;
-    overflow:hidden!important;
-  }
-
-  .arow > div:first-child,
-  .wft{
-    min-width:0!important;
-    overflow:hidden!important;
-  }
-
-  .an,
-  .am{
-    white-space:nowrap!important;
-    overflow:hidden!important;
-    text-overflow:ellipsis!important;
-  }
-
-  .av,
-  .wfn{
-    flex-shrink:0!important;
-  }
-}
-
 </style>
 </head>
 <body>
@@ -515,6 +408,7 @@ body{font-family:'Sora',sans-serif;background:#08080f;color:var(--text);font-siz
   <div class="nav"     onclick="gp(3,this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg><span class="nav-lbl">Dịch vụ</span><span class="nav-tip">Dịch vụ</span></div>
   <div class="nav"     onclick="gp(4,this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span class="nav-lbl">Chiết khấu</span><span class="nav-tip">Chiết khấu</span></div>
   <div class="nav"     onclick="gp(5,this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg><span class="nav-lbl">Sales</span><span class="nav-tip">Sales</span></div>
+  <div class="nav" onclick="gp(6,this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span class="nav-lbl">Chi nhánh</span><span class="nav-tip">Chi nhánh</span></div>
   <div class="sb-bot"><div class="sb-div"></div>
     <div class="sb-toggle" onclick="toggleSB()">
       <svg id="ticon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:15px;height:15px"><polyline points="9 18 15 12 9 6"/></svg>
@@ -685,6 +579,10 @@ body{font-family:'Sora',sans-serif;background:#08080f;color:var(--text);font-siz
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
     <span>Chiết khấu</span>
   </div>
+  <div class="bmore-item" onclick="gpMobile(6,null);toggleMore()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+    <span>Chi nhánh</span>
+  </div>
 </div>
 
 <script>
@@ -701,7 +599,7 @@ function isInternal(p){
   const tm=p.team||'';
   return INTERNAL.has(sc)||sc.startsWith('invivo')||tm==='invivo'||tm==='invivo HN'||tm==='invivo HCM';
 }
-const PAGES=['Tổng quan','Doanh thu','Khách hàng','Dịch vụ','Chiết khấu','Sales'];
+const PAGES=['Tổng quan','Doanh thu','Khách hàng','Dịch vụ','Chiết khấu','Sales','Chi nhánh'];
 const KPI_TARGET=300e6;
 let D=null,SM=null,SP='',charts={},sbOpen=false,pickerOpen=false;
 
@@ -747,7 +645,7 @@ function gpMobile(n,el){
     b.classList.toggle('on', parseInt(b.dataset.page)===n);
   });
   document.querySelectorAll('.bmore-item').forEach((b,i)=>{
-    b.classList.toggle('on',[3,4][i]===n);
+    b.classList.toggle('on',[3,4,6][i]===n);
   });
   if(moreOpen)toggleMore();
 }
@@ -778,55 +676,11 @@ const tbadge=(t)=>`<span class="tbadge">${TN[t]||t||'—'}</span>`;
 const empty=(n)=>`<tr><td colspan="${n}" class="empty">Không có dữ liệu</td></tr>`;
 const mono=(v,color='')=>`<span class="mono"${color?` style="color:${color}"`:''}>${v}</span>`;
 
-// ── PERIOD HELPERS ──
-function currentMonthKey(){
-  const ms=D?.monthly||[];
-  return D?.current_month || (ms.length?ms[ms.length-1].month:'');
-}
-function getMtdDays(mo=SM){
-  if(mo!==currentMonthKey())return 0;
-  if(D?.mtd_days)return D.mtd_days;
-  const parts=(mo||'').split('_');
-  if(parts.length<2)return 0;
-  const y=parseInt(parts[0]),m=parseInt(parts[1]);
-  const today=new Date();
-  return(today.getFullYear()===y&&today.getMonth()+1===m)?today.getDate():0;
-}
-function prevMonthDays(mo){
-  if(!mo)return 30;
-  const [y,m]=(mo||'').split('_').map(x=>parseInt(x));
-  return y&&m?new Date(y,m,0).getDate():30;
-}
-function svckValue(curRev,prevRev,prevMo,mtdDays){
-  if(!prevRev||!mtdDays)return null;
-  const prevMtd=prevRev/prevMonthDays(prevMo)*mtdDays;
-  return prevMtd?+((curRev-prevMtd)/prevMtd*100).toFixed(1):null;
-}
-function inactiveDeltaInfo(kh=khStats()){
-  const ms=D.monthly||[];
-  const idx=ms.findIndex(x=>x.month===SM);
-  const prevData=idx>0?ms[idx-1]:null;
-  if(!prevData)return{diff:null,prevInactive:null,label:'↔ vs tháng trước',cls:null,prevMonth:''};
-  let prevInactive=0;
-  if(SP){
-    const pbm=D.partners_by_month||[],pm0=prevData.month;
-    const curSet=new Set(pbm.filter(p=>p.month===SM&&p.team===SP&&!isInternal(p)).map(p=>p.partnerCode));
-    const prevSet=new Set(pbm.filter(p=>p.month===pm0&&p.team===SP&&!isInternal(p)).map(p=>p.partnerCode));
-    prevInactive=[...prevSet].filter(x=>!curSet.has(x)).length;
-  }else{
-    prevInactive=prevData.inactive_partners||0;
-  }
-  const diff=kh.inactive-prevInactive;
-  const sign=diff>0?'↑ +':diff<0?'↓ -':'→ ';
-  const label=sign+Math.abs(diff)+' so với '+ml(prevData.month);
-  return{diff,prevInactive,label,cls:diff>0?'dn':diff<0?'up':'fl',prevMonth:prevData.month};
-}
-
 // ── DATA HELPERS ──
 function cur(){return(D.monthly||[]).find(m=>m.month===SM)||{};}
 function prev(){const ms=D.monthly||[],i=ms.findIndex(m=>m.month===SM);return i>0?ms[i-1]:{};}
 function tStats(mo,team){
-  const rows=(D.sales_monthly||[]).filter(s=>s.month===mo&&(team===''||s.team===team)&&!isInternal(s));
+  const rows=(D.sales_monthly||[]).filter(s=>s.month===mo&&(!team||s.team===team)&&!isInternal(s));
   const nl=rows.reduce((a,x)=>a+(x.revenue||0),0);
   const rn=rows.reduce((a,x)=>a+(x.revenue_net!=null?x.revenue_net:x.revenue||0),0);
   const ord=rows.reduce((a,x)=>a+(x.orders||0),0);
@@ -836,7 +690,6 @@ function khStats(){
   const m=cur(),pbm=D.partners_by_month||[],ms=D.monthly||[];
   const idx=ms.findIndex(x=>x.month===SM),pmo=idx>0?ms[idx-1].month:null;
   if(!SP){  // SP null or empty = Tất cả
-  
     return{active:m.active_partners||0,ahcm:m.active_hcm||0,ahn:m.active_hn||0,
       inactive:m.inactive_partners||0,ihcm:m.inactive_hcm||0,ihn:m.inactive_hn||0,
       newP:m.new_partners||0,nhcm:m.new_hcm||0,nhn:m.new_hn||0,
@@ -852,8 +705,10 @@ function khStats(){
     newP:[...cset].filter(c=>!pset.has(c)).length,nhcm:0,nhn:0,
     reactive,rrate:pset.size?Math.round(reactive/pset.size*100):0,managed};
 }
-function fPtn(limit){
-  return(D.partners_by_month||[]).filter(p=>p.month===SM&&(!SP||p.team===SP)&&!isInternal(p)).sort((a,b)=>b.revenue-a.revenue).slice(0,limit||20);
+function fPtn(limit,inclInternal=false){
+  return(D.partners_by_month||[])
+    .filter(p=>p.month===SM&&(!SP||p.team===SP)&&(inclInternal||!isInternal(p)))
+    .sort((a,b)=>b.revenue-a.revenue).slice(0,limit||20);
 }
 function iPtn(){return(D.partners_by_month||[]).filter(p=>p.month===SM&&INTERNAL.has(p.saleCode||'')).sort((a,b)=>b.revenue-a.revenue);}
 function fSvc(){
@@ -999,10 +854,16 @@ function p0(cm,pm,ms){
   const kh=khStats(),tag=`${ml(SM)}${SP?' · '+(TN[SP]||SP):''}`;
 
   // 1. DT: dùng SvCK nếu tháng hiện tại, MoM nếu tháng đầy
-  const MTD_DAYS0=getMtdDays(SM);
-  const isCurM0=SM===currentMonthKey()&&MTD_DAYS0>0;
-  // Tính SvCK cho DT: DT hiện tại / DT cùng kỳ tháng trước
-  let svckDT=isCurM0?svckValue(nl,pnl,pm.month||'',MTD_DAYS0):null;
+  const MTD_DAYS0=(()=>{if(D.mtd_days)return D.mtd_days;if(!D.current_month)return 0;const tn=new Date(),cy=parseInt(D.current_month.split('_')[0]),cm=parseInt(D.current_month.split('_')[1]);return(tn.getFullYear()===cy&&tn.getMonth()+1===cm)?tn.getDate():0;})();
+  const isCurM0=SM===D.current_month&&MTD_DAYS0>0;
+  // Tính SvCK cho DT
+  let svckDT=null;
+  if(isCurM0&&pnl>0){
+    const pmo0=pm.month||'';
+    const pd0=pmo0?new Date(parseInt(pmo0.split('_')[0]),parseInt(pmo0.split('_')[1]),0).getDate():30;
+    const prevMtd0=pnl/pd0*MTD_DAYS0;
+    svckDT=prevMtd0?+((nl-prevMtd0)/prevMtd0*100).toFixed(1):null;
+  }
   const dtMetric=svckDT!=null?svckDT:mom;
   const dtLabel=svckDT!=null
     ?(svckDT>=0?'↑ +':'↓ ')+Math.abs(svckDT).toFixed(1)+'% · cùng kỳ '+MTD_DAYS0+'ng'
@@ -1016,8 +877,19 @@ function p0(cm,pm,ms){
     :SP?'↔ '+(TN[SP]||SP):'↔ HCM '+fN(kh.ahcm)+' · HN '+fN(kh.ahn);
 
   // 3. KH Inactive: so sánh vs tháng trước (số tuyệt đối + mũi tên)
-  const inactiveInfo0=inactiveDeltaInfo(kh);
-  const inactiveLabel=inactiveInfo0.label;
+  const prevMs0=D.monthly||[];
+  const prevIdx0=prevMs0.findIndex(x=>x.month===SM);
+  const prevMoData0=prevIdx0>0?prevMs0[prevIdx0-1]:null;
+  let inactiveDiff=null,prevInactive=null;
+  if(prevMoData0){
+    prevInactive=SP
+      ?(()=>{const pbm0=D.partners_by_month||[],pm0=prevMoData0.month;const pc=new Set(pbm0.filter(p=>p.month===SM&&p.team===SP&&!isInternal(p)).map(p=>p.partnerCode));const pp=new Set(pbm0.filter(p=>p.month===pm0&&p.team===SP&&!isInternal(p)).map(p=>p.partnerCode));return[...pp].filter(x=>!pc.has(x)).length;})()
+      :(prevMoData0.inactive_partners||0);
+    inactiveDiff=kh.inactive-prevInactive;
+  }
+  const inactiveLabel=inactiveDiff!=null
+    ?(inactiveDiff>0?'↑ +':'↓ ')+Math.abs(inactiveDiff)+' so với '+ml(prevMoData0.month)
+    :'↔ vs tháng trước';
 
   mkKPI('k0',[
     {l:'DT (NL) · '+tag,v:fM(nl,0)+' Tr',c:'b',
@@ -1066,7 +938,13 @@ function p0(cm,pm,ms){
   }
   document.getElementById('al0').innerHTML=al.slice(0,5).map(a=>`<div class="arow ${a.c}"><div><div class="an">${a.n}</div><div class="am">${a.m}</div></div><div class="av" style="color:var(--${a.c==='g'?'gr':a.c==='r'?'re':'am'})">${a.v}</div></div>`).join('');
 
-  mkWF('wf0',[{l:'DT Niêm yết',v:nl,c:'#0088cc'},{l:'(-) Chiết khấu',v:-disc,c:'#cc2244'},{l:'DT Ròng',v:rn,c:'#00aa77'}]);
+  // Waterfall: dùng cùng nl/rn/disc đã tính ở trên
+  const wfDisc=nl-rn;
+  mkWF('wf0',[
+    {l:'DT Niêm yết',v:nl,c:'#818cf8'},
+    {l:'(-) Chiết khấu',v:-wfDisc,c:'#f87171'},
+    {l:'DT Ròng',v:rn,c:'#34d399'}
+  ]);
   document.getElementById('s0w').textContent=tag;
   const fp=fPtn(8);
   document.getElementById('s0t').textContent=tag;
@@ -1077,8 +955,13 @@ function p0(cm,pm,ms){
   const TEAMS0=['KD HCM','KD01','KD04','KD05','invivo'];
   const TLBLS0={'KD HCM':'KD HCM','KD01':'KD01','KD04':'KD04','KD05':'KD05 · Gia Lai','invivo':'InVivo'};
   // Tính mtd_days 1 lần cho toàn bộ map
-  const MTD_DAYS=getMtdDays(SM);
-  const IS_CUR_MONTH=SM===currentMonthKey()&&MTD_DAYS>0;
+  const MTD_DAYS=(()=>{
+    if(D.mtd_days) return D.mtd_days;
+    if(!D.current_month) return 0;
+    const tn=new Date(),cy=parseInt(D.current_month.split('_')[0]),cm=parseInt(D.current_month.split('_')[1]);
+    return(tn.getFullYear()===cy&&tn.getMonth()+1===cm)?tn.getDate():0;
+  })();
+  const IS_CUR_MONTH=SM===D.current_month&&MTD_DAYS>0;
   const trows0=TEAMS0.map(team=>{
     const cRows=smAll.filter(s=>s.month===SM&&s.team===team&&!isInternal(s));
     const pRows=smAll.filter(s=>s.month===(pm.month||'')&&s.team===team&&!isInternal(s));
@@ -1096,7 +979,9 @@ function p0(cm,pm,ms){
     let svck=null;
     if(pnl0>0&&IS_CUR_MONTH){
       const pmo2=pm.month||'';
-      svck=svckValue(nl0,pnl0,pmo2,MTD_DAYS);
+      const prevDays=pmo2?new Date(parseInt(pmo2.split('_')[0]),parseInt(pmo2.split('_')[1]),0).getDate():30;
+      const prevMtdEst=pnl0/prevDays*MTD_DAYS;
+      svck=prevMtdEst?+((nl0-prevMtdEst)/prevMtdEst*100).toFixed(1):null;
     }
     return{team,nl:nl0,rn:rn0,kh:kh0,sc:sc0,mom:mom0,momLabel,ck:ck0,svck};
   }).filter(Boolean).sort((a,b)=>b.nl-a.nl);
@@ -1130,17 +1015,11 @@ function p1(cm,pm,ms){
   const ts=tStats(SM,SP),tsp=tStats(pm.month||'',SP);
   const nl=SP?ts.nl:(cm.revenue_actual||0),rn=SP?ts.rn:(cm.revenue_net||cm.total_revenue_net||0),disc=nl-rn;
   const orders=SP?ts.orders:(cm.order_count||0),pnl=SP?tsp.nl:(pm.revenue_actual||0);
-  const mtdDays1=getMtdDays(SM);
-  const isCur=SM===currentMonthKey()&&mtdDays1>0;
+  const isCur=SM===D.current_month;
   const mom=isCur&&!SP&&D.mom_mtd_pct!=null?D.mom_mtd_pct:(pnl?((nl-pnl)/pnl*100):null);
-  const svckDT1=isCur?svckValue(nl,pnl,pm.month||'',mtdDays1):null;
-  const dtMetric1=svckDT1!=null?svckDT1:mom;
-  const dtLabel1=svckDT1!=null
-    ?(svckDT1>=0?'↑ +':'↓ ')+Math.abs(svckDT1).toFixed(1)+'% · cùng kỳ '+mtdDays1+'ng'
-    :mom!=null?(mom>=0?'↑ +':'↓ ')+Math.abs(mom).toFixed(1)+'% MoM':'— MTD';
   const tag=`${ml(SM)}${SP?' · '+(TN[SP]||SP):''}`;
   mkKPI('k1',[
-    {l:'DT (NL) · '+tag,v:fM(nl,0)+' Tr',c:'b',ch:dtLabel1,cc:dtMetric1!=null?(dtMetric1>=0?'up':'dn'):'fl'},
+    {l:'DT (NL) · '+tag,v:fM(nl,0)+' Tr',c:'b',ch:mom!=null?(mom>=0?'↑ +':'↓ ')+Math.abs(mom).toFixed(1)+'%'+(isCur&&D.mtd_days?' · cùng kỳ '+D.mtd_days+'ng TB':' MoM'):'— MTD',cc:mom!=null?(mom>=0?'up':'dn'):'fl'},
     {l:'DT Ròng · '+tag,v:fM(rn,0)+' Tr',c:'g',ch:'→ Thực nhận sau CK'},
     {l:'Chiết khấu',v:fM(disc,0)+' Tr',c:'a',ch:'↔ '+(nl?(disc/nl*100).toFixed(1):0)+'%'},
     {l:'DT TB/Đơn',v:orders?fK(nl/orders)+'K':'—',c:'b',ch:'↔ '+fN(orders)+' đơn'},
@@ -1169,13 +1048,12 @@ function p1(cm,pm,ms){
 // ════ P2 CUSTOMERS ═════════════════════════════════════════
 function p2(cm,ms){
   const kh=khStats(),tag=`${ml(SM)}${SP?' · '+(TN[SP]||SP):''}`;
-  const inactiveInfo=inactiveDeltaInfo(kh);
-  const fp=fPtn(20),tot=fp.reduce((s,p)=>s+p.revenue,0)||1,top5=fp.slice(0,5).reduce((s,p)=>s+p.revenue,0);
+  const fp=fPtn(20,true),tot=fp.reduce((s,p)=>s+p.revenue,0)||1,top5=fp.slice(0,5).reduce((s,p)=>s+p.revenue,0);
   mkKPI('k2',[
     {l:'KH Active · '+tag,v:fN(kh.active),c:'b',ch:SP?'↔ '+(TN[SP]||SP):'↔ HCM '+fN(kh.ahcm)+' · HN '+fN(kh.ahn)},
     {l:'Reactive · '+tag,v:fN(kh.reactive||0),c:'g',ch:'↔ '+(kh.rrate||0)+'% giữ chân vs tháng trước'},
     {l:'KH Mới · '+tag,v:fN(kh.newP),c:'g',ch:SP?'↑ lần đầu':'↑ HCM '+fN(kh.nhcm)+' · HN '+fN(kh.nhn)},
-    {l:'KH Inactive · '+tag,v:fN(kh.inactive),c:kh.inactive>20?'r':'a',ch:inactiveInfo.label,cc:inactiveInfo.cls},
+    {l:'KH Inactive · '+tag,v:fN(kh.inactive),c:kh.inactive>20?'r':'a',ch:SP?'↓ vs tháng trước':'↓ HCM '+fN(kh.ihcm)+' · HN '+fN(kh.ihn)},
     {l:'Tổng KH Quản lý',v:fN(kh.managed||0),c:'a',ch:'↔ '+(SP?TN[SP]||SP:'Toàn công ty')+' all-time'},
     {l:'Top 5 / Tổng DT',v:(top5/tot*100).toFixed(0)+'%',c:'r',ch:'⚠ Tập trung'},
   ]);
@@ -1189,7 +1067,7 @@ function p2(cm,ms){
     {type:'line',label:'% TL',data:pd,borderColor:PAL.am,fill:false,yAxisID:'y1',borderWidth:2,pointRadius:3,pointBorderWidth:0},
     {label:'DT (Tr)',data:fp.slice(0,10).map(p=>+(p.revenue/1e6).toFixed(1)),backgroundColor:PAL.cy+'66',borderRadius:3,yAxisID:'y'}
   ]},{scales:{y:{ticks:{callback:v=>v+'M'}},y1:{position:'right',grid:{display:false},ticks:{color:PAL.am,callback:v=>v+'%'}}}});
-  document.getElementById('s2t').textContent=tag;
+  document.getElementById('s2t').textContent=tag+' (bao gồm nội bộ)';
   document.getElementById('t2').innerHTML=fp.length?fp.map((p,i)=>`<tr>
     <td style="color:var(--mu)">${i+1}</td>
     <td style="font-weight:600">${p.partnerName||p.partnerCode}</td>
@@ -1202,7 +1080,7 @@ function p2(cm,ms){
     <td class="r mono" style="color:var(--mu)">${p.orders?fK(p.revenue/p.orders)+'K':'—'}</td>
   </tr>`).join(''):empty(9);
   // Top KH insight
-  const fp2=fPtn(5);const pm2Data=D.monthly,pmoIdx=pm2Data?pm2Data.findIndex(x=>x.month===SM):0;const pmo=pmoIdx>0?pm2Data[pmoIdx-1].month:null;
+  const fp2=fPtn(5,true);const pm2Data=D.monthly,pmoIdx=pm2Data?pm2Data.findIndex(x=>x.month===SM):0;const pmo=pmoIdx>0?pm2Data[pmoIdx-1].month:null;
   let ins=`<div style="font-size:10px;color:var(--mu);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">Top KH · ${tag}</div>`;
   ins+=fp2.map(p=>{
     const pp=pmo?pbm.find(x=>x.partnerCode===p.partnerCode&&x.month===pmo):null;
@@ -1219,7 +1097,6 @@ function p2(cm,ms){
     <div style="flex:1;background:rgba(255,77,109,.06);border:1px solid rgba(255,77,109,.14);border-radius:12px;padding:14px;text-align:center">
       <div style="font-size:28px;font-weight:800;color:var(--re);font-family:'JetBrains Mono',monospace">${fN(kh.inactive)}</div>
       <div style="font-size:11px;color:var(--mu);margin-top:4px">KH Inactive</div>
-      <div style="font-size:10px;color:${inactiveInfo.diff>0?'var(--re)':inactiveInfo.diff<0?'var(--gr)':'var(--mu)'};margin-top:3px">${inactiveInfo.label}</div>
       ${!SP?`<div style="font-size:10px;color:var(--mu)">HCM ${fN(kh.ihcm)} · HN ${fN(kh.ihn)}</div>`:''}
     </div>
     <div style="flex:1;background:rgba(0,229,160,.06);border:1px solid rgba(0,229,160,.14);border-radius:12px;padding:14px;text-align:center">
@@ -1248,8 +1125,13 @@ function p3(ms){
   const prevMoSvc=prev().month||'';
   // Tính mtd_days tại chỗ nếu thiếu
   let mtdDaysSvc=D.mtd_days||0;
-  if(!mtdDaysSvc)mtdDaysSvc=getMtdDays(SM);
-  const isCurSvc=SM===currentMonthKey()&&mtdDaysSvc>0;
+  if(!mtdDaysSvc&&D.current_month){
+    const tn=new Date();
+    const cy=parseInt(D.current_month.split('_')[0]),cm=parseInt(D.current_month.split('_')[1]);
+    if(tn.getFullYear()===cy&&tn.getMonth()+1===cm) mtdDaysSvc=tn.getDate();
+  }
+  const isCurSvc=SM===D.current_month&&mtdDaysSvc>0;
+  const prevDaysSvc=prevMoSvc?new Date(parseInt(prevMoSvc.split('_')[0]),parseInt(prevMoSvc.split('_')[1]),0).getDate():30;
 
   document.getElementById('t3').innerHTML=svc.length?svc.map(s=>{
     // Lay DT nhom DV thang truoc
@@ -1264,7 +1146,8 @@ function p3(ms){
       mom=((s.revenue-prevRev)/prevRev*100);
       // SvCK: chỉ tính khi tháng hiện tại chưa đủ
       if(isCurSvc&&D.mtd_days){
-        svck=svckValue(s.revenue,prevRev,prevMoSvc,mtdDaysSvc);
+        const prevMtdSvc=prevRev/prevDaysSvc*mtdDaysSvc;
+        svck=prevMtdSvc?((s.revenue-prevMtdSvc)/prevMtdSvc*100):null;
       }
       // Tháng đầy: không cần svck (giống MoM)
     }
@@ -1303,7 +1186,12 @@ function p4(cm,ms){
     {label:'CK (Tr)',data:dAmt,borderColor:PAL.re,fill:false,tension:.4,borderWidth:1.5,pointRadius:2,pointBorderWidth:0,yAxisID:'y'}
   ]},{scales:{y:{ticks:{callback:v=>v+'M'}},y1:{position:'right',grid:{display:false},ticks:{color:PAL.am,callback:v=>v+'%'}}}});
   document.getElementById('s4w').textContent=tag;
-  mkWF('wf4',[{l:'DT Niêm yết',v:nl,c:'#0088cc'},{l:'(-) Chiết khấu',v:-disc,c:'#cc2244'},{l:'DT Ròng',v:rn,c:'#00aa77'}]);
+  const wfDisc4=nl-rn;
+  mkWF('wf4',[
+    {l:'DT Niêm yết',v:nl,c:'#818cf8'},
+    {l:'(-) Chiết khấu',v:-wfDisc4,c:'#f87171'},
+    {l:'DT Ròng',v:rn,c:'#34d399'}
+  ]);
   const fp=fPtn(20).sort((a,b)=>(b.discount_pct||0)-(a.discount_pct||0));
   document.getElementById('s4t').textContent=`%CK cao nhất · ${tag}`;
   document.getElementById('t4').innerHTML=fp.length?fp.slice(0,15).map((p,i)=>`<tr>
