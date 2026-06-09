@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <title>Invivo ExDB</title>
 <!-- PWA -->
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -14,8 +14,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <style>
-*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-html,body{max-width:100%;overflow-x:hidden}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;
+  -webkit-touch-callout:none}
+html{overflow:hidden;height:100%;position:fixed;width:100%}
+body{overflow-y:auto;overflow-x:hidden;height:100%;width:100%;
+  -webkit-overflow-scrolling:touch;
+  overscroll-behavior:none;
+  position:relative}
 :root{
   --bg:#0a0a0f;--glass:rgba(255,255,255,.04);--glass2:rgba(255,255,255,.07);
   --border:rgba(120,120,180,.15);--border2:rgba(255,255,255,.07);
@@ -122,10 +127,13 @@ body{font-family:'Sora',sans-serif;background:#08080f;color:var(--text);font-siz
 .main.wide{margin-left:210px}
 
 /* ── TOPBAR ── */
-.topbar{position:sticky;top:0;z-index:50;height:54px;
-  background:rgba(4,10,24,.75);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+.topbar{position:sticky;top:0;z-index:50;
+  padding-top:env(safe-area-inset-top,0px);
+  min-height:54px;
+  background:rgba(6,6,12,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
   border-bottom:1px solid var(--border2);
-  padding:0 20px;display:flex;align-items:center;justify-content:space-between}
+  padding-left:20px;padding-right:20px;padding-bottom:10px;
+  display:flex;align-items:flex-end;justify-content:space-between}0 20px;display:flex;align-items:center;justify-content:space-between}
 .tb-l{display:flex;align-items:center;gap:10px}
 .tb-title{font-size:15px;font-weight:700}
 .tb-sub{font-size:10px;color:var(--muted)}
@@ -327,12 +335,14 @@ body{font-family:'Sora',sans-serif;background:#08080f;color:var(--text);font-siz
 .bnav{
   display:none;
   position:fixed;bottom:0;left:0;right:0;z-index:200;
-  background:rgba(8,8,15,.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-  border-top:1px solid rgba(255,255,255,.07);
-  padding-top:8px;
-  padding-bottom:calc(env(safe-area-inset-bottom,0px) + 8px);
+  background:rgba(8,8,15,.98);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-top:1px solid rgba(255,255,255,.08);
+  padding-top:10px;
+  padding-bottom:max(env(safe-area-inset-bottom,0px),16px);
+  /* Ngăn đè lên nhau */
+  -webkit-transform:translateZ(0);transform:translateZ(0);
 }
-.bnav-items{display:flex;justify-content:space-around;align-items:center}
+.bnav-items{display:flex;justify-content:space-around;align-items:center;width:100%;max-width:500px;margin:0 auto}
 .bni{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;
   padding:6px 2px;cursor:pointer;color:rgba(160,185,220,.5);transition:.15s;
   border:none;background:none;-webkit-tap-highlight-color:transparent}
@@ -452,7 +462,7 @@ body{font-family:'Sora',sans-serif;background:#08080f;color:var(--text);font-siz
   <div class="nav"     onclick="gp(3,this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg><span class="nav-lbl">Dịch vụ</span><span class="nav-tip">Dịch vụ</span></div>
   <div class="nav"     onclick="gp(4,this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span class="nav-lbl">Chiết khấu</span><span class="nav-tip">Chiết khấu</span></div>
   <div class="nav"     onclick="gp(5,this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg><span class="nav-lbl">Sales</span><span class="nav-tip">Sales</span></div>
-  <!-- Chi nhánh hidden -->
+  <div class="nav" onclick="gp(6,this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span class="nav-lbl">Chi nhánh</span><span class="nav-tip">Chi nhánh</span></div>
   <div class="sb-bot"><div class="sb-div"></div>
     <div class="sb-toggle" onclick="toggleSB()">
       <svg id="ticon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:15px;height:15px"><polyline points="9 18 15 12 9 6"/></svg>
@@ -490,7 +500,7 @@ body{font-family:'Sora',sans-serif;background:#08080f;color:var(--text);font-siz
   <div class="g3r">
     <div class="card"><div class="ct">Doanh thu theo tháng</div><div class="cs" id="s0a">Stacked theo Team</div><div style="position:relative;height:185px"><canvas id="c0a"></canvas></div></div>
     <div class="card"><div class="ct">Cơ cấu dịch vụ</div><div class="cs" id="s0b">Tỷ trọng</div><div style="position:relative;height:185px"><canvas id="c0b"></canvas></div></div>
-    <div class="card"><div class="ct" style="color:var(--amber)">⚡ Cảnh báo</div><div class="cs" id="s0c">Cần xem xét</div><div id="al0"></div></div>
+    <div class="card"><div class="ct" style="color:var(--amber)">Cảnh báo</div><div class="cs" id="s0c">Cần xem xét</div><div id="al0"></div></div>
   </div>
   <div class="g2">
     <div class="card"><div class="ct">Waterfall doanh thu</div><div class="cs" id="s0w">NL → CK → Ròng</div><div class="wf" id="wf0"></div></div>
@@ -531,7 +541,7 @@ body{font-family:'Sora',sans-serif;background:#08080f;color:var(--text);font-siz
     <div class="tw"><table class="tbl"><thead><tr><th>#</th><th>Khách hàng</th><th>Team</th><th>Sales</th><th class="r">DT (Tr)</th><th class="r">DT Ròng</th><th class="r">%CK</th><th class="r">Đơn</th><th class="r">DT/Đơn (K)</th></tr></thead><tbody id="t2"></tbody></table></div>
   </div>
   <div class="g2">
-    <div class="card"><div class="ct">📊 Top KH</div><div class="cs" id="s2d">KH lớn nhất</div><div id="topkh"></div></div>
+    <div class="card"><div class="ct">Top KH</div><div class="cs" id="s2d">KH lớn nhất</div><div id="topkh"></div></div>
     <div class="card"><div class="ct">Biến động KH</div><div class="cs" id="s2c">So với tháng trước</div><div id="churn"></div></div>
   </div>
 </div>
@@ -582,7 +592,7 @@ body{font-family:'Sora',sans-serif;background:#08080f;color:var(--text);font-siz
   <div class="card"><div class="ct">So sánh Team</div><div class="cs" id="s6t">Tháng đang chọn</div>
     <div class="tw"><table class="tbl"><thead><tr><th>Team</th><th>Phân loại</th><th class="r">DT (Tr)</th><th class="r">DT Ròng</th><th class="r">KH</th><th class="r">Sales</th><th class="r">%CK</th><th>MoM</th></tr></thead><tbody id="t6b"></tbody></table></div>
   </div>
-  <div class="card"><div class="ct">Partner nội bộ</div><div class="cs" id="s6p">Không có NVKD</div>
+  <div class="card"><div class="ct">Doanh số Nội bộ</div><div class="cs" id="s6p">HCM + HN</div>
     <div class="tw"><table class="tbl"><thead><tr><th>#</th><th>Khách hàng</th><th>CN</th><th class="r">DT (Tr)</th><th class="r">Đơn</th></tr></thead><tbody id="t6"></tbody></table></div>
   </div>
 </div>
@@ -623,7 +633,10 @@ body{font-family:'Sora',sans-serif;background:#08080f;color:var(--text);font-siz
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
     <span>Chiết khấu</span>
   </div>
-  <!-- Chi nhánh hidden -->
+  <div class="bmore-item" onclick="gpMobile(6,null);toggleMore()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+    <span>Chi nhánh</span>
+  </div>
 </div>
 
 <script>
@@ -647,7 +660,7 @@ let D=null,SM=null,SP='',charts={},sbOpen=false,pickerOpen=false;
 // ── AUTH ──
 function login(){
   if(document.getElementById('pw').value===PASS){
-    sessionStorage.setItem('iv_auth','1');
+    localStorage.setItem('iv_auth','1');
     document.getElementById('loginWrap').style.display='none';
     document.getElementById('app').style.display='flex';
     loadData();
@@ -657,13 +670,13 @@ function login(){
     setTimeout(()=>e.style.display='none',3000);
   }
 }
-// Tự động bypass login nếu đã auth trong session
+// Ghi nhớ đăng nhập vĩnh viễn (localStorage)
 (function(){
-  if(sessionStorage.getItem('iv_auth')==='1'){
+  if(localStorage.getItem('iv_auth')==='1'){
     document.getElementById('loginWrap').style.display='none';
     document.getElementById('app').style.display='flex';
-    // loadData sẽ được gọi sau khi DOM ready
-    window.addEventListener('DOMContentLoaded',()=>loadData());
+    document.addEventListener('DOMContentLoaded',()=>{if(D)render();else loadData();});
+    if(document.readyState!=='loading')loadData();
   }
 })();
 
@@ -1308,13 +1321,32 @@ function p6(ms){
       <td class="r">${t.ck.toFixed(1)}%</td>
       <td>${t.mom!=null?`<span class="pill ${t.mom>=0?'g':'r'}">${t.mom>=0?'+':''}${t.mom.toFixed(1)}%</span>`:'—'}</td></tr>`;
   }).join(''):empty(8);
-  document.getElementById('s6p').textContent=`Không có NVKD · ${ml(SM)}`;
-  document.getElementById('t6').innerHTML=intP.length?intP.map((p,i)=>`<tr>
+  // Tách rõ nội bộ HCM và HN
+  const intHCM=intP.filter(p=>p.saleCode==='invivoHCM');
+  const intHN =intP.filter(p=>p.saleCode==='invivoHN');
+  const intRevHCM=intHCM.reduce((s,p)=>s+p.revenue,0);
+  const intRevHN =intHN.reduce((s,p) =>s+p.revenue,0);
+
+  document.getElementById('s6p').textContent='Doanh số nội bộ · '+ml(SM)
+    +' · HCM: '+fM(intRevHCM,0)+'Tr · HN: '+fM(intRevHN,0)+'Tr';
+
+  const renderIntRow=(p,i)=>`<tr>
     <td style="color:var(--mu)">${i+1}</td>
     <td style="font-weight:600">${p.partnerName||p.partnerCode}</td>
     <td>${tbadge(p.saleCode==='invivoHCM'?'HCM':'HN')}</td>
     <td class="r mono" style="color:var(--cy)">${fM(p.revenue,0)}</td>
-    <td class="r">${p.orders||0}</td></tr>`).join(''):`<tr><td colspan="5" class="empty">Không có partner nội bộ</td></tr>`;
+    <td class="r">${p.orders||0}</td></tr>`;
+
+  let intHTML='';
+  if(intHCM.length){
+    intHTML+=`<tr><td colspan="5" style="padding:10px 11px 4px;font-size:10px;font-weight:700;color:var(--cy);text-transform:uppercase;letter-spacing:.6px">Nội bộ HCM — ${fM(intRevHCM,0)} Tr</td></tr>`;
+    intHTML+=intHCM.map((p,i)=>renderIntRow(p,i)).join('');
+  }
+  if(intHN.length){
+    intHTML+=`<tr><td colspan="5" style="padding:14px 11px 4px;font-size:10px;font-weight:700;color:var(--gr);text-transform:uppercase;letter-spacing:.6px">Nội bộ HN — ${fM(intRevHN,0)} Tr</td></tr>`;
+    intHTML+=intHN.map((p,i)=>renderIntRow(p,i)).join('');
+  }
+  document.getElementById('t6').innerHTML=intHTML||`<tr><td colspan="5" class="empty">Không có doanh số nội bộ</td></tr>`;
 }
 </script>
 </body>
