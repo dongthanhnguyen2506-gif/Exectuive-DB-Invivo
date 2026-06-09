@@ -173,61 +173,148 @@ body{font-family:'Sora',sans-serif;background:#08080f;color:var(--text);font-siz
 @media(max-width:1200px){.k6{grid-template-columns:repeat(3,1fr)}.k4{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:900px){.k6,.k4,.k3{grid-template-columns:repeat(2,1fr)}.g2,.g3r{grid-template-columns:1fr}}
 @media(max-width:700px){
-  html{font-size:16px}
-  .sidebar{width:0;overflow:hidden;border:none}.sidebar.open{width:80vw;max-width:280px;overflow:visible}
-  .main{margin-left:0!important;padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))}
-  .topbar{padding:0 16px;height:52px}
-  .tb-title{font-size:1rem}.tb-sub{font-size:0.7rem}
-  .fbar{padding:10px 16px;gap:10px;overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch}
-  .fdiv{display:none}
-  .flabel{font-size:0.75rem;flex-shrink:0;font-weight:600}
-  .fsel{font-size:0.875rem;padding:8px 12px;flex-shrink:0;border-radius:10px}
-  .mdisp{font-size:0.875rem;padding:8px 16px;min-width:100px;flex-shrink:0;border-radius:10px}
-  .mbtn{flex-shrink:0;width:32px;height:32px}
-  .ftag{display:none!important}
-  .content{padding:10px 10px;overflow-x:hidden;width:100%;box-sizing:border-box}
+  /* ── Reset layout ── */
+  html{overflow-x:hidden}
+  body{overflow-x:hidden;width:100vw}
 
+  .sidebar{width:0;overflow:hidden;border:none}
+  .sidebar.open{width:80vw;max-width:280px;overflow:visible}
+  .main{margin-left:0!important;padding-bottom:calc(68px + env(safe-area-inset-bottom,0px))}
+
+  /* ── Topbar ── */
+  .topbar{padding:0 14px;height:50px}
+  .tb-title{font-size:15px;font-weight:700}
+  .tb-sub{font-size:10px}
+  .utime{display:none}
+
+  /* ── Filter bar: scroll ngang ── */
+  .fbar{
+    padding:8px 14px;gap:10px;
+    overflow-x:auto;overflow-y:visible;
+    flex-wrap:nowrap;-webkit-overflow-scrolling:touch;
+    scrollbar-width:none
+  }
+  .fbar::-webkit-scrollbar{display:none}
+  .fdiv{display:none}
+  .flabel{font-size:11px;flex-shrink:0;font-weight:600;white-space:nowrap}
+  .fsel{font-size:13px;padding:8px 10px;flex-shrink:0;min-width:90px}
+  .mdisp{font-size:13px;padding:7px 16px;min-width:96px;flex-shrink:0}
+  .mbtn{flex-shrink:0}
+  .ftag{display:none!important}
+
+  /* ── Content: 1 cột, không overflow ── */
+  .content{
+    padding:12px 14px;
+    width:100vw;
+    box-sizing:border-box;
+    overflow-x:hidden
+  }
+
+  /* ── Bottom nav ── */
   .bnav{display:block}
 
-  /* Grids */
-  .g2,.g3r{grid-template-columns:1fr!important;gap:10px!important;width:100%}
+  /* ── Grids: 1 cột ── */
+  .g2,.g3r{
+    display:block!important
+  }
+  .g2 > *,.g3r > *{
+    margin-bottom:10px;
+    width:100%
+  }
 
-  /* KPI grid - 2 cột, không tràn */
-  .kg{display:grid!important;gap:8px!important;margin-bottom:12px!important}
-  .kg.k6,.kg.k4,.kg.k3{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important}
+  /* ── KPI grid: 2 cột scroll ngang nếu cần ── */
+  .kg{
+    display:grid!important;
+    grid-template-columns:repeat(2,calc(50% - 4px))!important;
+    gap:8px!important;
+    width:100%!important;
+    margin-bottom:12px!important;
+    overflow:visible
+  }
+  .kg.k6,.kg.k4,.kg.k3{
+    grid-template-columns:repeat(2,calc(50% - 4px))!important
+  }
 
-  /* KPI card */
-  .kpi{padding:14px 12px;min-width:0;overflow:hidden;border-radius:12px;word-break:break-word}
-  .kg-lbl{font-size:0.6rem!important;letter-spacing:.3px;margin-bottom:8px;
-    overflow:hidden;text-overflow:ellipsis;display:block;white-space:nowrap}
-  .kg-val{font-size:1.5rem!important;font-weight:800;letter-spacing:-.5px;line-height:1.1;
-    overflow:hidden;text-overflow:ellipsis;display:block}
-  .kg-ch{font-size:0.65rem!important;margin-top:5px;color:var(--muted);
-    overflow:hidden;text-overflow:ellipsis;display:block;white-space:nowrap}
+  /* ── KPI card ── */
+  .kpi{
+    padding:14px 12px;
+    min-width:0;
+    width:100%;
+    box-sizing:border-box;
+    overflow:hidden;
+    border-radius:12px
+  }
+  .kpi::before{height:2px}
+  .kg-lbl{
+    font-size:9px!important;
+    letter-spacing:.3px;
+    margin-bottom:8px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    display:block;
+    width:100%
+  }
+  .kg-val{
+    font-size:22px!important;
+    font-weight:800;
+    letter-spacing:-.5px;
+    line-height:1;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    display:block
+  }
+  .kg-ch{
+    font-size:10px!important;
+    margin-top:6px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    display:block;
+    width:100%
+  }
 
-  /* Cards */
-  .card{padding:14px 12px;margin-bottom:10px;border-radius:12px;overflow:hidden}
-  .ct{font-size:0.9rem;font-weight:700}
-  .cs{font-size:0.75rem;margin-bottom:12px}
+  /* ── Cards ── */
+  .card{
+    padding:14px 12px;
+    margin-bottom:10px;
+    border-radius:12px;
+    width:100%;
+    box-sizing:border-box;
+    overflow:hidden
+  }
+  .ct{font-size:13px;font-weight:700}
+  .cs{font-size:11px;margin-bottom:10px}
 
-  /* Chart full width, taller */
-  .card [style*="height"]{height:200px!important}
+  /* ── Charts ── */
+  canvas{max-height:220px!important}
 
-  /* Tables - scroll ngang */
-  .tw{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:10px}
-  .tbl{font-size:0.8rem;white-space:nowrap}
-  .tbl th{font-size:0.65rem;padding:8px 10px}
-  .tbl td{padding:8px 10px}
+  /* ── Tables: scroll ngang ── */
+  .tw{
+    overflow-x:auto!important;
+    -webkit-overflow-scrolling:touch;
+    width:100%;
+    display:block
+  }
+  .tbl{font-size:12px;white-space:nowrap}
+  .tbl th{font-size:9px;padding:7px 10px;white-space:nowrap}
+  .tbl td{padding:7px 10px;white-space:nowrap}
 
-  /* Waterfall */
-  .wfl{width:80px;font-size:0.7rem}
-  .wfn{width:70px;font-size:0.75rem}
-  .wff{font-size:0.7rem}
+  /* ── Waterfall ── */
+  .wf{gap:6px}
+  .wfl{width:75px;font-size:10px}
+  .wfn{width:65px;font-size:11px}
+  .wff{font-size:10px;padding-left:8px}
 
-  /* Alert rows */
-  .arow{padding:10px}
-  .an{font-size:0.8rem}.am{font-size:0.7rem}
-  .av{font-size:0.9rem}
+  /* ── Alert rows ── */
+  .arow{padding:9px 10px}
+  .an{font-size:12px}.am{font-size:10px}
+  .av{font-size:13px}
+
+  /* ── Pills ── */
+  .pill{font-size:9px;padding:2px 6px}
+  .tbadge{font-size:8px;padding:2px 5px}
 }
 /* ── BOTTOM NAV (mobile only) ── */
 .bnav{
@@ -741,6 +828,30 @@ async function loadData(){
   try{const r=await fetch(DATA_URL+'?t='+Date.now());D=await r.json();}catch(e){D={};}
   if(!D||!D.monthly||!D.monthly.length){document.getElementById('psub').textContent='Lỗi tải dữ liệu';return;}
   document.getElementById('utime').textContent=D.updated_at_vn||'';
+  // Tự tính mtd_days nếu JSON không có
+  if(!D.mtd_days&&D.current_month){
+    const today=new Date();
+    const curY=parseInt(D.current_month.split('_')[0]);
+    const curM=parseInt(D.current_month.split('_')[1]);
+    if(today.getFullYear()===curY&&today.getMonth()+1===curM){
+      D.mtd_days=today.getDate();
+    }
+  }
+  // Tự tính mom_mtd_pct nếu JSON không có
+  if(!D.mom_mtd_pct&&D.mtd_days&&D.current_month){
+    const ms0=D.monthly||[];
+    const curIdx=ms0.findIndex(m=>m.month===D.current_month);
+    if(curIdx>0){
+      const curM0=ms0[curIdx],prevM0=ms0[curIdx-1];
+      const curRev=curM0.revenue_actual||0,prevRev=prevM0.revenue_actual||0;
+      if(prevRev>0){
+        const pmo=prevM0.month;
+        const prevDays0=new Date(parseInt(pmo.split('_')[0]),parseInt(pmo.split('_')[1]),0).getDate();
+        const prevMtd0=prevRev/prevDays0*D.mtd_days;
+        D.mom_mtd_pct=prevMtd0?+((curRev-prevMtd0)/prevMtd0*100).toFixed(1):null;
+      }
+    }
+  }
   buildFilter();render();initNav();
 }
 function render(){
@@ -833,15 +944,19 @@ function p0(cm,pm,ms){
     const sc0=new Set(cRows.map(x=>x.sales)).size;
     const mom0=pnl0?((nl0-pnl0)/pnl0*100):null;
     // Neu la thang hien tai, dung TB ngay
-    const isCurTeam=SM===D.current_month&&D.mtd_days;
+    const isCurTeam=SM===D.current_month&&(D.mtd_days||mtdDaysTeam)>0;
     const momLabel=isCurTeam&&mom0!=null?'~'+mom0.toFixed(1)+'%*':mom0!=null?mom0.toFixed(1)+'%':null;
     const ck0=nl0?(nl0-rn0)/nl0*100:0;
     // %SvCK (ước tính): cur_rev / (prev_total / prev_days * mtd_days)
     let svck=null;
-    if(pnl0>0&&D.mtd_days&&SM===D.current_month){
+    const mtdDaysTeam=D.mtd_days||(()=>{
+      const tn=new Date();const cy=parseInt((D.current_month||'').split('_')[0]),cm=parseInt((D.current_month||'').split('_')[1]);
+      return(tn.getFullYear()===cy&&tn.getMonth()+1===cm)?tn.getDate():0;
+    })();
+    if(pnl0>0&&mtdDaysTeam>0&&SM===D.current_month){
       const pmo2=pm.month||'';
       const prevDays=pmo2?new Date(parseInt(pmo2.split('_')[0]),parseInt(pmo2.split('_')[1]),0).getDate():30;
-      const prevMtdEst=pnl0/prevDays*D.mtd_days;
+      const prevMtdEst=pnl0/prevDays*mtdDaysTeam;
       svck=prevMtdEst?((nl0-prevMtdEst)/prevMtdEst*100):null;
     }
     return{team,nl:nl0,rn:rn0,kh:kh0,sc:sc0,mom:mom0,momLabel,ck:ck0,svck};
@@ -978,7 +1093,14 @@ function p3(ms){
   // Tinh MoM va SvCK cho tung nhom DV
   const smbmAll=D.service_mix_by_month||[];
   const prevMoSvc=prev().month||'';
-  const isCurSvc=SM===D.current_month&&D.mtd_days;
+  // Tính mtd_days tại chỗ nếu thiếu
+  let mtdDaysSvc=D.mtd_days||0;
+  if(!mtdDaysSvc&&D.current_month){
+    const tn=new Date();
+    const cy=parseInt(D.current_month.split('_')[0]),cm=parseInt(D.current_month.split('_')[1]);
+    if(tn.getFullYear()===cy&&tn.getMonth()+1===cm) mtdDaysSvc=tn.getDate();
+  }
+  const isCurSvc=SM===D.current_month&&mtdDaysSvc>0;
   const prevDaysSvc=prevMoSvc?new Date(parseInt(prevMoSvc.split('_')[0]),parseInt(prevMoSvc.split('_')[1]),0).getDate():30;
 
   document.getElementById('t3').innerHTML=svc.length?svc.map(s=>{
@@ -994,7 +1116,7 @@ function p3(ms){
       mom=((s.revenue-prevRev)/prevRev*100);
       // SvCK: chỉ tính khi tháng hiện tại chưa đủ
       if(isCurSvc&&D.mtd_days){
-        const prevMtdSvc=prevRev/prevDaysSvc*D.mtd_days;
+        const prevMtdSvc=prevRev/prevDaysSvc*mtdDaysSvc;
         svck=prevMtdSvc?((s.revenue-prevMtdSvc)/prevMtdSvc*100):null;
       }
       // Tháng đầy: không cần svck (giống MoM)
