@@ -191,148 +191,203 @@ body{font-family:'Sora',sans-serif;background:#08080f;color:var(--text);font-siz
 @media(max-width:1200px){.k6{grid-template-columns:repeat(3,1fr)}.k4{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:900px){.k6,.k4,.k3{grid-template-columns:repeat(2,1fr)}.g2,.g3r{grid-template-columns:1fr}}
 @media(max-width:700px){
-  /* ── Reset layout ── */
-  html{overflow-x:hidden}
-  body{overflow-x:hidden;width:100vw}
-
-  .sidebar{width:0;overflow:hidden;border:none}
-  .sidebar.open{width:80vw;max-width:280px;overflow:visible}
-  .main{margin-left:0!important;padding-bottom:calc(68px + env(safe-area-inset-bottom,0px))}
-
-  /* ── Topbar ── */
-  .topbar{padding:0 14px;height:50px}
-  .tb-title{font-size:15px;font-weight:700}
-  .tb-sub{font-size:10px}
-  .utime{display:none}
-
-  /* ── Filter bar: scroll ngang ── */
-  .fbar{
-    padding:8px 14px;gap:10px;
-    overflow-x:auto;overflow-y:visible;
-    flex-wrap:nowrap;-webkit-overflow-scrolling:touch;
-    scrollbar-width:none
+  html{
+    overflow:hidden!important;
+    position:fixed!important;
+    width:100%!important;
+    height:100%!important;
   }
-  .fbar::-webkit-scrollbar{display:none}
-  .fdiv{display:none}
-  .flabel{font-size:11px;flex-shrink:0;font-weight:600;white-space:nowrap}
-  .fsel{font-size:13px;padding:8px 10px;flex-shrink:0;min-width:90px}
-  .mdisp{font-size:13px;padding:7px 16px;min-width:96px;flex-shrink:0}
-  .mbtn{flex-shrink:0}
+  body{
+    overflow-y:scroll!important;
+    overflow-x:hidden!important;
+    width:100%!important;
+    height:100%!important;
+    position:relative!important;
+    -webkit-overflow-scrolling:touch;
+    overscroll-behavior-y:none;
+  }
+
+  /* Sidebar */
+  .sidebar{width:0!important;overflow:hidden!important;border:none!important}
+  .sidebar.open{width:80vw!important;max-width:260px!important;overflow:visible!important}
+  .main{margin-left:0!important}
+
+  /* Topbar - tính đúng safe area */
+  .topbar{
+    position:sticky!important;
+    top:0!important;
+    z-index:100!important;
+    height:auto!important;
+    min-height:52px!important;
+    padding:env(safe-area-inset-top,0px) 14px 10px 14px!important;
+    display:flex!important;
+    align-items:flex-end!important;
+    justify-content:space-between!important;
+  }
+  .tb-title{font-size:15px!important;font-weight:700!important;line-height:1.2!important}
+  .tb-sub{font-size:10px!important;line-height:1.3!important}
+  .utime{display:none!important}
+
+  /* Filter bar */
+  .fbar{
+    padding:8px 14px!important;
+    gap:8px!important;
+    overflow-x:auto!important;
+    flex-wrap:nowrap!important;
+    -webkit-overflow-scrolling:touch!important;
+    scrollbar-width:none!important;
+  }
+  .fbar::-webkit-scrollbar{display:none!important}
+  .fdiv{display:none!important}
+  .flabel{font-size:11px!important;flex-shrink:0!important;white-space:nowrap!important;font-weight:600!important}
+  .fsel{font-size:13px!important;padding:8px 10px!important;flex-shrink:0!important}
+  .mdisp{font-size:13px!important;padding:7px 14px!important;min-width:92px!important;flex-shrink:0!important}
+  .mbtn{flex-shrink:0!important}
   .ftag{display:none!important}
 
-  /* ── Content: 1 cột, không overflow ── */
+  /* Content - padding bottom = bottom nav height + safe area */
   .content{
-    padding:12px 14px;
-    width:100vw;
-    box-sizing:border-box;
-    overflow-x:hidden
+    padding:12px 14px!important;
+    padding-bottom:calc(72px + env(safe-area-inset-bottom,16px))!important;
+    overflow-x:hidden!important;
+    width:100%!important;
+    box-sizing:border-box!important;
   }
 
-  /* ── Bottom nav ── */
-  .bnav{display:block}
-
-  /* ── Grids: 1 cột ── */
-  .g2,.g3r{
-    display:block!important
+  /* Bottom nav */
+  .bnav{
+    display:block!important;
+    position:fixed!important;
+    bottom:0!important;
+    left:0!important;
+    right:0!important;
+    z-index:999!important;
+    background:rgba(8,8,15,.98)!important;
+    backdrop-filter:blur(20px)!important;
+    -webkit-backdrop-filter:blur(20px)!important;
+    border-top:1px solid rgba(255,255,255,.08)!important;
+    padding-top:10px!important;
+    padding-bottom:max(env(safe-area-inset-bottom,0px),12px)!important;
+    -webkit-transform:translateZ(0)!important;
+    transform:translateZ(0)!important;
   }
-  .g2 > *,.g3r > *{
-    margin-bottom:10px;
-    width:100%
+  .bnav-items{
+    display:flex!important;
+    justify-content:space-around!important;
+    align-items:center!important;
+    width:100%!important;
+  }
+  .bni{
+    flex:1!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    gap:4px!important;
+    padding:4px 2px!important;
+    cursor:pointer!important;
+    background:none!important;
+    border:none!important;
+    -webkit-tap-highlight-color:transparent!important;
+  }
+  .bni svg{width:20px!important;height:20px!important}
+  .bni span{font-size:10px!important;font-weight:500!important;white-space:nowrap!important}
+
+  /* More menu - hiện ĐỀ LÊN bottom nav, không bị che */
+  .bnav-more{
+    position:fixed!important;
+    bottom:calc(60px + env(safe-area-inset-bottom,0px))!important;
+    left:10px!important;right:10px!important;
+    z-index:998!important;
+    background:rgba(12,12,22,.98)!important;
+    backdrop-filter:blur(20px)!important;
+    border:1px solid rgba(255,255,255,.1)!important;
+    border-radius:16px!important;
+    padding:12px!important;
+    gap:8px!important;
   }
 
-  /* ── KPI grid: 2 cột scroll ngang nếu cần ── */
+  /* Grids */
+  .g2,.g3r{display:block!important}
+  .g2>*,.g3r>*{margin-bottom:10px!important;width:100%!important}
+
+  /* KPI grid: 2 cột exact */
   .kg{
     display:grid!important;
-    grid-template-columns:repeat(2,calc(50% - 4px))!important;
+    grid-template-columns:calc(50% - 4px) calc(50% - 4px)!important;
     gap:8px!important;
     width:100%!important;
     margin-bottom:12px!important;
-    overflow:visible
   }
   .kg.k6,.kg.k4,.kg.k3{
-    grid-template-columns:repeat(2,calc(50% - 4px))!important
+    grid-template-columns:calc(50% - 4px) calc(50% - 4px)!important;
   }
 
-  /* ── KPI card ── */
+  /* KPI card */
   .kpi{
-    padding:14px 12px;
-    min-width:0;
-    width:100%;
-    box-sizing:border-box;
-    overflow:hidden;
-    border-radius:12px
+    padding:13px 12px!important;
+    min-width:0!important;
+    overflow:hidden!important;
+    border-radius:12px!important;
+    width:100%!important;
+    box-sizing:border-box!important;
   }
-  .kpi::before{height:2px}
   .kg-lbl{
     font-size:9px!important;
-    letter-spacing:.3px;
-    margin-bottom:8px;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
-    display:block;
-    width:100%
+    letter-spacing:.3px!important;
+    margin-bottom:7px!important;
+    white-space:nowrap!important;
+    overflow:hidden!important;
+    text-overflow:ellipsis!important;
+    display:block!important;
   }
   .kg-val{
-    font-size:22px!important;
-    font-weight:800;
-    letter-spacing:-.5px;
-    line-height:1;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
-    display:block
+    font-size:20px!important;
+    font-weight:800!important;
+    letter-spacing:-.3px!important;
+    line-height:1.1!important;
+    white-space:nowrap!important;
+    overflow:hidden!important;
+    text-overflow:ellipsis!important;
+    display:block!important;
   }
   .kg-ch{
     font-size:10px!important;
-    margin-top:6px;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
-    display:block;
-    width:100%
+    margin-top:5px!important;
+    white-space:nowrap!important;
+    overflow:hidden!important;
+    text-overflow:ellipsis!important;
+    display:block!important;
   }
 
-  /* ── Cards ── */
+  /* Cards */
   .card{
-    padding:14px 12px;
-    margin-bottom:10px;
-    border-radius:12px;
-    width:100%;
-    box-sizing:border-box;
-    overflow:hidden
+    padding:14px 12px!important;
+    margin-bottom:10px!important;
+    border-radius:12px!important;
+    width:100%!important;
+    box-sizing:border-box!important;
+    overflow:hidden!important;
   }
-  .ct{font-size:13px;font-weight:700}
-  .cs{font-size:11px;margin-bottom:10px}
+  .ct{font-size:13px!important;font-weight:700!important}
+  .cs{font-size:11px!important;margin-bottom:10px!important}
 
-  /* ── Charts ── */
-  canvas{max-height:220px!important}
+  /* Charts */
+  canvas{max-height:200px!important}
 
-  /* ── Tables: scroll ngang ── */
-  .tw{
-    overflow-x:auto!important;
-    -webkit-overflow-scrolling:touch;
-    width:100%;
-    display:block
-  }
-  .tbl{font-size:12px;white-space:nowrap}
-  .tbl th{font-size:9px;padding:7px 10px;white-space:nowrap}
-  .tbl td{padding:7px 10px;white-space:nowrap}
+  /* Tables */
+  .tw{overflow-x:auto!important;-webkit-overflow-scrolling:touch!important;display:block!important;width:100%!important}
+  .tbl{font-size:12px!important;white-space:nowrap!important}
+  .tbl th{font-size:9px!important;padding:7px 9px!important;white-space:nowrap!important}
+  .tbl td{padding:7px 9px!important;white-space:nowrap!important}
 
-  /* ── Waterfall ── */
-  .wf{gap:6px}
-  .wfl{width:75px;font-size:10px}
-  .wfn{width:65px;font-size:11px}
-  .wff{font-size:10px;padding-left:8px}
+  /* Waterfall */
+  .wfl{width:75px!important;font-size:10px!important}
+  .wfn{width:65px!important;font-size:11px!important}
 
-  /* ── Alert rows ── */
-  .arow{padding:9px 10px}
-  .an{font-size:12px}.am{font-size:10px}
-  .av{font-size:13px}
-
-  /* ── Pills ── */
-  .pill{font-size:9px;padding:2px 6px}
-  .tbadge{font-size:8px;padding:2px 5px}
+  /* Alert rows */
+  .arow{padding:9px 10px!important}
+  .an{font-size:12px!important}.am{font-size:10px!important}
+  .av{font-size:13px!important}
 }
 /* ── BOTTOM NAV (mobile only) ── */
 .bnav{
