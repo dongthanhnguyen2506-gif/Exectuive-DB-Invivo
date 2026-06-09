@@ -647,6 +647,7 @@ let D=null,SM=null,SP='',charts={},sbOpen=false,pickerOpen=false;
 // ── AUTH ──
 function login(){
   if(document.getElementById('pw').value===PASS){
+    sessionStorage.setItem('iv_auth','1');
     document.getElementById('loginWrap').style.display='none';
     document.getElementById('app').style.display='flex';
     loadData();
@@ -656,6 +657,15 @@ function login(){
     setTimeout(()=>e.style.display='none',3000);
   }
 }
+// Tự động bypass login nếu đã auth trong session
+(function(){
+  if(sessionStorage.getItem('iv_auth')==='1'){
+    document.getElementById('loginWrap').style.display='none';
+    document.getElementById('app').style.display='flex';
+    // loadData sẽ được gọi sau khi DOM ready
+    window.addEventListener('DOMContentLoaded',()=>loadData());
+  }
+})();
 
 // ── SIDEBAR ──
 function toggleSB(){
