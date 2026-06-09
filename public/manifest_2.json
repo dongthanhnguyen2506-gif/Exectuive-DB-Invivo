@@ -1,6 +1,6 @@
 {
-  "name": "InVivo Lab Dashboard",
-  "short_name": "InVivo Lab",
+  "name": "Invivo ExDB",
+  "short_name": "Invivo ExDB",
   "description": "Executive Dashboard - InVivo Lab",
   "start_url": "/",
   "display": "standalone",
