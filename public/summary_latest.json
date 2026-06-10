@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-06-10T14:25:53+07:00",
-  "updated_at_vn": "14:25 10/06/2026",
+  "updated_at": "2026-06-10T14:35:19+07:00",
+  "updated_at_vn": "14:35 10/06/2026",
   "current_month": "2026_06",
-  "total_revenue": 1834342000,
-  "total_listed": 1834342000,
-  "total_discount": 773249378,
+  "total_revenue": 1834490000,
+  "total_listed": 1834490000,
+  "total_discount": 773308578,
   "discount_pct": 42.2,
-  "total_orders": 2501,
+  "total_orders": 2502,
   "active_partners": 177,
   "inactive_partners": 80,
   "new_partners": 19,
@@ -14,7 +14,7 @@
   "mom_growth_pct": -72.0,
   "mtd_days": 10,
   "mom_mtd_pct": -13.1,
-  "total_debt": 21358000,
+  "total_debt": 19845000,
   "top_debt": [
     {
       "partnerCode": "00242",
@@ -22,14 +22,14 @@
       "amount": 7731000
     },
     {
-      "partnerCode": "00100",
-      "partnerName": "Mã chờ cấp mới - team Hà Nội",
-      "amount": 3100000
-    },
-    {
       "partnerCode": "01045",
       "partnerName": "Nguyễn Hương Quỳnh",
       "amount": 1993000
+    },
+    {
+      "partnerCode": "00320",
+      "partnerName": "PK Dr Lab Home (ko thu PLM)",
+      "amount": 1820000
     },
     {
       "partnerCode": "01584",
@@ -270,12 +270,12 @@
     },
     {
       "month": "2026_06",
-      "revenue_actual": 1834342000,
-      "revenue_net": 1061092622,
-      "revenue_listed": 1834342000,
-      "discount": 773249378,
+      "revenue_actual": 1834490000,
+      "revenue_net": 1061181422,
+      "revenue_listed": 1834490000,
+      "discount": 773308578,
       "discount_pct": 42.2,
-      "order_count": 2501,
+      "order_count": 2502,
       "active_partners": 177,
       "active_hcm": 49,
       "active_hn": 128,
@@ -291,7 +291,7 @@
       "reactive_rate": 66.4,
       "active_sales": 20,
       "revenue_hcm": 188513000,
-      "revenue_hn": 2578979000
+      "revenue_hn": 2579127000
     }
   ],
   "top_partners": [
@@ -359,11 +359,11 @@
       "team": "KD01",
       "region": "HN",
       "month": "2026_06",
-      "revenue": 63584000,
-      "revenue_net": 30420059,
-      "listed": 63584000,
-      "orders": 44,
-      "discount_pct": 52.2
+      "revenue": 63732000,
+      "revenue_net": 30508859,
+      "listed": 63732000,
+      "orders": 45,
+      "discount_pct": 52.1
     },
     {
       "partnerCode": "00360",
@@ -23783,11 +23783,11 @@
       "team": "KD01",
       "region": "HN",
       "month": "2026_06",
-      "revenue": 63584000,
-      "revenue_net": 30420059,
-      "listed": 63584000,
-      "orders": 44,
-      "discount_pct": 52.2
+      "revenue": 63732000,
+      "revenue_net": 30508859,
+      "listed": 63732000,
+      "orders": 45,
+      "discount_pct": 52.1
     },
     {
       "partnerCode": "00360",
@@ -26205,10 +26205,10 @@
       "salesName": "Nguyễn Văn Thuyết",
       "team": "KD01",
       "region": "HN",
-      "revenue": 230922000,
-      "revenue_net": 130653235,
-      "listed": 230922000,
-      "orders": 381,
+      "revenue": 231070000,
+      "revenue_net": 130742035,
+      "listed": 231070000,
+      "orders": 382,
       "discount_pct": 43.4
     },
     {
@@ -28033,10 +28033,10 @@
       "salesName": "Nguyễn Văn Thuyết",
       "team": "KD01",
       "region": "HN",
-      "revenue": 230922000,
-      "revenue_net": 130653235,
-      "listed": 230922000,
-      "orders": 381,
+      "revenue": 231070000,
+      "revenue_net": 130742035,
+      "listed": 231070000,
+      "orders": 382,
       "discount_pct": 43.4
     },
     {
@@ -28267,9 +28267,9 @@
     },
     {
       "group": "Khác",
-      "revenue": 196284000,
-      "listed": 196284000,
-      "count": 1465,
+      "revenue": 196432000,
+      "listed": 196432000,
+      "count": 1466,
       "discount_pct": 0
     }
   ],
@@ -34344,9 +34344,9 @@
       "team": "KD01",
       "month": "2026_06",
       "group": "Vi khuẩn - Ký sinh trùng",
-      "revenue": 4640000,
-      "listed": 4640000,
-      "count": 41,
+      "revenue": 4788000,
+      "listed": 4788000,
+      "count": 42,
       "discount_pct": 0.0
     },
     {
@@ -34881,9 +34881,9 @@
     },
     {
       "branch": "HN",
-      "revenue": 2578979000,
+      "revenue": 2579127000,
       "revenue_invivo": 875885000,
-      "revenue_total": 3454864000
+      "revenue_total": 3455012000
     }
   ],
   "teams": [
