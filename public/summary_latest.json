@@ -1,30 +1,35 @@
 {
-  "updated_at": "2026-06-11T09:40:04+07:00",
-  "updated_at_vn": "09:40 11/06/2026",
+  "updated_at": "2026-06-11T10:56:00+07:00",
+  "updated_at_vn": "10:56 11/06/2026",
   "current_month": "2026_06",
-  "total_revenue": 1928735000,
-  "total_listed": 1928735000,
-  "total_discount": 814596223,
-  "discount_pct": 42.2,
-  "total_orders": 2628,
-  "active_partners": 183,
-  "inactive_partners": 74,
-  "new_partners": 19,
+  "total_revenue": 1950734000,
+  "total_listed": 1950734000,
+  "total_discount": 820221323,
+  "discount_pct": 42.0,
+  "total_orders": 2660,
+  "active_partners": 187,
+  "inactive_partners": 71,
+  "new_partners": 20,
   "active_sales": 18,
-  "mom_growth_pct": -70.5,
+  "mom_growth_pct": -70.2,
   "mtd_days": 11,
-  "mom_mtd_pct": -17.0,
-  "total_debt": 29354000,
+  "mom_mtd_pct": -16.0,
+  "total_debt": 30724000,
   "top_debt": [
     {
       "partnerCode": "00095",
       "partnerName": "Mã chờ cấp mới - chi nhánh Sài Gòn",
-      "amount": 10610000
+      "amount": 6664000
     },
     {
-      "partnerCode": "01275",
-      "partnerName": "Trần Thị Chung",
-      "amount": 3118000
+      "partnerCode": "00100",
+      "partnerName": "Mã chờ cấp mới - team Hà Nội",
+      "amount": 3278000
+    },
+    {
+      "partnerCode": "00242",
+      "partnerName": "Khoa Nội Thần kinh - Tim mạch BV Xanh Pôn",
+      "amount": 3099000
     },
     {
       "partnerCode": "01561",
@@ -32,19 +37,14 @@
       "amount": 2340000
     },
     {
-      "partnerCode": "01289",
-      "partnerName": "PK KINGMED 312 Nguyễn Trãi (CT CP XN TẠI NHÀ MED)",
-      "amount": 2060000
+      "partnerCode": "01193",
+      "partnerName": "CTV Huy",
+      "amount": 2192000
     },
     {
-      "partnerCode": "01270",
-      "partnerName": "Ngô Duy Anh",
-      "amount": 1600000
-    },
-    {
-      "partnerCode": "01257",
-      "partnerName": "Lăng Thị Hoài Liên",
-      "amount": 1500000
+      "partnerCode": "00730",
+      "partnerName": "PK da liễu Hà Nội-(447 Hoàng Quốc Việt, 53 Nguyễn Xiển, 83 Trần Đại Nghĩa)",
+      "amount": 1700000
     },
     {
       "partnerCode": "01595",
@@ -57,14 +57,14 @@
       "amount": 1200000
     },
     {
-      "partnerCode": "01592",
-      "partnerName": "BS CKI Đinh Quang Vinh - CÔNG TY TNHH VINHCARE",
-      "amount": 863000
+      "partnerCode": "01289",
+      "partnerName": "PK KINGMED 312 Nguyễn Trãi (CT CP XN TẠI NHÀ MED)",
+      "amount": 1030000
     },
     {
-      "partnerCode": "01593",
-      "partnerName": "Ms Loan Fung - Nha Khoa Pieree",
-      "amount": 618000
+      "partnerCode": "01087",
+      "partnerName": "PK Linh Đàm (7A QUANG VINH PHỐ VIỆN 103)",
+      "amount": 1015000
     }
   ],
   "monthly": [
@@ -270,28 +270,28 @@
     },
     {
       "month": "2026_06",
-      "revenue_actual": 1928735000,
-      "revenue_net": 1114138777,
-      "revenue_listed": 1928735000,
-      "discount": 814596223,
-      "discount_pct": 42.2,
-      "order_count": 2628,
-      "active_partners": 183,
-      "active_hcm": 54,
-      "active_hn": 129,
-      "inactive_partners": 74,
+      "revenue_actual": 1950734000,
+      "revenue_net": 1130512677,
+      "revenue_listed": 1950734000,
+      "discount": 820221323,
+      "discount_pct": 42.0,
+      "order_count": 2660,
+      "active_partners": 187,
+      "active_hcm": 55,
+      "active_hn": 132,
+      "inactive_partners": 71,
       "inactive_hcm": 21,
-      "inactive_hn": 53,
-      "new_partners": 19,
-      "new_hcm": 12,
+      "inactive_hn": 50,
+      "new_partners": 20,
+      "new_hcm": 13,
       "new_hn": 7,
-      "reactive_partners": 164,
+      "reactive_partners": 167,
       "reactive_hcm": 42,
-      "reactive_hn": 122,
-      "reactive_rate": 68.9,
+      "reactive_hn": 125,
+      "reactive_rate": 70.2,
       "active_sales": 20,
-      "revenue_hcm": 204211000,
-      "revenue_hn": 2680181000
+      "revenue_hcm": 207549000,
+      "revenue_hn": 2704857000
     }
   ],
   "top_partners": [
@@ -317,10 +317,10 @@
       "team": "invivo HN",
       "region": "HN",
       "month": "2026_06",
-      "revenue": 276567000,
-      "revenue_net": 165940200,
-      "listed": 276567000,
-      "orders": 408,
+      "revenue": 277268000,
+      "revenue_net": 166360800,
+      "listed": 277268000,
+      "orders": 409,
       "discount_pct": 40.0
     },
     {
@@ -408,6 +408,20 @@
       "discount_pct": 37.1
     },
     {
+      "partnerCode": "00242",
+      "partnerName": "Khoa Nội Thần kinh - Tim mạch BV Xanh Pôn",
+      "saleCode": "thuyetnv",
+      "saleName": "Nguyễn Văn Thuyết",
+      "team": "KD01",
+      "region": "HN",
+      "month": "2026_06",
+      "revenue": 44089000,
+      "revenue_net": 28657850,
+      "listed": 44089000,
+      "orders": 44,
+      "discount_pct": 35.0
+    },
+    {
       "partnerCode": "01562",
       "partnerName": "BS. Huỳnh Thị Thúy Mai - PK SPK BS CKII THÚY MAI",
       "saleCode": "kieuntt",
@@ -420,20 +434,6 @@
       "listed": 39800000,
       "orders": 9,
       "discount_pct": 38.7
-    },
-    {
-      "partnerCode": "00242",
-      "partnerName": "Khoa Nội Thần kinh - Tim mạch BV Xanh Pôn",
-      "saleCode": "thuyetnv",
-      "saleName": "Nguyễn Văn Thuyết",
-      "team": "KD01",
-      "region": "HN",
-      "month": "2026_06",
-      "revenue": 39339000,
-      "revenue_net": 25570350,
-      "listed": 39339000,
-      "orders": 39,
-      "discount_pct": 35.0
     },
     {
       "partnerCode": "01470",
@@ -22937,7 +22937,7 @@
     },
     {
       "partnerCode": "01554",
-      "partnerName": "Nha khoa Tracy Việt Nam",
+      "partnerName": "Nguyễn Sỹ Đạt - Pk Siêu Âm Bs Đạt",
       "saleCode": "nganck",
       "saleName": "Châu Kim Ngân",
       "team": "KD HCM",
@@ -23741,10 +23741,10 @@
       "team": "invivo HN",
       "region": "HN",
       "month": "2026_06",
-      "revenue": 276567000,
-      "revenue_net": 165940200,
-      "listed": 276567000,
-      "orders": 408,
+      "revenue": 277268000,
+      "revenue_net": 166360800,
+      "listed": 277268000,
+      "orders": 409,
       "discount_pct": 40.0
     },
     {
@@ -23832,6 +23832,20 @@
       "discount_pct": 37.1
     },
     {
+      "partnerCode": "00242",
+      "partnerName": "Khoa Nội Thần kinh - Tim mạch BV Xanh Pôn",
+      "saleCode": "thuyetnv",
+      "saleName": "Nguyễn Văn Thuyết",
+      "team": "KD01",
+      "region": "HN",
+      "month": "2026_06",
+      "revenue": 44089000,
+      "revenue_net": 28657850,
+      "listed": 44089000,
+      "orders": 44,
+      "discount_pct": 35.0
+    },
+    {
       "partnerCode": "01562",
       "partnerName": "BS. Huỳnh Thị Thúy Mai - PK SPK BS CKII THÚY MAI",
       "saleCode": "kieuntt",
@@ -23844,20 +23858,6 @@
       "listed": 39800000,
       "orders": 9,
       "discount_pct": 38.7
-    },
-    {
-      "partnerCode": "00242",
-      "partnerName": "Khoa Nội Thần kinh - Tim mạch BV Xanh Pôn",
-      "saleCode": "thuyetnv",
-      "saleName": "Nguyễn Văn Thuyết",
-      "team": "KD01",
-      "region": "HN",
-      "month": "2026_06",
-      "revenue": 39339000,
-      "revenue_net": 25570350,
-      "listed": 39339000,
-      "orders": 39,
-      "discount_pct": 35.0
     },
     {
       "partnerCode": "01470",
@@ -24168,6 +24168,20 @@
       "discount_pct": 40.0
     },
     {
+      "partnerCode": "01193",
+      "partnerName": "CTV Huy",
+      "saleCode": "anhntt",
+      "saleName": "Nguyễn Thị Thuý Anh",
+      "team": "invivo",
+      "region": "HN",
+      "month": "2026_06",
+      "revenue": 11948000,
+      "revenue_net": 7766200,
+      "listed": 11948000,
+      "orders": 17,
+      "discount_pct": 35.0
+    },
+    {
       "partnerCode": "01369",
       "partnerName": "PK Sản Phụ Khoa Tâm Phúc",
       "saleCode": "thuyetnb",
@@ -24182,6 +24196,20 @@
       "discount_pct": 36.9
     },
     {
+      "partnerCode": "00245",
+      "partnerName": "Phòng khám 52 Nguyễn Trãi",
+      "saleCode": "thuyetnv",
+      "saleName": "Nguyễn Văn Thuyết",
+      "team": "KD01",
+      "region": "HN",
+      "month": "2026_06",
+      "revenue": 11168000,
+      "revenue_net": 6462300,
+      "listed": 11168000,
+      "orders": 27,
+      "discount_pct": 42.1
+    },
+    {
       "partnerCode": "00943",
       "partnerName": "Phòng khám EcoHealth",
       "saleCode": "invivoHN",
@@ -24194,20 +24222,6 @@
       "listed": 10800000,
       "orders": 12,
       "discount_pct": 35.0
-    },
-    {
-      "partnerCode": "00245",
-      "partnerName": "Phòng khám 52 Nguyễn Trãi",
-      "saleCode": "thuyetnv",
-      "saleName": "Nguyễn Văn Thuyết",
-      "team": "KD01",
-      "region": "HN",
-      "month": "2026_06",
-      "revenue": 10470000,
-      "revenue_net": 6071000,
-      "listed": 10470000,
-      "orders": 25,
-      "discount_pct": 42.0
     },
     {
       "partnerCode": "01476",
@@ -24266,20 +24280,6 @@
       "discount_pct": 55.0
     },
     {
-      "partnerCode": "01193",
-      "partnerName": "CTV Huy",
-      "saleCode": "anhntt",
-      "saleName": "Nguyễn Thị Thuý Anh",
-      "team": "invivo",
-      "region": "HN",
-      "month": "2026_06",
-      "revenue": 9756000,
-      "revenue_net": 6341400,
-      "listed": 9756000,
-      "orders": 12,
-      "discount_pct": 35.0
-    },
-    {
       "partnerCode": "01278",
       "partnerName": "Công ty cổ phần Ever Việt Nam",
       "saleCode": "kdnhatkm",
@@ -24292,6 +24292,20 @@
       "listed": 9560000,
       "orders": 5,
       "discount_pct": 40.0
+    },
+    {
+      "partnerCode": "01426",
+      "partnerName": "OPEN HEALTHCARE",
+      "saleCode": "invivoHN",
+      "saleName": "InVivo HN (nội bộ)",
+      "team": "invivo HN",
+      "region": "HN",
+      "month": "2026_06",
+      "revenue": 9018000,
+      "revenue_net": 6039430,
+      "listed": 9018000,
+      "orders": 31,
+      "discount_pct": 33.0
     },
     {
       "partnerCode": "01324",
@@ -24364,20 +24378,6 @@
       "discount_pct": 41.4
     },
     {
-      "partnerCode": "01426",
-      "partnerName": "OPEN HEALTHCARE",
-      "saleCode": "invivoHN",
-      "saleName": "InVivo HN (nội bộ)",
-      "team": "invivo HN",
-      "region": "HN",
-      "month": "2026_06",
-      "revenue": 7618000,
-      "revenue_net": 5150430,
-      "listed": 7618000,
-      "orders": 27,
-      "discount_pct": 32.4
-    },
-    {
       "partnerCode": "00615",
       "partnerName": "Anh Tùng - PK Hoàng Anh medical",
       "saleCode": "invivoHN",
@@ -24385,11 +24385,25 @@
       "team": "invivo HN",
       "region": "HN",
       "month": "2026_06",
-      "revenue": 7057000,
-      "revenue_net": 4939900,
-      "listed": 7057000,
-      "orders": 21,
+      "revenue": 7533000,
+      "revenue_net": 5273100,
+      "listed": 7533000,
+      "orders": 22,
       "discount_pct": 30.0
+    },
+    {
+      "partnerCode": "01381",
+      "partnerName": "PK MEDSUN",
+      "saleCode": "quannd",
+      "saleName": "Nguyễn Đức Quân",
+      "team": "KD01",
+      "region": "HN",
+      "month": "2026_06",
+      "revenue": 7504000,
+      "revenue_net": 4502400,
+      "listed": 7504000,
+      "orders": 16,
+      "discount_pct": 40.0
     },
     {
       "partnerCode": "01396",
@@ -24418,20 +24432,6 @@
       "listed": 6700000,
       "orders": 2,
       "discount_pct": 47.5
-    },
-    {
-      "partnerCode": "01381",
-      "partnerName": "PK MEDSUN",
-      "saleCode": "quannd",
-      "saleName": "Nguyễn Đức Quân",
-      "team": "KD01",
-      "region": "HN",
-      "month": "2026_06",
-      "revenue": 6640000,
-      "revenue_net": 3984000,
-      "listed": 6640000,
-      "orders": 15,
-      "discount_pct": 40.0
     },
     {
       "partnerCode": "01273",
@@ -24474,6 +24474,20 @@
       "listed": 6414000,
       "orders": 16,
       "discount_pct": 35.0
+    },
+    {
+      "partnerCode": "00100",
+      "partnerName": "Mã chờ cấp mới - team Hà Nội",
+      "saleCode": "invivoHN",
+      "saleName": "InVivo HN (nội bộ)",
+      "team": "invivo HN",
+      "region": "HN",
+      "month": "2026_06",
+      "revenue": 6378000,
+      "revenue_net": 6378000,
+      "listed": 6378000,
+      "orders": 2,
+      "discount_pct": 0.0
     },
     {
       "partnerCode": "01024",
@@ -24679,10 +24693,10 @@
       "team": "invivo HN",
       "region": "HN",
       "month": "2026_06",
-      "revenue": 4540000,
-      "revenue_net": 2951000,
-      "listed": 4540000,
-      "orders": 10,
+      "revenue": 4700000,
+      "revenue_net": 3055000,
+      "listed": 4700000,
+      "orders": 11,
       "discount_pct": 35.0
     },
     {
@@ -24712,6 +24726,20 @@
       "listed": 4234000,
       "orders": 8,
       "discount_pct": 30.0
+    },
+    {
+      "partnerCode": "01087",
+      "partnerName": "PK Linh Đàm (7A QUANG VINH PHỐ VIỆN 103)",
+      "saleCode": "thuyetnv",
+      "saleName": "Nguyễn Văn Thuyết",
+      "team": "KD01",
+      "region": "HN",
+      "month": "2026_06",
+      "revenue": 4008000,
+      "revenue_net": 2364000,
+      "listed": 4008000,
+      "orders": 13,
+      "discount_pct": 41.0
     },
     {
       "partnerCode": "01132",
@@ -24840,34 +24868,6 @@
       "discount_pct": 40.0
     },
     {
-      "partnerCode": "00100",
-      "partnerName": "Mã chờ cấp mới - team Hà Nội",
-      "saleCode": "invivoHN",
-      "saleName": "InVivo HN (nội bộ)",
-      "team": "invivo HN",
-      "region": "HN",
-      "month": "2026_06",
-      "revenue": 3100000,
-      "revenue_net": 3100000,
-      "listed": 3100000,
-      "orders": 1,
-      "discount_pct": 0.0
-    },
-    {
-      "partnerCode": "01087",
-      "partnerName": "PK Linh Đàm (7A QUANG VINH PHỐ VIỆN 103)",
-      "saleCode": "thuyetnv",
-      "saleName": "Nguyễn Văn Thuyết",
-      "team": "KD01",
-      "region": "HN",
-      "month": "2026_06",
-      "revenue": 2993000,
-      "revenue_net": 1704250,
-      "listed": 2993000,
-      "orders": 11,
-      "discount_pct": 43.1
-    },
-    {
       "partnerCode": "01469",
       "partnerName": "Bác sĩ Hà - Bệnh viện Tuệ Tĩnh",
       "saleCode": "quannd",
@@ -24980,6 +24980,20 @@
       "discount_pct": 35.0
     },
     {
+      "partnerCode": "01594",
+      "partnerName": "MS PHAN THỊ PHƯỢNG - TRUEDOC HN",
+      "saleCode": "haotv",
+      "saleName": "Trần Việt Hảo",
+      "team": "KD HCM",
+      "region": "HCM",
+      "month": "2026_06",
+      "revenue": 2646000,
+      "revenue_net": 2646000,
+      "listed": 2646000,
+      "orders": 3,
+      "discount_pct": 0.0
+    },
+    {
       "partnerCode": "01317",
       "partnerName": "Medlab Hà Nội",
       "saleCode": "thuyetnv",
@@ -25006,6 +25020,20 @@
       "listed": 2453000,
       "orders": 6,
       "discount_pct": 40.0
+    },
+    {
+      "partnerCode": "01523",
+      "partnerName": "Ms Kim Chi - Nha khoa SINGAE",
+      "saleCode": "kieuntt",
+      "saleName": "Nguyễn Thị Thúy Kiều",
+      "team": "KD HCM",
+      "region": "HCM",
+      "month": "2026_06",
+      "revenue": 2451000,
+      "revenue_net": 1960800,
+      "listed": 2451000,
+      "orders": 5,
+      "discount_pct": 20.0
     },
     {
       "partnerCode": "00935",
@@ -25176,20 +25204,6 @@
       "discount_pct": 35.0
     },
     {
-      "partnerCode": "01523",
-      "partnerName": "Ms Kim Chi - Nha khoa SINGAE",
-      "saleCode": "kieuntt",
-      "saleName": "Nguyễn Thị Thúy Kiều",
-      "team": "KD HCM",
-      "region": "HCM",
-      "month": "2026_06",
-      "revenue": 1935000,
-      "revenue_net": 1548000,
-      "listed": 1935000,
-      "orders": 4,
-      "discount_pct": 20.0
-    },
-    {
       "partnerCode": "01572",
       "partnerName": "Voucher khai trương",
       "saleCode": "invivoHCM",
@@ -25313,6 +25327,20 @@
       "revenue_net": 1125800,
       "listed": 1732000,
       "orders": 3,
+      "discount_pct": 35.0
+    },
+    {
+      "partnerCode": "00730",
+      "partnerName": "PK da liễu Hà Nội-(447 Hoàng Quốc Việt, 53 Nguyễn Xiển, 83 Trần Đại Nghĩa)",
+      "saleCode": "hungnt",
+      "saleName": "Nguyễn Thành Hưng",
+      "team": "KD01",
+      "region": "HN",
+      "month": "2026_06",
+      "revenue": 1700000,
+      "revenue_net": 1105000,
+      "listed": 1700000,
+      "orders": 1,
       "discount_pct": 35.0
     },
     {
@@ -25652,6 +25680,20 @@
       "discount_pct": 30.0
     },
     {
+      "partnerCode": "00617",
+      "partnerName": "BS Đồng Thị Ngọc Lâm",
+      "saleCode": "hungnt",
+      "saleName": "Nguyễn Thành Hưng",
+      "team": "KD01",
+      "region": "HN",
+      "month": "2026_06",
+      "revenue": 775000,
+      "revenue_net": 503750,
+      "listed": 775000,
+      "orders": 1,
+      "discount_pct": 35.0
+    },
+    {
       "partnerCode": "01514",
       "partnerName": "Trần Quốc Hiệp - Nha khoa Wilson",
       "saleCode": "kieuntt",
@@ -25904,6 +25946,20 @@
       "discount_pct": 30.0
     },
     {
+      "partnerCode": "01482",
+      "partnerName": "Khoa Cơ Xương Khớp",
+      "saleCode": "tienvv",
+      "saleName": "Vương Văn Tiến",
+      "team": "KD01",
+      "region": "HN",
+      "month": "2026_06",
+      "revenue": 468000,
+      "revenue_net": 304200,
+      "listed": 468000,
+      "orders": 1,
+      "discount_pct": 35.0
+    },
+    {
       "partnerCode": "00811",
       "partnerName": "Lục Cao Thắng",
       "saleCode": "khuyenhn",
@@ -25957,6 +26013,20 @@
       "revenue_net": 282100,
       "listed": 434000,
       "orders": 1,
+      "discount_pct": 35.0
+    },
+    {
+      "partnerCode": "00651",
+      "partnerName": "Phòng khám Newlab",
+      "saleCode": "thuyetnv",
+      "saleName": "Nguyễn Văn Thuyết",
+      "team": "KD01",
+      "region": "HN",
+      "month": "2026_06",
+      "revenue": 422000,
+      "revenue_net": 274300,
+      "listed": 422000,
+      "orders": 3,
       "discount_pct": 35.0
     },
     {
@@ -26114,18 +26184,18 @@
       "discount_pct": 35.0
     },
     {
-      "partnerCode": "00651",
-      "partnerName": "Phòng khám Newlab",
-      "saleCode": "thuyetnv",
-      "saleName": "Nguyễn Văn Thuyết",
-      "team": "KD01",
-      "region": "HN",
+      "partnerCode": "01558",
+      "partnerName": "Phòng khám thẩm mỹ Cora",
+      "saleCode": "kieuntt",
+      "saleName": "Nguyễn Thị Thúy Kiều",
+      "team": "KD HCM",
+      "region": "HCM",
       "month": "2026_06",
-      "revenue": 238000,
-      "revenue_net": 154700,
-      "listed": 238000,
+      "revenue": 221000,
+      "revenue_net": 221000,
+      "listed": 221000,
       "orders": 2,
-      "discount_pct": 35.0
+      "discount_pct": 0.0
     },
     {
       "partnerCode": "00897",
@@ -26143,7 +26213,7 @@
     },
     {
       "partnerCode": "01554",
-      "partnerName": "Nha khoa Tracy Việt Nam",
+      "partnerName": "Nguyễn Sỹ Đạt - Pk Siêu Âm Bs Đạt",
       "saleCode": "nganck",
       "saleName": "Châu Kim Ngân",
       "team": "KD HCM",
@@ -26266,23 +26336,21 @@
       "listed": 60000,
       "orders": 1,
       "discount_pct": 0.0
-    },
-    {
-      "partnerCode": "01558",
-      "partnerName": "Phòng khám thẩm mỹ Cora",
-      "saleCode": "kieuntt",
-      "saleName": "Nguyễn Thị Thúy Kiều",
-      "team": "KD HCM",
-      "region": "HCM",
-      "month": "2026_06",
-      "revenue": 45000,
-      "revenue_net": 45000,
-      "listed": 45000,
-      "orders": 1,
-      "discount_pct": 0.0
     }
   ],
   "top_sales": [
+    {
+      "month": "2026_06",
+      "sales": "thuyetnv",
+      "salesName": "Nguyễn Văn Thuyết",
+      "team": "KD01",
+      "region": "HN",
+      "revenue": 242343000,
+      "revenue_net": 137746645,
+      "listed": 242343000,
+      "orders": 400,
+      "discount_pct": 43.2
+    },
     {
       "month": "2026_06",
       "sales": "khuyenhn",
@@ -26297,26 +26365,14 @@
     },
     {
       "month": "2026_06",
-      "sales": "thuyetnv",
-      "salesName": "Nguyễn Văn Thuyết",
-      "team": "KD01",
-      "region": "HN",
-      "revenue": 235696000,
-      "revenue_net": 133488495,
-      "listed": 235696000,
-      "orders": 390,
-      "discount_pct": 43.4
-    },
-    {
-      "month": "2026_06",
       "sales": "quannd",
       "salesName": "Nguyễn Đức Quân",
       "team": "KD01",
       "region": "HN",
-      "revenue": 174096000,
-      "revenue_net": 102606941,
-      "listed": 174096000,
-      "orders": 252,
+      "revenue": 174960000,
+      "revenue_net": 103125341,
+      "listed": 174960000,
+      "orders": 253,
       "discount_pct": 41.1
     },
     {
@@ -26337,11 +26393,11 @@
       "salesName": "Nguyễn Thị Thúy Kiều",
       "team": "KD HCM",
       "region": "HCM",
-      "revenue": 57729000,
-      "revenue_net": 39037219,
-      "listed": 57729000,
-      "orders": 48,
-      "discount_pct": 32.4
+      "revenue": 58421000,
+      "revenue_net": 39626019,
+      "listed": 58421000,
+      "orders": 50,
+      "discount_pct": 32.2
     },
     {
       "month": "2026_06",
@@ -26361,11 +26417,11 @@
       "salesName": "Trần Việt Hảo",
       "team": "KD HCM",
       "region": "HCM",
-      "revenue": 40567000,
-      "revenue_net": 32715961,
-      "listed": 40567000,
-      "orders": 69,
-      "discount_pct": 19.4
+      "revenue": 43213000,
+      "revenue_net": 35361961,
+      "listed": 43213000,
+      "orders": 72,
+      "discount_pct": 18.2
     },
     {
       "month": "2026_06",
@@ -26397,10 +26453,10 @@
       "salesName": "Nguyễn Thị Thuý Anh",
       "team": "invivo",
       "region": "HN",
-      "revenue": 23149000,
-      "revenue_net": 15046850,
-      "listed": 23149000,
-      "orders": 38,
+      "revenue": 25341000,
+      "revenue_net": 16471650,
+      "listed": 25341000,
+      "orders": 43,
       "discount_pct": 35.0
     },
     {
@@ -26409,11 +26465,11 @@
       "salesName": "Nguyễn Thành Hưng",
       "team": "KD01",
       "region": "HN",
-      "revenue": 20474000,
-      "revenue_net": 13385880,
-      "listed": 20474000,
-      "orders": 43,
-      "discount_pct": 34.6
+      "revenue": 22949000,
+      "revenue_net": 14994630,
+      "listed": 22949000,
+      "orders": 45,
+      "discount_pct": 34.7
     },
     {
       "month": "2026_06",
@@ -26445,11 +26501,11 @@
       "salesName": "Vương Văn Tiến",
       "team": "KD01",
       "region": "HN",
-      "revenue": 14809000,
-      "revenue_net": 9165200,
-      "listed": 14809000,
-      "orders": 52,
-      "discount_pct": 38.1
+      "revenue": 15277000,
+      "revenue_net": 9469400,
+      "listed": 15277000,
+      "orders": 53,
+      "discount_pct": 38.0
     },
     {
       "month": "2026_06",
@@ -26507,11 +26563,11 @@
       "salesName": "InVivo HN (nội bộ)",
       "team": "invivo HN",
       "region": "HN",
-      "revenue": 890931000,
-      "revenue_net": 498505659,
-      "listed": 890931000,
-      "orders": 1123,
-      "discount_pct": 44.0
+      "revenue": 896946000,
+      "revenue_net": 503530459,
+      "listed": 896946000,
+      "orders": 1131,
+      "discount_pct": 43.9
     },
     {
       "month": "2026_06",
@@ -28057,11 +28113,11 @@
       "salesName": "Nguyễn Thị Thúy Kiều",
       "team": "KD HCM",
       "region": "HCM",
-      "revenue": 57729000,
-      "revenue_net": 39037219,
-      "listed": 57729000,
-      "orders": 48,
-      "discount_pct": 32.4
+      "revenue": 58421000,
+      "revenue_net": 39626019,
+      "listed": 58421000,
+      "orders": 50,
+      "discount_pct": 32.2
     },
     {
       "month": "2026_06",
@@ -28069,11 +28125,11 @@
       "salesName": "Trần Việt Hảo",
       "team": "KD HCM",
       "region": "HCM",
-      "revenue": 40567000,
-      "revenue_net": 32715961,
-      "listed": 40567000,
-      "orders": 69,
-      "discount_pct": 19.4
+      "revenue": 43213000,
+      "revenue_net": 35361961,
+      "listed": 43213000,
+      "orders": 72,
+      "discount_pct": 18.2
     },
     {
       "month": "2026_06",
@@ -28117,11 +28173,11 @@
       "salesName": "Nguyễn Văn Thuyết",
       "team": "KD01",
       "region": "HN",
-      "revenue": 235696000,
-      "revenue_net": 133488495,
-      "listed": 235696000,
-      "orders": 390,
-      "discount_pct": 43.4
+      "revenue": 242343000,
+      "revenue_net": 137746645,
+      "listed": 242343000,
+      "orders": 400,
+      "discount_pct": 43.2
     },
     {
       "month": "2026_06",
@@ -28129,10 +28185,10 @@
       "salesName": "Nguyễn Đức Quân",
       "team": "KD01",
       "region": "HN",
-      "revenue": 174096000,
-      "revenue_net": 102606941,
-      "listed": 174096000,
-      "orders": 252,
+      "revenue": 174960000,
+      "revenue_net": 103125341,
+      "listed": 174960000,
+      "orders": 253,
       "discount_pct": 41.1
     },
     {
@@ -28153,11 +28209,11 @@
       "salesName": "Nguyễn Thành Hưng",
       "team": "KD01",
       "region": "HN",
-      "revenue": 20474000,
-      "revenue_net": 13385880,
-      "listed": 20474000,
-      "orders": 43,
-      "discount_pct": 34.6
+      "revenue": 22949000,
+      "revenue_net": 14994630,
+      "listed": 22949000,
+      "orders": 45,
+      "discount_pct": 34.7
     },
     {
       "month": "2026_06",
@@ -28165,11 +28221,11 @@
       "salesName": "Vương Văn Tiến",
       "team": "KD01",
       "region": "HN",
-      "revenue": 14809000,
-      "revenue_net": 9165200,
-      "listed": 14809000,
-      "orders": 52,
-      "discount_pct": 38.1
+      "revenue": 15277000,
+      "revenue_net": 9469400,
+      "listed": 15277000,
+      "orders": 53,
+      "discount_pct": 38.0
     },
     {
       "month": "2026_06",
@@ -28249,10 +28305,10 @@
       "salesName": "Nguyễn Thị Thuý Anh",
       "team": "invivo",
       "region": "HN",
-      "revenue": 23149000,
-      "revenue_net": 15046850,
-      "listed": 23149000,
-      "orders": 38,
+      "revenue": 25341000,
+      "revenue_net": 16471650,
+      "listed": 25341000,
+      "orders": 43,
       "discount_pct": 35.0
     },
     {
@@ -28285,40 +28341,40 @@
       "salesName": "InVivo HN (nội bộ)",
       "team": "invivo HN",
       "region": "HN",
-      "revenue": 890931000,
-      "revenue_net": 498505659,
-      "listed": 890931000,
-      "orders": 1123,
-      "discount_pct": 44.0
+      "revenue": 896946000,
+      "revenue_net": 503530459,
+      "listed": 896946000,
+      "orders": 1131,
+      "discount_pct": 43.9
     }
   ],
   "service_mix": [
     {
       "group": "Hóa sinh",
-      "revenue": 408498000,
-      "listed": 408498000,
-      "count": 9469,
+      "revenue": 416260000,
+      "listed": 416260000,
+      "count": 9652,
       "discount_pct": 0.0
     },
     {
       "group": "Sàng lọc trước sinh",
-      "revenue": 405675000,
-      "listed": 405675000,
-      "count": 169,
+      "revenue": 408775000,
+      "listed": 408775000,
+      "count": 170,
       "discount_pct": 0.0
     },
     {
       "group": "Miễn dịch",
-      "revenue": 316370000,
-      "listed": 316370000,
-      "count": 1706,
+      "revenue": 319873000,
+      "listed": 319873000,
+      "count": 1724,
       "discount_pct": 0.0
     },
     {
       "group": "Sinh học phân tử",
-      "revenue": 164793000,
-      "listed": 164793000,
-      "count": 188,
+      "revenue": 165938000,
+      "listed": 165938000,
+      "count": 190,
       "discount_pct": 0.0
     },
     {
@@ -28330,30 +28386,30 @@
     },
     {
       "group": "ELISA",
-      "revenue": 110531000,
-      "listed": 110531000,
-      "count": 349,
+      "revenue": 111371000,
+      "listed": 111371000,
+      "count": 353,
       "discount_pct": 0.0
     },
     {
       "group": "Huyết học",
-      "revenue": 94612000,
-      "listed": 94612000,
-      "count": 1431,
+      "revenue": 96080000,
+      "listed": 96080000,
+      "count": 1456,
       "discount_pct": 0.0
     },
     {
       "group": "Nội tiết - hoocmon",
-      "revenue": 64381000,
-      "listed": 64381000,
-      "count": 341,
+      "revenue": 64735000,
+      "listed": 64735000,
+      "count": 344,
       "discount_pct": 0.0
     },
     {
       "group": "Khác",
-      "revenue": 201315000,
-      "listed": 201315000,
-      "count": 1509,
+      "revenue": 205142000,
+      "listed": 205142000,
+      "count": 1524,
       "discount_pct": 0
     }
   ],
@@ -34212,36 +34268,36 @@
       "team": "KD HCM",
       "month": "2026_06",
       "group": "Hóa sinh",
-      "revenue": 27933000,
-      "listed": 27933000,
-      "count": 528,
+      "revenue": 29581000,
+      "listed": 29581000,
+      "count": 568,
       "discount_pct": 0.0
     },
     {
       "team": "KD HCM",
       "month": "2026_06",
       "group": "Huyết học",
-      "revenue": 19211000,
-      "listed": 19211000,
-      "count": 322,
+      "revenue": 19511000,
+      "listed": 19511000,
+      "count": 327,
       "discount_pct": 0.0
     },
     {
       "team": "KD HCM",
       "month": "2026_06",
       "group": "Miễn dịch",
-      "revenue": 13322000,
-      "listed": 13322000,
-      "count": 86,
+      "revenue": 14360000,
+      "listed": 14360000,
+      "count": 92,
       "discount_pct": 0.0
     },
     {
       "team": "KD HCM",
       "month": "2026_06",
       "group": "Test nhanh",
-      "revenue": 7154000,
-      "listed": 7154000,
-      "count": 79,
+      "revenue": 7506000,
+      "listed": 7506000,
+      "count": 83,
       "discount_pct": 0.0
     },
     {
@@ -34311,18 +34367,18 @@
       "team": "KD01",
       "month": "2026_06",
       "group": "Miễn dịch",
-      "revenue": 138013000,
-      "listed": 138013000,
-      "count": 761,
+      "revenue": 140134000,
+      "listed": 140134000,
+      "count": 770,
       "discount_pct": 0.0
     },
     {
       "team": "KD01",
       "month": "2026_06",
       "group": "Hóa sinh",
-      "revenue": 99551000,
-      "listed": 99551000,
-      "count": 2438,
+      "revenue": 102917000,
+      "listed": 102917000,
+      "count": 2507,
       "discount_pct": 0.0
     },
     {
@@ -34338,9 +34394,9 @@
       "team": "KD01",
       "month": "2026_06",
       "group": "Nội tiết - hoocmon",
-      "revenue": 34420000,
-      "listed": 34420000,
-      "count": 206,
+      "revenue": 34774000,
+      "listed": 34774000,
+      "count": 209,
       "discount_pct": 0.0
     },
     {
@@ -34365,27 +34421,27 @@
       "team": "KD01",
       "month": "2026_06",
       "group": "Huyết học",
-      "revenue": 25834000,
-      "listed": 25834000,
-      "count": 396,
+      "revenue": 26502000,
+      "listed": 26502000,
+      "count": 407,
       "discount_pct": 0.0
     },
     {
       "team": "KD01",
       "month": "2026_06",
       "group": "Sinh học phân tử",
-      "revenue": 23638000,
-      "listed": 23638000,
-      "count": 36,
+      "revenue": 24783000,
+      "listed": 24783000,
+      "count": 38,
       "discount_pct": 0.0
     },
     {
       "team": "KD01",
       "month": "2026_06",
       "group": "ELISA",
-      "revenue": 20142000,
-      "listed": 20142000,
-      "count": 72,
+      "revenue": 20982000,
+      "listed": 20982000,
+      "count": 76,
       "discount_pct": 0.0
     },
     {
@@ -34410,18 +34466,18 @@
       "team": "KD01",
       "month": "2026_06",
       "group": "Nước tiểu",
-      "revenue": 6620000,
-      "listed": 6620000,
-      "count": 120,
+      "revenue": 6880000,
+      "listed": 6880000,
+      "count": 124,
       "discount_pct": 0.0
     },
     {
       "team": "KD01",
       "month": "2026_06",
       "group": "Dị ứng",
-      "revenue": 5100000,
-      "listed": 5100000,
-      "count": 3,
+      "revenue": 6800000,
+      "listed": 6800000,
+      "count": 4,
       "discount_pct": 0.0
     },
     {
@@ -34680,18 +34736,18 @@
       "team": "invivo",
       "month": "2026_06",
       "group": "Miễn dịch",
-      "revenue": 8328000,
-      "listed": 8328000,
-      "count": 42,
+      "revenue": 8476000,
+      "listed": 8476000,
+      "count": 43,
       "discount_pct": 0.0
     },
     {
       "team": "invivo",
       "month": "2026_06",
       "group": "Hóa sinh",
-      "revenue": 6788000,
-      "listed": 6788000,
-      "count": 168,
+      "revenue": 8452000,
+      "listed": 8452000,
+      "count": 216,
       "discount_pct": 0.0
     },
     {
@@ -34707,9 +34763,9 @@
       "team": "invivo",
       "month": "2026_06",
       "group": "Huyết học",
-      "revenue": 1254000,
-      "listed": 1254000,
-      "count": 16,
+      "revenue": 1634000,
+      "listed": 1634000,
+      "count": 23,
       "discount_pct": 0.0
     },
     {
@@ -34815,27 +34871,27 @@
       "team": "invivo HN",
       "month": "2026_06",
       "group": "Hóa sinh",
-      "revenue": 245553000,
-      "listed": 245553000,
-      "count": 5803,
+      "revenue": 246637000,
+      "listed": 246637000,
+      "count": 5829,
       "discount_pct": 0.0
     },
     {
       "team": "invivo HN",
       "month": "2026_06",
       "group": "Sàng lọc trước sinh",
-      "revenue": 236115000,
-      "listed": 236115000,
-      "count": 103,
+      "revenue": 239215000,
+      "listed": 239215000,
+      "count": 104,
       "discount_pct": 0.0
     },
     {
       "team": "invivo HN",
       "month": "2026_06",
       "group": "Miễn dịch",
-      "revenue": 101840000,
-      "listed": 101840000,
-      "count": 586,
+      "revenue": 102036000,
+      "listed": 102036000,
+      "count": 588,
       "discount_pct": 0.0
     },
     {
@@ -34850,6 +34906,15 @@
     {
       "team": "invivo HN",
       "month": "2026_06",
+      "group": "Huyết học",
+      "revenue": 44685000,
+      "listed": 44685000,
+      "count": 635,
+      "discount_pct": 0.0
+    },
+    {
+      "team": "invivo HN",
+      "month": "2026_06",
       "group": "ELISA",
       "revenue": 44583000,
       "listed": 44583000,
@@ -34859,19 +34924,19 @@
     {
       "team": "invivo HN",
       "month": "2026_06",
-      "group": "Huyết học",
-      "revenue": 44565000,
-      "listed": 44565000,
-      "count": 633,
+      "group": "Nước tiểu",
+      "revenue": 35312000,
+      "listed": 35312000,
+      "count": 630,
       "discount_pct": 0.0
     },
     {
       "team": "invivo HN",
       "month": "2026_06",
-      "group": "Nước tiểu",
-      "revenue": 35197000,
-      "listed": 35197000,
-      "count": 628,
+      "group": "Tế bào - Giải phẫu bệnh",
+      "revenue": 22650000,
+      "listed": 22650000,
+      "count": 56,
       "discount_pct": 0.0
     },
     {
@@ -34881,15 +34946,6 @@
       "revenue": 22148000,
       "listed": 22148000,
       "count": 102,
-      "discount_pct": 0.0
-    },
-    {
-      "team": "invivo HN",
-      "month": "2026_06",
-      "group": "Tế bào - Giải phẫu bệnh",
-      "revenue": 21250000,
-      "listed": 21250000,
-      "count": 52,
       "discount_pct": 0.0
     },
     {
@@ -34959,15 +35015,15 @@
   "branch_breakdown": [
     {
       "branch": "HCM",
-      "revenue": 204211000,
+      "revenue": 207549000,
       "revenue_invivo": 3465000,
-      "revenue_total": 207676000
+      "revenue_total": 211014000
     },
     {
       "branch": "HN",
-      "revenue": 2680181000,
-      "revenue_invivo": 890931000,
-      "revenue_total": 3571112000
+      "revenue": 2704857000,
+      "revenue_invivo": 896946000,
+      "revenue_total": 3601803000
     }
   ],
   "teams": [
@@ -34984,6 +35040,6 @@
     "KD04": 47,
     "KD05": 40,
     "invivo": 23,
-    "KD HCM": 64
+    "KD HCM": 65
   }
 }
