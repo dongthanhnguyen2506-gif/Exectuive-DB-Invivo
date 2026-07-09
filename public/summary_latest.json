@@ -1,15 +1,15 @@
 {
-  "updated_at": "2026-07-09T07:48:31Z",
-  "updated_at_vn": "07:48 09/07/2026 UTC",
-  "current_month": "2026_04",
-  "total_revenue": 872480835,
-  "total_listed": 634312000,
-  "total_discount": 111398658,
-  "discount_pct": 17.6,
-  "total_orders": 1548,
+  "updated_at": "2026-07-09T11:13:22Z",
+  "updated_at_vn": "11:13 09/07/2026 UTC",
+  "current_month": "2026_01",
+  "total_revenue": 728138052,
+  "total_listed": 567204000,
+  "total_discount": 53828398,
+  "discount_pct": 9.5,
+  "total_orders": 1439,
   "active_partners": 1,
-  "active_sales": 8,
-  "mom_growth_pct": -9.8,
+  "active_sales": 11,
+  "mom_growth_pct": -0.2,
   "monthly": [
     {
       "month": "2025_10",
@@ -50,155 +50,135 @@
       "order_count": 1439,
       "active_partners": 1,
       "active_sales": 11
-    },
-    {
-      "month": "2026_02",
-      "revenue_actual": 476150365,
-      "revenue_listed": 858200000,
-      "discount": 389893120,
-      "discount_pct": 45.4,
-      "order_count": 1620,
-      "active_partners": 48,
-      "active_sales": 12
-    },
-    {
-      "month": "2026_03",
-      "revenue_actual": 967768038,
-      "revenue_listed": 592625000,
-      "discount": 96070108,
-      "discount_pct": 16.2,
-      "order_count": 1706,
-      "active_partners": 1,
-      "active_sales": 10
-    },
-    {
-      "month": "2026_04",
-      "revenue_actual": 872480835,
-      "revenue_listed": 634312000,
-      "discount": 111398658,
-      "discount_pct": 17.6,
-      "order_count": 1548,
-      "active_partners": 1,
-      "active_sales": 8
     }
   ],
   "top_partners": [
     {
       "partnerId": "1023",
       "partnerCode": "00001",
-      "revenue": 872480835,
-      "listed": 634312000,
-      "orders": 1548
+      "revenue": 728138052,
+      "listed": 567204000,
+      "orders": 1439
     }
   ],
   "top_sales": [
     {
-      "sales": "tamntt",
-      "revenue": 280588023,
-      "orders": 469
-    },
-    {
       "sales": "oanhdk",
-      "revenue": 252931599,
-      "orders": 468
-    },
-    {
-      "sales": "huongnt",
-      "revenue": 179540064,
-      "orders": 326
-    },
-    {
-      "sales": "thaott",
-      "revenue": 107622027,
-      "orders": 189
+      "revenue": 246536046,
+      "orders": 554
     },
     {
       "sales": "labctv",
-      "revenue": 26976348,
-      "orders": 51
+      "revenue": 224020692,
+      "orders": 401
+    },
+    {
+      "sales": "huongnt",
+      "revenue": 95678454,
+      "orders": 187
+    },
+    {
+      "sales": "minhlh",
+      "revenue": 92799132,
+      "orders": 165
+    },
+    {
+      "sales": "manhhv",
+      "revenue": 36062328,
+      "orders": 66
     },
     {
       "sales": "quynhdt",
-      "revenue": 13148136,
-      "orders": 24
+      "revenue": 16851114,
+      "orders": 31
     },
     {
-      "sales": "linhlhm",
-      "revenue": 10484505,
-      "orders": 19
+      "sales": "tamntt",
+      "revenue": 4436988,
+      "orders": 8
     },
     {
       "sales": "anhpn",
-      "revenue": 1190133,
-      "orders": 2
+      "revenue": 3587352,
+      "orders": 7
+    },
+    {
+      "sales": "thaott",
+      "revenue": 3304140,
+      "orders": 9
+    },
+    {
+      "sales": "hiennt",
+      "revenue": 3068130,
+      "orders": 6
     }
   ],
   "service_mix": [
     {
       "group": "Hóa sinh",
-      "revenue": 4528733705,
-      "listed": 3347513000,
-      "count": 94482
-    },
-    {
-      "group": "Huyết học",
-      "revenue": 184856961,
-      "listed": 284327000,
-      "count": 4439
+      "revenue": 2542849720,
+      "listed": 2109121000,
+      "count": 55821
     },
     {
       "group": "Miễn dịch",
-      "revenue": 156537071,
-      "listed": 587316000,
-      "count": 3696
+      "revenue": 71818635,
+      "listed": 333476000,
+      "count": 2065
+    },
+    {
+      "group": "Huyết học",
+      "revenue": 52029384,
+      "listed": 97806000,
+      "count": 1496
     },
     {
       "group": "Nước tiểu",
-      "revenue": 104661016,
-      "listed": 154576000,
-      "count": 2864
+      "revenue": 34994356,
+      "listed": 52256000,
+      "count": 928
     },
     {
       "group": "Test nhanh",
-      "revenue": 33989701,
-      "listed": 110651000,
-      "count": 872
+      "revenue": 17528616,
+      "listed": 75929000,
+      "count": 504
     },
     {
       "group": "Nội tiết - hoocmon",
-      "revenue": 24126232,
-      "listed": 122752000,
-      "count": 660
+      "revenue": 14641959,
+      "listed": 68638000,
+      "count": 421
     },
     {
       "group": "ELISA",
-      "revenue": 16605959,
-      "listed": 151260000,
-      "count": 399
+      "revenue": 5634198,
+      "listed": 41334000,
+      "count": 162
     },
     {
       "group": "Sinh học phân tử",
-      "revenue": 6072096,
-      "listed": 97400000,
-      "count": 170
+      "revenue": 3756132,
+      "listed": 65385000,
+      "count": 108
     },
     {
       "group": "Vi khuẩn - Ký sinh trùng",
-      "revenue": 3188873,
-      "listed": 8628000,
-      "count": 83
+      "revenue": 1912845,
+      "listed": 5786000,
+      "count": 55
     },
     {
       "group": "Sàng lọc trước sinh",
-      "revenue": 2552211,
-      "listed": 95385000,
-      "count": 79
+      "revenue": 973812,
+      "listed": 29940000,
+      "count": 28
     },
     {
       "group": "Tinh dịch",
-      "revenue": 1980208,
-      "listed": 9400000,
-      "count": 47
+      "revenue": 765138,
+      "listed": 4400000,
+      "count": 22
     }
   ]
 }
