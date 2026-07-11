@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-07-11T03:24:13Z",
-  "updated_at_vn": "03:24 11/07/2026 UTC",
+  "updated_at": "2026-07-11T06:22:02Z",
+  "updated_at_vn": "06:22 11/07/2026 UTC",
   "current_month": "2026_04",
   "total_revenue": 872480835,
   "total_listed": 634312000,
@@ -9,7 +9,7 @@
   "total_orders": 1548,
   "active_partners": 1,
   "active_sales": 8,
-  "mom_growth_pct": -9.8,
+  "mom_growth_pct": 83.2,
   "monthly": [
     {
       "month": "2025_10",
@@ -60,16 +60,6 @@
       "order_count": 1620,
       "active_partners": 48,
       "active_sales": 12
-    },
-    {
-      "month": "2026_03",
-      "revenue_actual": 967768038,
-      "revenue_listed": 592625000,
-      "discount": 96070108,
-      "discount_pct": 16.2,
-      "order_count": 1706,
-      "active_partners": 1,
-      "active_sales": 10
     },
     {
       "month": "2026_04",
@@ -136,21 +126,21 @@
   "service_mix": [
     {
       "group": "Hóa sinh",
-      "revenue": 4528733705,
-      "listed": 3347513000,
-      "count": 94482
+      "revenue": 3628893545,
+      "listed": 2917469000,
+      "count": 80162
     },
     {
       "group": "Huyết học",
-      "revenue": 184856961,
-      "listed": 284327000,
-      "count": 4439
+      "revenue": 168393405,
+      "listed": 267006000,
+      "count": 4177
     },
     {
       "group": "Miễn dịch",
-      "revenue": 156537071,
-      "listed": 587316000,
-      "count": 3696
+      "revenue": 119022785,
+      "listed": 498686000,
+      "count": 3099
     },
     {
       "group": "Nước tiểu",
@@ -160,33 +150,33 @@
     },
     {
       "group": "Test nhanh",
-      "revenue": 33989701,
-      "listed": 110651000,
-      "count": 872
+      "revenue": 27391711,
+      "listed": 99869000,
+      "count": 767
     },
     {
       "group": "Nội tiết - hoocmon",
-      "revenue": 24126232,
-      "listed": 122752000,
-      "count": 660
+      "revenue": 21989740,
+      "listed": 114316000,
+      "count": 626
     },
     {
       "group": "ELISA",
-      "revenue": 16605959,
-      "listed": 151260000,
-      "count": 399
+      "revenue": 12835679,
+      "listed": 119622000,
+      "count": 339
     },
     {
       "group": "Sinh học phân tử",
-      "revenue": 6072096,
-      "listed": 97400000,
-      "count": 170
+      "revenue": 5695068,
+      "listed": 94224000,
+      "count": 164
     },
     {
       "group": "Vi khuẩn - Ký sinh trùng",
-      "revenue": 3188873,
-      "listed": 8628000,
-      "count": 83
+      "revenue": 2686169,
+      "listed": 7830000,
+      "count": 75
     },
     {
       "group": "Sàng lọc trước sinh",
@@ -196,9 +186,9 @@
     },
     {
       "group": "Tinh dịch",
-      "revenue": 1980208,
-      "listed": 9400000,
-      "count": 47
+      "revenue": 1414666,
+      "listed": 7600000,
+      "count": 38
     }
   ]
 }
