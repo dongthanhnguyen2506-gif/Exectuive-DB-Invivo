@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-09-10T04:32:15Z",
-  "updated_at_vn": "04:32 10/09/2026 UTC",
+  "updated_at": "2026-09-10T09:32:45Z",
+  "updated_at_vn": "09:32 10/09/2026 UTC",
   "current_month": "2026_04",
   "total_revenue": 872480835,
   "total_listed": 634312000,
@@ -38,6 +38,16 @@
       "discount": 57443389,
       "discount_pct": 9.9,
       "order_count": 1322,
+      "active_partners": 1,
+      "active_sales": 11
+    },
+    {
+      "month": "2026_01",
+      "revenue_actual": 728138052,
+      "revenue_listed": 567204000,
+      "discount": 53828398,
+      "discount_pct": 9.5,
+      "order_count": 1439,
       "active_partners": 1,
       "active_sales": 11
     },
@@ -126,9 +136,9 @@
   "service_mix": [
     {
       "group": "Hóa sinh",
-      "revenue": 3800595653,
-      "listed": 2780309000,
-      "count": 79056
+      "revenue": 4528733705,
+      "listed": 3347513000,
+      "count": 94482
     },
     {
       "group": "Huyết học",
