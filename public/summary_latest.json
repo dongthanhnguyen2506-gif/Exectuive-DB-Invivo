@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-09-20T00:56:42Z",
-  "updated_at_vn": "00:56 20/09/2026 UTC",
+  "updated_at": "2026-09-20T05:59:14Z",
+  "updated_at_vn": "05:59 20/09/2026 UTC",
   "current_month": "2026_04",
   "total_revenue": 872480835,
   "total_listed": 634312000,
@@ -30,6 +30,16 @@
       "order_count": 1402,
       "active_partners": 1,
       "active_sales": 10
+    },
+    {
+      "month": "2025_12",
+      "revenue_actual": 729866797,
+      "revenue_listed": 580381000,
+      "discount": 57443389,
+      "discount_pct": 9.9,
+      "order_count": 1322,
+      "active_partners": 1,
+      "active_sales": 11
     },
     {
       "month": "2026_01",
@@ -126,9 +136,9 @@
   "service_mix": [
     {
       "group": "Hóa sinh",
-      "revenue": 3809133395,
-      "listed": 2782322000,
-      "count": 79272
+      "revenue": 4528733705,
+      "listed": 3347513000,
+      "count": 94482
     },
     {
       "group": "Huyết học",
@@ -144,9 +154,9 @@
     },
     {
       "group": "Nước tiểu",
-      "revenue": 94394529,
-      "listed": 139386000,
-      "count": 2647
+      "revenue": 104661016,
+      "listed": 154576000,
+      "count": 2864
     },
     {
       "group": "Test nhanh",
